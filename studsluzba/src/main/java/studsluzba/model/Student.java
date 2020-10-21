@@ -1,66 +1,119 @@
 package studsluzba.model;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.*;
 
-
-/**
- * The persistent class for the student database table.
- * 
- */
 @Entity
 @NamedQuery(name="Student.findAll", query="SELECT s FROM Student s")
 public class Student implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-	//123test
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idstudent;
-
-	private int godinaUpisa;
+	
+	@OneToMany(mappedBy="student")
+	private List<Indeks> indeks;
 
 	private String ime;
-
+	
 	private String prezime;
 	
 	private String srednjeIme;
 	
-	//bi-directional many-to-one association to Studprogram
+	private int jmbg;
+	
+	private Date datumRodjenja;
+	
+	private String mestoRodjenja;
+	
+	private String drzavaRodjenja;
+	
+	private String drzavljanstvo;
+	
+	private String nacionalnost;
+	
+	private String pol;
+	
+	private String adresaPrebivalista;
+	
+	private String brTelefona;
+	
+	private String emailFakultet;
+	
+	private String emailPrivatan;
+	
+	private String brojLicneKarte;
+	
+	private String izdavacLicneKarte;
+	
+	private float uspehSrednjaSkola;
+	
+	private float uspehPrijemni;
+	
 	@ManyToOne
-	@JoinColumn(name="idstudProgram")
-	private Studprogram studprogram;
+	@JoinColumn(name = "idVsUstanove")
+	private VisokoskolskaUstanova vsUstanova;
+	
+	@ManyToOne
+	@JoinColumn(name = "idSrednjeSkole")
+	private SrednjaSkola srSkola;
 
 	public Student() {
+		
 	}
 
-	public Student(int godinaUpisa, String ime, String prezime, Studprogram studprogram) {
+	public Student(int idstudent, List<Indeks> indeks, String ime, String prezime, String srednjeIme, int jmbg,
+			Date datumRodjenja, String mestoRodjenja, String drzavaRodjenja, String drzavljanstvo, String nacionalnost,
+			String pol, String adresaPrebivalista, String brTelefona, String emailFakultet, String emailPrivatan,
+			String brojLicneKarte, String izdavacLicneKarte, float uspehSrednjaSkola, float uspehPrijemni,
+			VisokoskolskaUstanova vsUstanova, SrednjaSkola srSkola) {
 		super();
-		this.godinaUpisa = godinaUpisa;
+		this.idstudent = idstudent;
+		this.indeks = indeks;
 		this.ime = ime;
 		this.prezime = prezime;
-		this.studprogram = studprogram;
+		this.srednjeIme = srednjeIme;
+		this.jmbg = jmbg;
+		this.datumRodjenja = datumRodjenja;
+		this.mestoRodjenja = mestoRodjenja;
+		this.drzavaRodjenja = drzavaRodjenja;
+		this.drzavljanstvo = drzavljanstvo;
+		this.nacionalnost = nacionalnost;
+		this.pol = pol;
+		this.adresaPrebivalista = adresaPrebivalista;
+		this.brTelefona = brTelefona;
+		this.emailFakultet = emailFakultet;
+		this.emailPrivatan = emailPrivatan;
+		this.brojLicneKarte = brojLicneKarte;
+		this.izdavacLicneKarte = izdavacLicneKarte;
+		this.uspehSrednjaSkola = uspehSrednjaSkola;
+		this.uspehPrijemni = uspehPrijemni;
+		this.vsUstanova = vsUstanova;
+		this.srSkola = srSkola;
 	}
 
 	public int getIdstudent() {
-		return this.idstudent;
+		return idstudent;
 	}
 
 	public void setIdstudent(int idstudent) {
 		this.idstudent = idstudent;
 	}
 
-	public int getGodinaUpisa() {
-		return this.godinaUpisa;
+	public List<Indeks> getIndeks() {
+		return indeks;
 	}
 
-	public void setGodinaUpisa(int godinaUpisa) {
-		this.godinaUpisa = godinaUpisa;
+	public void setIndeks(List<Indeks> indeks) {
+		this.indeks = indeks;
 	}
 
 	public String getIme() {
-		return this.ime;
+		return ime;
 	}
 
 	public void setIme(String ime) {
@@ -68,19 +121,11 @@ public class Student implements Serializable {
 	}
 
 	public String getPrezime() {
-		return this.prezime;
+		return prezime;
 	}
 
 	public void setPrezime(String prezime) {
 		this.prezime = prezime;
-	}
-
-	public Studprogram getStudprogram() {
-		return this.studprogram;
-	}
-
-	public void setStudprogram(Studprogram studprogram) {
-		this.studprogram = studprogram;
 	}
 
 	public String getSrednjeIme() {
@@ -91,9 +136,155 @@ public class Student implements Serializable {
 		this.srednjeIme = srednjeIme;
 	}
 
+	public int getJmbg() {
+		return jmbg;
+	}
+
+	public void setJmbg(int jmbg) {
+		this.jmbg = jmbg;
+	}
+
+	public Date getDatumRodjenja() {
+		return datumRodjenja;
+	}
+
+	public void setDatumRodjenja(Date datumRodjenja) {
+		this.datumRodjenja = datumRodjenja;
+	}
+
+	public String getMestoRodjenja() {
+		return mestoRodjenja;
+	}
+
+	public void setMestoRodjenja(String mestoRodjenja) {
+		this.mestoRodjenja = mestoRodjenja;
+	}
+
+	public String getDrzavaRodjenja() {
+		return drzavaRodjenja;
+	}
+
+	public void setDrzavaRodjenja(String drzavaRodjenja) {
+		this.drzavaRodjenja = drzavaRodjenja;
+	}
+
+	public String getDrzavljanstvo() {
+		return drzavljanstvo;
+	}
+
+	public void setDrzavljanstvo(String drzavljanstvo) {
+		this.drzavljanstvo = drzavljanstvo;
+	}
+
+	public String getNacionalnost() {
+		return nacionalnost;
+	}
+
+	public void setNacionalnost(String nacionalnost) {
+		this.nacionalnost = nacionalnost;
+	}
+
+	public String getPol() {
+		return pol;
+	}
+
+	public void setPol(String pol) {
+		this.pol = pol;
+	}
+
+	public String getAdresaPrebivalista() {
+		return adresaPrebivalista;
+	}
+
+	public void setAdresaPrebivalista(String adresaPrebivalista) {
+		this.adresaPrebivalista = adresaPrebivalista;
+	}
+
+	public String getBrTelefona() {
+		return brTelefona;
+	}
+
+	public void setBrTelefona(String brTelefona) {
+		this.brTelefona = brTelefona;
+	}
+
+	public String getEmailFakultet() {
+		return emailFakultet;
+	}
+
+	public void setEmailFakultet(String emailFakultet) {
+		this.emailFakultet = emailFakultet;
+	}
+
+	public String getEmailPrivatan() {
+		return emailPrivatan;
+	}
+
+	public void setEmailPrivatan(String emailPrivatan) {
+		this.emailPrivatan = emailPrivatan;
+	}
+
+	public String getBrojLicneKarte() {
+		return brojLicneKarte;
+	}
+
+	public void setBrojLicneKarte(String brojLicneKarte) {
+		this.brojLicneKarte = brojLicneKarte;
+	}
+
+	public String getIzdavacLicneKarte() {
+		return izdavacLicneKarte;
+	}
+
+	public void setIzdavacLicneKarte(String izdavacLicneKarte) {
+		this.izdavacLicneKarte = izdavacLicneKarte;
+	}
+
+	public float getUspehSrednjaSkola() {
+		return uspehSrednjaSkola;
+	}
+
+	public void setUspehSrednjaSkola(float uspehSrednjaSkola) {
+		this.uspehSrednjaSkola = uspehSrednjaSkola;
+	}
+
+	public float getUspehPrijemni() {
+		return uspehPrijemni;
+	}
+
+	public void setUspehPrijemni(float uspehPrijemni) {
+		this.uspehPrijemni = uspehPrijemni;
+	}
+
+	public VisokoskolskaUstanova getVsUstanova() {
+		return vsUstanova;
+	}
+
+	public void setVsUstanova(VisokoskolskaUstanova vsUstanova) {
+		this.vsUstanova = vsUstanova;
+	}
+
+	public SrednjaSkola getSrSkola() {
+		return srSkola;
+	}
+
+	public void setSrSkola(SrednjaSkola srSkola) {
+		this.srSkola = srSkola;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public String toString() {
-		return "Student [idstudent=" + idstudent + ", godinaUpisa=" + godinaUpisa + ", ime=" + ime + ", prezime="
-				+ prezime + ", studprogram=" + studprogram + "]";
+		return "Student [idstudent=" + idstudent + ", indeks=" + indeks + ", ime=" + ime + ", prezime=" + prezime
+				+ ", srednjeIme=" + srednjeIme + ", jmbg=" + jmbg + ", datumRodjenja=" + datumRodjenja
+				+ ", mestoRodjenja=" + mestoRodjenja + ", drzavaRodjenja=" + drzavaRodjenja + ", drzavljanstvo="
+				+ drzavljanstvo + ", nacionalnost=" + nacionalnost + ", pol=" + pol + ", adresaPrebivalista="
+				+ adresaPrebivalista + ", brTelefona=" + brTelefona + ", emailFakultet=" + emailFakultet
+				+ ", emailPrivatan=" + emailPrivatan + ", brojLicneKarte=" + brojLicneKarte + ", izdavacLicneKarte="
+				+ izdavacLicneKarte + ", uspehSrednjaSkola=" + uspehSrednjaSkola + ", uspehPrijemni=" + uspehPrijemni
+				+ ", vsUstanova=" + vsUstanova + ", srSkola=" + srSkola + "]";
 	}
 }

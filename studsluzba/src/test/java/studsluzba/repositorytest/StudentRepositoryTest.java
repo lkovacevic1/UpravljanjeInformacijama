@@ -21,7 +21,6 @@ public class StudentRepositoryTest {
 		Student s = new Student();
 		s.setIme("Mika");
 		s.setPrezime("Mikic");
-		s.setGodinaUpisa(2019);
 		studentRepo.save(s);
 	}
 }

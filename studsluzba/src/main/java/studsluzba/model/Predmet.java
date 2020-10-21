@@ -18,7 +18,7 @@ public class Predmet {
 	private String naziv;
 	
 	@ManyToOne
-	private Studprogram studProgram;
+	private StudProgram studProgram;
 
 	public String getSifra() {
 		return sifra;
@@ -36,11 +36,11 @@ public class Predmet {
 		this.naziv = naziv;
 	}
 
-	public Studprogram getStudProgram() {
+	public StudProgram getStudProgram() {
 		return studProgram;
 	}
 
-	public void setStudProgram(Studprogram studProgram) {
+	public void setStudProgram(StudProgram studProgram) {
 		this.studProgram = studProgram;
 	}
 	

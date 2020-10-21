@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name="Studprogram.findAll", query="SELECT s FROM Studprogram s")
-public class Studprogram implements Serializable {
+public class StudProgram implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -23,13 +23,13 @@ public class Studprogram implements Serializable {
 	private String skraceniNaziv;
 
 	//bi-directional many-to-one association to Student
-	@OneToMany(mappedBy="studprogram")
+	@OneToMany(mappedBy="studProgram")
 	private List<Student> students;
 	
 	@OneToMany(mappedBy="studProgram")
 	private List<Predmet> predmeti;
 
-	public Studprogram() {
+	public StudProgram() {
 	}
 
 	public int getIdstudProgram() {
@@ -72,23 +72,9 @@ public class Studprogram implements Serializable {
 		this.predmeti = predmeti;
 	}
 
-	public Student addStudent(Student student) {
-		getStudents().add(student);
-		student.setStudprogram(this);
-
-		return student;
-	}
-
-	public Student removeStudent(Student student) {
-		getStudents().remove(student);
-		student.setStudprogram(null);
-
-		return student;
-	}
-
 	@Override
 	public String toString() {
-		return "Studprogram [idstudProgram=" + idstudProgram + ", naziv=" + naziv + ", skraceniNaziv=" + skraceniNaziv
+		return "StudProgram [idstudProgram=" + idstudProgram + ", naziv=" + naziv + ", skraceniNaziv=" + skraceniNaziv
 				+ "]";
 	}
 	
