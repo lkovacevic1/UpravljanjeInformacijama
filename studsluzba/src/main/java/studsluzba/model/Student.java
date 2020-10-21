@@ -13,6 +13,8 @@ import javax.persistence.*;
 public class Student implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	//123test
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idstudent;
