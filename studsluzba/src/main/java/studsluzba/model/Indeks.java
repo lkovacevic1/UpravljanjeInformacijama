@@ -21,7 +21,6 @@ public class Indeks implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idIndex;
 	
-	
 	@ManyToOne
 	@JoinColumn(name = "idstudent")
 	private Student student;

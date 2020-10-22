@@ -30,6 +30,9 @@ public class StudProgram implements Serializable {
 	
 	@OneToMany(mappedBy="studProgram")
 	private List<Indeks> indeksi;
+	
+	@OneToMany(mappedBy="studProgram")
+	private List<Predmet> predmeti;
 
 	public StudProgram() {
 		
