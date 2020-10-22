@@ -1,12 +1,14 @@
 package studsluzba.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -19,11 +21,19 @@ public class VisokoskolskaUstanova implements Serializable{
 	private int idVsUstanove;
 	
 	private String nazivVSU;
+	
+	@OneToMany(mappedBy="visokoskolskaUstanova")
+	private List<Student> studenti;
 
-	public VisokoskolskaUstanova(int idVsUstanove, String nazivVSU) {
+	public VisokoskolskaUstanova() {
+	
+	}
+	
+	public VisokoskolskaUstanova(int idVsUstanove, String nazivVSU, List<Student> studenti) {
 		super();
 		this.idVsUstanove = idVsUstanove;
 		this.nazivVSU = nazivVSU;
+		this.studenti = studenti;
 	}
 
 	public int getIdVsUstanove() {
@@ -42,12 +52,15 @@ public class VisokoskolskaUstanova implements Serializable{
 		this.nazivVSU = nazivVSU;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public List<Student> getStudenti() {
+		return studenti;
 	}
 
-	@Override
-	public String toString() {
-		return "VisokoskolskaUstanova [idVsUstanove=" + idVsUstanove + ", nazivVSU=" + nazivVSU + "]";
+	public void setStudenti(List<Student> studenti) {
+		this.studenti = studenti;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 }
