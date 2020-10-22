@@ -18,64 +18,110 @@ public class StudProgram implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idstudProgram;
 
-	private String naziv;
-
-	private String skraceniNaziv;
-
-	//bi-directional many-to-one association to Student
-	@OneToMany(mappedBy="studProgram")
-	private List<Student> students;
+	private String oznaka;
+	private String nazivStudPrograma;
+	private int godinaAkreditacije;
+	private String nazivZvanjaPoZavrsetkuStudija;
+	private int brojSemestara;
+	
+	@ManyToOne
+	@JoinColumn(name = "idVrstaStudija")
+	private VrstaStudija vrstaStudija;
 	
 	@OneToMany(mappedBy="studProgram")
-	private List<Predmet> predmeti;
+	private List<Indeks> indeksi;
 
 	public StudProgram() {
+		
+	}
+	
+	public StudProgram(int idstudProgram, String oznaka, String nazivStudPrograma, int godinaAkreditacije,
+			String nazivZvanjaPoZavrsetkuStudija, int brojSemestara, VrstaStudija vrstaStudija, List<Indeks> indeksi) {
+		super();
+		this.idstudProgram = idstudProgram;
+		this.oznaka = oznaka;
+		this.nazivStudPrograma = nazivStudPrograma;
+		this.godinaAkreditacije = godinaAkreditacije;
+		this.nazivZvanjaPoZavrsetkuStudija = nazivZvanjaPoZavrsetkuStudija;
+		this.brojSemestara = brojSemestara;
+		this.vrstaStudija = vrstaStudija;
+		this.indeksi = indeksi;
 	}
 
 	public int getIdstudProgram() {
-		return this.idstudProgram;
+		return idstudProgram;
 	}
 
 	public void setIdstudProgram(int idstudProgram) {
 		this.idstudProgram = idstudProgram;
 	}
 
-	public String getNaziv() {
-		return this.naziv;
+	public String getOznaka() {
+		return oznaka;
 	}
 
-	public void setNaziv(String naziv) {
-		this.naziv = naziv;
+	public void setOznaka(String oznaka) {
+		this.oznaka = oznaka;
 	}
 
-	public String getSkraceniNaziv() {
-		return this.skraceniNaziv;
+	public String getNazivStudPrograma() {
+		return nazivStudPrograma;
 	}
 
-	public void setSkraceniNaziv(String skraceniNaziv) {
-		this.skraceniNaziv = skraceniNaziv;
+	public void setNazivStudPrograma(String nazivStudPrograma) {
+		this.nazivStudPrograma = nazivStudPrograma;
 	}
 
-	public List<Student> getStudents() {
-		return this.students;
+	public int getGodinaAkreditacije() {
+		return godinaAkreditacije;
 	}
 
-	public void setStudents(List<Student> students) {
-		this.students = students;
+	public void setGodinaAkreditacije(int godinaAkreditacije) {
+		this.godinaAkreditacije = godinaAkreditacije;
 	}
 
-	public List<Predmet> getPredmeti() {
-		return predmeti;
+	public String getNazivZvanjaPoZavrsetkuStudija() {
+		return nazivZvanjaPoZavrsetkuStudija;
 	}
 
-	public void setPredmeti(List<Predmet> predmeti) {
-		this.predmeti = predmeti;
+	public void setNazivZvanjaPoZavrsetkuStudija(String nazivZvanjaPoZavrsetkuStudija) {
+		this.nazivZvanjaPoZavrsetkuStudija = nazivZvanjaPoZavrsetkuStudija;
+	}
+
+	public int getBrojSemestara() {
+		return brojSemestara;
+	}
+
+	public void setBrojSemestara(int brojSemestara) {
+		this.brojSemestara = brojSemestara;
+	}
+
+	public VrstaStudija getVrstaStudija() {
+		return vrstaStudija;
+	}
+
+	public void setVrstaStudija(VrstaStudija vrstaStudija) {
+		this.vrstaStudija = vrstaStudija;
+	}
+
+	public List<Indeks> getIndeksi() {
+		return indeksi;
+	}
+
+	public void setIndeksi(List<Indeks> indeksi) {
+		this.indeksi = indeksi;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override
 	public String toString() {
-		return "StudProgram [idstudProgram=" + idstudProgram + ", naziv=" + naziv + ", skraceniNaziv=" + skraceniNaziv
-				+ "]";
+		return "StudProgram [idstudProgram=" + idstudProgram + ", oznaka=" + oznaka + ", nazivStudPrograma="
+				+ nazivStudPrograma + ", godinaAkreditacije=" + godinaAkreditacije + ", nazivZvanjaPoZavrsetkuStudija="
+				+ nazivZvanjaPoZavrsetkuStudija + ", brojSemestara=" + brojSemestara + ", vrstaStudija=" + vrstaStudija
+				+ ", indeksi=" + indeksi + "]";
 	}
 	
 }
