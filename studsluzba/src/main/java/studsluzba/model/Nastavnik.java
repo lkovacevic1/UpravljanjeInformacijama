@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-/*
+
 @Entity
 @NamedQuery(name="Nastavnik.findAll", query="SELECT n FROM Nastavnik n")
 public class Nastavnik implements Serializable {
@@ -112,4 +112,4 @@ public class Nastavnik implements Serializable {
 				+ "]";
 	}
 
-}*/
+}
