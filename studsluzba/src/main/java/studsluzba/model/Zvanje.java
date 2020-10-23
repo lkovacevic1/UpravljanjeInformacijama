@@ -21,16 +21,20 @@ public class Zvanje implements Serializable {
 	
 	@OneToMany(mappedBy="zvanje")
 	private List<Nastavnik> nastavnici;
+	
+	@OneToMany(mappedBy="zvanje")
+	private List<IstorijaZvanja> istorijeZvanja;
 
 	public Zvanje() {
 		
 	}
-	
-	public Zvanje(int idZvanja, String zvanje, List<Nastavnik> nastavnici) {
+
+	public Zvanje(int idZvanja, String zvanje, List<Nastavnik> nastavnici, List<IstorijaZvanja> istorijeZvanja) {
 		super();
 		this.idZvanja = idZvanja;
 		this.zvanje = zvanje;
 		this.nastavnici = nastavnici;
+		this.istorijeZvanja = istorijeZvanja;
 	}
 
 	public int getIdZvanja() {
@@ -60,9 +64,18 @@ public class Zvanje implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	public List<IstorijaZvanja> getIstorijeZvanja() {
+		return istorijeZvanja;
+	}
+
+	public void setIstorijeZvanja(List<IstorijaZvanja> istorijeZvanja) {
+		this.istorijeZvanja = istorijeZvanja;
+	}
 
 	@Override
 	public String toString() {
-		return "Zvanje [idZvanja=" + idZvanja + ", zvanje=" + zvanje + "]";
+		return "Zvanje [idZvanja=" + idZvanja + ", zvanje=" + zvanje + ", nastavnici=" + nastavnici
+				+ ", istorijeZvanja=" + istorijeZvanja + "]";
 	}
 }

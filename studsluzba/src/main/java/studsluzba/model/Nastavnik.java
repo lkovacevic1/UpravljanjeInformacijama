@@ -1,6 +1,7 @@
 package studsluzba.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @Entity
 @NamedQuery(name="Nastavnik.findAll", query="SELECT n FROM Nastavnik n")
@@ -28,13 +30,16 @@ public class Nastavnik implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "idZvanja")
 	private Zvanje zvanje;
-
+	
+	@OneToMany(mappedBy="nastavnik")
+	private List<IstorijaZvanja> istorijeZvanja;
+	
 	public Nastavnik() {
 		
 	}
 	
 	public Nastavnik(int idNastavnik, String ime, String prezime, String srednjeIme, String email,
-			String zavrsenaVisokoskolskaUstanova, Zvanje zvanje) {
+			String zavrsenaVisokoskolskaUstanova, Zvanje zvanje, List<IstorijaZvanja> istorijeZvanja) {
 		super();
 		this.idNastavnik = idNastavnik;
 		this.ime = ime;
@@ -43,6 +48,7 @@ public class Nastavnik implements Serializable {
 		this.email = email;
 		this.zavrsenaVisokoskolskaUstanova = zavrsenaVisokoskolskaUstanova;
 		this.zvanje = zvanje;
+		this.istorijeZvanja = istorijeZvanja;
 	}
 
 	public int getIdNastavnik() {
@@ -105,11 +111,18 @@ public class Nastavnik implements Serializable {
 		return serialVersionUID;
 	}
 
+	public List<IstorijaZvanja> getIstorijeZvanja() {
+		return istorijeZvanja;
+	}
+
+	public void setIstorijeZvanja(List<IstorijaZvanja> istorijeZvanja) {
+		this.istorijeZvanja = istorijeZvanja;
+	}
+
 	@Override
 	public String toString() {
 		return "Nastavnik [idNastavnik=" + idNastavnik + ", ime=" + ime + ", prezime=" + prezime + ", srednjeIme="
 				+ srednjeIme + ", email=" + email + ", zavrsenaVisokoskolskaUstanova=" + zavrsenaVisokoskolskaUstanova
-				+ "]";
+				+ ", zvanje=" + zvanje + ", istorijeZvanja=" + istorijeZvanja + "]";
 	}
-
 }
