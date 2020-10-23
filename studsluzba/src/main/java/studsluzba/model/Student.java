@@ -55,8 +55,8 @@ public class Student implements Serializable {
 	private float uspehPrijemni;
 	
 	@ManyToOne
-	@JoinColumn(name = "idVsUstanove")
-	private VisokoskolskaUstanova vsUstanova;
+	@JoinColumn(name = "idVisokoskolskeUstanove")
+	private VisokoskolskaUstanova visokoskolskaUstanova;
 	
 	@ManyToOne
 	@JoinColumn(name = "idSrednjeSkole")
@@ -92,7 +92,7 @@ public class Student implements Serializable {
 		this.izdavacLicneKarte = izdavacLicneKarte;
 		this.uspehSrednjaSkola = uspehSrednjaSkola;
 		this.uspehPrijemni = uspehPrijemni;
-		this.vsUstanova = vsUstanova;
+		this.visokoskolskaUstanova = vsUstanova;
 		this.srSkola = srSkola;
 	}
 
@@ -257,11 +257,11 @@ public class Student implements Serializable {
 	}
 
 	public VisokoskolskaUstanova getVsUstanova() {
-		return vsUstanova;
+		return visokoskolskaUstanova;
 	}
 
 	public void setVsUstanova(VisokoskolskaUstanova vsUstanova) {
-		this.vsUstanova = vsUstanova;
+		this.visokoskolskaUstanova = vsUstanova;
 	}
 
 	public SrednjaSkola getSrSkola() {
@@ -285,6 +285,6 @@ public class Student implements Serializable {
 				+ adresaPrebivalista + ", brTelefona=" + brTelefona + ", emailFakultet=" + emailFakultet
 				+ ", emailPrivatan=" + emailPrivatan + ", brojLicneKarte=" + brojLicneKarte + ", izdavacLicneKarte="
 				+ izdavacLicneKarte + ", uspehSrednjaSkola=" + uspehSrednjaSkola + ", uspehPrijemni=" + uspehPrijemni
-				+ ", vsUstanova=" + vsUstanova + ", srSkola=" + srSkola + "]";
+				+ ", vsUstanova=" + visokoskolskaUstanova + ", srSkola=" + srSkola + "]";
 	}
 }

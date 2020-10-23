@@ -18,9 +18,9 @@ public class VisokoskolskaUstanova implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idVsUstanove;
+	private int idVisokoskolskeUstanove;
 	
-	private String nazivVSU;
+	private String nazivVisokoskolskeUstanove;
 	
 	@OneToMany(mappedBy="visokoskolskaUstanova")
 	private List<Student> studenti;
@@ -31,25 +31,25 @@ public class VisokoskolskaUstanova implements Serializable{
 	
 	public VisokoskolskaUstanova(int idVsUstanove, String nazivVSU, List<Student> studenti) {
 		super();
-		this.idVsUstanove = idVsUstanove;
-		this.nazivVSU = nazivVSU;
+		this.idVisokoskolskeUstanove = idVsUstanove;
+		this.nazivVisokoskolskeUstanove = nazivVSU;
 		this.studenti = studenti;
 	}
 
 	public int getIdVsUstanove() {
-		return idVsUstanove;
+		return idVisokoskolskeUstanove;
 	}
 
 	public void setIdVsUstanove(int idVsUstanove) {
-		this.idVsUstanove = idVsUstanove;
+		this.idVisokoskolskeUstanove = idVsUstanove;
 	}
 
 	public String getNazivVSU() {
-		return nazivVSU;
+		return nazivVisokoskolskeUstanove;
 	}
 
 	public void setNazivVSU(String nazivVSU) {
-		this.nazivVSU = nazivVSU;
+		this.nazivVisokoskolskeUstanove = nazivVSU;
 	}
 
 	public List<Student> getStudenti() {
@@ -63,4 +63,11 @@ public class VisokoskolskaUstanova implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	@Override
+	public String toString() {
+		return "VisokoskolskaUstanova [idVisokoskolskeUstanove=" + idVisokoskolskeUstanove
+				+ ", nazivVisokoskolskeUstanove=" + nazivVisokoskolskeUstanove + ", studenti=" + studenti + "]";
+	}
+	
 }

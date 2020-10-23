@@ -20,13 +20,13 @@ public class SrednjaSkola  implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idSrednjeSkole;
 	
-	private String nazivSK;
+	private String nazivSrednjeSkole;
 	
-	private String mestoSK;
+	private String mestoSrednjeSkole;
 	
-	private String vrstaSK;
+	private String vrstaSrednjeSkole;
 	
-	@OneToMany(mappedBy="srednjaSkola")
+	@OneToMany(mappedBy="srSkola")
 	private List<Student> studenti;
 	
 	public SrednjaSkola() {
@@ -36,9 +36,9 @@ public class SrednjaSkola  implements Serializable{
 	public SrednjaSkola(int idSrednjeSkole, String nazivSK, String mestoSK, String vrstaSK, List<Student> studenti) {
 		super();
 		this.idSrednjeSkole = idSrednjeSkole;
-		this.nazivSK = nazivSK;
-		this.mestoSK = mestoSK;
-		this.vrstaSK = vrstaSK;
+		this.nazivSrednjeSkole = nazivSK;
+		this.mestoSrednjeSkole = mestoSK;
+		this.vrstaSrednjeSkole = vrstaSK;
 		this.studenti = studenti;
 	}
 
@@ -51,27 +51,27 @@ public class SrednjaSkola  implements Serializable{
 	}
 
 	public String getNazivSK() {
-		return nazivSK;
+		return nazivSrednjeSkole;
 	}
 
 	public void setNazivSK(String nazivSK) {
-		this.nazivSK = nazivSK;
+		this.nazivSrednjeSkole = nazivSK;
 	}
 
 	public String getMestoSK() {
-		return mestoSK;
+		return mestoSrednjeSkole;
 	}
 
 	public void setMestoSK(String mestoSK) {
-		this.mestoSK = mestoSK;
+		this.mestoSrednjeSkole = mestoSK;
 	}
 
 	public String getVrstaSK() {
-		return vrstaSK;
+		return vrstaSrednjeSkole;
 	}
 
 	public void setVrstaSK(String vrstaSK) {
-		this.vrstaSK = vrstaSK;
+		this.vrstaSrednjeSkole = vrstaSK;
 	}
 
 	public List<Student> getStudenti() {
@@ -84,7 +84,7 @@ public class SrednjaSkola  implements Serializable{
 
 	@Override
 	public String toString() {
-		return "SrednjaSkola [idSrednjeSkole=" + idSrednjeSkole + ", nazivSK=" + nazivSK + ", mestoSK=" + mestoSK
-				+ ", vrstaSK=" + vrstaSK + ", studenti=" + studenti + "]";
+		return "SrednjaSkola [idSrednjeSkole=" + idSrednjeSkole + ", nazivSK=" + nazivSrednjeSkole + ", mestoSK=" + mestoSrednjeSkole
+				+ ", vrstaSK=" + vrstaSrednjeSkole + ", studenti=" + studenti + "]";
 	}
 }
