@@ -33,13 +33,20 @@ public class Ispit implements Serializable {
     @ManyToOne
 	@JoinColumn(name = "idNastavnik")
 	private Nastavnik nastavnik;
+    
+    @ManyToOne
+	@JoinColumn(name = "idIspitnogRoka")
+	private IspitniRok ispitniRok;
 
     public Ispit() {
     	
     }
     
+	
+
 	public Ispit(int idIspit, Date datumOdrzavanjaIspita, SimpleDateFormat localDateFormat,
-			String vremeOdrzavanjaIspita, boolean zakljucenIspit, Predmet predmet, Nastavnik nastavnik) {
+			String vremeOdrzavanjaIspita, boolean zakljucenIspit, Predmet predmet, Nastavnik nastavnik,
+			IspitniRok ispitniRok) {
 		super();
 		this.idIspit = idIspit;
 		this.datumOdrzavanjaIspita = datumOdrzavanjaIspita;
@@ -48,7 +55,10 @@ public class Ispit implements Serializable {
 		this.zakljucenIspit = zakljucenIspit;
 		this.predmet = predmet;
 		this.nastavnik = nastavnik;
+		this.ispitniRok = ispitniRok;
 	}
+
+
 
 	public int getIdIspit() {
 		return idIspit;
@@ -110,11 +120,24 @@ public class Ispit implements Serializable {
 		return serialVersionUID;
 	}
 
+	public IspitniRok getIspitniRok() {
+		return ispitniRok;
+	}
+
+
+
+	public void setIspitniRok(IspitniRok ispitniRok) {
+		this.ispitniRok = ispitniRok;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "Ispit [idIspit=" + idIspit + ", datumOdrzavanjaIspita=" + datumOdrzavanjaIspita + ", localDateFormat="
 				+ localDateFormat + ", vremeOdrzavanjaIspita=" + vremeOdrzavanjaIspita + ", zakljucenIspit="
-				+ zakljucenIspit + ", predmet=" + predmet + ", nastavnik=" + nastavnik + "]";
+				+ zakljucenIspit + ", predmet=" + predmet + ", nastavnik=" + nastavnik + ", ispitniRok=" + ispitniRok
+				+ "]";
 	}
 
 }
