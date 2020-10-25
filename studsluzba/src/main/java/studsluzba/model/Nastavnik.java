@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -33,6 +34,10 @@ public class Nastavnik implements Serializable {
 	
 	@OneToMany(mappedBy="nastavnik")
 	private List<IstorijaZvanja> istorijeZvanja;
+	
+	@ManyToMany
+	@JoinColumn(name="idSkolskeGodine")
+	private List<SkolskaGodina> skolskeGodine;
 	
 	public Nastavnik() {
 		
