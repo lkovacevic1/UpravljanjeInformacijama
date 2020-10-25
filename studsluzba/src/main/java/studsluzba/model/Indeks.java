@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @Entity
 @NamedQuery(name="Indeks.findAll", query="SELECT i FROM Indeks i")
@@ -19,7 +20,7 @@ public class Indeks implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idIndex;
+	private int idIndeks;
 	
 	@ManyToOne
 	@JoinColumn(name = "idstudent")
@@ -33,15 +34,18 @@ public class Indeks implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "idstudProgram")
 	private StudProgram studProgram;
+	
+	@OneToMany(mappedBy = "indeks")
+	private List<DrziPredmet> drziPredmete;
 
 	public Indeks() {
 		
 	}
 	
-	public Indeks(int idIndex, Student student, int godinaUpisa, int brojIndexa, boolean aktivan,
+	public Indeks(int idIndeks, Student student, int godinaUpisa, int brojIndexa, boolean aktivan,
 			Date datumAktivacijeIndexa, StudProgram studProgram) {
 		super();
-		this.idIndex = idIndex;
+		this.idIndeks = idIndeks;
 		this.student = student;
 		this.godinaUpisa = godinaUpisa;
 		this.brojIndexa = brojIndexa;
@@ -53,11 +57,11 @@ public class Indeks implements Serializable {
 	
 
 	public int getIdIndex() {
-		return idIndex;
+		return idIndeks;
 	}
 
 	public void setIdIndex(int idIndex) {
-		this.idIndex = idIndex;
+		this.idIndeks = idIndex;
 	}
 
 	public Student getStudent() {
@@ -114,7 +118,7 @@ public class Indeks implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Indeks [idIndex=" + idIndex + ", student=" + student + ", godinaUpisa=" + godinaUpisa + ", brojIndexa="
+		return "Indeks [idIndex=" + idIndeks + ", student=" + student + ", godinaUpisa=" + godinaUpisa + ", brojIndexa="
 				+ brojIndexa + ", aktivan=" + aktivan + ", datumAktivacijeIndexa=" + datumAktivacijeIndexa
 				+ ", studProgram=" + studProgram + "]";
 	}

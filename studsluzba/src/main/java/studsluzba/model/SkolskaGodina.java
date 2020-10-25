@@ -32,6 +32,9 @@ public class SkolskaGodina  implements Serializable {
 	@OneToMany(mappedBy = "skolskaGodina")
 	private List<PredispitneObaveze> predispitneObaveze;
 	
+	@OneToMany(mappedBy = "skolskaGodina")
+	private List<DrziPredmet> drziPredmete;
+	
 	public SkolskaGodina() {
 		
 	}

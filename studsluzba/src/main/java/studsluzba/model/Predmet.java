@@ -1,6 +1,7 @@
 package studsluzba.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @Entity
 @NamedQuery(name="Predmet.findAll", query="SELECT p FROM Predmet p")
@@ -30,6 +32,9 @@ public class Predmet implements Serializable {
 	private int semestar;
 	private int fondCasovaPredavanja;
 	private int fondCasovaVezbi;
+	
+	@OneToMany(mappedBy="predmet")
+	private List<DrziPredmet> drziPredmete;
 	
 	public Predmet() {
 		

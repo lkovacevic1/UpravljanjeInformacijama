@@ -39,6 +39,9 @@ public class Nastavnik implements Serializable {
 	@JoinColumn(name="idSkolskeGodine")
 	private List<SkolskaGodina> skolskeGodine;
 	
+	@OneToMany(mappedBy="nastavnik")
+	private List<DrziPredmet> drziPredmete;
+	
 	public Nastavnik() {
 		
 	}
