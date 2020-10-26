@@ -43,6 +43,10 @@ public class Predmet implements Serializable {
 	@OneToMany(mappedBy = "predmet")
 	private List<PolozenPredmet> polozeniPredmeti;
 	
+	@ManyToOne
+	@JoinColumn(name = "idUpisGodine")
+	private UpisGodine upisGodine;
+	
 	public Predmet() {
 		
 	}

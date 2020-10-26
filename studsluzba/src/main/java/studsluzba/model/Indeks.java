@@ -48,6 +48,10 @@ public class Indeks implements Serializable {
 	@JoinColumn(name = "idObnovaGodine")
 	private ObnovaGodine obnovaGodine;
 	
+	@ManyToOne
+	@JoinColumn(name = "idUpisGodine")
+	private UpisGodine upisGodine;
+	
 	public Indeks() {
 		
 	}
