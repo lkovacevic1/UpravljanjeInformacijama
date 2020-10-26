@@ -12,24 +12,16 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 @Entity
-@NamedQuery(name="PrijavaIspita.findAll", query="SELECT p FROM PrijavaIspita p")
-public class PrijavaIspita implements Serializable {
+@NamedQuery(name="IzlazakNaIspit.findAll", query="SELECT i FROM IzlazakNaIspit i")
+public class IzlazakNaIspit implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idPrijavaIspita;
+	private int idIzlazakNaIspit;
 	
-	
-	@ManyToOne
-	@JoinColumn(name = "idIspit")
-	private Ispit ispit;
-	
-	@ManyToOne
-	@JoinColumn(name = "idIndeks")
-	private Indeks indeks;
-	
-	@OneToOne(mappedBy = "prijavaIspita")
-	private IzlazakNaIspit izlazakNaIspit;
+	@OneToOne
+	@JoinColumn(name = "idPrijavaIspita")
+	private PrijavaIspita prijavaIspita;
 
 }
