@@ -41,6 +41,9 @@ public class Indeks implements Serializable {
 	@OneToMany(mappedBy = "indeks")
 	private List<PolozenPredmet> polozeniPredmeti;
 
+	@OneToMany(mappedBy = "indeks")
+	private List<PrijavaIspita> prijavaIspita;
+	
 	public Indeks() {
 		
 	}
