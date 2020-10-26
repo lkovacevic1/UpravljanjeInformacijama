@@ -3,6 +3,7 @@ package studsluzba.model;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @Entity
 @NamedQuery(name="Ispit.findAll", query="SELECT i FROM Ispit i")
@@ -37,6 +39,9 @@ public class Ispit implements Serializable {
     @ManyToOne
 	@JoinColumn(name = "idIspitnogRoka")
 	private IspitniRok ispitniRok;
+    
+    @OneToMany(mappedBy = "ispit")
+	private List<PrijavaIspita> prijavaIspita;
 
     public Ispit() {
     	
