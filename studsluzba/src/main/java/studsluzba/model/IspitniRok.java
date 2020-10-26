@@ -38,12 +38,13 @@ public class IspitniRok implements Serializable {
 	}
 
 	public IspitniRok(int idIspitnogRoka, Date datumPocetkaIspitnogRoka, Date datumZavrsetkaIspitnogRoka,
-			List<Ispit> ispiti) {
+			List<Ispit> ispiti, SkolskaGodina skolskaGodina) {
 		super();
 		this.idIspitnogRoka = idIspitnogRoka;
 		this.datumPocetkaIspitnogRoka = datumPocetkaIspitnogRoka;
 		this.datumZavrsetkaIspitnogRoka = datumZavrsetkaIspitnogRoka;
 		this.ispiti = ispiti;
+		this.skolskaGodina = skolskaGodina;
 	}
 
 	public int getIdIspitnogRoka() {
@@ -78,6 +79,14 @@ public class IspitniRok implements Serializable {
 		this.ispiti = ispiti;
 	}
 
+	public SkolskaGodina getSkolskaGodina() {
+		return skolskaGodina;
+	}
+
+	public void setSkolskaGodina(SkolskaGodina skolskaGodina) {
+		this.skolskaGodina = skolskaGodina;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -85,7 +94,7 @@ public class IspitniRok implements Serializable {
 	@Override
 	public String toString() {
 		return "IspitniRok [idIspitnogRoka=" + idIspitnogRoka + ", datumPocetkaIspitnogRoka=" + datumPocetkaIspitnogRoka
-				+ ", datumZavrsetkaIspitnogRoka=" + datumZavrsetkaIspitnogRoka + ", ispiti=" + ispiti + "]";
+				+ ", datumZavrsetkaIspitnogRoka=" + datumZavrsetkaIspitnogRoka + ", ispiti=" + ispiti
+				+ ", skolskaGodina=" + skolskaGodina + "]";
 	}
-
 }

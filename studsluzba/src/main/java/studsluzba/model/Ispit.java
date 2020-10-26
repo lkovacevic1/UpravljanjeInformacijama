@@ -50,12 +50,10 @@ public class Ispit implements Serializable {
     public Ispit() {
     	
     }
-    
-	
 
 	public Ispit(int idIspit, Date datumOdrzavanjaIspita, SimpleDateFormat localDateFormat,
 			String vremeOdrzavanjaIspita, boolean zakljucenIspit, Predmet predmet, Nastavnik nastavnik,
-			IspitniRok ispitniRok) {
+			IspitniRok ispitniRok, PolozenPredmet polozeniPredmet, List<PrijavaIspita> prijavaIspita) {
 		super();
 		this.idIspit = idIspit;
 		this.datumOdrzavanjaIspita = datumOdrzavanjaIspita;
@@ -65,9 +63,9 @@ public class Ispit implements Serializable {
 		this.predmet = predmet;
 		this.nastavnik = nastavnik;
 		this.ispitniRok = ispitniRok;
+		this.polozeniPredmet = polozeniPredmet;
+		this.prijavaIspita = prijavaIspita;
 	}
-
-
 
 	public int getIdIspit() {
 		return idIspit;
@@ -125,28 +123,39 @@ public class Ispit implements Serializable {
 		this.nastavnik = nastavnik;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	public IspitniRok getIspitniRok() {
 		return ispitniRok;
 	}
-
-
 
 	public void setIspitniRok(IspitniRok ispitniRok) {
 		this.ispitniRok = ispitniRok;
 	}
 
+	public PolozenPredmet getPolozeniPredmet() {
+		return polozeniPredmet;
+	}
 
+	public void setPolozeniPredmet(PolozenPredmet polozeniPredmet) {
+		this.polozeniPredmet = polozeniPredmet;
+	}
+
+	public List<PrijavaIspita> getPrijavaIspita() {
+		return prijavaIspita;
+	}
+
+	public void setPrijavaIspita(List<PrijavaIspita> prijavaIspita) {
+		this.prijavaIspita = prijavaIspita;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 	@Override
 	public String toString() {
 		return "Ispit [idIspit=" + idIspit + ", datumOdrzavanjaIspita=" + datumOdrzavanjaIspita + ", localDateFormat="
 				+ localDateFormat + ", vremeOdrzavanjaIspita=" + vremeOdrzavanjaIspita + ", zakljucenIspit="
 				+ zakljucenIspit + ", predmet=" + predmet + ", nastavnik=" + nastavnik + ", ispitniRok=" + ispitniRok
-				+ "]";
+				+ ", polozeniPredmet=" + polozeniPredmet + ", prijavaIspita=" + prijavaIspita + "]";
 	}
-
 }

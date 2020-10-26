@@ -33,12 +33,13 @@ public class SrednjaSkola  implements Serializable{
 		
 	}
 
-	public SrednjaSkola(int idSrednjeSkole, String nazivSK, String mestoSK, String vrstaSK, List<Student> studenti) {
+	public SrednjaSkola(int idSrednjeSkole, String nazivSrednjeSkole, String mestoSrednjeSkole,
+			String vrstaSrednjeSkole, List<Student> studenti) {
 		super();
 		this.idSrednjeSkole = idSrednjeSkole;
-		this.nazivSrednjeSkole = nazivSK;
-		this.mestoSrednjeSkole = mestoSK;
-		this.vrstaSrednjeSkole = vrstaSK;
+		this.nazivSrednjeSkole = nazivSrednjeSkole;
+		this.mestoSrednjeSkole = mestoSrednjeSkole;
+		this.vrstaSrednjeSkole = vrstaSrednjeSkole;
 		this.studenti = studenti;
 	}
 
@@ -50,28 +51,28 @@ public class SrednjaSkola  implements Serializable{
 		this.idSrednjeSkole = idSrednjeSkole;
 	}
 
-	public String getNazivSK() {
+	public String getNazivSrednjeSkole() {
 		return nazivSrednjeSkole;
 	}
 
-	public void setNazivSK(String nazivSK) {
-		this.nazivSrednjeSkole = nazivSK;
+	public void setNazivSrednjeSkole(String nazivSrednjeSkole) {
+		this.nazivSrednjeSkole = nazivSrednjeSkole;
 	}
 
-	public String getMestoSK() {
+	public String getMestoSrednjeSkole() {
 		return mestoSrednjeSkole;
 	}
 
-	public void setMestoSK(String mestoSK) {
-		this.mestoSrednjeSkole = mestoSK;
+	public void setMestoSrednjeSkole(String mestoSrednjeSkole) {
+		this.mestoSrednjeSkole = mestoSrednjeSkole;
 	}
 
-	public String getVrstaSK() {
+	public String getVrstaSrednjeSkole() {
 		return vrstaSrednjeSkole;
 	}
 
-	public void setVrstaSK(String vrstaSK) {
-		this.vrstaSrednjeSkole = vrstaSK;
+	public void setVrstaSrednjeSkole(String vrstaSrednjeSkole) {
+		this.vrstaSrednjeSkole = vrstaSrednjeSkole;
 	}
 
 	public List<Student> getStudenti() {
@@ -82,9 +83,14 @@ public class SrednjaSkola  implements Serializable{
 		this.studenti = studenti;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public String toString() {
-		return "SrednjaSkola [idSrednjeSkole=" + idSrednjeSkole + ", nazivSK=" + nazivSrednjeSkole + ", mestoSK=" + mestoSrednjeSkole
-				+ ", vrstaSK=" + vrstaSrednjeSkole + ", studenti=" + studenti + "]";
+		return "SrednjaSkola [idSrednjeSkole=" + idSrednjeSkole + ", nazivSrednjeSkole=" + nazivSrednjeSkole
+				+ ", mestoSrednjeSkole=" + mestoSrednjeSkole + ", vrstaSrednjeSkole=" + vrstaSrednjeSkole
+				+ ", studenti=" + studenti + "]";
 	}
 }

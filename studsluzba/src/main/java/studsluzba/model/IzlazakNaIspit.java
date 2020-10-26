@@ -23,5 +23,62 @@ public class IzlazakNaIspit implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "idPrijavaIspita")
 	private PrijavaIspita prijavaIspita;
+	
+	private boolean ponistavaIspit;
+	
+	private String napomena;
 
+	public IzlazakNaIspit() {
+		
+	}
+
+	public IzlazakNaIspit(int idIzlazakNaIspit, PrijavaIspita prijavaIspita, boolean ponistavaIspit, String napomena) {
+		super();
+		this.idIzlazakNaIspit = idIzlazakNaIspit;
+		this.prijavaIspita = prijavaIspita;
+		this.ponistavaIspit = ponistavaIspit;
+		this.napomena = napomena;
+	}
+
+	public int getIdIzlazakNaIspit() {
+		return idIzlazakNaIspit;
+	}
+
+	public void setIdIzlazakNaIspit(int idIzlazakNaIspit) {
+		this.idIzlazakNaIspit = idIzlazakNaIspit;
+	}
+
+	public PrijavaIspita getPrijavaIspita() {
+		return prijavaIspita;
+	}
+
+	public void setPrijavaIspita(PrijavaIspita prijavaIspita) {
+		this.prijavaIspita = prijavaIspita;
+	}
+
+	public boolean isPonistavaIspit() {
+		return ponistavaIspit;
+	}
+
+	public void setPonistavaIspit(boolean ponistavaIspit) {
+		this.ponistavaIspit = ponistavaIspit;
+	}
+
+	public String getNapomena() {
+		return napomena;
+	}
+
+	public void setNapomena(String napomena) {
+		this.napomena = napomena;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	@Override
+	public String toString() {
+		return "IzlazakNaIspit [idIzlazakNaIspit=" + idIzlazakNaIspit + ", prijavaIspita=" + prijavaIspita
+				+ ", ponistavaIspit=" + ponistavaIspit + ", napomena=" + napomena + "]";
+	}
 }

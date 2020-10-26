@@ -61,16 +61,16 @@ public class Zvanje implements Serializable {
 		this.nastavnici = nastavnici;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
 	public List<IstorijaZvanja> getIstorijeZvanja() {
 		return istorijeZvanja;
 	}
 
 	public void setIstorijeZvanja(List<IstorijaZvanja> istorijeZvanja) {
 		this.istorijeZvanja = istorijeZvanja;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override

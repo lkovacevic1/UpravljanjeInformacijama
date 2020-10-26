@@ -38,4 +38,84 @@ public class SkolskaGodina  implements Serializable {
 	public SkolskaGodina() {
 		
 	}
+
+	public SkolskaGodina(int idSkolskeGodine, Date skolskaGodina, boolean aktivna, List<Nastavnik> nastavnici,
+			List<IspitniRok> ispitniRokovi, List<PredispitneObaveze> predispitneObaveze,
+			List<DrziPredmet> drziPredmete) {
+		super();
+		this.idSkolskeGodine = idSkolskeGodine;
+		this.skolskaGodina = skolskaGodina;
+		this.aktivna = aktivna;
+		this.nastavnici = nastavnici;
+		this.ispitniRokovi = ispitniRokovi;
+		this.predispitneObaveze = predispitneObaveze;
+		this.drziPredmete = drziPredmete;
+	}
+
+	public int getIdSkolskeGodine() {
+		return idSkolskeGodine;
+	}
+
+	public void setIdSkolskeGodine(int idSkolskeGodine) {
+		this.idSkolskeGodine = idSkolskeGodine;
+	}
+
+	public Date getSkolskaGodina() {
+		return skolskaGodina;
+	}
+
+	public void setSkolskaGodina(Date skolskaGodina) {
+		this.skolskaGodina = skolskaGodina;
+	}
+
+	public boolean isAktivna() {
+		return aktivna;
+	}
+
+	public void setAktivna(boolean aktivna) {
+		this.aktivna = aktivna;
+	}
+
+	public List<Nastavnik> getNastavnici() {
+		return nastavnici;
+	}
+
+	public void setNastavnici(List<Nastavnik> nastavnici) {
+		this.nastavnici = nastavnici;
+	}
+
+	public List<IspitniRok> getIspitniRokovi() {
+		return ispitniRokovi;
+	}
+
+	public void setIspitniRokovi(List<IspitniRok> ispitniRokovi) {
+		this.ispitniRokovi = ispitniRokovi;
+	}
+
+	public List<PredispitneObaveze> getPredispitneObaveze() {
+		return predispitneObaveze;
+	}
+
+	public void setPredispitneObaveze(List<PredispitneObaveze> predispitneObaveze) {
+		this.predispitneObaveze = predispitneObaveze;
+	}
+
+	public List<DrziPredmet> getDrziPredmete() {
+		return drziPredmete;
+	}
+
+	public void setDrziPredmete(List<DrziPredmet> drziPredmete) {
+		this.drziPredmete = drziPredmete;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	@Override
+	public String toString() {
+		return "SkolskaGodina [idSkolskeGodine=" + idSkolskeGodine + ", skolskaGodina=" + skolskaGodina + ", aktivna="
+				+ aktivna + ", nastavnici=" + nastavnici + ", ispitniRokovi=" + ispitniRokovi + ", predispitneObaveze="
+				+ predispitneObaveze + ", drziPredmete=" + drziPredmete + "]";
+	}
 }

@@ -36,4 +36,64 @@ public class DrziPredmet implements Serializable {
 	public DrziPredmet() {
 		
 	}
+
+	public DrziPredmet(int idDrziPredmet, Nastavnik nastavnik, SkolskaGodina skolskaGodina, Predmet predmet,
+			Indeks indeks) {
+		super();
+		this.idDrziPredmet = idDrziPredmet;
+		this.nastavnik = nastavnik;
+		this.skolskaGodina = skolskaGodina;
+		this.predmet = predmet;
+		this.indeks = indeks;
+	}
+
+	public int getIdDrziPredmet() {
+		return idDrziPredmet;
+	}
+
+	public void setIdDrziPredmet(int idDrziPredmet) {
+		this.idDrziPredmet = idDrziPredmet;
+	}
+
+	public Nastavnik getNastavnik() {
+		return nastavnik;
+	}
+
+	public void setNastavnik(Nastavnik nastavnik) {
+		this.nastavnik = nastavnik;
+	}
+
+	public SkolskaGodina getSkolskaGodina() {
+		return skolskaGodina;
+	}
+
+	public void setSkolskaGodina(SkolskaGodina skolskaGodina) {
+		this.skolskaGodina = skolskaGodina;
+	}
+
+	public Predmet getPredmet() {
+		return predmet;
+	}
+
+	public void setPredmet(Predmet predmet) {
+		this.predmet = predmet;
+	}
+
+	public Indeks getIndeks() {
+		return indeks;
+	}
+
+	public void setIndeks(Indeks indeks) {
+		this.indeks = indeks;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	@Override
+	public String toString() {
+		return "DrziPredmet [idDrziPredmet=" + idDrziPredmet + ", nastavnik=" + nastavnik + ", skolskaGodina="
+				+ skolskaGodina + ", predmet=" + predmet + ", indeks=" + indeks + "]";
+	}
 }

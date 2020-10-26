@@ -25,10 +25,6 @@ public class Predmet implements Serializable {
 	@JoinColumn(name = "idstudProgram")
 	private StudProgram studProgram;
 	
-	@ManyToOne
-	@JoinColumn(name = "idObnovaGodine")
-	private ObnovaGodine obnovaGodine;
-	
 	private String sifra;
 	private String nazivPredmeta;
 	private String opisPredmeta;
@@ -36,6 +32,12 @@ public class Predmet implements Serializable {
 	private int semestar;
 	private int fondCasovaPredavanja;
 	private int fondCasovaVezbi;
+	
+	@OneToMany(mappedBy="predmet")
+	private List<PredispitneObaveze> predispitneObaveze;
+	
+	@OneToMany(mappedBy="predmet")
+	private List<Ispit> ispiti;
 	
 	@OneToMany(mappedBy="predmet")
 	private List<DrziPredmet> drziPredmete;
@@ -47,12 +49,18 @@ public class Predmet implements Serializable {
 	@JoinColumn(name = "idUpisGodine")
 	private UpisGodine upisGodine;
 	
+	@ManyToOne
+	@JoinColumn(name = "idObnovaGodine")
+	private ObnovaGodine obnovaGodine;
+	
 	public Predmet() {
 		
 	}
 
 	public Predmet(int idPredmeta, StudProgram studProgram, String sifra, String nazivPredmeta, String opisPredmeta,
-			int brojESPBpoena, int semestar, int fondCasovaPredavanja, int fondCasovaVezbi) {
+			int brojESPBpoena, int semestar, int fondCasovaPredavanja, int fondCasovaVezbi,
+			List<PredispitneObaveze> predispitneObaveze, List<Ispit> ispiti, List<DrziPredmet> drziPredmete,
+			List<PolozenPredmet> polozeniPredmeti, UpisGodine upisGodine, ObnovaGodine obnovaGodine) {
 		super();
 		this.idPredmeta = idPredmeta;
 		this.studProgram = studProgram;
@@ -63,6 +71,12 @@ public class Predmet implements Serializable {
 		this.semestar = semestar;
 		this.fondCasovaPredavanja = fondCasovaPredavanja;
 		this.fondCasovaVezbi = fondCasovaVezbi;
+		this.predispitneObaveze = predispitneObaveze;
+		this.ispiti = ispiti;
+		this.drziPredmete = drziPredmete;
+		this.polozeniPredmeti = polozeniPredmeti;
+		this.upisGodine = upisGodine;
+		this.obnovaGodine = obnovaGodine;
 	}
 
 	public int getIdPredmeta() {
@@ -137,6 +151,54 @@ public class Predmet implements Serializable {
 		this.fondCasovaVezbi = fondCasovaVezbi;
 	}
 
+	public List<PredispitneObaveze> getPredispitneObaveze() {
+		return predispitneObaveze;
+	}
+
+	public void setPredispitneObaveze(List<PredispitneObaveze> predispitneObaveze) {
+		this.predispitneObaveze = predispitneObaveze;
+	}
+
+	public List<Ispit> getIspiti() {
+		return ispiti;
+	}
+
+	public void setIspiti(List<Ispit> ispiti) {
+		this.ispiti = ispiti;
+	}
+
+	public List<DrziPredmet> getDrziPredmete() {
+		return drziPredmete;
+	}
+
+	public void setDrziPredmete(List<DrziPredmet> drziPredmete) {
+		this.drziPredmete = drziPredmete;
+	}
+
+	public List<PolozenPredmet> getPolozeniPredmeti() {
+		return polozeniPredmeti;
+	}
+
+	public void setPolozeniPredmeti(List<PolozenPredmet> polozeniPredmeti) {
+		this.polozeniPredmeti = polozeniPredmeti;
+	}
+
+	public UpisGodine getUpisGodine() {
+		return upisGodine;
+	}
+
+	public void setUpisGodine(UpisGodine upisGodine) {
+		this.upisGodine = upisGodine;
+	}
+
+	public ObnovaGodine getObnovaGodine() {
+		return obnovaGodine;
+	}
+
+	public void setObnovaGodine(ObnovaGodine obnovaGodine) {
+		this.obnovaGodine = obnovaGodine;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -146,7 +208,8 @@ public class Predmet implements Serializable {
 		return "Predmet [idPredmeta=" + idPredmeta + ", studProgram=" + studProgram + ", sifra=" + sifra
 				+ ", nazivPredmeta=" + nazivPredmeta + ", opisPredmeta=" + opisPredmeta + ", brojESPBpoena="
 				+ brojESPBpoena + ", semestar=" + semestar + ", fondCasovaPredavanja=" + fondCasovaPredavanja
-				+ ", fondCasovaVezbi=" + fondCasovaVezbi + "]";
+				+ ", fondCasovaVezbi=" + fondCasovaVezbi + ", predispitneObaveze=" + predispitneObaveze + ", ispiti="
+				+ ispiti + ", drziPredmete=" + drziPredmete + ", polozeniPredmeti=" + polozeniPredmeti + ", upisGodine="
+				+ upisGodine + ", obnovaGodine=" + obnovaGodine + "]";
 	}
-	
 }

@@ -42,12 +42,22 @@ public class Nastavnik implements Serializable {
 	@OneToMany(mappedBy="nastavnik")
 	private List<DrziPredmet> drziPredmete;
 	
+	@OneToMany
+	@JoinColumn(name = "idPredispitnihObaveza")
+	private List<PredispitneObaveze> predispitneObaveze;
+	
+	@OneToMany
+	@JoinColumn(name = "idIspit")
+	private List<Ispit> ispiti;
+	
 	public Nastavnik() {
 		
 	}
-	
+
 	public Nastavnik(int idNastavnik, String ime, String prezime, String srednjeIme, String email,
-			String zavrsenaVisokoskolskaUstanova, Zvanje zvanje, List<IstorijaZvanja> istorijeZvanja) {
+			String zavrsenaVisokoskolskaUstanova, Zvanje zvanje, List<IstorijaZvanja> istorijeZvanja,
+			List<SkolskaGodina> skolskeGodine, List<DrziPredmet> drziPredmete,
+			List<PredispitneObaveze> predispitneObaveze, List<Ispit> ispiti) {
 		super();
 		this.idNastavnik = idNastavnik;
 		this.ime = ime;
@@ -57,6 +67,10 @@ public class Nastavnik implements Serializable {
 		this.zavrsenaVisokoskolskaUstanova = zavrsenaVisokoskolskaUstanova;
 		this.zvanje = zvanje;
 		this.istorijeZvanja = istorijeZvanja;
+		this.skolskeGodine = skolskeGodine;
+		this.drziPredmete = drziPredmete;
+		this.predispitneObaveze = predispitneObaveze;
+		this.ispiti = ispiti;
 	}
 
 	public int getIdNastavnik() {
@@ -115,10 +129,6 @@ public class Nastavnik implements Serializable {
 		this.zvanje = zvanje;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	public List<IstorijaZvanja> getIstorijeZvanja() {
 		return istorijeZvanja;
 	}
@@ -127,10 +137,48 @@ public class Nastavnik implements Serializable {
 		this.istorijeZvanja = istorijeZvanja;
 	}
 
+	public List<SkolskaGodina> getSkolskeGodine() {
+		return skolskeGodine;
+	}
+
+	public void setSkolskeGodine(List<SkolskaGodina> skolskeGodine) {
+		this.skolskeGodine = skolskeGodine;
+	}
+
+	public List<DrziPredmet> getDrziPredmete() {
+		return drziPredmete;
+	}
+
+	public void setDrziPredmete(List<DrziPredmet> drziPredmete) {
+		this.drziPredmete = drziPredmete;
+	}
+
+	public List<PredispitneObaveze> getPredispitneObaveze() {
+		return predispitneObaveze;
+	}
+
+	public void setPredispitneObaveze(List<PredispitneObaveze> predispitneObaveze) {
+		this.predispitneObaveze = predispitneObaveze;
+	}
+
+	public List<Ispit> getIspiti() {
+		return ispiti;
+	}
+
+	public void setIspiti(List<Ispit> ispiti) {
+		this.ispiti = ispiti;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public String toString() {
 		return "Nastavnik [idNastavnik=" + idNastavnik + ", ime=" + ime + ", prezime=" + prezime + ", srednjeIme="
 				+ srednjeIme + ", email=" + email + ", zavrsenaVisokoskolskaUstanova=" + zavrsenaVisokoskolskaUstanova
-				+ ", zvanje=" + zvanje + ", istorijeZvanja=" + istorijeZvanja + "]";
+				+ ", zvanje=" + zvanje + ", istorijeZvanja=" + istorijeZvanja + ", skolskeGodine=" + skolskeGodine
+				+ ", drziPredmete=" + drziPredmete + ", predispitneObaveze=" + predispitneObaveze + ", ispiti=" + ispiti
+				+ "]";
 	}
 }

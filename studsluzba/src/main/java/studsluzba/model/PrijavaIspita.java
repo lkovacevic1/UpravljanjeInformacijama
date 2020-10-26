@@ -1,6 +1,7 @@
 package studsluzba.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,6 +21,7 @@ public class PrijavaIspita implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idPrijavaIspita;
 	
+	private Date datumPrijaveIspita;
 	
 	@ManyToOne
 	@JoinColumn(name = "idIspit")
@@ -32,4 +34,67 @@ public class PrijavaIspita implements Serializable {
 	@OneToOne(mappedBy = "prijavaIspita")
 	private IzlazakNaIspit izlazakNaIspit;
 
+	public PrijavaIspita() {
+		
+	}
+
+	public PrijavaIspita(int idPrijavaIspita, Date datumPrijaveIspita, Ispit ispit, Indeks indeks,
+			IzlazakNaIspit izlazakNaIspit) {
+		super();
+		this.idPrijavaIspita = idPrijavaIspita;
+		this.datumPrijaveIspita = datumPrijaveIspita;
+		this.ispit = ispit;
+		this.indeks = indeks;
+		this.izlazakNaIspit = izlazakNaIspit;
+	}
+
+	public int getIdPrijavaIspita() {
+		return idPrijavaIspita;
+	}
+
+	public void setIdPrijavaIspita(int idPrijavaIspita) {
+		this.idPrijavaIspita = idPrijavaIspita;
+	}
+
+	public Date getDatumPrijaveIspita() {
+		return datumPrijaveIspita;
+	}
+
+	public void setDatumPrijaveIspita(Date datumPrijaveIspita) {
+		this.datumPrijaveIspita = datumPrijaveIspita;
+	}
+
+	public Ispit getIspit() {
+		return ispit;
+	}
+
+	public void setIspit(Ispit ispit) {
+		this.ispit = ispit;
+	}
+
+	public Indeks getIndeks() {
+		return indeks;
+	}
+
+	public void setIndeks(Indeks indeks) {
+		this.indeks = indeks;
+	}
+
+	public IzlazakNaIspit getIzlazakNaIspit() {
+		return izlazakNaIspit;
+	}
+
+	public void setIzlazakNaIspit(IzlazakNaIspit izlazakNaIspit) {
+		this.izlazakNaIspit = izlazakNaIspit;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	@Override
+	public String toString() {
+		return "PrijavaIspita [idPrijavaIspita=" + idPrijavaIspita + ", datumPrijaveIspita=" + datumPrijaveIspita
+				+ ", ispit=" + ispit + ", indeks=" + indeks + ", izlazakNaIspit=" + izlazakNaIspit + "]";
+	}
 }

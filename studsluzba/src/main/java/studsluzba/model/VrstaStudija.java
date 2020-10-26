@@ -28,7 +28,7 @@ public class VrstaStudija implements Serializable {
 	public VrstaStudija() {
 		
 	}
-	
+
 	public VrstaStudija(int idVrstaStudija, String punNazivStudija, String skraceniNazivStudija,
 			List<StudProgram> studProgrami) {
 		super();
@@ -79,5 +79,4 @@ public class VrstaStudija implements Serializable {
 		return "VrstaStudija [idVrstaStudija=" + idVrstaStudija + ", punNazivStudija=" + punNazivStudija
 				+ ", skraceniNazivStudija=" + skraceniNazivStudija + ", studProgrami=" + studProgrami + "]";
 	}
-
 }

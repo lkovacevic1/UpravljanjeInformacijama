@@ -28,28 +28,29 @@ public class VisokoskolskaUstanova implements Serializable{
 	public VisokoskolskaUstanova() {
 	
 	}
-	
-	public VisokoskolskaUstanova(int idVsUstanove, String nazivVSU, List<Student> studenti) {
+
+	public VisokoskolskaUstanova(int idVisokoskolskeUstanove, String nazivVisokoskolskeUstanove,
+			List<Student> studenti) {
 		super();
-		this.idVisokoskolskeUstanove = idVsUstanove;
-		this.nazivVisokoskolskeUstanove = nazivVSU;
+		this.idVisokoskolskeUstanove = idVisokoskolskeUstanove;
+		this.nazivVisokoskolskeUstanove = nazivVisokoskolskeUstanove;
 		this.studenti = studenti;
 	}
 
-	public int getIdVsUstanove() {
+	public int getIdVisokoskolskeUstanove() {
 		return idVisokoskolskeUstanove;
 	}
 
-	public void setIdVsUstanove(int idVsUstanove) {
-		this.idVisokoskolskeUstanove = idVsUstanove;
+	public void setIdVisokoskolskeUstanove(int idVisokoskolskeUstanove) {
+		this.idVisokoskolskeUstanove = idVisokoskolskeUstanove;
 	}
 
-	public String getNazivVSU() {
+	public String getNazivVisokoskolskeUstanove() {
 		return nazivVisokoskolskeUstanove;
 	}
 
-	public void setNazivVSU(String nazivVSU) {
-		this.nazivVisokoskolskeUstanove = nazivVSU;
+	public void setNazivVisokoskolskeUstanove(String nazivVisokoskolskeUstanove) {
+		this.nazivVisokoskolskeUstanove = nazivVisokoskolskeUstanove;
 	}
 
 	public List<Student> getStudenti() {
@@ -69,5 +70,4 @@ public class VisokoskolskaUstanova implements Serializable{
 		return "VisokoskolskaUstanova [idVisokoskolskeUstanove=" + idVisokoskolskeUstanove
 				+ ", nazivVisokoskolskeUstanove=" + nazivVisokoskolskeUstanove + ", studenti=" + studenti + "]";
 	}
-	
 }

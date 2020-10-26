@@ -70,7 +70,7 @@ public class Student implements Serializable {
 			Date datumRodjenja, String mestoRodjenja, String drzavaRodjenja, String drzavljanstvo, String nacionalnost,
 			String pol, String adresaPrebivalista, String brTelefona, String emailFakultet, String emailPrivatan,
 			String brojLicneKarte, String izdavacLicneKarte, float uspehSrednjaSkola, float uspehPrijemni,
-			VisokoskolskaUstanova vsUstanova, SrednjaSkola srSkola) {
+			VisokoskolskaUstanova visokoskolskaUstanova, SrednjaSkola srSkola) {
 		super();
 		this.idstudent = idstudent;
 		this.indeks = indeks;
@@ -92,7 +92,7 @@ public class Student implements Serializable {
 		this.izdavacLicneKarte = izdavacLicneKarte;
 		this.uspehSrednjaSkola = uspehSrednjaSkola;
 		this.uspehPrijemni = uspehPrijemni;
-		this.visokoskolskaUstanova = vsUstanova;
+		this.visokoskolskaUstanova = visokoskolskaUstanova;
 		this.srSkola = srSkola;
 	}
 
@@ -256,12 +256,12 @@ public class Student implements Serializable {
 		this.uspehPrijemni = uspehPrijemni;
 	}
 
-	public VisokoskolskaUstanova getVsUstanova() {
+	public VisokoskolskaUstanova getVisokoskolskaUstanova() {
 		return visokoskolskaUstanova;
 	}
 
-	public void setVsUstanova(VisokoskolskaUstanova vsUstanova) {
-		this.visokoskolskaUstanova = vsUstanova;
+	public void setVisokoskolskaUstanova(VisokoskolskaUstanova visokoskolskaUstanova) {
+		this.visokoskolskaUstanova = visokoskolskaUstanova;
 	}
 
 	public SrednjaSkola getSrSkola() {
@@ -285,6 +285,6 @@ public class Student implements Serializable {
 				+ adresaPrebivalista + ", brTelefona=" + brTelefona + ", emailFakultet=" + emailFakultet
 				+ ", emailPrivatan=" + emailPrivatan + ", brojLicneKarte=" + brojLicneKarte + ", izdavacLicneKarte="
 				+ izdavacLicneKarte + ", uspehSrednjaSkola=" + uspehSrednjaSkola + ", uspehPrijemni=" + uspehPrijemni
-				+ ", vsUstanova=" + visokoskolskaUstanova + ", srSkola=" + srSkola + "]";
+				+ ", visokoskolskaUstanova=" + visokoskolskaUstanova + ", srSkola=" + srSkola + "]";
 	}
 }

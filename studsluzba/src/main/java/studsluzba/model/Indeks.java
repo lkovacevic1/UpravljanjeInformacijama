@@ -44,6 +44,9 @@ public class Indeks implements Serializable {
 	@OneToMany(mappedBy = "indeks")
 	private List<PrijavaIspita> prijavaIspita;
 	
+	@OneToMany(mappedBy = "indeks")
+	private List<OsvojeniPredispitniPoeni> osvojeniPredispitniPOeni;
+	
 	@ManyToOne
 	@JoinColumn(name = "idObnovaGodine")
 	private ObnovaGodine obnovaGodine;
@@ -55,9 +58,11 @@ public class Indeks implements Serializable {
 	public Indeks() {
 		
 	}
-	
+
 	public Indeks(int idIndeks, Student student, int godinaUpisa, int brojIndexa, boolean aktivan,
-			Date datumAktivacijeIndexa, StudProgram studProgram) {
+			Date datumAktivacijeIndexa, StudProgram studProgram, List<DrziPredmet> drziPredmete,
+			List<PolozenPredmet> polozeniPredmeti, List<PrijavaIspita> prijavaIspita,
+			List<OsvojeniPredispitniPoeni> osvojeniPredispitniPOeni, ObnovaGodine obnovaGodine, UpisGodine upisGodine) {
 		super();
 		this.idIndeks = idIndeks;
 		this.student = student;
@@ -66,16 +71,20 @@ public class Indeks implements Serializable {
 		this.aktivan = aktivan;
 		this.datumAktivacijeIndexa = datumAktivacijeIndexa;
 		this.studProgram = studProgram;
+		this.drziPredmete = drziPredmete;
+		this.polozeniPredmeti = polozeniPredmeti;
+		this.prijavaIspita = prijavaIspita;
+		this.osvojeniPredispitniPOeni = osvojeniPredispitniPOeni;
+		this.obnovaGodine = obnovaGodine;
+		this.upisGodine = upisGodine;
 	}
-	
-	
 
-	public int getIdIndex() {
+	public int getIdIndeks() {
 		return idIndeks;
 	}
 
-	public void setIdIndex(int idIndex) {
-		this.idIndeks = idIndex;
+	public void setIdIndeks(int idIndeks) {
+		this.idIndeks = idIndeks;
 	}
 
 	public Student getStudent() {
@@ -126,15 +135,65 @@ public class Indeks implements Serializable {
 		this.studProgram = studProgram;
 	}
 
+	public List<DrziPredmet> getDrziPredmete() {
+		return drziPredmete;
+	}
+
+	public void setDrziPredmete(List<DrziPredmet> drziPredmete) {
+		this.drziPredmete = drziPredmete;
+	}
+
+	public List<PolozenPredmet> getPolozeniPredmeti() {
+		return polozeniPredmeti;
+	}
+
+	public void setPolozeniPredmeti(List<PolozenPredmet> polozeniPredmeti) {
+		this.polozeniPredmeti = polozeniPredmeti;
+	}
+
+	public List<PrijavaIspita> getPrijavaIspita() {
+		return prijavaIspita;
+	}
+
+	public void setPrijavaIspita(List<PrijavaIspita> prijavaIspita) {
+		this.prijavaIspita = prijavaIspita;
+	}
+
+	public List<OsvojeniPredispitniPoeni> getOsvojeniPredispitniPOeni() {
+		return osvojeniPredispitniPOeni;
+	}
+
+	public void setOsvojeniPredispitniPOeni(List<OsvojeniPredispitniPoeni> osvojeniPredispitniPOeni) {
+		this.osvojeniPredispitniPOeni = osvojeniPredispitniPOeni;
+	}
+
+	public ObnovaGodine getObnovaGodine() {
+		return obnovaGodine;
+	}
+
+	public void setObnovaGodine(ObnovaGodine obnovaGodine) {
+		this.obnovaGodine = obnovaGodine;
+	}
+
+	public UpisGodine getUpisGodine() {
+		return upisGodine;
+	}
+
+	public void setUpisGodine(UpisGodine upisGodine) {
+		this.upisGodine = upisGodine;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
 	@Override
 	public String toString() {
-		return "Indeks [idIndex=" + idIndeks + ", student=" + student + ", godinaUpisa=" + godinaUpisa + ", brojIndexa="
-				+ brojIndexa + ", aktivan=" + aktivan + ", datumAktivacijeIndexa=" + datumAktivacijeIndexa
-				+ ", studProgram=" + studProgram + "]";
+		return "Indeks [idIndeks=" + idIndeks + ", student=" + student + ", godinaUpisa=" + godinaUpisa
+				+ ", brojIndexa=" + brojIndexa + ", aktivan=" + aktivan + ", datumAktivacijeIndexa="
+				+ datumAktivacijeIndexa + ", studProgram=" + studProgram + ", drziPredmete=" + drziPredmete
+				+ ", polozeniPredmeti=" + polozeniPredmeti + ", prijavaIspita=" + prijavaIspita
+				+ ", osvojeniPredispitniPOeni=" + osvojeniPredispitniPOeni + ", obnovaGodine=" + obnovaGodine
+				+ ", upisGodine=" + upisGodine + "]";
 	}
-	
 }

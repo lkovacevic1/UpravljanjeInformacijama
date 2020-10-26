@@ -37,9 +37,10 @@ public class StudProgram implements Serializable {
 	public StudProgram() {
 		
 	}
-	
+
 	public StudProgram(int idstudProgram, String oznaka, String nazivStudPrograma, int godinaAkreditacije,
-			String nazivZvanjaPoZavrsetkuStudija, int brojSemestara, VrstaStudija vrstaStudija, List<Indeks> indeksi) {
+			String nazivZvanjaPoZavrsetkuStudija, int brojSemestara, VrstaStudija vrstaStudija, List<Indeks> indeksi,
+			List<Predmet> predmeti) {
 		super();
 		this.idstudProgram = idstudProgram;
 		this.oznaka = oznaka;
@@ -49,6 +50,7 @@ public class StudProgram implements Serializable {
 		this.brojSemestara = brojSemestara;
 		this.vrstaStudija = vrstaStudija;
 		this.indeksi = indeksi;
+		this.predmeti = predmeti;
 	}
 
 	public int getIdstudProgram() {
@@ -115,6 +117,14 @@ public class StudProgram implements Serializable {
 		this.indeksi = indeksi;
 	}
 
+	public List<Predmet> getPredmeti() {
+		return predmeti;
+	}
+
+	public void setPredmeti(List<Predmet> predmeti) {
+		this.predmeti = predmeti;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -124,7 +134,6 @@ public class StudProgram implements Serializable {
 		return "StudProgram [idstudProgram=" + idstudProgram + ", oznaka=" + oznaka + ", nazivStudPrograma="
 				+ nazivStudPrograma + ", godinaAkreditacije=" + godinaAkreditacije + ", nazivZvanjaPoZavrsetkuStudija="
 				+ nazivZvanjaPoZavrsetkuStudija + ", brojSemestara=" + brojSemestara + ", vrstaStudija=" + vrstaStudija
-				+ ", indeksi=" + indeksi + "]";
+				+ ", indeksi=" + indeksi + ", predmeti=" + predmeti + "]";
 	}
-	
 }
