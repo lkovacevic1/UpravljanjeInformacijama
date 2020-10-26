@@ -41,6 +41,10 @@ public class Indeks implements Serializable {
 	@OneToMany(mappedBy = "indeks")
 	private List<PrijavaIspita> prijavaIspita;
 	
+	@ManyToOne
+	@JoinColumn(name = "idObnovaGodine")
+	private ObnovaGodine obnovaGodine;
+	
 	public Indeks() {
 		
 	}

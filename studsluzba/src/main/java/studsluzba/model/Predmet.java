@@ -25,6 +25,10 @@ public class Predmet implements Serializable {
 	@JoinColumn(name = "idstudProgram")
 	private StudProgram studProgram;
 	
+	@ManyToOne
+	@JoinColumn(name = "idObnovaGodine")
+	private ObnovaGodine obnovaGodine;
+	
 	private String sifra;
 	private String nazivPredmeta;
 	private String opisPredmeta;
