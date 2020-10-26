@@ -19,6 +19,7 @@ public class PolozenPredmet implements Serializable {
 	private int idPolozenPredmet;
 
 	private boolean polozen;
+	
 	private int ocena;
 	
 	@ManyToOne
