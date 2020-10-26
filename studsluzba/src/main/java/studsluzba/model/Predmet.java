@@ -36,6 +36,9 @@ public class Predmet implements Serializable {
 	@OneToMany(mappedBy="predmet")
 	private List<DrziPredmet> drziPredmete;
 	
+	@OneToMany(mappedBy = "predmet")
+	private List<PolozenPredmet> polozeniPredmeti;
+	
 	public Predmet() {
 		
 	}

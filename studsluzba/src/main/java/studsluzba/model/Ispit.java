@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 
 @Entity
 @NamedQuery(name="Ispit.findAll", query="SELECT i FROM Ispit i")
@@ -37,6 +38,10 @@ public class Ispit implements Serializable {
     @ManyToOne
 	@JoinColumn(name = "idIspitnogRoka")
 	private IspitniRok ispitniRok;
+    
+    @OneToOne(mappedBy = "ispit")
+    private PolozenPredmet polozeniPredmet;
+    
 
     public Ispit() {
     	
