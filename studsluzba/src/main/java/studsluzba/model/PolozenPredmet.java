@@ -8,29 +8,33 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 
 @Entity
-@NamedQuery(name="OsvojeniPredispitniPoeni.findAll", query="SELECT o FROM OsvojeniPredispitniPoeni o")
-public class OsvojeniPredispitniPoeni implements Serializable {
+public class PolozenPredmet implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idOsvojeniPredispitniPoeni;
+	private int idPolozenPredmet;
+
+	private boolean polozen;
 	
-	@ManyToOne
-	@JoinColumn(name = "idPredispitnihObaveza")
-	private PredispitneObaveze predispitneObaveze;
-	 
+	private int ocena;
+	
 	@ManyToOne
 	@JoinColumn(name = "idIndeks")
 	private Indeks indeks;
 	
+	@ManyToOne
+	@JoinColumn(name = "idPredmeta")
+	private Predmet predmet;
 	
-	public OsvojeniPredispitniPoeni() {
+	@OneToOne
+	@JoinColumn(name = "idIspit")
+	private Ispit ispit;
+	
+	public PolozenPredmet() {
 		
 	}
-
 }

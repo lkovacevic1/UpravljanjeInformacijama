@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -39,6 +40,9 @@ public class Ispit implements Serializable {
     @ManyToOne
 	@JoinColumn(name = "idIspitnogRoka")
 	private IspitniRok ispitniRok;
+    
+    @OneToOne(mappedBy = "ispit")
+    private PolozenPredmet polozeniPredmet;
     
     @OneToMany(mappedBy = "ispit")
 	private List<PrijavaIspita> prijavaIspita;
