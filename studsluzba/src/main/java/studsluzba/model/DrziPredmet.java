@@ -1,6 +1,7 @@
 package studsluzba.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,20 +33,20 @@ public class DrziPredmet implements Serializable {
 	
 	@ManyToMany
 	@JoinColumn(name = "idIndeks")
-	private Indeks indeks;
+	private List<Indeks> indeksi;
 
 	public DrziPredmet() {
 		
 	}
 
 	public DrziPredmet(int idDrziPredmet, Nastavnik nastavnik, SkolskaGodina skolskaGodina, Predmet predmet,
-			Indeks indeks) {
+			List<Indeks> indeksi) {
 		super();
 		this.idDrziPredmet = idDrziPredmet;
 		this.nastavnik = nastavnik;
 		this.skolskaGodina = skolskaGodina;
 		this.predmet = predmet;
-		this.indeks = indeks;
+		this.indeksi = indeksi;
 	}
 
 	public int getIdDrziPredmet() {
@@ -80,12 +81,12 @@ public class DrziPredmet implements Serializable {
 		this.predmet = predmet;
 	}
 
-	public Indeks getIndeks() {
-		return indeks;
+	public List<Indeks> getIndeksi() {
+		return indeksi;
 	}
 
-	public void setIndeks(Indeks indeks) {
-		this.indeks = indeks;
+	public void setIndeksi(List<Indeks> indeksi) {
+		this.indeksi = indeksi;
 	}
 
 	public static long getSerialversionuid() {
@@ -95,6 +96,6 @@ public class DrziPredmet implements Serializable {
 	@Override
 	public String toString() {
 		return "DrziPredmet [idDrziPredmet=" + idDrziPredmet + ", nastavnik=" + nastavnik + ", skolskaGodina="
-				+ skolskaGodina + ", predmet=" + predmet + ", indeks=" + indeks + "]";
+				+ skolskaGodina + ", predmet=" + predmet + ", indeksi=" + indeksi + "]";
 	}
 }
