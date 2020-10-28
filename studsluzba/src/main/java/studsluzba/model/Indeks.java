@@ -36,7 +36,7 @@ public class Indeks implements Serializable {
 	@JoinColumn(name = "idstudProgram")
 	private StudProgram studProgram;
 	
-	@ManyToMany(mappedBy = "indeks")
+	@ManyToMany(mappedBy = "indeksi")
 	private List<DrziPredmet> drziPredmete;
 	
 	@OneToMany(mappedBy = "indeks")
