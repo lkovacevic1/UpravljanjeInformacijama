@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -35,7 +36,7 @@ public class Indeks implements Serializable {
 	@JoinColumn(name = "idstudProgram")
 	private StudProgram studProgram;
 	
-	@OneToMany(mappedBy = "indeks")
+	@ManyToMany(mappedBy = "indeks")
 	private List<DrziPredmet> drziPredmete;
 	
 	@OneToMany(mappedBy = "indeks")
