@@ -1,6 +1,7 @@
 package studsluzba.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
@@ -16,12 +17,9 @@ public class UpisGodine extends AktivnostStudenta implements Serializable {
 	@ManyToMany(mappedBy = "upisGodine")
 	private List<Predmet> predmeti;
 	
-	public UpisGodine() {
-		
-	}
-
-	public UpisGodine(int godinaUpisa, List<Predmet> predmeti) {
-		super();
+	public UpisGodine(int idAktivnostiStudenta, LocalDate datum, String napomena, Indeks indeks, int godinaUpisa,
+			List<Predmet> predmeti) {
+		super(idAktivnostiStudenta, datum, napomena, indeks);
 		this.godinaUpisa = godinaUpisa;
 		this.predmeti = predmeti;
 	}
