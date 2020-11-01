@@ -1,6 +1,7 @@
 package studsluzba.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class Student implements Serializable {
 	
 	private String srednjeIme;
 	
-	private int jmbg;
+	private String jmbg;
 	
 	private Date datumRodjenja;
 	
@@ -66,7 +67,7 @@ public class Student implements Serializable {
 		
 	}
 
-	public Student(int idstudent, List<Indeks> indeks, String ime, String prezime, String srednjeIme, int jmbg,
+	public Student(int idstudent, List<Indeks> indeks, String ime, String prezime, String srednjeIme, String jmbg,
 			Date datumRodjenja, String mestoRodjenja, String drzavaRodjenja, String drzavljanstvo, String nacionalnost,
 			String pol, String adresaPrebivalista, String brTelefona, String emailFakultet, String emailPrivatan,
 			String brojLicneKarte, String izdavacLicneKarte, float uspehSrednjaSkola, float uspehPrijemni,
@@ -136,12 +137,12 @@ public class Student implements Serializable {
 		this.srednjeIme = srednjeIme;
 	}
 
-	public int getJmbg() {
+	public String getJmbg() {
 		return jmbg;
 	}
 
-	public void setJmbg(int jmbg) {
-		this.jmbg = jmbg;
+	public void setJmbg(String string) {
+		this.jmbg = string;
 	}
 
 	public Date getDatumRodjenja() {
