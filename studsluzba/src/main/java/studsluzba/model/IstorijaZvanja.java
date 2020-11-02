@@ -1,6 +1,7 @@
 package studsluzba.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -18,7 +19,7 @@ public class IstorijaZvanja implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idIstorijeZvanja;
 	
-	private Date datumIzboraZvanja;
+	private LocalDate datumIzboraZvanja;
 	
 	private String uzaNaucnaOblast;
 	
@@ -34,7 +35,7 @@ public class IstorijaZvanja implements Serializable {
 		
 	}
 
-	public IstorijaZvanja(int idIstorijeZvanja, Date datumIzboraZvanja, String uzaNaucnaOblast, Zvanje zvanje,
+	public IstorijaZvanja(int idIstorijeZvanja, LocalDate datumIzboraZvanja, String uzaNaucnaOblast, Zvanje zvanje,
 			Nastavnik nastavnik) {
 		super();
 		this.idIstorijeZvanja = idIstorijeZvanja;
@@ -52,11 +53,11 @@ public class IstorijaZvanja implements Serializable {
 		this.idIstorijeZvanja = idIstorijeZvanja;
 	}
 
-	public Date getDatumIzboraZvanja() {
+	public LocalDate getDatumIzboraZvanja() {
 		return datumIzboraZvanja;
 	}
 
-	public void setDatumIzboraZvanja(Date datumIzboraZvanja) {
+	public void setDatumIzboraZvanja(LocalDate datumIzboraZvanja) {
 		this.datumIzboraZvanja = datumIzboraZvanja;
 	}
 

@@ -1,6 +1,7 @@
 package studsluzba.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -23,8 +24,8 @@ public class IspitniRok implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idIspitnogRoka;
 	
-	private Date datumPocetkaIspitnogRoka;
-	private Date datumZavrsetkaIspitnogRoka;
+	private LocalDate datumPocetkaIspitnogRoka;
+	private LocalDate datumZavrsetkaIspitnogRoka;
 	
 	@OneToMany(mappedBy="ispitniRok")
 	private List<Ispit> ispiti;
@@ -37,7 +38,7 @@ public class IspitniRok implements Serializable {
 		
 	}
 
-	public IspitniRok(int idIspitnogRoka, Date datumPocetkaIspitnogRoka, Date datumZavrsetkaIspitnogRoka,
+	public IspitniRok(int idIspitnogRoka, LocalDate datumPocetkaIspitnogRoka, LocalDate datumZavrsetkaIspitnogRoka,
 			List<Ispit> ispiti, SkolskaGodina skolskaGodina) {
 		super();
 		this.idIspitnogRoka = idIspitnogRoka;
@@ -55,19 +56,19 @@ public class IspitniRok implements Serializable {
 		this.idIspitnogRoka = idIspitnogRoka;
 	}
 
-	public Date getDatumPocetkaIspitnogRoka() {
+	public LocalDate getDatumPocetkaIspitnogRoka() {
 		return datumPocetkaIspitnogRoka;
 	}
 
-	public void setDatumPocetkaIspitnogRoka(Date datumPocetkaIspitnogRoka) {
+	public void setDatumPocetkaIspitnogRoka(LocalDate datumPocetkaIspitnogRoka) {
 		this.datumPocetkaIspitnogRoka = datumPocetkaIspitnogRoka;
 	}
 
-	public Date getDatumZavrsetkaIspitnogRoka() {
+	public LocalDate getDatumZavrsetkaIspitnogRoka() {
 		return datumZavrsetkaIspitnogRoka;
 	}
 
-	public void setDatumZavrsetkaIspitnogRoka(Date datumZavrsetkaIspitnogRoka) {
+	public void setDatumZavrsetkaIspitnogRoka(LocalDate datumZavrsetkaIspitnogRoka) {
 		this.datumZavrsetkaIspitnogRoka = datumZavrsetkaIspitnogRoka;
 	}
 

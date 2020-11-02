@@ -1,8 +1,8 @@
 package studsluzba.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -27,7 +27,7 @@ public class Student implements Serializable {
 	
 	private String jmbg;
 	
-	private Date datumRodjenja;
+	private LocalDate datumRodjenja;
 	
 	private String mestoRodjenja;
 	
@@ -64,11 +64,11 @@ public class Student implements Serializable {
 	private SrednjaSkola srSkola;
 
 	public Student() {
-		
+		this.indeks = new ArrayList<Indeks>();
 	}
 
 	public Student(int idstudent, List<Indeks> indeks, String ime, String prezime, String srednjeIme, String jmbg,
-			Date datumRodjenja, String mestoRodjenja, String drzavaRodjenja, String drzavljanstvo, String nacionalnost,
+			LocalDate datumRodjenja, String mestoRodjenja, String drzavaRodjenja, String drzavljanstvo, String nacionalnost,
 			String pol, String adresaPrebivalista, String brTelefona, String emailFakultet, String emailPrivatan,
 			String brojLicneKarte, String izdavacLicneKarte, float uspehSrednjaSkola, float uspehPrijemni,
 			VisokoskolskaUstanova visokoskolskaUstanova, SrednjaSkola srSkola) {
@@ -145,11 +145,11 @@ public class Student implements Serializable {
 		this.jmbg = string;
 	}
 
-	public Date getDatumRodjenja() {
+	public LocalDate getDatumRodjenja() {
 		return datumRodjenja;
 	}
 
-	public void setDatumRodjenja(Date datumRodjenja) {
+	public void setDatumRodjenja(LocalDate datumRodjenja) {
 		this.datumRodjenja = datumRodjenja;
 	}
 

@@ -1,9 +1,7 @@
 package studsluzba.repositorytest;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,40 +37,33 @@ public class StudentRepositoryTest {
 	@Test
 	public void saveStudentTest() throws ParseException {
 		
-		///Visokoskolska ustanova
+		Student s = new Student();
+		Indeks i = new Indeks();
+		SrednjaSkola sk = new SrednjaSkola();
 		VisokoskolskaUstanova vsu = new VisokoskolskaUstanova();
+		
+		///Visokoskolska ustanova
 		vsu.setNazivVisokoskolskeUstanove("Matematicki fakultet");
 		visokoskolskaUstanovaRepo.save(vsu);
 		
 		///Srednja Skola
-		SrednjaSkola sk = new SrednjaSkola();
 		sk.setNazivSrednjeSkole("Racunarska gimnazija");
 		sk.setMestoSrednjeSkole("Knez Mihajlova 6");
 		sk.setVrstaSrednjeSkole("Gimnazija");
 		srednjaSkolaRepo.save(sk);
 		
 		///Indeks
-		Indeks i = new Indeks();
 		i.setAktivan(true);
 		i.setBrojIndexa(68);
-		
-		DateFormat df = new SimpleDateFormat("MM-dd-yyyy");
-		Date date = df.parse("01-10-2018");
-		
-		i.setDatumAktivacijeIndexa(date);
+		i.setDatumAktivacijeIndexa(LocalDate.of(2018, 10, 1));
 		i.setGodinaUpisa(2020);
-		indeksRepo.save(i);
-		
+		i.setStudent(s);
 		
 		///Student
-		Student s = new Student();
 		s.setAdresaPrebivalista("Beogradska 85a");
 		s.setBrojLicneKarte("1423153153E0000B123");
 		s.setBrTelefona("0694267412");
-		
-		date = df.parse("26-07-1999");
-		
-		s.setDatumRodjenja(date);
+		s.setDatumRodjenja(LocalDate.of(1999, 07, 26));
 		s.setDrzavaRodjenja("Srbija");
 		s.setDrzavljanstvo("Srpsko");
 		s.setEmailFakultet("aradonjic6819rn@raf.rs");
@@ -89,5 +80,8 @@ public class StudentRepositoryTest {
 		s.setUspehPrijemni(89);
 		s.setUspehSrednjaSkola(93);
 		s.setVisokoskolskaUstanova(vsu);
+		studentRepo.save(s);
+		
+		indeksRepo.save(i);
 	}
 }

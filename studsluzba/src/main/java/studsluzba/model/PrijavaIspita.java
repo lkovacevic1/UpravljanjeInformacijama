@@ -1,6 +1,7 @@
 package studsluzba.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -21,7 +22,7 @@ public class PrijavaIspita implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idPrijavaIspita;
 	
-	private Date datumPrijaveIspita;
+	private LocalDate datumPrijaveIspita;
 	
 	@ManyToOne
 	@JoinColumn(name = "idIspit")
@@ -38,7 +39,7 @@ public class PrijavaIspita implements Serializable {
 		
 	}
 
-	public PrijavaIspita(int idPrijavaIspita, Date datumPrijaveIspita, Ispit ispit, Indeks indeks,
+	public PrijavaIspita(int idPrijavaIspita, LocalDate datumPrijaveIspita, Ispit ispit, Indeks indeks,
 			IzlazakNaIspit izlazakNaIspit) {
 		super();
 		this.idPrijavaIspita = idPrijavaIspita;
@@ -56,11 +57,11 @@ public class PrijavaIspita implements Serializable {
 		this.idPrijavaIspita = idPrijavaIspita;
 	}
 
-	public Date getDatumPrijaveIspita() {
+	public LocalDate getDatumPrijaveIspita() {
 		return datumPrijaveIspita;
 	}
 
-	public void setDatumPrijaveIspita(Date datumPrijaveIspita) {
+	public void setDatumPrijaveIspita(LocalDate datumPrijaveIspita) {
 		this.datumPrijaveIspita = datumPrijaveIspita;
 	}
 

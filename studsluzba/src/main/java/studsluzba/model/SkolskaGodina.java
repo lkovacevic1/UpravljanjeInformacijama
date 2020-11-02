@@ -19,7 +19,7 @@ public class SkolskaGodina  implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idSkolskeGodine;
 	
-	private Date skolskaGodina;
+	private int skolskaGodina;
 	
 	private boolean aktivna;
 	
@@ -39,7 +39,7 @@ public class SkolskaGodina  implements Serializable {
 		
 	}
 
-	public SkolskaGodina(int idSkolskeGodine, Date skolskaGodina, boolean aktivna, List<Nastavnik> nastavnici,
+	public SkolskaGodina(int idSkolskeGodine, int skolskaGodina, boolean aktivna, List<Nastavnik> nastavnici,
 			List<IspitniRok> ispitniRokovi, List<PredispitneObaveze> predispitneObaveze,
 			List<DrziPredmet> drziPredmete) {
 		super();
@@ -60,11 +60,11 @@ public class SkolskaGodina  implements Serializable {
 		this.idSkolskeGodine = idSkolskeGodine;
 	}
 
-	public Date getSkolskaGodina() {
+	public int getSkolskaGodina() {
 		return skolskaGodina;
 	}
 
-	public void setSkolskaGodina(Date skolskaGodina) {
+	public void setSkolskaGodina(int skolskaGodina) {
 		this.skolskaGodina = skolskaGodina;
 	}
 

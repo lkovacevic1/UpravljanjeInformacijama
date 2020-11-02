@@ -1,7 +1,7 @@
 package studsluzba.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -30,7 +30,7 @@ public class Indeks implements Serializable {
 	private int godinaUpisa;
 	private int brojIndexa;
 	private boolean aktivan;
-	private Date datumAktivacijeIndexa;
+	private LocalDate datumAktivacijeIndexa;
 	
 	@ManyToOne
 	@JoinColumn(name = "idstudProgram")
@@ -61,7 +61,7 @@ public class Indeks implements Serializable {
 	}
 
 	public Indeks(int idIndeks, Student student, int godinaUpisa, int brojIndexa, boolean aktivan,
-			Date datumAktivacijeIndexa, StudProgram studProgram, List<DrziPredmet> drziPredmete,
+			LocalDate datumAktivacijeIndexa, StudProgram studProgram, List<DrziPredmet> drziPredmete,
 			List<PolozenPredmet> polozeniPredmeti, List<PrijavaIspita> prijavaIspita,
 			List<OsvojeniPredispitniPoeni> osvojeniPredispitniPOeni, ObnovaGodine obnovaGodine, UpisGodine upisGodine) {
 		super();
@@ -120,11 +120,11 @@ public class Indeks implements Serializable {
 		this.aktivan = aktivan;
 	}
 
-	public Date getDatumAktivacijeIndexa() {
+	public LocalDate getDatumAktivacijeIndexa() {
 		return datumAktivacijeIndexa;
 	}
 
-	public void setDatumAktivacijeIndexa(Date datumAktivacijeIndexa) {
+	public void setDatumAktivacijeIndexa(LocalDate datumAktivacijeIndexa) {
 		this.datumAktivacijeIndexa = datumAktivacijeIndexa;
 	}
 

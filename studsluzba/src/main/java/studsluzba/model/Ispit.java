@@ -2,6 +2,7 @@ package studsluzba.model;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class Ispit implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idIspit;
 	
-	private Date datumOdrzavanjaIspita;
+	private LocalDate datumOdrzavanjaIspita;
 	SimpleDateFormat localDateFormat = new SimpleDateFormat("HH:mm:ss");
     private String vremeOdrzavanjaIspita = localDateFormat.format(new Date());
     private boolean zakljucenIspit;
@@ -51,7 +52,7 @@ public class Ispit implements Serializable {
     	
     }
 
-	public Ispit(int idIspit, Date datumOdrzavanjaIspita, SimpleDateFormat localDateFormat,
+	public Ispit(int idIspit, LocalDate datumOdrzavanjaIspita, SimpleDateFormat localDateFormat,
 			String vremeOdrzavanjaIspita, boolean zakljucenIspit, Predmet predmet, Nastavnik nastavnik,
 			IspitniRok ispitniRok, PolozenPredmet polozeniPredmet, List<PrijavaIspita> prijavaIspita) {
 		super();
@@ -75,11 +76,11 @@ public class Ispit implements Serializable {
 		this.idIspit = idIspit;
 	}
 
-	public Date getDatumOdrzavanjaIspita() {
+	public LocalDate getDatumOdrzavanjaIspita() {
 		return datumOdrzavanjaIspita;
 	}
 
-	public void setDatumOdrzavanjaIspita(Date datumOdrzavanjaIspita) {
+	public void setDatumOdrzavanjaIspita(LocalDate datumOdrzavanjaIspita) {
 		this.datumOdrzavanjaIspita = datumOdrzavanjaIspita;
 	}
 
