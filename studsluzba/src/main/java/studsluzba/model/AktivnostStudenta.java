@@ -26,9 +26,12 @@ private static final long serialVersionUID = 1L;
 	@ManyToOne
 	protected Indeks indeks;
 
-	public AktivnostStudenta(int idAktivnostiStudenta, LocalDate datum, String napomena, Indeks indeks) {
+	public AktivnostStudenta() {
+		
+	}
+	
+	public AktivnostStudenta(LocalDate datum, String napomena, Indeks indeks) {
 		super();
-		this.idAktivnostiStudenta = idAktivnostiStudenta;
 		this.datum = datum;
 		this.napomena = napomena;
 		this.indeks = indeks;

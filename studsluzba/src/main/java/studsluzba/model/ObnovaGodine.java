@@ -19,10 +19,14 @@ public class ObnovaGodine extends AktivnostStudenta implements Serializable {
 	
 	@ManyToMany(mappedBy = "obnovaGodine")
 	private List<Predmet> predmeti;
+	
+	public ObnovaGodine() {
+		this.predmeti = new ArrayList<Predmet>();
+	}
 
-	public ObnovaGodine(int idAktivnostiStudenta, LocalDate datum, String napomena, Indeks indeks, int godinaObnove,
+	public ObnovaGodine(LocalDate datum, String napomena, Indeks indeks, int godinaObnove,
 			List<Predmet> predmeti) {
-		super(idAktivnostiStudenta, datum, napomena, indeks);
+		super(datum, napomena, indeks);
 		this.godinaObnove = godinaObnove;
 		this.predmeti = new ArrayList<Predmet>();
 	}

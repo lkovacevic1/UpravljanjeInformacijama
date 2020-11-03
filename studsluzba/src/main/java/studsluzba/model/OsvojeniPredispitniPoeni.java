@@ -19,6 +19,8 @@ public class OsvojeniPredispitniPoeni implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idOsvojeniPredispitniPoeni;
 	
+	private int osvojeniPredispitniPoeni;
+	
 	@ManyToOne
 	@JoinColumn(name = "idPredispitnihObaveza")
 	private PredispitneObaveze predispitneObaveze;
@@ -32,11 +34,22 @@ public class OsvojeniPredispitniPoeni implements Serializable {
 	}
 
 	public OsvojeniPredispitniPoeni(int idOsvojeniPredispitniPoeni, PredispitneObaveze predispitneObaveze,
-			Indeks indeks) {
+			Indeks indeks, int osvojeniPredispitniPoeni) {
 		super();
 		this.idOsvojeniPredispitniPoeni = idOsvojeniPredispitniPoeni;
 		this.predispitneObaveze = predispitneObaveze;
 		this.indeks = indeks;
+		this.osvojeniPredispitniPoeni = osvojeniPredispitniPoeni;
+	}
+	
+	
+
+	public int getOsvojeniPredispitniPoeni() {
+		return osvojeniPredispitniPoeni;
+	}
+
+	public void setOsvojeniPredispitniPoeni(int osvojeniPredispitniPoeni) {
+		this.osvojeniPredispitniPoeni = osvojeniPredispitniPoeni;
 	}
 
 	public int getIdOsvojeniPredispitniPoeni() {
@@ -70,6 +83,8 @@ public class OsvojeniPredispitniPoeni implements Serializable {
 	@Override
 	public String toString() {
 		return "OsvojeniPredispitniPoeni [idOsvojeniPredispitniPoeni=" + idOsvojeniPredispitniPoeni
-				+ ", predispitneObaveze=" + predispitneObaveze + ", indeks=" + indeks + "]";
+				+ ", osvojeniPredispitniPoeni=" + osvojeniPredispitniPoeni + ", predispitneObaveze="
+				+ predispitneObaveze + ", indeks=" + indeks + "]";
 	}
+
 }
