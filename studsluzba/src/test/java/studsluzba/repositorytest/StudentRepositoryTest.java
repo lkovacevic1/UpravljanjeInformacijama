@@ -48,41 +48,7 @@ public class StudentRepositoryTest {
 	@Test
 	public void saveStudentTest() throws ParseException {
 
-		Student s = new Student();
-		Indeks i = new Indeks();
-		SrednjaSkola sk = new SrednjaSkola();
-		VisokoskolskaUstanova vsu = new VisokoskolskaUstanova();
-
-		/*Configuration cfg = new Configuration().addClass(Indeks.class);
-		SessionFactory sf = cfg.buildSessionFactory();
-		Session session = sf.openSession();*/
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("upinf");
-		EntityManager em = emf.createEntityManager();
 		
-		try {
-			em.getTransaction().begin();
-			
-			i = em.find(Indeks.class, 1);
-			i.setAktivan(false);
-			em.persist(i);
-			
-			em.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			em.close();
-		}
-		
-		//test123
-		
-		/*i = (Indeks) session.get(Indeks.class, 1);
-		i.setAktivan(false);
-
-		session.update(i);
-		
-		session.getTransaction().commit();
-		session.close();*/
-
 	}
 }
