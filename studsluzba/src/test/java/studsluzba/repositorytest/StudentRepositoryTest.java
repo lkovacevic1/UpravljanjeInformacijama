@@ -74,6 +74,8 @@ public class StudentRepositoryTest {
 			em.close();
 		}
 		
+		//test123
+		
 		/*i = (Indeks) session.get(Indeks.class, 1);
 		i.setAktivan(false);
 
