@@ -59,7 +59,10 @@ public class Indeks implements Serializable {
 	
 	public Indeks() {
 		
-		
+		this.drziPredmete = new ArrayList<DrziPredmet>();
+		this.polozeniPredmeti = new ArrayList<PolozenPredmet>();
+		this.prijavaIspita = new ArrayList<PrijavaIspita>();
+		this.osvojeniPredispitniPOeni = new ArrayList<OsvojeniPredispitniPoeni>();
 	}
 
 	public Indeks(int idIndeks, Student student, int godinaUpisa, int brojIndexa, boolean aktivan,

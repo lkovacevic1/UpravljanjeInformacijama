@@ -1,6 +1,7 @@
 package studsluzba.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -37,6 +38,7 @@ public class DrziPredmet implements Serializable {
 
 	public DrziPredmet() {
 		
+		this.indeksi = new ArrayList<Indeks>();
 	}
 
 	public DrziPredmet(int idDrziPredmet, Nastavnik nastavnik, SkolskaGodina skolskaGodina, Predmet predmet,

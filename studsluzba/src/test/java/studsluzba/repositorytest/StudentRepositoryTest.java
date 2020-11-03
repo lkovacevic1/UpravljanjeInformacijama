@@ -1,22 +1,12 @@
 package studsluzba.repositorytest;
 
 import java.text.ParseException;
-import java.time.LocalDate;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import studsluzba.model.Indeks;
-import studsluzba.model.SrednjaSkola;
-import studsluzba.model.Student;
-import studsluzba.model.VisokoskolskaUstanova;
 import studsluzba.repositories.IndeksRepository;
 import studsluzba.repositories.SrednjaSkolaRepository;
 import studsluzba.repositories.StudentRepository;
