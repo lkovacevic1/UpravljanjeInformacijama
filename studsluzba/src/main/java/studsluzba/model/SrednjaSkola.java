@@ -1,6 +1,7 @@
 package studsluzba.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -30,7 +31,7 @@ public class SrednjaSkola  implements Serializable{
 	private List<Student> studenti;
 	
 	public SrednjaSkola() {
-		
+		this.studenti = new ArrayList<Student>();
 	}
 
 	public SrednjaSkola(int idSrednjeSkole, String nazivSrednjeSkole, String mestoSrednjeSkole,

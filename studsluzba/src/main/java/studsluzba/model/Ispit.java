@@ -3,6 +3,7 @@ package studsluzba.model;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -49,7 +50,7 @@ public class Ispit implements Serializable {
 	private List<PrijavaIspita> prijavaIspita;
 
     public Ispit() {
-    	
+    	this.prijavaIspita = new ArrayList<PrijavaIspita>();
     }
 
 	public Ispit(int idIspit, LocalDate datumOdrzavanjaIspita, SimpleDateFormat localDateFormat,

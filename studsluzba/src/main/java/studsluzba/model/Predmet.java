@@ -1,6 +1,7 @@
 package studsluzba.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -54,7 +55,10 @@ public class Predmet implements Serializable {
 	private ObnovaGodine obnovaGodine;
 	
 	public Predmet() {
-		
+		this.predispitneObaveze = new ArrayList<PredispitneObaveze>();
+		this.ispiti = new ArrayList<Ispit>();
+		this.drziPredmete = new ArrayList<DrziPredmet>();
+		this.polozeniPredmeti = new ArrayList<PolozenPredmet>();
 	}
 
 	public Predmet(int idPredmeta, StudProgram studProgram, String sifra, String nazivPredmeta, String opisPredmeta,

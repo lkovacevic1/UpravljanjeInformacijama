@@ -27,9 +27,7 @@ public class VrstaStudija implements Serializable {
 	private List<StudProgram> studProgrami;
 
 	public VrstaStudija() {
-		
 		this.studProgrami = new ArrayList<StudProgram>();
-		
 	}
 
 	public VrstaStudija(int idVrstaStudija, String punNazivStudija, String skraceniNazivStudija,

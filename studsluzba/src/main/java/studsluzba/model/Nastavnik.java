@@ -1,6 +1,7 @@
 package studsluzba.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -51,7 +52,11 @@ public class Nastavnik implements Serializable {
 	private List<Ispit> ispiti;
 	
 	public Nastavnik() {
-		
+		this.istorijeZvanja = new ArrayList<IstorijaZvanja>();
+		this.skolskeGodine = new ArrayList<SkolskaGodina>();
+		this.drziPredmete = new ArrayList<DrziPredmet>();
+		this.predispitneObaveze = new ArrayList<PredispitneObaveze>();
+		this.ispiti = new ArrayList<Ispit>();
 	}
 
 	public Nastavnik(int idNastavnik, String ime, String prezime, String srednjeIme, String email,

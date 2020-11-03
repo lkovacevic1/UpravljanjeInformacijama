@@ -1,6 +1,7 @@
 package studsluzba.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -26,7 +27,8 @@ public class Zvanje implements Serializable {
 	private List<IstorijaZvanja> istorijeZvanja;
 
 	public Zvanje() {
-		
+		this.nastavnici = new ArrayList<Nastavnik>();
+		this.istorijeZvanja = new ArrayList<IstorijaZvanja>();
 	}
 
 	public Zvanje(int idZvanja, String zvanje, List<Nastavnik> nastavnici, List<IstorijaZvanja> istorijeZvanja) {

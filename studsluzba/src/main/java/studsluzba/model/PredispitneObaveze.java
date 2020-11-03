@@ -1,6 +1,7 @@
 package studsluzba.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -41,7 +42,7 @@ public class PredispitneObaveze implements Serializable {
 	private List<OsvojeniPredispitniPoeni> osvojeniPredispitniPoeni;
 	
 	public PredispitneObaveze() {
-		
+		this.osvojeniPredispitniPoeni = new ArrayList<OsvojeniPredispitniPoeni>();
 	}
 
 	public PredispitneObaveze(int idPredispitnihObaveza, String vrstaPredispitnihObaveza, int maxBrPredispitnihPoena,

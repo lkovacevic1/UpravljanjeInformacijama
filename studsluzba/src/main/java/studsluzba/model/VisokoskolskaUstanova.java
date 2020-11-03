@@ -1,6 +1,7 @@
 package studsluzba.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -26,7 +27,7 @@ public class VisokoskolskaUstanova implements Serializable{
 	private List<Student> studenti;
 
 	public VisokoskolskaUstanova() {
-	
+		this.studenti = new ArrayList<Student>();
 	}
 
 	public VisokoskolskaUstanova(int idVisokoskolskeUstanove, String nazivVisokoskolskeUstanove,

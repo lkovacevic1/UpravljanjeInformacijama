@@ -2,6 +2,7 @@ package studsluzba.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class IspitniRok implements Serializable {
 	private SkolskaGodina skolskaGodina;
 	
 	public IspitniRok() {
-		
+		this.ispiti = new ArrayList<Ispit>();
 	}
 
 	public IspitniRok(int idIspitnogRoka, LocalDate datumPocetkaIspitnogRoka, LocalDate datumZavrsetkaIspitnogRoka,

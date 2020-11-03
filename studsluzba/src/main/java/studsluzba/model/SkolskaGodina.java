@@ -1,6 +1,7 @@
 package studsluzba.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -36,7 +37,10 @@ public class SkolskaGodina  implements Serializable {
 	private List<DrziPredmet> drziPredmete;
 	
 	public SkolskaGodina() {
-		
+		this.nastavnici = new ArrayList<Nastavnik>();
+		this.ispitniRokovi = new ArrayList<IspitniRok>();
+		this.predispitneObaveze = new ArrayList<PredispitneObaveze>();
+		this.drziPredmete = new ArrayList<DrziPredmet>();
 	}
 
 	public SkolskaGodina(int idSkolskeGodine, int skolskaGodina, boolean aktivna, List<Nastavnik> nastavnici,

@@ -2,6 +2,7 @@ package studsluzba.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
@@ -23,7 +24,7 @@ public class ObnovaGodine extends AktivnostStudenta implements Serializable {
 			List<Predmet> predmeti) {
 		super(idAktivnostiStudenta, datum, napomena, indeks);
 		this.godinaObnove = godinaObnove;
-		this.predmeti = predmeti;
+		this.predmeti = new ArrayList<Predmet>();
 	}
 
 	public int getGodinaObnove() {
