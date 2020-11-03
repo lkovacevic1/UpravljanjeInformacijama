@@ -5,17 +5,20 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import studsluzba.repositories.SrednjaSkolaRepository;
+import studsluzba.repositories.VrstaStudijaRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SrednjaSkolaRepositroyTest {
+public class VrstaStudijaRepositoryTest {
 	
 	@Autowired
-	SrednjaSkolaRepository srednjaSkolaRepo;
+	VrstaStudijaRepository vrstaStudijaRepo;
 	
 	@Test
-	public void saveSrednjaSkolaTest() {
+	public void saveVrstaStudijaTest() {
+		
+		
 		
 	}
+
 }
