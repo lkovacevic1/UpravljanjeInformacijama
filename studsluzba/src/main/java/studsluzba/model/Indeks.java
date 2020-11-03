@@ -2,6 +2,7 @@ package studsluzba.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -57,6 +58,7 @@ public class Indeks implements Serializable {
 	private UpisGodine upisGodine;
 	
 	public Indeks() {
+		
 		
 	}
 

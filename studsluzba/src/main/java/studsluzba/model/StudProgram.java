@@ -2,6 +2,8 @@ package studsluzba.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -36,6 +38,8 @@ public class StudProgram implements Serializable {
 
 	public StudProgram() {
 		
+		this.indeksi = new ArrayList<Indeks>();
+		this.predmeti = new ArrayList<Predmet>();
 	}
 
 	public StudProgram(int idstudProgram, String oznaka, String nazivStudPrograma, int godinaAkreditacije,
