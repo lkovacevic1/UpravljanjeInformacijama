@@ -9,8 +9,8 @@ import studsluzba.model.Student;
 
 public interface StudentRepository extends CrudRepository<Student, Integer> {
 	
-	//selekcija studenta preko id
+	/*//selekcija studenta preko id
 	@Query("select s form Student s join fetch s.indeks i where i.idIndeks like :id")
-	Student findStudentByID(int id);
+	Student findStudentByID(int id);*/
 	
 }
