@@ -5,7 +5,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,14 +18,14 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
-@NamedQuery(name="Indeks.findAll", query="SELECT i FROM Indeks i")
+@NamedQuery(name = "Indeks.findAll", query = "SELECT i FROM Indeks i")
 public class Indeks implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idIndeks;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idstudent")
 	private Student student;
@@ -32,33 +34,33 @@ public class Indeks implements Serializable {
 	private int brojIndexa;
 	private boolean aktivan;
 	private LocalDate datumAktivacijeIndexa;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idstudProgram")
 	private StudProgram studProgram;
-	
+
 	@ManyToMany(mappedBy = "indeksi")
 	private List<DrziPredmet> drziPredmete;
-	
+
 	@OneToMany(mappedBy = "indeks")
 	private List<PolozenPredmet> polozeniPredmeti;
 
 	@OneToMany(mappedBy = "indeks")
 	private List<PrijavaIspita> prijavaIspita;
-	
+
 	@OneToMany(mappedBy = "indeks")
 	private List<OsvojeniPredispitniPoeni> osvojeniPredispitniPOeni;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idObnovaGodine")
 	private ObnovaGodine obnovaGodine;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idUpisGodine")
 	private UpisGodine upisGodine;
-	
+
 	public Indeks() {
-		
+
 		this.drziPredmete = new ArrayList<DrziPredmet>();
 		this.polozeniPredmeti = new ArrayList<PolozenPredmet>();
 		this.prijavaIspita = new ArrayList<PrijavaIspita>();
@@ -197,9 +199,7 @@ public class Indeks implements Serializable {
 	public String toString() {
 		return "Indeks [idIndeks=" + idIndeks + ", student=" + student + ", godinaUpisa=" + godinaUpisa
 				+ ", brojIndexa=" + brojIndexa + ", aktivan=" + aktivan + ", datumAktivacijeIndexa="
-				+ datumAktivacijeIndexa + ", studProgram=" + studProgram + ", drziPredmete=" + drziPredmete
-				+ ", polozeniPredmeti=" + polozeniPredmeti + ", prijavaIspita=" + prijavaIspita
-				+ ", osvojeniPredispitniPOeni=" + osvojeniPredispitniPOeni + ", obnovaGodine=" + obnovaGodine
-				+ ", upisGodine=" + upisGodine + "]";
+				+ datumAktivacijeIndexa + "]";
 	}
+
 }

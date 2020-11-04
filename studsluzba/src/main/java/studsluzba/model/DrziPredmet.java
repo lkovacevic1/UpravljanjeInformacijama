@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,29 +17,29 @@ import javax.persistence.ManyToOne;
 @Entity
 public class DrziPredmet implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idDrziPredmet;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idNastavnik")
 	private Nastavnik nastavnik;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idSkolskeGodine")
 	private SkolskaGodina skolskaGodina;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idPredmeta")
 	private Predmet predmet;
-	
+
 	@ManyToMany
 	@JoinColumn(name = "idIndeks")
 	private List<Indeks> indeksi;
 
 	public DrziPredmet() {
-		
+
 		this.indeksi = new ArrayList<Indeks>();
 	}
 
@@ -98,6 +100,6 @@ public class DrziPredmet implements Serializable {
 	@Override
 	public String toString() {
 		return "DrziPredmet [idDrziPredmet=" + idDrziPredmet + ", nastavnik=" + nastavnik + ", skolskaGodina="
-				+ skolskaGodina + ", predmet=" + predmet + ", indeksi=" + indeksi + "]";
+				+ skolskaGodina + ", predmet=" + predmet + "]";
 	}
 }

@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -92,6 +94,7 @@ public class IstorijaZvanja implements Serializable {
 	@Override
 	public String toString() {
 		return "IstorijaZvanja [idIstorijeZvanja=" + idIstorijeZvanja + ", datumIzboraZvanja=" + datumIzboraZvanja
-				+ ", uzaNaucnaOblast=" + uzaNaucnaOblast + ", zvanje=" + zvanje + ", nastavnik=" + nastavnik + "]";
+				+ ", uzaNaucnaOblast=" + uzaNaucnaOblast + "]";
 	}
+
 }

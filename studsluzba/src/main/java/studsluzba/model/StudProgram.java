@@ -6,18 +6,17 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * The persistent class for the studprogram database table.
  * 
  */
 @Entity
-@NamedQuery(name="StudProgram.findAll", query="SELECT s FROM StudProgram s")
-public class StudProgram implements Serializable {
+@NamedQuery(name = "StudProgram.findAll", query = "SELECT s FROM StudProgram s")
+public class StudProgram {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idstudProgram;
 
 	private String oznaka;
@@ -25,19 +24,19 @@ public class StudProgram implements Serializable {
 	private int godinaAkreditacije;
 	private String nazivZvanjaPoZavrsetkuStudija;
 	private int brojSemestara;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idVrstaStudija")
 	private VrstaStudija vrstaStudija;
-	
-	@OneToMany(mappedBy="studProgram")
+
+	@OneToMany(mappedBy = "studProgram")
 	private List<Indeks> indeksi;
-	
-	@OneToMany(mappedBy="studProgram")
+
+	@OneToMany(mappedBy = "studProgram")
 	private List<Predmet> predmeti;
 
 	public StudProgram() {
-		
+
 		this.indeksi = new ArrayList<Indeks>();
 		this.predmeti = new ArrayList<Predmet>();
 	}
@@ -138,6 +137,7 @@ public class StudProgram implements Serializable {
 		return "StudProgram [idstudProgram=" + idstudProgram + ", oznaka=" + oznaka + ", nazivStudPrograma="
 				+ nazivStudPrograma + ", godinaAkreditacije=" + godinaAkreditacije + ", nazivZvanjaPoZavrsetkuStudija="
 				+ nazivZvanjaPoZavrsetkuStudija + ", brojSemestara=" + brojSemestara + ", vrstaStudija=" + vrstaStudija
-				+ ", indeksi=" + indeksi + ", predmeti=" + predmeti + "]";
+				+ "]";
 	}
+
 }

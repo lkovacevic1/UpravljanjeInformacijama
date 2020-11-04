@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,25 +18,24 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
-@NamedQuery(name="IspitniRok.findAll", query="SELECT i FROM IspitniRok i")
+@NamedQuery(name = "IspitniRok.findAll", query = "SELECT i FROM IspitniRok i")
 public class IspitniRok implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idIspitnogRoka;
-	
+
 	private LocalDate datumPocetkaIspitnogRoka;
 	private LocalDate datumZavrsetkaIspitnogRoka;
-	
-	@OneToMany(mappedBy="ispitniRok")
+
+	@OneToMany(mappedBy = "ispitniRok")
 	private List<Ispit> ispiti;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idSkolskeGodine")
 	private SkolskaGodina skolskaGodina;
-	
+
 	public IspitniRok() {
 		this.ispiti = new ArrayList<Ispit>();
 	}
@@ -96,7 +97,6 @@ public class IspitniRok implements Serializable {
 	@Override
 	public String toString() {
 		return "IspitniRok [idIspitnogRoka=" + idIspitnogRoka + ", datumPocetkaIspitnogRoka=" + datumPocetkaIspitnogRoka
-				+ ", datumZavrsetkaIspitnogRoka=" + datumZavrsetkaIspitnogRoka + ", ispiti=" + ispiti
-				+ ", skolskaGodina=" + skolskaGodina + "]";
+				+ ", datumZavrsetkaIspitnogRoka=" + datumZavrsetkaIspitnogRoka + "]";
 	}
 }

@@ -2,12 +2,15 @@ package studsluzba.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -24,18 +27,22 @@ private static final long serialVersionUID = 1L;
 	protected String napomena;
 	
 	@ManyToOne
+	@JoinColumn(name = "idIndeks")
 	protected Indeks indeks;
 
 	public AktivnostStudenta() {
 		
 	}
-	
-	public AktivnostStudenta(LocalDate datum, String napomena, Indeks indeks) {
+
+	public AktivnostStudenta(int idAktivnostiStudenta, LocalDate datum, String napomena, Indeks indeks) {
 		super();
+		this.idAktivnostiStudenta = idAktivnostiStudenta;
 		this.datum = datum;
 		this.napomena = napomena;
 		this.indeks = indeks;
 	}
+
+
 
 	public int getIdAktivnostiStudenta() {
 		return idAktivnostiStudenta;
@@ -76,6 +83,7 @@ private static final long serialVersionUID = 1L;
 	@Override
 	public String toString() {
 		return "AktivnostStudenta [idAktivnostiStudenta=" + idAktivnostiStudenta + ", datum=" + datum + ", napomena="
-				+ napomena + ", indeks=" + indeks + "]";
+				+ napomena + "]";
 	}
+	
 }

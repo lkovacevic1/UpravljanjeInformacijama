@@ -8,57 +8,57 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@NamedQuery(name="Student.findAll", query="SELECT s FROM Student s")
+@NamedQuery(name = "Student.findAll", query = "SELECT s FROM Student s")
 public class Student implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idstudent;
-	
-	@OneToMany(mappedBy="student")
+
+	@OneToMany(mappedBy = "student")
 	private List<Indeks> indeks;
 
 	private String ime;
-	
+
 	private String prezime;
-	
+
 	private String srednjeIme;
-	
+
 	private String jmbg;
-	
+
 	private LocalDate datumRodjenja;
-	
+
 	private String mestoRodjenja;
-	
+
 	private String drzavaRodjenja;
-	
+
 	private String drzavljanstvo;
-	
+
 	private String nacionalnost;
-	
+
 	private String pol;
-	
+
 	private String adresaPrebivalista;
-	
+
 	private String brTelefona;
-	
+
 	private String emailFakultet;
-	
+
 	private String emailPrivatan;
-	
+
 	private String brojLicneKarte;
-	
+
 	private String izdavacLicneKarte;
-	
+
 	private float uspehSrednjaSkola;
-	
+
 	private float uspehPrijemni;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idVisokoskolskeUstanove")
 	private VisokoskolskaUstanova visokoskolskaUstanova;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idSrednjeSkole")
 	private SrednjaSkola srSkola;
@@ -68,10 +68,10 @@ public class Student implements Serializable {
 	}
 
 	public Student(int idstudent, List<Indeks> indeks, String ime, String prezime, String srednjeIme, String jmbg,
-			LocalDate datumRodjenja, String mestoRodjenja, String drzavaRodjenja, String drzavljanstvo, String nacionalnost,
-			String pol, String adresaPrebivalista, String brTelefona, String emailFakultet, String emailPrivatan,
-			String brojLicneKarte, String izdavacLicneKarte, float uspehSrednjaSkola, float uspehPrijemni,
-			VisokoskolskaUstanova visokoskolskaUstanova, SrednjaSkola srSkola) {
+			LocalDate datumRodjenja, String mestoRodjenja, String drzavaRodjenja, String drzavljanstvo,
+			String nacionalnost, String pol, String adresaPrebivalista, String brTelefona, String emailFakultet,
+			String emailPrivatan, String brojLicneKarte, String izdavacLicneKarte, float uspehSrednjaSkola,
+			float uspehPrijemni, VisokoskolskaUstanova visokoskolskaUstanova, SrednjaSkola srSkola) {
 		super();
 		this.idstudent = idstudent;
 		this.indeks = indeks;
@@ -279,13 +279,14 @@ public class Student implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Student [idstudent=" + idstudent + ", indeks=" + indeks + ", ime=" + ime + ", prezime=" + prezime
-				+ ", srednjeIme=" + srednjeIme + ", jmbg=" + jmbg + ", datumRodjenja=" + datumRodjenja
-				+ ", mestoRodjenja=" + mestoRodjenja + ", drzavaRodjenja=" + drzavaRodjenja + ", drzavljanstvo="
-				+ drzavljanstvo + ", nacionalnost=" + nacionalnost + ", pol=" + pol + ", adresaPrebivalista="
-				+ adresaPrebivalista + ", brTelefona=" + brTelefona + ", emailFakultet=" + emailFakultet
-				+ ", emailPrivatan=" + emailPrivatan + ", brojLicneKarte=" + brojLicneKarte + ", izdavacLicneKarte="
-				+ izdavacLicneKarte + ", uspehSrednjaSkola=" + uspehSrednjaSkola + ", uspehPrijemni=" + uspehPrijemni
+		return "Student [idstudent=" + idstudent + ", ime=" + ime + ", prezime=" + prezime + ", srednjeIme="
+				+ srednjeIme + ", jmbg=" + jmbg + ", datumRodjenja=" + datumRodjenja + ", mestoRodjenja="
+				+ mestoRodjenja + ", drzavaRodjenja=" + drzavaRodjenja + ", drzavljanstvo=" + drzavljanstvo
+				+ ", nacionalnost=" + nacionalnost + ", pol=" + pol + ", adresaPrebivalista=" + adresaPrebivalista
+				+ ", brTelefona=" + brTelefona + ", emailFakultet=" + emailFakultet + ", emailPrivatan=" + emailPrivatan
+				+ ", brojLicneKarte=" + brojLicneKarte + ", izdavacLicneKarte=" + izdavacLicneKarte
+				+ ", uspehSrednjaSkola=" + uspehSrednjaSkola + ", uspehPrijemni=" + uspehPrijemni
 				+ ", visokoskolskaUstanova=" + visokoskolskaUstanova + ", srSkola=" + srSkola + "]";
 	}
+
 }

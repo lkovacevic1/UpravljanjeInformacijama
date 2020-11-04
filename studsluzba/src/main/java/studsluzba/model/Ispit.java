@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,40 +20,40 @@ import javax.persistence.OneToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-@NamedQuery(name="Ispit.findAll", query="SELECT i FROM Ispit i")
+@NamedQuery(name = "Ispit.findAll", query = "SELECT i FROM Ispit i")
 public class Ispit implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idIspit;
-	
+
 	private LocalDate datumOdrzavanjaIspita;
 	SimpleDateFormat localDateFormat = new SimpleDateFormat("HH:mm:ss");
-    private String vremeOdrzavanjaIspita = localDateFormat.format(new Date());
-    private boolean zakljucenIspit;
-    
-    @ManyToOne
+	private String vremeOdrzavanjaIspita = localDateFormat.format(new Date());
+	private boolean zakljucenIspit;
+
+	@ManyToOne
 	@JoinColumn(name = "idPredmeta")
 	private Predmet predmet;
-    
-    @ManyToOne
+
+	@ManyToOne
 	@JoinColumn(name = "idNastavnik")
 	private Nastavnik nastavnik;
-    
-    @ManyToOne
+
+	@ManyToOne
 	@JoinColumn(name = "idIspitnogRoka")
 	private IspitniRok ispitniRok;
-    
-    @OneToOne(mappedBy = "ispit")
-    private PolozenPredmet polozeniPredmet;
-    
-    @OneToMany(mappedBy = "ispit")
+
+	@OneToOne(mappedBy = "ispit")
+	private PolozenPredmet polozeniPredmet;
+
+	@OneToMany(mappedBy = "ispit")
 	private List<PrijavaIspita> prijavaIspita;
 
-    public Ispit() {
-    	this.prijavaIspita = new ArrayList<PrijavaIspita>();
-    }
+	public Ispit() {
+		this.prijavaIspita = new ArrayList<PrijavaIspita>();
+	}
 
 	public Ispit(int idIspit, LocalDate datumOdrzavanjaIspita, SimpleDateFormat localDateFormat,
 			String vremeOdrzavanjaIspita, boolean zakljucenIspit, Predmet predmet, Nastavnik nastavnik,
@@ -157,7 +159,7 @@ public class Ispit implements Serializable {
 	public String toString() {
 		return "Ispit [idIspit=" + idIspit + ", datumOdrzavanjaIspita=" + datumOdrzavanjaIspita + ", localDateFormat="
 				+ localDateFormat + ", vremeOdrzavanjaIspita=" + vremeOdrzavanjaIspita + ", zakljucenIspit="
-				+ zakljucenIspit + ", predmet=" + predmet + ", nastavnik=" + nastavnik + ", ispitniRok=" + ispitniRok
-				+ ", polozeniPredmet=" + polozeniPredmet + ", prijavaIspita=" + prijavaIspita + "]";
+				+ zakljucenIspit + "]";
 	}
+	
 }

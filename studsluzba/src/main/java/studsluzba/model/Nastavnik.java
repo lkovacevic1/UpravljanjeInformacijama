@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,45 +17,40 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
-@NamedQuery(name="Nastavnik.findAll", query="SELECT n FROM Nastavnik n")
+@NamedQuery(name = "Nastavnik.findAll", query = "SELECT n FROM Nastavnik n")
 public class Nastavnik implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idNastavnik;
-	
+
 	private String ime;
 	private String prezime;
 	private String srednjeIme;
 	private String email;
 	private String zavrsenaVisokoskolskaUstanova;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idZvanja")
 	private Zvanje zvanje;
-	
-	@OneToMany(mappedBy="nastavnik")
+
+	@OneToMany(mappedBy = "nastavnik")
 	private List<IstorijaZvanja> istorijeZvanja;
-	
-	@ManyToMany
-	@JoinColumn(name="idSkolskeGodine")
-	private List<SkolskaGodina> skolskeGodine;
-	
-	@OneToMany(mappedBy="nastavnik")
+
+	@OneToMany(mappedBy = "nastavnik")
 	private List<DrziPredmet> drziPredmete;
-	
+
 	@OneToMany
 	@JoinColumn(name = "idPredispitnihObaveza")
 	private List<PredispitneObaveze> predispitneObaveze;
-	
+
 	@OneToMany
 	@JoinColumn(name = "idIspit")
 	private List<Ispit> ispiti;
-	
+
 	public Nastavnik() {
 		this.istorijeZvanja = new ArrayList<IstorijaZvanja>();
-		this.skolskeGodine = new ArrayList<SkolskaGodina>();
 		this.drziPredmete = new ArrayList<DrziPredmet>();
 		this.predispitneObaveze = new ArrayList<PredispitneObaveze>();
 		this.ispiti = new ArrayList<Ispit>();
@@ -61,7 +58,7 @@ public class Nastavnik implements Serializable {
 
 	public Nastavnik(int idNastavnik, String ime, String prezime, String srednjeIme, String email,
 			String zavrsenaVisokoskolskaUstanova, Zvanje zvanje, List<IstorijaZvanja> istorijeZvanja,
-			List<SkolskaGodina> skolskeGodine, List<DrziPredmet> drziPredmete,
+			List<DrziPredmet> drziPredmete,
 			List<PredispitneObaveze> predispitneObaveze, List<Ispit> ispiti) {
 		super();
 		this.idNastavnik = idNastavnik;
@@ -72,7 +69,6 @@ public class Nastavnik implements Serializable {
 		this.zavrsenaVisokoskolskaUstanova = zavrsenaVisokoskolskaUstanova;
 		this.zvanje = zvanje;
 		this.istorijeZvanja = istorijeZvanja;
-		this.skolskeGodine = skolskeGodine;
 		this.drziPredmete = drziPredmete;
 		this.predispitneObaveze = predispitneObaveze;
 		this.ispiti = ispiti;
@@ -142,14 +138,6 @@ public class Nastavnik implements Serializable {
 		this.istorijeZvanja = istorijeZvanja;
 	}
 
-	public List<SkolskaGodina> getSkolskeGodine() {
-		return skolskeGodine;
-	}
-
-	public void setSkolskeGodine(List<SkolskaGodina> skolskeGodine) {
-		this.skolskeGodine = skolskeGodine;
-	}
-
 	public List<DrziPredmet> getDrziPredmete() {
 		return drziPredmete;
 	}
@@ -182,8 +170,6 @@ public class Nastavnik implements Serializable {
 	public String toString() {
 		return "Nastavnik [idNastavnik=" + idNastavnik + ", ime=" + ime + ", prezime=" + prezime + ", srednjeIme="
 				+ srednjeIme + ", email=" + email + ", zavrsenaVisokoskolskaUstanova=" + zavrsenaVisokoskolskaUstanova
-				+ ", zvanje=" + zvanje + ", istorijeZvanja=" + istorijeZvanja + ", skolskeGodine=" + skolskeGodine
-				+ ", drziPredmete=" + drziPredmete + ", predispitneObaveze=" + predispitneObaveze + ", ispiti=" + ispiti
 				+ "]";
 	}
 }

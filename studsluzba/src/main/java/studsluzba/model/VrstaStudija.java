@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,18 +13,18 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
-@NamedQuery(name="VrstaStudija.findAll", query="SELECT v FROM VrstaStudija v")
-public class VrstaStudija implements Serializable {
+@NamedQuery(name = "VrstaStudija.findAll", query = "SELECT v FROM VrstaStudija v")
+public class VrstaStudija {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idVrstaStudija;
-	
+
 	private String punNazivStudija;
 	private String skraceniNazivStudija;
-	
-	@OneToMany(mappedBy="vrstaStudija")
+
+	@OneToMany(mappedBy = "vrstaStudija")
 	private List<StudProgram> studProgrami;
 
 	public VrstaStudija() {
@@ -78,6 +79,7 @@ public class VrstaStudija implements Serializable {
 	@Override
 	public String toString() {
 		return "VrstaStudija [idVrstaStudija=" + idVrstaStudija + ", punNazivStudija=" + punNazivStudija
-				+ ", skraceniNazivStudija=" + skraceniNazivStudija + ", studProgrami=" + studProgrami + "]";
+				+ ", skraceniNazivStudija=" + skraceniNazivStudija + "]";
 	}
+
 }

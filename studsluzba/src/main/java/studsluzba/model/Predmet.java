@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,18 +16,18 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
-@NamedQuery(name="Predmet.findAll", query="SELECT p FROM Predmet p")
+@NamedQuery(name = "Predmet.findAll", query = "SELECT p FROM Predmet p")
 public class Predmet implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPredmeta;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idstudProgram")
 	private StudProgram studProgram;
-	
+
 	private String sifra;
 	private String nazivPredmeta;
 	private String opisPredmeta;
@@ -33,27 +35,27 @@ public class Predmet implements Serializable {
 	private int semestar;
 	private int fondCasovaPredavanja;
 	private int fondCasovaVezbi;
-	
-	@OneToMany(mappedBy="predmet")
+
+	@OneToMany(mappedBy = "predmet")
 	private List<PredispitneObaveze> predispitneObaveze;
-	
-	@OneToMany(mappedBy="predmet")
+
+	@OneToMany(mappedBy = "predmet")
 	private List<Ispit> ispiti;
-	
-	@OneToMany(mappedBy="predmet")
+
+	@OneToMany(mappedBy = "predmet")
 	private List<DrziPredmet> drziPredmete;
-	
+
 	@OneToMany(mappedBy = "predmet")
 	private List<PolozenPredmet> polozeniPredmeti;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idUpisGodine")
 	private UpisGodine upisGodine;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idObnovaGodine")
 	private ObnovaGodine obnovaGodine;
-	
+
 	public Predmet() {
 		this.predispitneObaveze = new ArrayList<PredispitneObaveze>();
 		this.ispiti = new ArrayList<Ispit>();
@@ -212,8 +214,8 @@ public class Predmet implements Serializable {
 		return "Predmet [idPredmeta=" + idPredmeta + ", studProgram=" + studProgram + ", sifra=" + sifra
 				+ ", nazivPredmeta=" + nazivPredmeta + ", opisPredmeta=" + opisPredmeta + ", brojESPBpoena="
 				+ brojESPBpoena + ", semestar=" + semestar + ", fondCasovaPredavanja=" + fondCasovaPredavanja
-				+ ", fondCasovaVezbi=" + fondCasovaVezbi + ", predispitneObaveze=" + predispitneObaveze + ", ispiti="
-				+ ispiti + ", drziPredmete=" + drziPredmete + ", polozeniPredmeti=" + polozeniPredmeti + ", upisGodine="
-				+ upisGodine + ", obnovaGodine=" + obnovaGodine + "]";
+				+ ", fondCasovaVezbi=" + fondCasovaVezbi + ", upisGodine=" + upisGodine + ", obnovaGodine="
+				+ obnovaGodine + "]";
 	}
+	
 }

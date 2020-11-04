@@ -4,32 +4,26 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
-
 import javax.persistence.*;
 
 @Entity
-@NamedQuery(name="SrednjaSkola.findAll", query="SELECT sk FROM SrednjaSkola sk")
-public class SrednjaSkola  implements Serializable{
+@NamedQuery(name = "SrednjaSkola.findAll", query = "SELECT sk FROM SrednjaSkola sk")
+public class SrednjaSkola implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idSrednjeSkole;
-	
+
 	private String nazivSrednjeSkole;
-	
+
 	private String mestoSrednjeSkole;
-	
+
 	private String vrstaSrednjeSkole;
-	
-	@OneToMany(mappedBy="srSkola")
+
+	@OneToMany(mappedBy = "srSkola")
 	private List<Student> studenti;
-	
+
 	public SrednjaSkola() {
 		this.studenti = new ArrayList<Student>();
 	}
@@ -91,7 +85,7 @@ public class SrednjaSkola  implements Serializable{
 	@Override
 	public String toString() {
 		return "SrednjaSkola [idSrednjeSkole=" + idSrednjeSkole + ", nazivSrednjeSkole=" + nazivSrednjeSkole
-				+ ", mestoSrednjeSkole=" + mestoSrednjeSkole + ", vrstaSrednjeSkole=" + vrstaSrednjeSkole
-				+ ", studenti=" + studenti + "]";
+				+ ", mestoSrednjeSkole=" + mestoSrednjeSkole + ", vrstaSrednjeSkole=" + vrstaSrednjeSkole + "]";
 	}
+
 }

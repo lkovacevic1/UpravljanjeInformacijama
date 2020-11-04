@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,22 +16,21 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
-@NamedQuery(name="PredispitneObaveze.findAll", query="SELECT p FROM PredispitneObaveze p")
+@NamedQuery(name = "PredispitneObaveze.findAll", query = "SELECT p FROM PredispitneObaveze p")
 public class PredispitneObaveze implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPredispitnihObaveza;
-	
-	
+
 	private String vrstaPredispitnihObaveza;
 	private int maxBrPredispitnihPoena;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idPredmeta")
 	private Predmet predmet;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idSkolskeGodine")
 	private SkolskaGodina skolskaGodina;
@@ -37,10 +38,10 @@ public class PredispitneObaveze implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "idNastavnik")
 	private Nastavnik nastavnik;
-	
+
 	@OneToMany(mappedBy = "predispitneObaveze")
 	private List<OsvojeniPredispitniPoeni> osvojeniPredispitniPoeni;
-	
+
 	public PredispitneObaveze() {
 		this.osvojeniPredispitniPoeni = new ArrayList<OsvojeniPredispitniPoeni>();
 	}
@@ -122,7 +123,7 @@ public class PredispitneObaveze implements Serializable {
 	public String toString() {
 		return "PredispitneObaveze [idPredispitnihObaveza=" + idPredispitnihObaveza + ", vrstaPredispitnihObaveza="
 				+ vrstaPredispitnihObaveza + ", maxBrPredispitnihPoena=" + maxBrPredispitnihPoena + ", predmet="
-				+ predmet + ", skolskaGodina=" + skolskaGodina + ", nastavnik=" + nastavnik
-				+ ", osvojeniPredispitniPoeni=" + osvojeniPredispitniPoeni + "]";
+				+ predmet + ", skolskaGodina=" + skolskaGodina + ", nastavnik=" + nastavnik + "]";
 	}
+
 }

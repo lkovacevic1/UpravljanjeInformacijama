@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,19 +12,19 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Zvanje implements Serializable {
+public class Zvanje {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idZvanja;
-	
+
 	private String zvanje;
-	
-	@OneToMany(mappedBy="zvanje")
+
+	@OneToMany(mappedBy = "zvanje")
 	private List<Nastavnik> nastavnici;
-	
-	@OneToMany(mappedBy="zvanje")
+
+	@OneToMany(mappedBy = "zvanje")
 	private List<IstorijaZvanja> istorijeZvanja;
 
 	public Zvanje() {
@@ -77,7 +78,7 @@ public class Zvanje implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Zvanje [idZvanja=" + idZvanja + ", zvanje=" + zvanje + ", nastavnici=" + nastavnici
-				+ ", istorijeZvanja=" + istorijeZvanja + "]";
+		return "Zvanje [idZvanja=" + idZvanja + ", zvanje=" + zvanje + "]";
 	}
+
 }

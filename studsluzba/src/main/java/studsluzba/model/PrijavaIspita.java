@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,29 +16,29 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 @Entity
-@NamedQuery(name="PrijavaIspita.findAll", query="SELECT p FROM PrijavaIspita p")
+@NamedQuery(name = "PrijavaIspita.findAll", query = "SELECT p FROM PrijavaIspita p")
 public class PrijavaIspita implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPrijavaIspita;
-	
+
 	private LocalDate datumPrijaveIspita;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idIspit")
 	private Ispit ispit;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idIndeks")
 	private Indeks indeks;
-	
+
 	@OneToOne(mappedBy = "prijavaIspita")
 	private IzlazakNaIspit izlazakNaIspit;
 
 	public PrijavaIspita() {
-		
+
 	}
 
 	public PrijavaIspita(int idPrijavaIspita, LocalDate datumPrijaveIspita, Ispit ispit, Indeks indeks,
@@ -98,4 +100,5 @@ public class PrijavaIspita implements Serializable {
 		return "PrijavaIspita [idPrijavaIspita=" + idPrijavaIspita + ", datumPrijaveIspita=" + datumPrijaveIspita
 				+ ", ispit=" + ispit + ", indeks=" + indeks + ", izlazakNaIspit=" + izlazakNaIspit + "]";
 	}
+
 }

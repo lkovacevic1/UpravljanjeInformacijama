@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -12,21 +13,20 @@ import javax.persistence.ManyToMany;
 @Entity
 @DiscriminatorValue("upis_godine")
 public class UpisGodine extends AktivnostStudenta implements Serializable {
-	
+
 	private int godinaUpisa;
-	
+
 	@ManyToMany(mappedBy = "upisGodine")
 	private List<Predmet> predmeti;
-	
+
 	public UpisGodine() {
-		
+
 	}
-	
-	public UpisGodine(LocalDate datum, String napomena, Indeks indeks, int godinaUpisa,
-			List<Predmet> predmeti) {
-		super(datum, napomena, indeks);
+
+	public UpisGodine(int godinaUpisa, List<Predmet> predmeti) {
+		super();
 		this.godinaUpisa = godinaUpisa;
-		this.predmeti = new ArrayList<Predmet>();
+		this.predmeti = predmeti;
 	}
 
 	public int getGodinaUpisa() {
@@ -47,6 +47,7 @@ public class UpisGodine extends AktivnostStudenta implements Serializable {
 
 	@Override
 	public String toString() {
-		return "UpisGodine [godinaUpisa=" + godinaUpisa + ", predmeti=" + predmeti + "]";
+		return "UpisGodine [godinaUpisa=" + godinaUpisa + "]";
 	}
+
 }

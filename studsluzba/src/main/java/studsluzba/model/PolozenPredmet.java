@@ -2,7 +2,9 @@ package studsluzba.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,29 +15,29 @@ import javax.persistence.OneToOne;
 @Entity
 public class PolozenPredmet implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPolozenPredmet;
 
 	private boolean polozen;
-	
+
 	private int ocena;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idIndeks")
 	private Indeks indeks;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idPredmeta")
 	private Predmet predmet;
-	
+
 	@OneToOne
 	@JoinColumn(name = "idIspit")
 	private Ispit ispit;
-	
+
 	public PolozenPredmet() {
-		
+
 	}
 
 	public PolozenPredmet(int idPolozenPredmet, boolean polozen, int ocena, Indeks indeks, Predmet predmet,
@@ -106,4 +108,5 @@ public class PolozenPredmet implements Serializable {
 		return "PolozenPredmet [idPolozenPredmet=" + idPolozenPredmet + ", polozen=" + polozen + ", ocena=" + ocena
 				+ ", indeks=" + indeks + ", predmet=" + predmet + ", ispit=" + ispit + "]";
 	}
+
 }

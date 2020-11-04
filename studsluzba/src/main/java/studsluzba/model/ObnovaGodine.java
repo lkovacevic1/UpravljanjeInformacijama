@@ -5,30 +5,31 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 
 @Entity
 @DiscriminatorValue("obnova_godine")
-@NamedQuery(name="ObnovaGodine.findAll", query="SELECT o FROM ObnovaGodine o")
+@NamedQuery(name = "ObnovaGodine.findAll", query = "SELECT o FROM ObnovaGodine o")
 public class ObnovaGodine extends AktivnostStudenta implements Serializable {
-	
+
 	private int godinaObnove;
-	
+
 	@ManyToMany(mappedBy = "obnovaGodine")
 	private List<Predmet> predmeti;
-	
+
 	public ObnovaGodine() {
 		this.predmeti = new ArrayList<Predmet>();
 	}
 
-	public ObnovaGodine(LocalDate datum, String napomena, Indeks indeks, int godinaObnove,
-			List<Predmet> predmeti) {
-		super(datum, napomena, indeks);
+	public ObnovaGodine(int godinaObnove, List<Predmet> predmeti) {
+		super();
 		this.godinaObnove = godinaObnove;
-		this.predmeti = new ArrayList<Predmet>();
+		this.predmeti = predmeti;
 	}
 
 	public int getGodinaObnove() {
@@ -49,6 +50,7 @@ public class ObnovaGodine extends AktivnostStudenta implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ObnovaGodine [godinaObnove=" + godinaObnove + ", predmeti=" + predmeti + "]";
+		return "ObnovaGodine [godinaObnove=" + godinaObnove + "]";
 	}
+
 }
