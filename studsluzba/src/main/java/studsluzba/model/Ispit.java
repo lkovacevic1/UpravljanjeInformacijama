@@ -29,8 +29,7 @@ public class Ispit implements Serializable {
 	private int idIspit;
 
 	private LocalDate datumOdrzavanjaIspita;
-	SimpleDateFormat localDateFormat = new SimpleDateFormat("HH:mm:ss");
-	private String vremeOdrzavanjaIspita = localDateFormat.format(new Date());
+	private int vremeOdrzavanjaIspita;
 	private boolean zakljucenIspit;
 
 	@ManyToOne
@@ -55,13 +54,12 @@ public class Ispit implements Serializable {
 		this.prijavaIspita = new ArrayList<PrijavaIspita>();
 	}
 
-	public Ispit(int idIspit, LocalDate datumOdrzavanjaIspita, SimpleDateFormat localDateFormat,
-			String vremeOdrzavanjaIspita, boolean zakljucenIspit, Predmet predmet, Nastavnik nastavnik,
+	public Ispit(int idIspit, LocalDate datumOdrzavanjaIspita,
+			int vremeOdrzavanjaIspita, boolean zakljucenIspit, Predmet predmet, Nastavnik nastavnik,
 			IspitniRok ispitniRok, PolozenPredmet polozeniPredmet, List<PrijavaIspita> prijavaIspita) {
 		super();
 		this.idIspit = idIspit;
 		this.datumOdrzavanjaIspita = datumOdrzavanjaIspita;
-		this.localDateFormat = localDateFormat;
 		this.vremeOdrzavanjaIspita = vremeOdrzavanjaIspita;
 		this.zakljucenIspit = zakljucenIspit;
 		this.predmet = predmet;
@@ -87,19 +85,11 @@ public class Ispit implements Serializable {
 		this.datumOdrzavanjaIspita = datumOdrzavanjaIspita;
 	}
 
-	public SimpleDateFormat getLocalDateFormat() {
-		return localDateFormat;
-	}
-
-	public void setLocalDateFormat(SimpleDateFormat localDateFormat) {
-		this.localDateFormat = localDateFormat;
-	}
-
-	public String getVremeOdrzavanjaIspita() {
+	public int getVremeOdrzavanjaIspita() {
 		return vremeOdrzavanjaIspita;
 	}
 
-	public void setVremeOdrzavanjaIspita(String vremeOdrzavanjaIspita) {
+	public void setVremeOdrzavanjaIspita(int vremeOdrzavanjaIspita) {
 		this.vremeOdrzavanjaIspita = vremeOdrzavanjaIspita;
 	}
 
@@ -157,8 +147,8 @@ public class Ispit implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Ispit [idIspit=" + idIspit + ", datumOdrzavanjaIspita=" + datumOdrzavanjaIspita + ", localDateFormat="
-				+ localDateFormat + ", vremeOdrzavanjaIspita=" + vremeOdrzavanjaIspita + ", zakljucenIspit="
+		return "Ispit [idIspit=" + idIspit + ", datumOdrzavanjaIspita=" + datumOdrzavanjaIspita
+				+", vremeOdrzavanjaIspita=" + vremeOdrzavanjaIspita + ", zakljucenIspit="
 				+ zakljucenIspit + "]";
 	}
 	
