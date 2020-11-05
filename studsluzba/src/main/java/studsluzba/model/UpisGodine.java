@@ -1,11 +1,8 @@
 package studsluzba.model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -49,5 +46,4 @@ public class UpisGodine extends AktivnostStudenta implements Serializable {
 	public String toString() {
 		return "UpisGodine [godinaUpisa=" + godinaUpisa + "]";
 	}
-
 }

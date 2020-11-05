@@ -21,7 +21,7 @@ public class PolozenPredmet implements Serializable {
 	private int idPolozenPredmet;
 
 	private boolean polozen;
-
+	private int osvojeniPoeniNaIspitu;
 	private int ocena;
 
 	@ManyToOne
@@ -41,7 +41,7 @@ public class PolozenPredmet implements Serializable {
 	}
 
 	public PolozenPredmet(int idPolozenPredmet, boolean polozen, int ocena, Indeks indeks, Predmet predmet,
-			Ispit ispit) {
+			Ispit ispit, int osvojeniPoeniNaIspitu) {
 		super();
 		this.idPolozenPredmet = idPolozenPredmet;
 		this.polozen = polozen;
@@ -49,6 +49,15 @@ public class PolozenPredmet implements Serializable {
 		this.indeks = indeks;
 		this.predmet = predmet;
 		this.ispit = ispit;
+		this.osvojeniPoeniNaIspitu = osvojeniPoeniNaIspitu;
+	}
+
+	public int getOsvojeniPoeniNaIspitu() {
+		return osvojeniPoeniNaIspitu;
+	}
+
+	public void setOsvojeniPoeniNaIspitu(int osvojeniPoeniNaIspitu) {
+		this.osvojeniPoeniNaIspitu = osvojeniPoeniNaIspitu;
 	}
 
 	public int getIdPolozenPredmet() {
@@ -105,8 +114,9 @@ public class PolozenPredmet implements Serializable {
 
 	@Override
 	public String toString() {
-		return "PolozenPredmet [idPolozenPredmet=" + idPolozenPredmet + ", polozen=" + polozen + ", ocena=" + ocena
-				+ ", indeks=" + indeks + ", predmet=" + predmet + ", ispit=" + ispit + "]";
+		return "PolozenPredmet [idPolozenPredmet=" + idPolozenPredmet + ", polozen=" + polozen
+				+ ", osvojeniPoeniNaIspitu=" + osvojeniPoeniNaIspitu + ", ocena=" + ocena + ", indeks=" + indeks
+				+ ", predmet=" + predmet + ", ispit=" + ispit + "]";
 	}
 
 }

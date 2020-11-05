@@ -139,5 +139,4 @@ public class StudProgram {
 				+ nazivZvanjaPoZavrsetkuStudija + ", brojSemestara=" + brojSemestara + ", vrstaStudija=" + vrstaStudija
 				+ "]";
 	}
-
 }
