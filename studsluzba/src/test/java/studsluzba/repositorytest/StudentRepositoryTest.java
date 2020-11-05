@@ -136,6 +136,10 @@ public class StudentRepositoryTest {
 		for(Predmet p : predmeti)
 			System.out.println(p.toString());*/
 		
+		//avgOcenaURasponuGodina
+		double ocena = polozeniPredmetRepo.avgOcenaURasponuGodina(2020);
+		System.out.println("\n" + ocena + "\n");
+		
 		////////////////////////////Student////////////////////////////
 		
 		
@@ -165,11 +169,9 @@ public class StudentRepositoryTest {
 				System.out.println(og.toString());*/
 		
 		//selekcija upisanihGodina za id indeksa
-		/*List<UpisGodine> upisGodine = studentRepo.findUpisGodineByID(1);
+		/*List<UpisGodine> upisGodine = studentRepo.findUpisGodineByID(3);
 		for(UpisGodine up : upisGodine)
 			System.out.println(up.toString());*/
-		
-		
 		
 		//selekcija polozenihPredmeta po id-u
 		/*List<PolozenPredmet> polozeniPredmeti = studentRepo.findPolozenIspitByID(1);
@@ -190,7 +192,7 @@ public class StudentRepositoryTest {
 		sk.setVrstaSrednjeSkole("gimnazija");
 		srednjaSkolaRepo.save(sk);*/
 		
-		Student s = new Student();
+		/*Student s = new Student();
 		SrednjaSkola sk = new SrednjaSkola();
 		VisokoskolskaUstanova vsu = new VisokoskolskaUstanova();
 		DrziPredmet drziPredmet = new DrziPredmet();
@@ -403,6 +405,6 @@ public class StudentRepositoryTest {
 		osvojeniPredispitniPoeni.setPredispitneObaveze(predispitneObaveze);
 		osvojeniPredispitniPoeni.setIndeks(indeks);
 		
-		osvojeniPredispitniPoeniRepo.save(osvojeniPredispitniPoeni);
+		osvojeniPredispitniPoeniRepo.save(osvojeniPredispitniPoeni);*/
 	}
 }

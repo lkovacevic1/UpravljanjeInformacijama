@@ -23,11 +23,11 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
 	 List<PolozenPredmet> findPolozenIspitByID(int id);
 	 
 	 // selekcija svih upisanih godina za id indeksa
-	/* @Query("select u from UpisGodine u join fetch u.indeks i where i.idIndeks like :id") 
-	 List<UpisGodine> findUpisGodineByID(int id);*/
+	 @Query("select u from UpisGodine u join fetch u.indeks i where i.idIndeks like :id") 
+	 List<UpisGodine> findUpisGodineByID(int id);
 	  
 	  // selekcija svih obnovljenih godina za id indeksa
-	  @Query("select o from ObnovaGodine o where o.indeks like :id") 
+	  @Query("select o from ObnovaGodine o join fetch  o.indeks i where i.idIndeks like :id") 
 	  List<ObnovaGodine> findObnovaGodineByID(int id);
 	  
 	  //selekcija studenta na osnovu imena 
@@ -45,4 +45,6 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
 	  //selekcija studenata iz odredjene srednje skole
 	  @Query("select s from Student s join fetch s.srSkola sk where sk.nazivSrednjeSkole like :naziv")
 	  List<Student> findStudentBySrednjaSkola(String naziv);
+	  
+	  
 }
