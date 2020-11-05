@@ -1,6 +1,5 @@
 package studsluzba.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
 
 import java.util.ArrayList;

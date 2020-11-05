@@ -1,5 +1,7 @@
 package studsluzba.repositories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -14,4 +16,8 @@ public interface PolozenPredmetRepository extends CrudRepository<PolozenPredmet,
 	//Prosecna ocena na ispitu
 	@Query("select avg(pp.ocena) from PolozenPredmet pp join pp.ispit i where i.idIspit like :ispit")
 	double avgOcenaNaIspitu(int ispit);
+	
+	// selekcija svih polozenih ispita za id indeksa
+	@Query("select p from PolozenPredmet p join fetch p.indeks i where i.idIndeks like :id") 
+	List<PolozenPredmet> findPolozenIspitByID(int id);
 }

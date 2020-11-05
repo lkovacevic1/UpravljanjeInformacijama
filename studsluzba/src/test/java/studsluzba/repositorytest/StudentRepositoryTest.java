@@ -1,8 +1,6 @@
 package studsluzba.repositorytest;
 
 import java.text.ParseException;
-import java.time.LocalDate;
-import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,27 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import studsluzba.model.DrziPredmet;
-import studsluzba.model.Indeks;
-import studsluzba.model.Ispit;
-import studsluzba.model.IspitniRok;
-import studsluzba.model.IstorijaZvanja;
-import studsluzba.model.IzlazakNaIspit;
-import studsluzba.model.Nastavnik;
-import studsluzba.model.ObnovaGodine;
-import studsluzba.model.OsvojeniPredispitniPoeni;
-import studsluzba.model.PolozenPredmet;
-import studsluzba.model.PredispitneObaveze;
-import studsluzba.model.Predmet;
-import studsluzba.model.PrijavaIspita;
-import studsluzba.model.SkolskaGodina;
-import studsluzba.model.SrednjaSkola;
-import studsluzba.model.StudProgram;
-import studsluzba.model.Student;
-import studsluzba.model.UpisGodine;
-import studsluzba.model.VisokoskolskaUstanova;
-import studsluzba.model.VrstaStudija;
-import studsluzba.model.Zvanje;
+
 import studsluzba.repositories.AktivnostStudentaRepository;
 import studsluzba.repositories.DrziPredmetRepository;
 import studsluzba.repositories.IndeksRepository;
@@ -190,17 +168,17 @@ public class StudentRepositoryTest {
 			System.out.println(stud.toString());*/
 		
 		//selekcija obnove godine za id indeksa
-		/*List<ObnovaGodine> obnovaGodine = studentRepo.findObnovaGodineByID(1);
+		/*List<ObnovaGodine> obnovaGodine = obnovaGodineRepo.findObnovaGodineByID(1);
 			for(ObnovaGodine og : obnovaGodine)
 				System.out.println(og.toString());*/
 		
 		//selekcija upisanihGodina za id indeksa
-		/*List<UpisGodine> upisGodine = studentRepo.findUpisGodineByID(3);
+		/*List<UpisGodine> upisGodine = upisGodineRepository.findUpisGodineByID(3);
 		for(UpisGodine up : upisGodine)
 			System.out.println(up.toString());*/
 		
 		//selekcija polozenihPredmeta po id-u
-		/*List<PolozenPredmet> polozeniPredmeti = studentRepo.findPolozenIspitByID(1);
+		/*List<PolozenPredmet> polozeniPredmeti = polozeniPredmetRepo.findPolozenIspitByID(1);
 		for(PolozenPredmet pp : polozeniPredmeti)
 			System.out.println(pp.toString());*/
 		
