@@ -134,7 +134,7 @@ public class StudentRepositoryTest {
 		System.out.println(brojac);*/
 		
 		//Selekcija ostvarenih poena na predispitnim obavezama za studenta na odredjenom predmetu u skolskoj godini
-		int i = studentRepo.selectOsvojeniPredPoeni(1, "Upravljanje informacijama");
+		int i =	osvojeniPredispitniPoeniRepo.selectOsvojeniPredPoeni(1, "Upravljanje informacijama");
 		System.out.println("\n");
 		System.out.println("\n" + i + "\n");
 		
