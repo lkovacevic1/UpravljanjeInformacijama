@@ -112,10 +112,13 @@ public class StudentRepositoryTest {
 		/*int brojac = studentRepo.countBrojIzlazakaNaIspit(1, "Upravljanje informacijama");
 		System.out.println(brojac);*/
 		
-		//Selekcija ostvarenih poena na predispitnim obavezama za studenta na odredjenom predmetu u skolskoj godini
-		int i =	osvojeniPredispitniPoeniRepo.selectOsvojeniPredPoeni(1, "Upravljanje informacijama");
-		System.out.println("\n");
-		System.out.println("\n" + i + "\n");
+		//Selekcija ostvarenih poena na predispitnim obavezama za studenta na odredjenom predmetu u skolskoj godini (Bez godine)
+		/*int i =	osvojeniPredispitniPoeniRepo.selectOsvojeniPredPoeni(1, "Upravljanje informacijama");
+		System.out.println("\n" + i + "\n");*/
+		
+		//Selekcija ostvarenih poena na predispitnim obavezama za studenta na odredjenom predmetu u skolskoj godini (Sa godinom)
+		/*int i =	osvojeniPredispitniPoeniRepo.selectOsvojeniPredPoeniSaGodinom(1, "Upravljanje informacijama", 2020);
+		System.out.println("\n" + i + "\n");*/
 		
 		//svi prijavljeni studenti za ispit
 		/*List<Student> studenti = studentRepo.findStudentByPrijavljenIspit(1);
