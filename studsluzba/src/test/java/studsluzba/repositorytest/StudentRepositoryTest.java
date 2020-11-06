@@ -1,6 +1,7 @@
 package studsluzba.repositorytest;
 
 import java.text.ParseException;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-
+import studsluzba.model.Student;
 import studsluzba.repositories.AktivnostStudentaRepository;
 import studsluzba.repositories.DrziPredmetRepository;
 import studsluzba.repositories.IndeksRepository;
@@ -126,11 +127,11 @@ public class StudentRepositoryTest {
 		System.out.println("\n" + ocena + "\n");*/
 		
 		//sortiran spisak po godini studPrograma, po godini upisa i ukupan broj poena na ispitu
-		/*List<Student> studenti = studentRepo.sortByElements();
+		List<Student> studenti = studentRepo.sortByElements();
 		System.out.println("\n");
 		for(Student s : studenti)
 			System.out.println(s.toString());
-		System.out.println("\n");*/
+		System.out.println("\n");
 		
 		////////////////////////////Studijski program i predmet////////////////////////////
 		
