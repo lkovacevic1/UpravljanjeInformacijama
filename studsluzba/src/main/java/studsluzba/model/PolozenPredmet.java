@@ -33,13 +33,16 @@ public class PolozenPredmet implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "idIspit")
 	private Ispit ispit;
+	
+	@OneToOne(mappedBy = "polozenPredmet")
+	private IzlazakNaIspit izlazakNaIspit;
 
 	public PolozenPredmet() {
 
 	}
 
 	public PolozenPredmet(int idPolozenPredmet, boolean polozen, int ocena, Indeks indeks, Predmet predmet,
-			Ispit ispit, int osvojeniPoeniNaIspitu) {
+			Ispit ispit, int osvojeniPoeniNaIspitu, IzlazakNaIspit izlazakNaIspit) {
 		super();
 		this.idPolozenPredmet = idPolozenPredmet;
 		this.polozen = polozen;
@@ -48,6 +51,7 @@ public class PolozenPredmet implements Serializable {
 		this.predmet = predmet;
 		this.ispit = ispit;
 		this.osvojeniPoeniNaIspitu = osvojeniPoeniNaIspitu;
+		this.izlazakNaIspit = izlazakNaIspit;
 	}
 
 	public int getOsvojeniPoeniNaIspitu() {
@@ -105,6 +109,14 @@ public class PolozenPredmet implements Serializable {
 	public void setIspit(Ispit ispit) {
 		this.ispit = ispit;
 	}
+	
+	public IzlazakNaIspit getIzlazakNaIspit() {
+		return izlazakNaIspit;
+	}
+
+	public void setIzlazakNaIspit(IzlazakNaIspit izlazakNaIspit) {
+		this.izlazakNaIspit = izlazakNaIspit;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -114,7 +126,7 @@ public class PolozenPredmet implements Serializable {
 	public String toString() {
 		return "PolozenPredmet [idPolozenPredmet=" + idPolozenPredmet + ", polozen=" + polozen
 				+ ", osvojeniPoeniNaIspitu=" + osvojeniPoeniNaIspitu + ", ocena=" + ocena + ", indeks=" + indeks
-				+ ", predmet=" + predmet + ", ispit=" + ispit + "]";
+				+ ", predmet=" + predmet + ", ispit=" + ispit + ", izlazakNaIspit=" + izlazakNaIspit + "]";
 	}
 
 }

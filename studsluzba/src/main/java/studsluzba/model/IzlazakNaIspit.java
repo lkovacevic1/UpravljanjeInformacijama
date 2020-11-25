@@ -20,8 +20,8 @@ public class IzlazakNaIspit implements Serializable {
 	private int idIzlazakNaIspit;
 
 	@OneToOne(orphanRemoval = true)
-	@JoinColumn(name = "idPrijavaIspita")
-	private PrijavaIspita prijavaIspita;
+	@JoinColumn(name = "idPolozenPredmet")
+	private PolozenPredmet polozenPredmet;
 
 	private boolean ponistavaIspit;
 
@@ -31,10 +31,10 @@ public class IzlazakNaIspit implements Serializable {
 
 	}
 
-	public IzlazakNaIspit(int idIzlazakNaIspit, PrijavaIspita prijavaIspita, boolean ponistavaIspit, String napomena) {
+	public IzlazakNaIspit(int idIzlazakNaIspit, PolozenPredmet polozenPredmet, boolean ponistavaIspit, String napomena) {
 		super();
 		this.idIzlazakNaIspit = idIzlazakNaIspit;
-		this.prijavaIspita = prijavaIspita;
+		this.polozenPredmet = polozenPredmet;
 		this.ponistavaIspit = ponistavaIspit;
 		this.napomena = napomena;
 	}
@@ -47,12 +47,12 @@ public class IzlazakNaIspit implements Serializable {
 		this.idIzlazakNaIspit = idIzlazakNaIspit;
 	}
 
-	public PrijavaIspita getPrijavaIspita() {
-		return prijavaIspita;
+	public PolozenPredmet getPolozenPredmet() {
+		return polozenPredmet;
 	}
 
-	public void setPrijavaIspita(PrijavaIspita prijavaIspita) {
-		this.prijavaIspita = prijavaIspita;
+	public void setPolozenPredmet(PolozenPredmet polozenPredmet) {
+		this.polozenPredmet = polozenPredmet;
 	}
 
 	public boolean isPonistavaIspit() {
