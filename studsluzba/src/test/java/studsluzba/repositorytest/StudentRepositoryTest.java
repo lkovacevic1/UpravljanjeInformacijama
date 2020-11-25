@@ -2,6 +2,7 @@ package studsluzba.repositorytest;
 
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -129,8 +130,10 @@ public class StudentRepositoryTest {
 		/////////////////////////////////////////Ispit//////////////////////////////////////////////////
 		
 		//Koliko puta je student izlazio na ispit
-		/*int brojac = studentRepo.countBrojIzlazakaNaIspit(1, "Upravljanje informacijama");
-		System.out.println(brojac);*/
+		int brojac = studentRepo.countBrojIzlazakaNaIspit(4, 2018, "RN", "Verovatnoca i statistika");
+		System.out.println("\n");
+		System.out.println(brojac);
+		System.out.println("\n");
 		
 		//Selekcija ostvarenih poena na predispitnim obavezama za studenta na odredjenom predmetu u skolskoj godini (Bez godine)
 		/*int i =	osvojeniPredispitniPoeniRepo.selectOsvojeniPredPoeni(1, "Upravljanje informacijama");
@@ -141,9 +144,11 @@ public class StudentRepositoryTest {
 		System.out.println("\n" + i + "\n");*/
 		
 		//svi prijavljeni studenti za ispit
-		/*List<Student> studenti = studentRepo.findStudentByPrijavljenIspit(1);
+		/*List<Student> studenti = studentRepo.findStudentByPrijavljenIspit("Verovatnoca i statistika");
+		System.out.println("\n");
 		for (Student s : studenti)
-			System.out.println(s.toString());*/
+			System.out.println(s.toString());
+		System.out.println("\n");*/
 		
 		//prosecna ocena na ispitu
 		/*double ocena = polozeniPredmetRepo.avgOcenaNaIspitu(1);
@@ -206,10 +211,11 @@ public class StudentRepositoryTest {
 		for(PolozenPredmet pp : polozeniPredmeti)
 			System.out.println(pp.toString());*/
 		
-		//selektovanje studenta po id-u
-		/*Student student = studentRepo.findStudentByID(1);
-		System.out.println(student.toString());*/
-		
+		//selektovanje studenta po indeksu
+		/*Student student = studentRepo.findStudentByID(4, 2018, "RN");
+		System.out.println("\n");
+		System.out.println(student.toString());
+		System.out.println("\n");*/
 		
 		//////////////////////////////////////////////////////////////////////////
 		
