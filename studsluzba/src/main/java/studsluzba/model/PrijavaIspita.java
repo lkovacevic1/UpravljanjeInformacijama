@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 
 @Entity
 @NamedQuery(name = "PrijavaIspita.findAll", query = "SELECT p FROM PrijavaIspita p")
@@ -31,21 +30,16 @@ public class PrijavaIspita implements Serializable {
 	@JoinColumn(name = "idIndeks")
 	private Indeks indeks;
 
-	@OneToOne(mappedBy = "prijavaIspita")
-	private IzlazakNaIspit izlazakNaIspit;
-
 	public PrijavaIspita() {
 
 	}
 
-	public PrijavaIspita(int idPrijavaIspita, LocalDate datumPrijaveIspita, Ispit ispit, Indeks indeks,
-			IzlazakNaIspit izlazakNaIspit) {
+	public PrijavaIspita(int idPrijavaIspita, LocalDate datumPrijaveIspita, Ispit ispit, Indeks indeks) {
 		super();
 		this.idPrijavaIspita = idPrijavaIspita;
 		this.datumPrijaveIspita = datumPrijaveIspita;
 		this.ispit = ispit;
 		this.indeks = indeks;
-		this.izlazakNaIspit = izlazakNaIspit;
 	}
 
 	public int getIdPrijavaIspita() {
@@ -80,14 +74,6 @@ public class PrijavaIspita implements Serializable {
 		this.indeks = indeks;
 	}
 
-	public IzlazakNaIspit getIzlazakNaIspit() {
-		return izlazakNaIspit;
-	}
-
-	public void setIzlazakNaIspit(IzlazakNaIspit izlazakNaIspit) {
-		this.izlazakNaIspit = izlazakNaIspit;
-	}
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -95,7 +81,7 @@ public class PrijavaIspita implements Serializable {
 	@Override
 	public String toString() {
 		return "PrijavaIspita [idPrijavaIspita=" + idPrijavaIspita + ", datumPrijaveIspita=" + datumPrijaveIspita
-				+ ", ispit=" + ispit + ", indeks=" + indeks + ", izlazakNaIspit=" + izlazakNaIspit + "]";
+				+ ", ispit=" + ispit + ", indeks=" + indeks + "]";
 	}
 
 }
