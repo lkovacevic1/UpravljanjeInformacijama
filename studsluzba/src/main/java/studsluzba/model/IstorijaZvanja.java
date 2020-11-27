@@ -1,4 +1,4 @@
-package studsluzba.model;
+ package studsluzba.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
