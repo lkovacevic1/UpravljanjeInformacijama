@@ -1,5 +1,7 @@
 package studsluzba.client;
 
+
+
 import java.net.URL;
 
 
@@ -23,5 +25,4 @@ public class ContextFXMLLoader {
 	 public FXMLLoader getLoader(String fxmlPath) {
 	  return getLoader(this.getClass().getResource(fxmlPath));
 	 }
-	 
 }

@@ -224,9 +224,9 @@ public class StudentRepositoryTest {
 		sk.setNazivSrednjeSkole("Matematicka gimnazija");
 		sk.setMestoSrednjeSkole("Kraljice Natalije 37");
 		sk.setVrstaSrednjeSkole("gimnazija");
-		srednjaSkolaRepo.save(sk);
+		srednjaSkolaRepo.save(sk);*/
 		
-		Student s = new Student(); 
+		/*Student s = new Student(); 
 		SrednjaSkola sk = new SrednjaSkola();
 		VisokoskolskaUstanova vsu = new VisokoskolskaUstanova();
 		DrziPredmet drziPredmet = new DrziPredmet();
@@ -296,6 +296,8 @@ public class StudentRepositoryTest {
 		
 		//Zvanje Istorije Zvanja
 		zvanje1.setZvanje("asistent");
+		
+		zvanjeRepository.save(zvanje1);
 
 		// Nastavnik
 		nastavnik.setIme("Milica");
