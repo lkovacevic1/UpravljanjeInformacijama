@@ -130,10 +130,10 @@ public class StudentRepositoryTest {
 		/////////////////////////////////////////Ispit//////////////////////////////////////////////////
 		
 		//Koliko puta je student izlazio na ispit
-		int brojac = studentRepo.countBrojIzlazakaNaIspit(4, 2018, "RN", "Verovatnoca i statistika");
+		/*int brojac = studentRepo.countBrojIzlazakaNaIspit(4, 2018, "RN", "Verovatnoca i statistika");
 		System.out.println("\n");
 		System.out.println(brojac);
-		System.out.println("\n");
+		System.out.println("\n");*/
 		
 		//Selekcija ostvarenih poena na predispitnim obavezama za studenta na odredjenom predmetu u skolskoj godini (Bez godine)
 		/*int i =	osvojeniPredispitniPoeniRepo.selectOsvojeniPredPoeni(1, "Upravljanje informacijama");

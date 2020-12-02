@@ -20,8 +20,7 @@ public class StudsluzbaApp extends Application{
 	public static void main(String[] args) {
 		launch(StudsluzbaApp.class);
 	}
-	//123
-
+	
 	@Override
 	public void init() {
 		springContext = SpringApplication.run(StudsluzbaApp.class);
