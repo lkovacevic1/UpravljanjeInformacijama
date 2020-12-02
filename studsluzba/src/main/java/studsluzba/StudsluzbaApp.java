@@ -26,6 +26,7 @@ public class StudsluzbaApp extends Application{
 		springContext = SpringApplication.run(StudsluzbaApp.class);
 		
 	}
+	//123
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
