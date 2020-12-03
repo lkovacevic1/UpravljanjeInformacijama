@@ -29,9 +29,13 @@ public class MenuBarController {
 		mainViewManager.changeRoot("newStudent");
 	}
 	
+	public void openSortirajStudentaPoIneksu(ActionEvent event) {
+		mainViewManager.changeRoot("sortStudentiPoIndeksu");
+	}
 
-
-	
+	public void openPretraziStudentaPoImenuPrezimenu(ActionEvent event) {
+		mainViewManager.changeRoot("pretraziStudentePoImenuPrezimenu");
+	}
 
 	
 		
