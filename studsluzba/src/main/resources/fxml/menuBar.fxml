@@ -22,7 +22,7 @@
             </Menu>
             <Menu text="Novi">
                 <items>
-                    <MenuItem text="Student" />               
+                    <MenuItem text="Student" onAction="#openNewStudent"/>               
                     <MenuItem text="Nastavnik" />                
                     <MenuItem text="Predmet" />
                 </items>                          

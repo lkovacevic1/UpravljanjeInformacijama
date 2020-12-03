@@ -6,8 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import studsluzba.client.fxmlcontrollers.MainWindowController;
 
 @Component
 public class MainViewManager {
@@ -34,7 +38,20 @@ public class MainViewManager {
 			try {
 				scene.setRoot(loader.load());
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		public void openModal(String fxml) {
+			FXMLLoader loader = appFXMLLoader.getLoader(MainViewManager.class.getResource("/fxml/"+fxml+".fxml"));
+			try {
+				Parent parent = loader.load();
+				Scene scene = new Scene(parent, 400, 300);
+				Stage stage = new Stage();
+				stage.initModality(Modality.APPLICATION_MODAL);
+				stage.setScene(scene);
+				stage.showAndWait();
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}

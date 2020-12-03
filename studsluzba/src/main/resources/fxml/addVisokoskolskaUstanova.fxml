@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+
+<GridPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" alignment="center" hgap="10" vgap="10" fx:controller="studsluzba.client.fxmlcontrollers.AddVisokoskolskaUstanovaController">
+	 
+         	<Label text="Naziv visokoskolske ustanove" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+		   	<TextField fx:id="nazivNoveVisokoskolskeUstanoveTf"  GridPane.columnIndex="1" GridPane.rowIndex="0"/>	
+		   	<Button onAction="#addVisokoskolskuUstanovu" text="Dodaj" GridPane.columnIndex="1" GridPane.rowIndex="3"/>	   	
+     		<Label text="" fx:id="actionTarget" GridPane.columnIndex="1" GridPane.rowIndex="4" style="-fx-text-fill: #FF0000;"/>
+	
+
+
+</GridPane>

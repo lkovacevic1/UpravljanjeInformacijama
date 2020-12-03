@@ -67,8 +67,7 @@ public class VisokoskolskaUstanova implements Serializable {
 
 	@Override
 	public String toString() {
-		return "VisokoskolskaUstanova [idVisokoskolskeUstanove=" + idVisokoskolskeUstanove
-				+ ", nazivVisokoskolskeUstanove=" + nazivVisokoskolskeUstanove + "]";
+		return nazivVisokoskolskeUstanove;
 	}
 
 }

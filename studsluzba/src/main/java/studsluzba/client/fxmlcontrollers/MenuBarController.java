@@ -25,7 +25,9 @@ public class MenuBarController {
 	}
 	
 	
-	
+	public void openNewStudent(ActionEvent event) {
+		mainViewManager.changeRoot("newStudent");
+	}
 	
 
 

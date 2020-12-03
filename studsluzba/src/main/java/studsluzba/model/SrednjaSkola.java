@@ -84,8 +84,7 @@ public class SrednjaSkola implements Serializable {
 
 	@Override
 	public String toString() {
-		return "SrednjaSkola [idSrednjeSkole=" + idSrednjeSkole + ", nazivSrednjeSkole=" + nazivSrednjeSkole
-				+ ", mestoSrednjeSkole=" + mestoSrednjeSkole + ", vrstaSrednjeSkole=" + vrstaSrednjeSkole + "]";
+		return nazivSrednjeSkole + ", " + mestoSrednjeSkole + ", " + vrstaSrednjeSkole;
 	}
 
 }
