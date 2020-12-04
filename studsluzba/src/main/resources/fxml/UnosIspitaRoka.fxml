@@ -35,7 +35,7 @@
 	<DatePicker fx:id="datumZavrsetkaIspitnogRoka"  GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 	
 	<HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
-        <Button text="Sačuvaj" />
+        <Button onAction="#handleSacuvajIspitniRok" text="Sačuvaj" />
 	</HBox>      
 </GridPane>
 </center>
@@ -53,6 +53,10 @@
         		</TableColumn>
                 <TableColumn prefWidth="200.0" text="Datum zavrsetka">
                  <cellValueFactory><PropertyValueFactory property="datumZavrsetkaIspitnogRoka" />
+        		</cellValueFactory>
+        		</TableColumn>
+        		<TableColumn prefWidth="200.0" text="Skolska godina">
+                 <cellValueFactory><PropertyValueFactory property="idSkolskeGodine" />
         		</cellValueFactory>
         		</TableColumn>
               </columns>             
