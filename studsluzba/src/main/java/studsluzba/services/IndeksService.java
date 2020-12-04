@@ -24,7 +24,7 @@ public class IndeksService {
 	IndeksRepository indeksRepo;
 	
 	public Indeks changeIndeks(Student stud, int indeks, int godina, StudProgram studProgram) {
-		Configuration configuration = new Configuration();
+		/*Configuration configuration = new Configuration();
 		configuration.configure("hibernate.cfg.xml");
 		SessionFactory factory = configuration.buildSessionFactory();
 		Session session = factory.openSession();
@@ -40,7 +40,7 @@ public class IndeksService {
 		session.update(i);
 		
 		tx.commit();
-		session.close();
+		session.close();*/
 		
 		return null;
 	}	

@@ -9,8 +9,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import studsluzba.client.MainViewManager;
 import studsluzba.model.Student;
 import studsluzba.repositories.StudentRepository;
 import studsluzba.services.StudentService;
@@ -22,6 +24,9 @@ public class PretraziStudentePoImenuPrezimenuController {
 	 
 	 @Autowired
 	 StudentRepository studentRepo;
+	 
+	 @Autowired  
+	 MainViewManager mainViewManager;
 		
 		
 	 @FXML private TextField ime;
@@ -34,6 +39,24 @@ public class PretraziStudentePoImenuPrezimenuController {
 	 @FXML
 	 protected void initialize() {
 		 sviStidenti = FXCollections.observableList(studentService.loadAll());
+		 
+		 
+		 studentiTable.setRowFactory( tv -> {
+			    TableRow<Student> row = new TableRow<>();
+			    row.setOnMouseClicked(event -> {
+			        if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+			            Student rowData = row.getItem();
+			            System.out.println(rowData);
+			            
+			            Student st = row.getItem();
+			            System.out.println(st.getIdstudent());
+			            
+			            mainViewManager.openModal("addSrednjaSkola");
+			        }
+			    });
+			    return row ;
+			});
+		 
 		 studentiTable.setItems(sviStidenti);
 	 }
 		
@@ -42,4 +65,6 @@ public class PretraziStudentePoImenuPrezimenuController {
 		 studentiTable.getItems().clear();
 		 studentiTable.getItems().addAll(student);
 	 }
+	 
+	 
 }

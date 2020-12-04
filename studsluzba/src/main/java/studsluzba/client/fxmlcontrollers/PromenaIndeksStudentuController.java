@@ -46,7 +46,7 @@ public class PromenaIndeksStudentuController {
 	}
 		
 	public void promeniIndeks(ActionEvent event) {
-		Student stud = student.getValue();
+		/*Student stud = student.getValue();
 	
 		String index = indeks.getText();
 		String parts[] = index.split("/");
@@ -56,6 +56,6 @@ public class PromenaIndeksStudentuController {
 		String studProgram = parts[2];
 		StudProgram sp = new StudProgram(studProgram);
 		 
-		Indeks i = indeksService.changeIndeks(stud, indeks, godina, sp);
+		Indeks i = indeksService.changeIndeks(stud, indeks, godina, sp);*/
 	}
 }
