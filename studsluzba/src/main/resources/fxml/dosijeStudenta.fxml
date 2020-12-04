@@ -34,10 +34,10 @@
 			
 			<Label text="Odaberite predmete" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
 		   	<ComboBox fx:id="predmeti"   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-		   	<Button  text="Dodaj u listu" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+		   	<Button onAction="#dodajUListuPredmeta" text="Dodaj u listu" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
 		   	
 		   	<Label text="Datum" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-		   	<DatePicker fx:id="datum"  GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+		   	<TextField fx:id="datum"  GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 		   	
 		   	<Label text="Napomena" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
 		   	<TextField fx:id="napomena"  GridPane.columnIndex="1" GridPane.rowIndex="3"/>

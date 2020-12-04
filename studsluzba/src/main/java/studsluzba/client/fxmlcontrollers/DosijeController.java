@@ -8,17 +8,20 @@ import org.springframework.stereotype.Component;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import studsluzba.model.Indeks;
+import studsluzba.model.ObnovaGodine;
 import studsluzba.model.Predmet;
 import studsluzba.model.StudProgram;
 import studsluzba.model.Student;
 import studsluzba.repositories.IndeksRepository;
 import studsluzba.repositories.PredmetRepository;
+import studsluzba.services.ObnovaGodineService;
 import studsluzba.services.SifarniciService;
 import studsluzba.services.StudentService;
 
@@ -30,6 +33,9 @@ public class DosijeController {
 	
 	@Autowired
 	SifarniciService sifraniciService;
+	
+	@Autowired 
+	ObnovaGodineService obnovaGodineService;
 	
 	@Autowired
 	StudentService studentService;
@@ -44,7 +50,7 @@ public class DosijeController {
 	
 	@FXML private ComboBox<Predmet> predmeti;
 	
-	@FXML private DatePicker datum;
+	@FXML private TextField datum;
 	
 	private ObservableList<Student> sviStidenti;
 	
@@ -53,6 +59,8 @@ public class DosijeController {
 	@FXML private TableView<Student> stTable;
 	
 	@FXML private TableView<Student> studentiTable;
+	
+	private List<Predmet> selektovaniPredmeti;
 	
 	@FXML
     public void initialize() {	
@@ -79,5 +87,16 @@ public class DosijeController {
 		
 		List<Predmet> predmet = sifraniciService.getPredmeti(sp);
 		predmeti.setItems(FXCollections.observableArrayList(predmet));
+	}
+	
+	public void dodajUListuPredmeta(ActionEvent event) {
+		Predmet p = predmeti.getValue();
+		selektovaniPredmeti.add(p);
+	}
+	
+	public void napraviAktivnost(ActionEvent event) {
+		if(upis_obnova.getValue().equals("Obnova Godine")) {
+			ObnovaGodine obnovaGodine = obnovaGodineService.saveObnovaGodine(selektovaniPredmeti, datum.getText(), napomena.getText());
+		}
 	}
 }
