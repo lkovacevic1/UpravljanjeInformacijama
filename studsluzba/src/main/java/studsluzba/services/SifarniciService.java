@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import studsluzba.client.fxmlcontrollers.PretraziStudentePoImenuPrezimenuController;
 import studsluzba.model.Predmet;
 import studsluzba.model.SrednjaSkola;
 import studsluzba.model.StudProgram;
@@ -69,6 +70,7 @@ public class SifarniciService {
 	}
 	
 	public List<Predmet> getPredmeti(StudProgram stProgram){
-		return predmetRepo.findPredmetByStudProgram(stProgram);	
+		//return predmetRepo.findPredmetByStudProgram(stProgram);
+		return predmetRepo.findPredmetByOznaka(stProgram.getOznaka());
 	}
 }
