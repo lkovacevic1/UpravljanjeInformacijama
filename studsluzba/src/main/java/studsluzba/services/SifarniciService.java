@@ -70,7 +70,6 @@ public class SifarniciService {
 	}
 	
 	public List<Predmet> getPredmeti(StudProgram stProgram){
-		//return predmetRepo.findPredmetByStudProgram(stProgram);
 		return predmetRepo.findPredmetByOznaka(stProgram.getOznaka());
 	}
 }

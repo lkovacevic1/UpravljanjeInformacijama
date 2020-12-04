@@ -67,9 +67,6 @@ public class DosijeController {
 		stTable.setItems(sviStidenti);
 		
 		
-		//Indeks i = (Indeks) s.getIndeks();
-		//StudProgram sp = i.getStudProgram();
-		//List<Predmet> predmet = predmetRepo.findPredmetByStudProgram(sp);
 		List<Indeks> ind = indeksRepo.findIndeksOfStudent(s);
 		StudProgram sp = null;
 		System.out.println("\n");
