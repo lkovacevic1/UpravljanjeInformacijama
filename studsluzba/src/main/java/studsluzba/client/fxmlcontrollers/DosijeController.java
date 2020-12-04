@@ -71,17 +71,16 @@ public class DosijeController {
 		//StudProgram sp = i.getStudProgram();
 		//List<Predmet> predmet = predmetRepo.findPredmetByStudProgram(sp);
 		List<Indeks> ind = indeksRepo.findIndeksOfStudent(s);
+		StudProgram sp = null;
 		System.out.println("\n");
 		for(Indeks in : ind) {
 			System.out.println(in.getBrojIndexa());
-			/*
-			 if(s.getIndeks().equals(in.getIndeks()){
-			 	StudProgram sp = in.getStudProgram();
-			 }
-			 */
+			 //if(s.getIndeks().equals(in.getIndeks())){
+			 	sp = in.getStudProgram();
+			 //}
 		}
 		
-		//List<Predmet> predmet = sifraniciService.getPredmeti(sp);
-		//predmeti.setItems(FXCollections.observableArrayList(predmet));
+		List<Predmet> predmet = sifraniciService.getPredmeti(sp);
+		predmeti.setItems(FXCollections.observableArrayList(predmet));
 	}
 }
