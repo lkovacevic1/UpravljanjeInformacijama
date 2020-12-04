@@ -7,9 +7,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import studsluzba.model.Predmet;
 import studsluzba.model.SrednjaSkola;
 import studsluzba.model.Student;
 import studsluzba.model.VisokoskolskaUstanova;
+import studsluzba.repositories.PredmetRepository;
 import studsluzba.repositories.SrednjaSkolaRepository;
 import studsluzba.repositories.StudentRepository;
 import studsluzba.repositories.VisokoskolskaUstanovaRepository;
@@ -19,6 +21,9 @@ public class SifarniciService {
 
 	@Autowired
 	StudentRepository studRepo;
+	
+	@Autowired
+	PredmetRepository predmetRepo;
 	
 	@Autowired
 	SrednjaSkolaRepository srednjeSkolaRepo;
@@ -53,5 +58,12 @@ public class SifarniciService {
 		List<Student> rez = new ArrayList<Student>();		
 		iter.forEach(rez::add);
 		return rez;		
+	}
+	
+	public List<Predmet> getPredmeti(){
+		Iterable<Predmet> iter = predmetRepo.findAll();
+		List<Predmet> rez = new ArrayList<Predmet>();		
+		iter.forEach(rez::add);
+		return rez;	
 	}
 }

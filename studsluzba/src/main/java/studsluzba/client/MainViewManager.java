@@ -55,5 +55,19 @@ public class MainViewManager {
 				e.printStackTrace();
 			}
 		}
+		
+		public void openModal(String fxml, int width, int height) {
+			FXMLLoader loader = appFXMLLoader.getLoader(MainViewManager.class.getResource("/fxml/"+fxml+".fxml"));
+			try {
+				Parent parent = loader.load();
+				Scene scene = new Scene(parent, width, height);
+				Stage stage = new Stage();
+				stage.initModality(Modality.APPLICATION_MODAL);
+				stage.setScene(scene);
+				stage.showAndWait();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 }
 

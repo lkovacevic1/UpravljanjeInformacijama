@@ -51,7 +51,7 @@ public class PretraziStudentePoImenuPrezimenuController {
 			            Student st = row.getItem();
 			            System.out.println(st.getIdstudent());
 			            
-			            mainViewManager.openModal("addSrednjaSkola");
+			            mainViewManager.openModal("dosijeStudenta", 750, 500);
 			        }
 			    });
 			    return row ;
