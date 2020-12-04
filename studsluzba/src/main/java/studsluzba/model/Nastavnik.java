@@ -165,8 +165,6 @@ public class Nastavnik implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Nastavnik [idNastavnik=" + idNastavnik + ", ime=" + ime + ", prezime=" + prezime + ", srednjeIme="
-				+ srednjeIme + ", email=" + email + ", zavrsenaVisokoskolskaUstanova=" + zavrsenaVisokoskolskaUstanova
-				+ "]";
+		return ime + ", " + prezime + ", " + zvanje;
 	}
 }

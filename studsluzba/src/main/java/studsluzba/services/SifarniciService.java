@@ -8,11 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import studsluzba.client.fxmlcontrollers.PretraziStudentePoImenuPrezimenuController;
+import studsluzba.model.Ispit;
+import studsluzba.model.IspitniRok;
+import studsluzba.model.Nastavnik;
 import studsluzba.model.Predmet;
 import studsluzba.model.SrednjaSkola;
 import studsluzba.model.StudProgram;
 import studsluzba.model.Student;
 import studsluzba.model.VisokoskolskaUstanova;
+import studsluzba.repositories.IspitRepository;
+import studsluzba.repositories.IspitniRokRepository;
+import studsluzba.repositories.NastavnikRepository;
 import studsluzba.repositories.PredmetRepository;
 import studsluzba.repositories.SrednjaSkolaRepository;
 import studsluzba.repositories.StudentRepository;
@@ -23,6 +29,13 @@ public class SifarniciService {
 
 	@Autowired
 	StudentRepository studRepo;
+	
+	@Autowired
+	NastavnikRepository nastavnikRepo;
+	
+	
+	@Autowired
+	IspitniRokRepository ispitniRokRepo;
 	
 	@Autowired
 	PredmetRepository predmetRepo;
@@ -71,5 +84,19 @@ public class SifarniciService {
 	
 	public List<Predmet> getPredmeti(StudProgram stProgram){
 		return predmetRepo.findPredmetByOznaka(stProgram.getOznaka());
+	}
+	
+	public List<IspitniRok> getIspitniRok(){		
+		Iterable<IspitniRok> iter = ispitniRokRepo.findAll();
+		List<IspitniRok> rez = new ArrayList<IspitniRok>();		
+		iter.forEach(rez::add);
+		return rez;		
+	}
+	
+	public List<Nastavnik> getNastavnici(){		
+		Iterable<Nastavnik> iter = nastavnikRepo.findAll();
+		List<Nastavnik> rez = new ArrayList<Nastavnik>();		
+		iter.forEach(rez::add);
+		return rez;		
 	}
 }

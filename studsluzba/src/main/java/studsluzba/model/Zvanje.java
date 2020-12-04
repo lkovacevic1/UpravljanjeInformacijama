@@ -76,7 +76,7 @@ public class Zvanje {
 
 	@Override
 	public String toString() {
-		return "Zvanje [idZvanja=" + idZvanja + ", zvanje=" + zvanje + "]";
+		return zvanje;
 	}
 
 }
