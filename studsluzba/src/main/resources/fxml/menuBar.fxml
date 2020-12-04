@@ -31,6 +31,7 @@
                     <MenuItem text="Student" onAction="#openNewStudent"/>               
                     <MenuItem text="Nastavnik" />                
                     <MenuItem text="Predmet" />
+                    <MenuItem text="Ispit/Rok" onAction="#unosIspitaRoka"/>
                 </items>                          
             </Menu>
             <Menu text="Administracija">

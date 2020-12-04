@@ -40,5 +40,9 @@ public class MenuBarController {
 	public void openPromenaIndeksa(ActionEvent event) {
 		mainViewManager.changeRoot("PromenaIndeksa");
 	}
+	
+	public void unosIspitaRoka(ActionEvent event) {
+		mainViewManager.changeRoot("UnosIspitaRoka");
+	}
 		
 }
