@@ -37,6 +37,8 @@ public class MenuBarController {
 		mainViewManager.changeRoot("pretraziStudentePoImenuPrezimenu");
 	}
 
-	
+	public void openPromenaIndeksa(ActionEvent event) {
+		mainViewManager.changeRoot("PromenaIndeksa");
+	}
 		
 }

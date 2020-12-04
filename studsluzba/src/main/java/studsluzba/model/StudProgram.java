@@ -33,6 +33,10 @@ public class StudProgram {
 
 	@OneToMany(mappedBy = "studProgram")
 	private List<Predmet> predmeti;
+	
+	public StudProgram(String stProgram) {
+		this.oznaka = stProgram;
+	}
 
 	public StudProgram() {
 

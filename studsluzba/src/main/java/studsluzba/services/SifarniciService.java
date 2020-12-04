@@ -8,13 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import studsluzba.model.SrednjaSkola;
+import studsluzba.model.Student;
 import studsluzba.model.VisokoskolskaUstanova;
 import studsluzba.repositories.SrednjaSkolaRepository;
+import studsluzba.repositories.StudentRepository;
 import studsluzba.repositories.VisokoskolskaUstanovaRepository;
 
 @Service
 public class SifarniciService {
 
+	@Autowired
+	StudentRepository studRepo;
+	
 	@Autowired
 	SrednjaSkolaRepository srednjeSkolaRepo;
 	
@@ -43,5 +48,10 @@ public class SifarniciService {
 		return vsRepo.save(vs);
 	}
 	
-	
+	public List<Student> getStudent(){		
+		Iterable<Student> iter = studRepo.findAll();
+		List<Student> rez = new ArrayList<Student>();		
+		iter.forEach(rez::add);
+		return rez;		
+	}
 }

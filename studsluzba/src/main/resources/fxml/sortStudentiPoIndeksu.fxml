@@ -29,13 +29,10 @@
 </top>
 <center>
 	<GridPane alignment="center" hgap="10" vgap="10">
-			<Label text="Broj indeksa" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-		   	<TextField fx:id="brIndeksa"  GridPane.columnIndex="1" GridPane.rowIndex="0"/>	
-		   	<Label text="Godina upisa" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-		   	<TextField fx:id="godinaUpisa"  GridPane.columnIndex="1" GridPane.rowIndex="1"/>	
-		   	<Label text="Smer" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-		   	<TextField fx:id="smer"  GridPane.columnIndex="1" GridPane.rowIndex="2"/>	
-		   	<Button onAction="#pretraziStudentaPoIndeksu" text="Pretrazi" GridPane.columnIndex="1" GridPane.rowIndex="3"/>	   	
+			<Label text="Indeks" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+		   	<TextField fx:id="indeks"  GridPane.columnIndex="1" GridPane.rowIndex="0"/>	
+		   	
+		   	<Button onAction="#pretraziStudentaPoIndeksu" text="Pretrazi" GridPane.columnIndex="1" GridPane.rowIndex="1"/>	   	
      		<Label text="" fx:id="actionTarget" GridPane.columnIndex="1" GridPane.rowIndex="4" style="-fx-text-fill: #FF0000;"/>
 	</GridPane>
 </center>
