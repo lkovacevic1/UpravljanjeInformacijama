@@ -90,7 +90,8 @@ public class DosijeController {
 	}
 	
 	public void dodajUListuPredmeta(ActionEvent event) {
-		Predmet p = predmeti.getValue();
+		//Predmet p = predmeti.getValue();
+		Predmet p = predmeti.getSelectionModel().getSelectedItem();
 		selektovaniPredmeti.add(p);
 	}
 	
