@@ -27,7 +27,8 @@ public class PretraziStudentePoImenuPrezimenuController {
 	 
 	 @Autowired  
 	 MainViewManager mainViewManager;
-		
+	 
+	 Student selektovanStudent;
 		
 	 @FXML private TextField ime;
 	 @FXML private TextField prezime;
@@ -46,10 +47,11 @@ public class PretraziStudentePoImenuPrezimenuController {
 			    row.setOnMouseClicked(event -> {
 			        if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
 			            Student rowData = row.getItem();
-			            System.out.println(rowData);
+			            /*System.out.println(rowData);
 			            
 			            Student st = row.getItem();
-			            System.out.println(st.getIdstudent());
+			            System.out.println(st.getIdstudent());*/
+			            selektovanStudent = rowData;
 			            
 			            mainViewManager.openModal("dosijeStudenta", 750, 500);
 			        }
@@ -65,6 +67,4 @@ public class PretraziStudentePoImenuPrezimenuController {
 		 studentiTable.getItems().clear();
 		 studentiTable.getItems().addAll(student);
 	 }
-	 
-	 
 }

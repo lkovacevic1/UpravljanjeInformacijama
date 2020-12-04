@@ -55,12 +55,20 @@
          <children>
             <TableView fx:id="stTable">
               <columns>
-                <TableColumn prefWidth="75.0" text="Skraceni naziv">
-                 <cellValueFactory><PropertyValueFactory property="nazivStudPrograma" />
+              	<TableColumn prefWidth="100.0" text="Ime">
+                 <cellValueFactory><PropertyValueFactory property="ime" />
         		</cellValueFactory>
         		</TableColumn>
-                <TableColumn prefWidth="75.0" text="Pun naziv">
-                 <cellValueFactory><PropertyValueFactory property="oznaka" />
+                <TableColumn prefWidth="100.0" text="Prezime">
+                 <cellValueFactory><PropertyValueFactory property="prezime" />
+        		</cellValueFactory>
+        		</TableColumn>
+                <TableColumn prefWidth="150.0" text="Zavrsena srednja skola">
+                 <cellValueFactory><PropertyValueFactory property="srSkola" />
+        		</cellValueFactory>
+        		</TableColumn>
+        		<TableColumn prefWidth="150.0" text="Presao sa fakulteta">
+                 <cellValueFactory><PropertyValueFactory property="visokoskolskaUstanova" />
         		</cellValueFactory>
         		</TableColumn>
               </columns>             
