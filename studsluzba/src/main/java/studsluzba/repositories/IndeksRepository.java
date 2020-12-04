@@ -19,6 +19,6 @@ public interface IndeksRepository extends CrudRepository<Indeks, Integer> {
 	@Query("update Indeks set brojIndexa = :indeks, godinaUpisa = :godina, studProgram = :studProgram where student = :studentID")
 	Indeks changeIndeks(int indeks, int godina, StudProgram studProgram, Student studentID);*/
 	
-	@Query("select i form Indeks i where i.student like :student")
+	@Query("select i from Indeks i where i.student like :student")
 	List<Indeks> findIndeksOfStudent(Student student);
 }
