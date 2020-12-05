@@ -70,7 +70,18 @@ public class DosijeController {
 	
 	private List<Predmet> selektovaniPredmeti = new ArrayList<Predmet>();
 	
+	//Promena Indeksa FXML
 	
+	@Autowired
+	SortStudentaByIndeksController promeniIndeksStud;
+	
+	@FXML private TextField indeks;
+	
+	private ObservableList<Student> sviIndeksi;
+	
+	@FXML private TableView<Student> indeksTable;
+	
+	//---------------------------
 	
 	@FXML
     public void initialize() {	
@@ -98,6 +109,13 @@ public class DosijeController {
 		
 		List<Predmet> predmet = sifraniciService.getPredmeti(sp);
 		predmeti.setItems(FXCollections.observableArrayList(predmet));
+		
+		//Promena Indeksa Studenta
+		List<Student> st = new ArrayList<Student>();
+		Student student = promeniIndeksStud.selektovanStudentZaPromenuIndeksa;
+		st.add(student);
+		sviIndeksi = FXCollections.observableList(st);
+		indeksTable.setItems(sviIndeksi);
 	}
 	
 	public void dodajUListuPredmeta(ActionEvent event) {
