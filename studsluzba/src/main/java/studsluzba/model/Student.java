@@ -99,15 +99,21 @@ public class Student implements Serializable {
 		this.srSkola = srSkola;
 	}
 	
-	public Indeks getAktivanIndeks() {
+	
+	public String getAktivanIndeks() {
 		for (Indeks i : indeks) {
 			if(i.isAktivan()) {
-				return i;
+				return i.toString();
 			}
 		}
 		return null;
 	}
-
+	
+	public void setAktivanIndeks() {
+		
+	}
+	
+	
 	public int getIdstudent() {
 		return idstudent;
 	}

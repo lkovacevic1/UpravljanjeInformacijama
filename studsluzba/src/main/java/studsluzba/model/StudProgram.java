@@ -137,9 +137,6 @@ public class StudProgram {
 
 	@Override
 	public String toString() {
-		return "StudProgram [idstudProgram=" + idstudProgram + ", oznaka=" + oznaka + ", nazivStudPrograma="
-				+ nazivStudPrograma + ", godinaAkreditacije=" + godinaAkreditacije + ", nazivZvanjaPoZavrsetkuStudija="
-				+ nazivZvanjaPoZavrsetkuStudija + ", brojSemestara=" + brojSemestara + ", vrstaStudija=" + vrstaStudija
-				+ "]";
+		return oznaka;
 	}
 }

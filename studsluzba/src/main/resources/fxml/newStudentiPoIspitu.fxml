@@ -64,7 +64,7 @@
         		</cellValueFactory>
         		</TableColumn>
         		<TableColumn prefWidth="150.0" text="Indeks">
-                 <cellValueFactory><PropertyValueFactory property="indeks" />
+                 <cellValueFactory><PropertyValueFactory property="aktivanIndeks" />
         		</cellValueFactory>
         		</TableColumn>
               </columns>             

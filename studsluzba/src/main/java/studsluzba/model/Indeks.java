@@ -195,9 +195,7 @@ public class Indeks implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Indeks [idIndeks=" + idIndeks + ", student=" + student + ", godinaUpisa=" + godinaUpisa
-				+ ", brojIndexa=" + brojIndexa + ", aktivan=" + aktivan + ", datumAktivacijeIndexa="
-				+ datumAktivacijeIndexa + "]";
+		return brojIndexa + " " +godinaUpisa;
 	}
 
 }
