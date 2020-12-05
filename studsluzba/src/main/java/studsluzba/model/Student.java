@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 @Entity
 @NamedQuery(name = "Student.findAll", query = "SELECT s FROM Student s")
 public class Student implements Serializable {
@@ -95,6 +97,15 @@ public class Student implements Serializable {
 		this.uspehPrijemni = uspehPrijemni;
 		this.visokoskolskaUstanova = visokoskolskaUstanova;
 		this.srSkola = srSkola;
+	}
+	
+	public Indeks getAktivanIndeks() {
+		for (Indeks i : indeks) {
+			if(i.isAktivan()) {
+				return i;
+			}
+		}
+		return null;
 	}
 
 	public int getIdstudent() {

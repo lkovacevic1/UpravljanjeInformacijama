@@ -114,6 +114,7 @@ public class DosijeController {
 		indeksTable.setItems(sviIndeksi);
 	}
 	
+	//Akcije za Aktivnosti studenta
 	public void dodajUListuPredmeta(ActionEvent event) {
 		//Predmet p = predmeti.getValue();
 		Predmet p = predmeti.getSelectionModel().getSelectedItem();
@@ -133,5 +134,17 @@ public class DosijeController {
 			System.out.println("Odaberite aktivnost!");
 		}
 		selektovaniPredmeti.clear();
+	}
+	
+	//Akcija za Dodeli novog Indeksa
+	public void dodeliNoviIndeks(ActionEvent event) {
+		Student s = pretraziStud.selektovanStudent;
+		
+		String index = indeks.getText();
+		String parts[] = index.split("/");
+		
+		Indeks i = (Indeks) s.getIndeks();
+		Indeks indeks = studentService.promeniAktivanIndeksNaNeaktivan(i);
+		
 	}
 }
