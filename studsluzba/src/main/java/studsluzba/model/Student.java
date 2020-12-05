@@ -98,6 +98,15 @@ public class Student implements Serializable {
 		this.visokoskolskaUstanova = visokoskolskaUstanova;
 		this.srSkola = srSkola;
 	}
+	
+	public Indeks getAktivanIndeks() {
+		for (Indeks i : indeks) {
+			if(i.isAktivan()) {
+				return i;
+			}
+		}
+		return null;
+	}
 
 	public int getIdstudent() {
 		return idstudent;
