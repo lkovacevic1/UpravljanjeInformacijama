@@ -48,7 +48,7 @@ public class SortStudentaByIndeksController {
 			        if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
 			            Student rowData = row.getItem();
 			            /*System.out.println(rowData);
-			            
+			            //12
 			            Student st = row.getItem();
 			            System.out.println(st.getIdstudent());*/
 			            selektovanStudent = rowData;
