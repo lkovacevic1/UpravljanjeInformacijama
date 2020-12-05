@@ -43,6 +43,8 @@ public class UnosIspitRokController {
 	
 	@FXML private TableView<IspitniRok> rokoviTable;
 	
+	@FXML private TableView<Ispit> ispitiTable;
+	
 	@FXML private DatePicker datumPocetkaIspitnogRoka;
 	
 	@FXML private DatePicker datumZavrsetkaIspitnogRoka;
@@ -98,6 +100,6 @@ public class UnosIspitRokController {
 		 }
 		 
 		 Ispit ispit = ispitniRokoviService.saveIspit(datumPocetkaIspita.getValue(), Integer.parseInt(vremeOdrzavanjaIspita.getText()), flag, cbPredmet2.getValue(), cbNastavnik2.getValue(), cbIspit.getValue());
-		 //sviRokovi.add(ispit);
+		 //sviIspiti.add(ispit);
 	 }
 }
