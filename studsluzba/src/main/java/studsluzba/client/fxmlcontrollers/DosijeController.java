@@ -51,6 +51,8 @@ public class DosijeController {
 	
 	@Autowired
 	PretraziStudentePoImenuPrezimenuController pretraziStud;
+	
+	//Aktivnost Studenta FXML
 
 	@FXML private ComboBox<String> upis_obnova;
 	
@@ -68,8 +70,22 @@ public class DosijeController {
 	
 	private List<Predmet> selektovaniPredmeti = new ArrayList<Predmet>();
 	
+	//Promena Indeksa FXML
+	
+	@Autowired
+	SortStudentaByIndeksController promeniIndeksStud;
+	
+	@FXML private TextField indeks;
+	
+	private ObservableList<Student> sviIndeksi;
+	
+	@FXML private TableView<Student> indeksTable;
+	
+	//---------------------------
+	
 	@FXML
     public void initialize() {	
+		//Aktivnosti Studenta
 		List<String> obn_upis = List.of("Obnova Godine", "Upis Godine");
 		upis_obnova.setItems(FXCollections.observableArrayList(obn_upis));
 		
@@ -93,6 +109,13 @@ public class DosijeController {
 		
 		List<Predmet> predmet = sifraniciService.getPredmeti(sp);
 		predmeti.setItems(FXCollections.observableArrayList(predmet));
+		
+		//Promena Indeksa Studenta
+		List<Student> st = new ArrayList<Student>();
+		Student student = promeniIndeksStud.selektovanStudent;
+		st.add(student);
+		sviIndeksi = FXCollections.observableList(stud);
+		indeksTable.setItems(sviIndeksi);
 	}
 	
 	public void dodajUListuPredmeta(ActionEvent event) {
