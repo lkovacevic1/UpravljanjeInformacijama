@@ -72,9 +72,6 @@ public class DosijeController {
 	
 	//Promena Indeksa FXML
 	
-	@Autowired
-	SortStudentaByIndeksController promeniIndeksStud;
-	
 	@FXML private TextField indeks;
 	
 	private ObservableList<Student> sviIndeksi;
@@ -112,8 +109,7 @@ public class DosijeController {
 		
 		//Promena Indeksa Studenta
 		List<Student> st = new ArrayList<Student>();
-		Student student = promeniIndeksStud.selektovanStudentZaPromenuIndeksa;
-		st.add(student);
+		st.add(s);
 		sviIndeksi = FXCollections.observableList(st);
 		indeksTable.setItems(sviIndeksi);
 	}
