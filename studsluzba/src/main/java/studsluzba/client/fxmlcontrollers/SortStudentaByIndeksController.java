@@ -53,7 +53,7 @@ public class SortStudentaByIndeksController {
 			            System.out.println(st.getIdstudent());*/
 			            selektovanStudent = rowData;
 			            
-			            mainViewManager.openModal("TabAktivnostIndeksStudenta", 750, 500);
+			            mainViewManager.openModal("KopijaTaba", 750, 500);
 			        }
 			    });
 			    return row ;
