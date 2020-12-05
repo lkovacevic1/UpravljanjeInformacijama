@@ -24,7 +24,6 @@ public class ObnovaGodineService {
 		int date = Integer.parseInt(datum);
 		obnovaGodine.setGodinaObnove(date);
 		obnovaGodine.setIndeks(indeks);
-		obnovaGodineRepo.save(obnovaGodine);
-		return null;
+		return obnovaGodineRepo.save(obnovaGodine);
 	}
 }

@@ -92,12 +92,14 @@ public class DosijeController {
 	public void dodajUListuPredmeta(ActionEvent event) {
 		//Predmet p = predmeti.getValue();
 		Predmet p = predmeti.getSelectionModel().getSelectedItem();
+		System.out.println(p);
 		selektovaniPredmeti.add(p);
 	}
 	
 	public void napraviAktivnost(ActionEvent event) {
 		Student s = pretraziStud.selektovanStudent;
 		Indeks indeks = indeksRepo.findAktivanIndeks(s.getIdstudent());
+		System.out.println(indeks);
 		if(upis_obnova.getValue().equals("Obnova Godine")) {
 			ObnovaGodine obnovaGodine = obnovaGodineService.saveObnovaGodine(selektovaniPredmeti, datum.getText(), napomena.getText(), indeks);
 		}

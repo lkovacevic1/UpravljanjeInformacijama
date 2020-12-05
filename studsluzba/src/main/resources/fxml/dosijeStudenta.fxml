@@ -42,7 +42,7 @@
 		   	<Label text="Napomena" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
 		   	<TextField fx:id="napomena"  GridPane.columnIndex="1" GridPane.rowIndex="3"/>
 		   		
-		   	<Button  text="Napravi" GridPane.columnIndex="2" GridPane.rowIndex="4"/>	   	
+		   	<Button onAction="#napraviAktivnost" text="Napravi" GridPane.columnIndex="2" GridPane.rowIndex="4"/>	   	
      		<Label text="" fx:id="actionTarget" GridPane.columnIndex="1" GridPane.rowIndex="4" style="-fx-text-fill: #FF0000;"/>
      		
 	</GridPane>
