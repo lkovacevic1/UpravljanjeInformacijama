@@ -44,15 +44,15 @@ public class IspitniRokoviService {
 	}
 	
 	public Ispit saveIspit(LocalDate datumOdrzavanjaIspita, int vremeOdrzavanjaIspita, boolean zakljucenIspit, Predmet p, Nastavnik n, IspitniRok i) {
-		
-		Ispit ispit = new Ispit();
-		ispit.setDatumOdrzavanjaIspita(datumOdrzavanjaIspita);
-		ispit.setVremeOdrzavanjaIspita(vremeOdrzavanjaIspita);
-		ispit.setZakljucenIspit(zakljucenIspit);
-		ispit.setPredmet(p);
-		ispit.setNastavnik(n);
-		ispit.setIspitniRok(i);
-		return ispitRepo.save(ispit);
-	}
+
+        Ispit ispit = new Ispit();
+        ispit.setDatumOdrzavanjaIspita(datumOdrzavanjaIspita);
+        ispit.setVremeOdrzavanjaIspita(vremeOdrzavanjaIspita);
+        ispit.setZakljucenIspit(zakljucenIspit);
+        ispit.setPredmet(p);
+        ispit.setNastavnik(n);
+        ispit.setIspitniRok(i);
+        return ispitRepo.save(ispit);
+    }
 
 }

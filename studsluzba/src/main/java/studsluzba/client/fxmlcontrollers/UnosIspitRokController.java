@@ -31,7 +31,6 @@ public class UnosIspitRokController {
 	@Autowired
 	IspitniRokoviService ispitniRokoviService;
 	
-	
 	@Autowired
 	SifarniciService sifarniciService;
 	
@@ -40,6 +39,8 @@ public class UnosIspitRokController {
 	SkolskaGodinaRepository skolskaGodinaRepo;
 	
 	private ObservableList<IspitniRok> sviRokovi;
+	
+	private ObservableList<Ispit> sviIspiti;
 	
 	@FXML private TableView<IspitniRok> rokoviTable;
 	
@@ -50,10 +51,6 @@ public class UnosIspitRokController {
 	@FXML private DatePicker datumZavrsetkaIspitnogRoka;
 	
 	@FXML private ComboBox<IspitniRok> cbIspitniRok;
-	
-	@FXML private ComboBox<Nastavnik> cbNastavnik;
-	
-	@FXML private ComboBox<Predmet> cbPredmet;
 	
 	//Ispit
 	
@@ -73,6 +70,9 @@ public class UnosIspitRokController {
 	 protected void initialize() {
 		 sviRokovi = FXCollections.observableList(ispitniRokoviService.loadAll());
 		 rokoviTable.setItems(sviRokovi);
+		 
+//		 sviIspiti = FXCollections.observableList(ispitiService.loadAll());
+//		 ispitiTable.setItems(sviIspiti);
 		 
 		 List<IspitniRok> ispitniRok = sifarniciService.getIspitniRok();
 		 cbIspit.setItems(FXCollections.observableArrayList(ispitniRok));
@@ -98,7 +98,8 @@ public class UnosIspitRokController {
 		 if(zakljucen.isSelected()) {
 			 flag = true;
 		 }
-		 
+		 Nastavnik ns = cbNastavnik2.getValue();
+		 System.out.println(ns.getIdNastavnik());
 		 Ispit ispit = ispitniRokoviService.saveIspit(datumPocetkaIspita.getValue(), Integer.parseInt(vremeOdrzavanjaIspita.getText()), flag, cbPredmet2.getValue(), cbNastavnik2.getValue(), cbIspit.getValue());
 		 //sviIspiti.add(ispit);
 	 }
