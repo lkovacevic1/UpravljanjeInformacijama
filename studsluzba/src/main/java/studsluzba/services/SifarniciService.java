@@ -31,6 +31,9 @@ public class SifarniciService {
 	StudentRepository studRepo;
 	
 	@Autowired
+	IspitRepository ispitRepo;
+	
+	@Autowired
 	NastavnikRepository nastavnikRepo;
 	
 	
@@ -98,5 +101,12 @@ public class SifarniciService {
 		List<Nastavnik> rez = new ArrayList<Nastavnik>();		
 		iter.forEach(rez::add);
 		return rez;		
+	}
+	
+	public List<Ispit> getIspiti(){
+		Iterable<Ispit> iter = ispitRepo.findAll();
+		List<Ispit> rez = new ArrayList<Ispit>();		
+		iter.forEach(rez::add);
+		return rez;	
 	}
 }

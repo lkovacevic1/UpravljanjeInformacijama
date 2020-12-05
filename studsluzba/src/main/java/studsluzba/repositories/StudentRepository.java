@@ -1,5 +1,6 @@
 package studsluzba.repositories;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -41,4 +42,8 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
 	@Query("select COUNT(iz) from IzlazakNaIspit iz join iz.polozenPredmet pop join pop.indeks i where i.brojIndexa like :brojIndeksa and i.godinaUpisa like :godinaUpisa and i.studProgram.oznaka like :oznaka and pop.ispit.predmet.nazivPredmeta like :predmet")                                  
 	int countBrojIzlazakaNaIspit(int brojIndeksa, int godinaUpisa, String oznaka, String predmet);
 	  
+	
+	//Selekcija studenta koji izlaze na odredjeni ispit
+	@Query("select s from Student s join s.indeks i join i.prijavaIspita pi where pi.ispit.idIspit like :idIspit")
+	List<Student> findAllStudentsForIspit(int idIspit);
 }

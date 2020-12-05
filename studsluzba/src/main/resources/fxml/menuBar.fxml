@@ -19,6 +19,7 @@
                     		<MenuItem text="Studente po broju indeksa" onAction="#openSortirajStudentaPoIneksu"/>    
                     		<MenuItem text="Studente po imenu/prezimenu" onAction="#openPretraziStudentaPoImenuPrezimenu"/> 
                     		<MenuItem text="Promena indeksa" onAction="#openPromenaIndeksa"/>  
+                    		<MenuItem text="Po ispitu" onAction="#openStudentiPoIspitu"/>  
                     	</items>                           
             		</Menu>	        
                     <MenuItem text="Nastavnici" />               

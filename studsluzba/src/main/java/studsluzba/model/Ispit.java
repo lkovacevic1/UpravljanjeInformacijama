@@ -143,9 +143,7 @@ public class Ispit implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Ispit [idIspit=" + idIspit + ", datumOdrzavanjaIspita=" + datumOdrzavanjaIspita
-				+", vremeOdrzavanjaIspita=" + vremeOdrzavanjaIspita + ", zakljucenIspit="
-				+ zakljucenIspit + "]";
+		return datumOdrzavanjaIspita + ", " + vremeOdrzavanjaIspita;
 	}
 	
 }

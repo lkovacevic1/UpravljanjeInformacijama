@@ -44,5 +44,9 @@ public class MenuBarController {
 	public void unosIspitaRoka(ActionEvent event) {
 		mainViewManager.changeRoot("UnosIspitaRoka");
 	}
+	
+	public void openStudentiPoIspitu(ActionEvent event) {
+		mainViewManager.changeRoot("newStudentiPoIspitu");
+	}
 		
 }
