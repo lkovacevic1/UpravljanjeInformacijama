@@ -37,7 +37,11 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
 	//sortiran spisak po godini studPrograma, po godini upisa i broju indexa
 	@Query("select s from Student s join s.indeks i order by i.studProgram.nazivStudPrograma, i.upisGodine, i.idIndeks")
 	List<Student> sortByElements();
-	  
+	
+	//sortiran spisak studenata po rezultatu ispita
+	@Query("select s from Student s join s.indeks i join i.prijavaIspita pi where pi.ispit.idIspit like :idIspit order by i.studProgram.nazivStudPrograma, i.godinaUpisa, i.idIndeks")
+	List<Student> sortedStudents(int idIspit);
+	
 	//Koliko puta je student izlazio na ispit
 	@Query("select COUNT(iz) from IzlazakNaIspit iz join iz.polozenPredmet pop join pop.indeks i where i.brojIndexa like :brojIndeksa and i.godinaUpisa like :godinaUpisa and i.studProgram.oznaka like :oznaka and pop.ispit.predmet.nazivPredmeta like :predmet")                                  
 	int countBrojIzlazakaNaIspit(int brojIndeksa, int godinaUpisa, String oznaka, String predmet);

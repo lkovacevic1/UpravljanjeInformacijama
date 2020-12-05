@@ -53,8 +53,7 @@ public class StudentiNaIspituController {
 	public void pretraziStudentePoIspitu(ActionEvent event) {
 		Ispit podaci = datumOdrzavanjaIspita.getValue();
 		int id = podaci.getIdIspit();
-		List<Student> studenti = studentRepo.findAllStudentsForIspit(id);
-		System.out.println("123123");
+		List<Student> studenti = studentRepo.sortedStudents(id);
 		for (Student st : studenti) {
 			System.out.println(st);
 		}

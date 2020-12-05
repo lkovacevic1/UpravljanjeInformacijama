@@ -103,7 +103,7 @@
                  <cellValueFactory><PropertyValueFactory property="datumOdrzavanjaIspita" />
         		</cellValueFactory>
         		</TableColumn>
-                <TableColumn prefWidth="150.0" text="Vreme zavrsetka ispita">
+                <TableColumn prefWidth="150.0" text="Vreme pocetka ispita">
                  <cellValueFactory><PropertyValueFactory property="vremeOdrzavanjaIspita" />
         		</cellValueFactory>
         		</TableColumn>

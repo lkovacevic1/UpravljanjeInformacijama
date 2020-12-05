@@ -19,7 +19,6 @@
                     		<MenuItem text="Studente po broju indeksa" onAction="#openSortirajStudentaPoIneksu"/>    
                     		<MenuItem text="Studente po imenu/prezimenu" onAction="#openPretraziStudentaPoImenuPrezimenu"/> 
                     		<MenuItem text="Promena indeksa" onAction="#openPromenaIndeksa"/>  
-                    		<MenuItem text="Po ispitu" onAction="#openStudentiPoIspitu"/>  
                     	</items>                           
             		</Menu>	        
                     <MenuItem text="Nastavnici" />               
@@ -41,6 +40,7 @@
                     <MenuItem text="Studijski programi" onAction="#openStudProgrami"/>              
                     <MenuItem text="Školska godina" />               
                     <MenuItem text="Korisnici" />
+                    <MenuItem text="Prijava ispita" onAction="#openStudentiPoIspitu"/> 
                 </items>                          
             </Menu>
         </MenuBar>    

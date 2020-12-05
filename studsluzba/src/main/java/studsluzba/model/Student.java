@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 @Entity
 @NamedQuery(name = "Student.findAll", query = "SELECT s FROM Student s")
 public class Student implements Serializable {

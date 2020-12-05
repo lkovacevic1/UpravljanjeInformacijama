@@ -51,20 +51,12 @@
                  <cellValueFactory><PropertyValueFactory property="prezime" />
         		</cellValueFactory>
         		</TableColumn>
+                <TableColumn prefWidth="150.0" text="Fakultetski email">
+                 <cellValueFactory><PropertyValueFactory property="emailFakultet" />
+        		</cellValueFactory>
+        		</TableColumn>
         		<TableColumn prefWidth="150.0" text="Broj telefona">
                  <cellValueFactory><PropertyValueFactory property="brTelefona" />
-        		</cellValueFactory>
-        		</TableColumn>
-        		<TableColumn prefWidth="150.0" text="Studijski program">
-                 <cellValueFactory><PropertyValueFactory property="oznaka" />
-        		</cellValueFactory>
-        		</TableColumn>
-        		<TableColumn prefWidth="150.0" text="Godina upisa">
-                 <cellValueFactory><PropertyValueFactory property="godinaUpisa" />
-        		</cellValueFactory>
-        		</TableColumn>
-        		<TableColumn prefWidth="150.0" text="Indeks">
-                 <cellValueFactory><PropertyValueFactory property="indeks" />
         		</cellValueFactory>
         		</TableColumn>
               </columns>             
@@ -72,17 +64,6 @@
          </children>      
       </VBox>
    </bottom>
-
-
-
-
-
-
-
-
-
-
-
 
 
 </BorderPane>
