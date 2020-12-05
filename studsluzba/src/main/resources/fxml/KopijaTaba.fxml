@@ -27,7 +27,7 @@
 	<fx:include source="menuBar.fxml" />
 </top>
 <center>
-	<fx:include source="dosijeStudenta.fxml" />
+	<fx:include source="dosijeStudentaIndeks.fxml" />
 </center>
 	
 </BorderPane>     
