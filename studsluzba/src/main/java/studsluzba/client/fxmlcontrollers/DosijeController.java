@@ -114,7 +114,7 @@ public class DosijeController {
 		List<Student> st = new ArrayList<Student>();
 		Student student = promeniIndeksStud.selektovanStudent;
 		st.add(student);
-		sviIndeksi = FXCollections.observableList(stud);
+		sviIndeksi = FXCollections.observableList(st);
 		indeksTable.setItems(sviIndeksi);
 	}
 	
