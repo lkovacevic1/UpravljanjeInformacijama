@@ -60,7 +60,7 @@ public class DosijeController {
 	
 	@FXML private TableView<Student> studentiTable;
 	
-	private List<Predmet> selektovaniPredmeti;
+	private List<Predmet> selektovaniPredmeti = new ArrayList<Predmet>();
 	
 	@FXML
     public void initialize() {	
@@ -99,5 +99,6 @@ public class DosijeController {
 		if(upis_obnova.getValue().equals("Obnova Godine")) {
 			ObnovaGodine obnovaGodine = obnovaGodineService.saveObnovaGodine(selektovaniPredmeti, datum.getText(), napomena.getText());
 		}
+		selektovaniPredmeti.clear();
 	}
 }
