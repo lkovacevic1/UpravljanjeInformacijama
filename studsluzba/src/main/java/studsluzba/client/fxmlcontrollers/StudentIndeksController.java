@@ -67,20 +67,29 @@ public class StudentIndeksController {
 	
 	private List<Predmet> selektovaniPredmeti = new ArrayList<Predmet>();
 	
+	//Promena Indeksa FXML
+	
+	@Autowired
+	SortStudentaByIndeksController promeniIndeksStud;
+		
+	@FXML private TextField indeks;
+		
+	private ObservableList<Student> sviIndeksi;
+		
+	@FXML private TableView<Student> indeksTable;
+		
+	
 	@FXML
     public void initialize() {	
-		List<String> obn_upis = List.of("Obnova Godine", "Upis Godine");
-		upis_obnova.setItems(FXCollections.observableArrayList(obn_upis));
 		
-		List<Student> stud = new ArrayList<Student>();
-		Student s = pretraziStud.selektovanStudent;
-		stud.add(s);
-		System.out.println(s.getIdstudent());
-		sviStidenti = FXCollections.observableList(stud);
-		stTable.setItems(sviStidenti);
+		List<Student> st = new ArrayList<Student>();
+		Student student = promeniIndeksStud.selektovanStudentZaPromenuIndeksa;
+		st.add(student);
+		sviIndeksi = FXCollections.observableList(st);
+		indeksTable.setItems(sviIndeksi);
 		
 		
-		List<Indeks> ind = indeksRepo.findIndeksOfStudent(s);
+		List<Indeks> ind = indeksRepo.findIndeksOfStudent(student);
 		StudProgram sp = null;
 		System.out.println("\n");
 		for(Indeks in : ind) {
@@ -102,7 +111,7 @@ public class StudentIndeksController {
 	}
 	
 	public void napraviAktivnost(ActionEvent event) {
-		Student s = pretraziStud.selektovanStudent;
+		/*Student s = pretraziStud.selektovanStudent;
 		Indeks indeks = indeksRepo.findAktivanIndeks(s.getIdstudent());
 		System.out.println(indeks);
 		if(upis_obnova.getValue().equals("Obnova Godine")) {
@@ -112,6 +121,6 @@ public class StudentIndeksController {
 		}else {
 			System.out.println("Odaberite aktivnost!");
 		}
-		selektovaniPredmeti.clear();
+		selektovaniPredmeti.clear();*/
 	}
 }

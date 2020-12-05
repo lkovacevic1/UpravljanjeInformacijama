@@ -30,7 +30,7 @@ public class SortStudentaByIndeksController {
 	 @Autowired  
 	 MainViewManager mainViewManager;
 		
-	 Student selektovanStudent;
+	 Student selektovanStudentZaPromenuIndeksa;
 		
 	 @FXML private TextField indeks;
 	 
@@ -51,7 +51,7 @@ public class SortStudentaByIndeksController {
 			            //12
 			            Student st = row.getItem();
 			            System.out.println(st.getIdstudent());*/
-			            selektovanStudent = rowData;
+			            selektovanStudentZaPromenuIndeksa = rowData;
 			            
 			            mainViewManager.openModal("KopijaTaba", 750, 500);
 			        }
