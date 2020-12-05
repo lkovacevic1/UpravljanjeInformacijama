@@ -89,38 +89,6 @@ public class StudentIndeksController {
 		indeksTable.setItems(sviIndeksi);
 		
 		
-		List<Indeks> ind = indeksRepo.findIndeksOfStudent(student);
-		StudProgram sp = null;
-		System.out.println("\n");
-		for(Indeks in : ind) {
-			System.out.println(in.getBrojIndexa());
-			 //if(s.getIndeks().equals(in.getIndeks())){
-			 	sp = in.getStudProgram();
-			 //}
-		}
 		
-		List<Predmet> predmet = sifraniciService.getPredmeti(sp);
-		predmeti.setItems(FXCollections.observableArrayList(predmet));
-	}
-	
-	public void dodajUListuPredmeta(ActionEvent event) {
-		//Predmet p = predmeti.getValue();
-		Predmet p = predmeti.getSelectionModel().getSelectedItem();
-		System.out.println(p);
-		selektovaniPredmeti.add(p);
-	}
-	
-	public void napraviAktivnost(ActionEvent event) {
-		/*Student s = pretraziStud.selektovanStudent;
-		Indeks indeks = indeksRepo.findAktivanIndeks(s.getIdstudent());
-		System.out.println(indeks);
-		if(upis_obnova.getValue().equals("Obnova Godine")) {
-			ObnovaGodine obnovaGodine = obnovaGodineService.saveObnovaGodine(selektovaniPredmeti, datum.getText(), napomena.getText(), indeks);
-		}else if(upis_obnova.getValue().equals("Upis Godine")) {
-			UpisGodine upisGodine = upisGodineService.saveUpisGodine(selektovaniPredmeti, datum.getText(), napomena.getText(), indeks);
-		}else {
-			System.out.println("Odaberite aktivnost!");
-		}
-		selektovaniPredmeti.clear();*/
 	}
 }
