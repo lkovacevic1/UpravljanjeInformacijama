@@ -19,17 +19,23 @@ import studsluzba.model.ObnovaGodine;
 import studsluzba.model.Predmet;
 import studsluzba.model.StudProgram;
 import studsluzba.model.Student;
+import studsluzba.model.UpisGodine;
 import studsluzba.repositories.IndeksRepository;
 import studsluzba.repositories.PredmetRepository;
+import studsluzba.repositories.UpisGodineRepository;
 import studsluzba.services.ObnovaGodineService;
 import studsluzba.services.SifarniciService;
 import studsluzba.services.StudentService;
+import studsluzba.services.UpisGodineService;
 
 @Component
 public class DosijeController {
 	
 	@Autowired
 	IndeksRepository indeksRepo;
+	
+	@Autowired
+	UpisGodineService upisGodineService;
 	
 	@Autowired
 	SifarniciService sifraniciService;
@@ -102,6 +108,10 @@ public class DosijeController {
 		System.out.println(indeks);
 		if(upis_obnova.getValue().equals("Obnova Godine")) {
 			ObnovaGodine obnovaGodine = obnovaGodineService.saveObnovaGodine(selektovaniPredmeti, datum.getText(), napomena.getText(), indeks);
+		}else if(upis_obnova.getValue().equals("Upis Godine")) {
+			UpisGodine upisGodine = upisGodineService.saveUpisGodine(selektovaniPredmeti, datum.getText(), napomena.getText(), indeks);
+		}else {
+			System.out.println("Odaberite aktivnost!");
 		}
 		selektovaniPredmeti.clear();
 	}
