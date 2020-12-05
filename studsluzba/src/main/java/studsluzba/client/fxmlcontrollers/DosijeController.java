@@ -96,8 +96,10 @@ public class DosijeController {
 	}
 	
 	public void napraviAktivnost(ActionEvent event) {
+		Student s = pretraziStud.selektovanStudent;
+		Indeks indeks = indeksRepo.findAktivanIndeks(s.getIdstudent());
 		if(upis_obnova.getValue().equals("Obnova Godine")) {
-			ObnovaGodine obnovaGodine = obnovaGodineService.saveObnovaGodine(selektovaniPredmeti, datum.getText(), napomena.getText());
+			ObnovaGodine obnovaGodine = obnovaGodineService.saveObnovaGodine(selektovaniPredmeti, datum.getText(), napomena.getText(), indeks);
 		}
 		selektovaniPredmeti.clear();
 	}

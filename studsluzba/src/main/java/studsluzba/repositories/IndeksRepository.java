@@ -21,4 +21,8 @@ public interface IndeksRepository extends CrudRepository<Indeks, Integer> {
 	
 	@Query("select i from Indeks i where i.student like :student")
 	List<Indeks> findIndeksOfStudent(Student student);
+	
+	//Selekcija aktivnog indeks studenta
+	@Query("select i form Indeks i where i.aktivan = 1 and i.student.idstudent like :idStudenta")
+	Indeks findAktivanIndeks(int idStudenta);
 }
