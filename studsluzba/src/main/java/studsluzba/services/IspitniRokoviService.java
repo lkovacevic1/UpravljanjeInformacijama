@@ -43,6 +43,15 @@ public class IspitniRokoviService {
 		
 	}
 	
+	public List<Ispit> loadAllIspiti(){
+		
+		Iterable<Ispit> iter = ispitRepo.findAll();
+		List<Ispit> rez = new ArrayList<Ispit>();
+		iter.forEach(rez::add);
+		
+		return rez;
+	}
+	
 	public Ispit saveIspit(LocalDate datumOdrzavanjaIspita, int vremeOdrzavanjaIspita, boolean zakljucenIspit, Predmet p, Nastavnik n, IspitniRok i) {
 
         Ispit ispit = new Ispit();

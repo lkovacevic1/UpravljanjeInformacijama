@@ -29,9 +29,10 @@ public class ObnovaGodineService {
 		obnovaGodine.setGodinaObnove(date);
 		obnovaGodine.setIndeks(indeks);
 		
-		Indeks i = new Indeks();
-		i.setObnovaGodine(obnovaGodine);
-		indeksRepo.save(i);
+		obnovaGodineRepo.save(obnovaGodine);
+		
+		indeks.setObnovaGodine(obnovaGodine);
+		indeksRepo.save(indeks);
 		
 		return obnovaGodineRepo.save(obnovaGodine);
 	}
