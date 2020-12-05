@@ -71,8 +71,8 @@ public class UnosIspitRokController {
 		 sviRokovi = FXCollections.observableList(ispitniRokoviService.loadAll());
 		 rokoviTable.setItems(sviRokovi);
 		 
-//		 sviIspiti = FXCollections.observableList(ispitiService.loadAll());
-//		 ispitiTable.setItems(sviIspiti);
+		 sviIspiti = FXCollections.observableList(ispitniRokoviService.loadAllIspiti());
+		 ispitiTable.setItems(sviIspiti);
 		 
 		 List<IspitniRok> ispitniRok = sifarniciService.getIspitniRok();
 		 cbIspit.setItems(FXCollections.observableArrayList(ispitniRok));
@@ -101,6 +101,6 @@ public class UnosIspitRokController {
 		 Nastavnik ns = cbNastavnik2.getValue();
 		 System.out.println(ns.getIdNastavnik());
 		 Ispit ispit = ispitniRokoviService.saveIspit(datumPocetkaIspita.getValue(), Integer.parseInt(vremeOdrzavanjaIspita.getText()), flag, cbPredmet2.getValue(), cbNastavnik2.getValue(), cbIspit.getValue());
-		 //sviIspiti.add(ispit);
+		 sviIspiti.add(ispit);
 	 }
 }
