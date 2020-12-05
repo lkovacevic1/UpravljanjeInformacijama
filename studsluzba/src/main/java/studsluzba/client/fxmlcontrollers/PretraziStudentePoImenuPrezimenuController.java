@@ -53,7 +53,7 @@ public class PretraziStudentePoImenuPrezimenuController {
 			            System.out.println(st.getIdstudent());*/
 			            selektovanStudent = rowData;
 			            
-			            mainViewManager.openModal("dosijeStudenta", 750, 500);
+			            mainViewManager.openModal("TabAktivnostIndeksStudenta", 750, 500);
 			        }
 			    });
 			    return row ;
