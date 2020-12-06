@@ -153,6 +153,9 @@ public class DosijeController {
 		
 		noviStudProgram.setOznaka(parts[2]);
 		
-		Indeks ind = studentService.saveIndeks(s, novaGodinaUpisa, brojNovogIndeksa, noviStudProgram);
+		ObnovaGodine obnova = i.getObnovaGodine();
+		UpisGodine upis = i.getUpisGodine();
+		
+		Indeks ind = studentService.saveIndeks(s, novaGodinaUpisa, brojNovogIndeksa, noviStudProgram, obnova, upis);
 	}
 }

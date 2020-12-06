@@ -11,9 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import studsluzba.model.Indeks;
+import studsluzba.model.ObnovaGodine;
 import studsluzba.model.SrednjaSkola;
 import studsluzba.model.StudProgram;
 import studsluzba.model.Student;
+import studsluzba.model.UpisGodine;
 import studsluzba.model.VisokoskolskaUstanova;
 import studsluzba.repositories.IndeksRepository;
 import studsluzba.repositories.StudentRepository;
@@ -89,7 +91,7 @@ public class StudentService {
 		return indeksRepo.save(i);;
 	}*/
 	
-	public Indeks saveIndeks(Student s, int godinaUpisa, int brojIndeksa, StudProgram studProgram) {
+	public Indeks saveIndeks(Student s, int godinaUpisa, int brojIndeksa, StudProgram studProgram, ObnovaGodine obnova, UpisGodine upis) {
 		LocalDate today = LocalDate.now();
 		
 		Indeks i = new Indeks();
@@ -99,6 +101,8 @@ public class StudentService {
 		i.setAktivan(true);
 		i.setDatumAktivacijeIndexa(today);
 		i.setStudProgram(studProgram);
+		i.setObnovaGodine(obnova);
+		i.setUpisGodine(upis);
 		return indeksRepo.save(i);
 	}
 }
