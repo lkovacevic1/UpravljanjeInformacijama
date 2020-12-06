@@ -66,5 +66,16 @@ public class StudentService {
 		return indeksRepo.save(i);
 	}
 	
-	
+	public Indeks saveIndeks(Student s, int godinaUpisa, int brojIndeksa, StudProgram studProgram) {
+		LocalDate today = LocalDate.now();
+		
+		Indeks i = new Indeks();
+		i.setStudent(s);
+		i.setGodinaUpisa(godinaUpisa);
+		i.setBrojIndexa(brojIndeksa);
+		i.setAktivan(true);
+		i.setDatumAktivacijeIndexa(today);
+		i.setStudProgram(studProgram);
+		return indeksRepo.save(i);
+	}
 }

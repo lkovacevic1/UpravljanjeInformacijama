@@ -146,5 +146,12 @@ public class DosijeController {
 		Indeks i = (Indeks) s.getIndeks();
 		Indeks indeks = studentService.promeniAktivanIndeksNaNeaktivan(i);
 		
+		int brojNovogIndeksa = Integer.parseInt(parts[0]);
+		int novaGodinaUpisa = Integer.parseInt(parts[1]);
+		StudProgram noviStudProgram = new StudProgram();
+		
+		noviStudProgram.setOznaka(parts[2]);
+		
+		Indeks ind = studentService.saveIndeks(s, novaGodinaUpisa, brojNovogIndeksa, noviStudProgram);
 	}
 }
