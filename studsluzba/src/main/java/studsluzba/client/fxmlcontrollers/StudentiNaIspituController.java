@@ -53,11 +53,20 @@ public class StudentiNaIspituController {
 	public void pretraziStudentePoIspitu(ActionEvent event) {
 		Ispit podaci = datumOdrzavanjaIspita.getValue();
 		int id = podaci.getIdIspit();
-		List<Student> studenti = studentRepo.sortedStudents(id);
+		List<Student> studenti = studentRepo.findAllStudentsForIspit(id);
 		for (Student st : studenti) {
 			System.out.println(st);
 		}
 		studentiNaIspituTable.getItems().clear();
 		studentiNaIspituTable.getItems().addAll(studenti);
+	}
+	
+	public void sortirajStudentePoIspitu(ActionEvent event) {
+		
+		Ispit podaci = datumOdrzavanjaIspita.getValue();
+		int id = podaci.getIdIspit();
+		//studentiNaIspituTable.getSelectionModel().getSelectedCells().get(0);
+		List<Student> studentiLista = studentiNaIspituTable.getItems();
+		studentiLista = studentRepo.sortedStudents(id);
 	}
 }
