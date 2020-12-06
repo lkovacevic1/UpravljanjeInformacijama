@@ -144,7 +144,8 @@ public class DosijeController {
 		String parts[] = index.split("/");
 		
 		Indeks i = (Indeks) s.getIndeks();
-		Indeks indeks = studentService.promeniAktivanIndeksNaNeaktivan(i);
+		//Indeks indeks = studentService.promeniAktivanIndeksNaNeaktivan(i);
+		studentService.promeniAktivanIndeksNaNeaktivan(i);
 		
 		int brojNovogIndeksa = Integer.parseInt(parts[0]);
 		int novaGodinaUpisa = Integer.parseInt(parts[1]);

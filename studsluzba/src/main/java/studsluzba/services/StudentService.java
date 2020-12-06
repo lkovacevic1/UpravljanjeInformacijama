@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -61,10 +64,30 @@ public class StudentService {
 	}
 	
 	//Promeni indeks na neaktivan
-	public Indeks promeniAktivanIndeksNaNeaktivan(Indeks i) {
+	public void promeniAktivanIndeksNaNeaktivan(Indeks i) {
 		i.setAktivan(false);
-		return indeksRepo.save(i);
+		
+		Configuration config = new Configuration();
+		config.configure();
+		
+		SessionFactory sessionFactory = config.buildSessionFactory();
+		Session session = sessionFactory.getCurrentSession();
+		
+		session.update(i);
 	}
+	
+	/*public Indeks promeniAktivanIndeksNaNeaktivan(Indeks i) {
+		i.setAktivan(false);
+		
+		Configuration config = new Configuration();
+		config.configure();
+		
+		SessionFactory sessionFactory = config.buildSessionFactory();
+		Session session = sessionFactory.getCurrentSession();
+		
+		return session.update(i);
+		return indeksRepo.save(i);;
+	}*/
 	
 	public Indeks saveIndeks(Student s, int godinaUpisa, int brojIndeksa, StudProgram studProgram) {
 		LocalDate today = LocalDate.now();
