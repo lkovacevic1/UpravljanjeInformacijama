@@ -143,9 +143,16 @@ public class DosijeController {
 		String index = indeks.getText();
 		String parts[] = index.split("/");
 		
-		Indeks i = (Indeks) s.getIndeks();
+		List<Indeks> i = s.getIndeks();
+		Indeks ind = null;
+		for (Indeks indeks : i) {
+			if(indeks.isAktivan()) {
+				ind = indeks;
+				break;
+			}
+		}
 		//Indeks indeks = studentService.promeniAktivanIndeksNaNeaktivan(i);
-		studentService.promeniAktivanIndeksNaNeaktivan(i);
+		studentService.promeniAktivanIndeksNaNeaktivan(ind);
 		
 		int brojNovogIndeksa = Integer.parseInt(parts[0]);
 		int novaGodinaUpisa = Integer.parseInt(parts[1]);
@@ -153,9 +160,9 @@ public class DosijeController {
 		
 		noviStudProgram.setOznaka(parts[2]);
 		
-		ObnovaGodine obnova = i.getObnovaGodine();
-		UpisGodine upis = i.getUpisGodine();
+		ObnovaGodine obnova = ind.getObnovaGodine();
+		UpisGodine upis = ind.getUpisGodine();
 		
-		Indeks ind = studentService.saveIndeks(s, novaGodinaUpisa, brojNovogIndeksa, noviStudProgram, obnova, upis);
+		ind = studentService.saveIndeks(s, novaGodinaUpisa, brojNovogIndeksa, noviStudProgram, obnova, upis);
 	}
 }

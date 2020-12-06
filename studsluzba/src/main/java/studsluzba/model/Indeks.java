@@ -56,7 +56,7 @@ public class Indeks implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "idUpisGodine")
 	private UpisGodine upisGodine;
-
+	
 	public Indeks() {
 
 		this.drziPredmete = new ArrayList<DrziPredmet>();
