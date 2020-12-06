@@ -36,10 +36,6 @@ public class MenuBarController {
 	public void openPretraziStudentaPoImenuPrezimenu(ActionEvent event) {
 		mainViewManager.changeRoot("pretraziStudentePoImenuPrezimenu");
 	}
-
-	public void openPromenaIndeksa(ActionEvent event) {
-		mainViewManager.changeRoot("PromenaIndeksa");
-	}
 	
 	public void unosIspitaRoka(ActionEvent event) {
 		mainViewManager.changeRoot("UnosIspitaRoka");
@@ -48,5 +44,16 @@ public class MenuBarController {
 	public void openStudentiPoIspitu(ActionEvent event) {
 		mainViewManager.changeRoot("newStudentiPoIspitu");
 	}
-		
+	
+	public void openRezultatiIspita(ActionEvent event) {
+		mainViewManager.changeRoot("RezultatiIspita");
+	}
+	
+	public void openPrijavaIspita(ActionEvent event) {
+		mainViewManager.changeRoot("prijavaIspita");
+	}
+	
+	public void spisakNastavnika(ActionEvent event) {
+		mainViewManager.changeRoot("aktivniNastavnici");
+	}
 }

@@ -145,7 +145,9 @@ public class DosijeController {
 		
 		List<Indeks> i = s.getIndeks();
 		Indeks ind = null;
+		System.out.println("Ulazak u for");
 		for (Indeks indeks : i) {
+			System.out.println("Broj indeksa je: " + indeks.getBrojIndexa());
 			if(indeks.isAktivan()) {
 				ind = indeks;
 				break;
@@ -153,6 +155,7 @@ public class DosijeController {
 		}
 		//Indeks indeks = studentService.promeniAktivanIndeksNaNeaktivan(i);
 		studentService.promeniAktivanIndeksNaNeaktivan(ind);
+		System.out.println("Njen indeks je: " + ind.isAktivan());
 		
 		int brojNovogIndeksa = Integer.parseInt(parts[0]);
 		int novaGodinaUpisa = Integer.parseInt(parts[1]);

@@ -18,10 +18,9 @@
                 		<items>
                     		<MenuItem text="Studente po broju indeksa" onAction="#openSortirajStudentaPoIneksu"/>    
                     		<MenuItem text="Studente po imenu/prezimenu" onAction="#openPretraziStudentaPoImenuPrezimenu"/> 
-                    		<MenuItem text="Promena indeksa" onAction="#openPromenaIndeksa"/>  
                     	</items>                           
             		</Menu>	        
-                    <MenuItem text="Nastavnici" />               
+                    <MenuItem text="Nastavnici" onAction="#spisakNastavnika"/>               
                     <MenuItem text="Predmeti" />                
                     <MenuItem text="Ispitni rokovi" />
                 </items>                           
@@ -37,10 +36,14 @@
             <Menu text="Administracija">
                 <items>
                     <MenuItem text="Šifarnici" />   
-                    <MenuItem text="Studijski programi" onAction="#openStudProgrami"/>              
-                    <MenuItem text="Školska godina" />               
-                    <MenuItem text="Korisnici" />
-                    <MenuItem text="Prijava ispita" onAction="#openStudentiPoIspitu"/> 
+                    <MenuItem text="Studijski programi" onAction="#openStudProgrami"/> 
+                    <Menu text = "Ispit">
+                    	<items>             
+                    		<MenuItem text="Rezultati ispita" onAction="#openRezultatiIspita"/>               
+                    		<MenuItem text="Prijava ispita" onAction="#openPrijavaIspita"/>
+                    		<MenuItem text="Prijavljeni studenti" onAction="#openStudentiPoIspitu"/> 
+                		</items>
+                	</Menu>
                 </items>                          
             </Menu>
         </MenuBar>    

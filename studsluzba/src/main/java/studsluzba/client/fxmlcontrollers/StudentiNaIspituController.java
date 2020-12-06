@@ -17,6 +17,7 @@ import javafx.scene.control.TableView;
 import studsluzba.client.MainViewManager;
 import studsluzba.model.Ispit;
 import studsluzba.model.Student;
+import studsluzba.repositories.IspitRepository;
 import studsluzba.repositories.StudentRepository;
 import studsluzba.services.SifarniciService;
 import studsluzba.services.StudentiNaIspituService;
@@ -26,6 +27,9 @@ public class StudentiNaIspituController {
 	
 	@Autowired
 	StudentiNaIspituService studentiNaIspituService;
+	
+	@Autowired
+	IspitRepository ispitRepo;
 	
 	@Autowired
 	StudentRepository studentRepo;
@@ -46,7 +50,7 @@ public class StudentiNaIspituController {
 		sviStudenti = FXCollections.observableList(studentiNaIspituService.loadAll());
 		studentiNaIspituTable.setItems(sviStudenti);
 		
-		List<Ispit> ispiti = sifarniciService.getIspiti();
+		List<Ispit> ispiti = ispitRepo.ispitiZaPrijavu();
 		datumOdrzavanjaIspita.setItems(FXCollections.observableArrayList(ispiti));
 	}
 	
@@ -54,19 +58,8 @@ public class StudentiNaIspituController {
 		Ispit podaci = datumOdrzavanjaIspita.getValue();
 		int id = podaci.getIdIspit();
 		List<Student> studenti = studentRepo.findAllStudentsForIspit(id);
-		for (Student st : studenti) {
-			System.out.println(st);
-		}
+		
 		studentiNaIspituTable.getItems().clear();
 		studentiNaIspituTable.getItems().addAll(studenti);
-	}
-	
-	public void sortirajStudentePoIspitu(ActionEvent event) {
-		
-		Ispit podaci = datumOdrzavanjaIspita.getValue();
-		int id = podaci.getIdIspit();
-		//studentiNaIspituTable.getSelectionModel().getSelectedCells().get(0);
-		List<Student> studentiLista = studentiNaIspituTable.getItems();
-		studentiLista = studentRepo.sortedStudents(id);
 	}
 }
