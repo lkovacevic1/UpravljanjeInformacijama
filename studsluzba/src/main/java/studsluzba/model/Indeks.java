@@ -32,6 +32,7 @@ public class Indeks implements Serializable {
 	private int brojIndexa;
 	private boolean aktivan;
 	private LocalDate datumAktivacijeIndexa;
+	private int osvojeniPoeni;
 
 	@ManyToOne
 	@JoinColumn(name = "idstudProgram")
@@ -67,7 +68,7 @@ public class Indeks implements Serializable {
 
 	public Indeks(int idIndeks, Student student, int godinaUpisa, int brojIndexa, boolean aktivan,
 			LocalDate datumAktivacijeIndexa, StudProgram studProgram, List<DrziPredmet> drziPredmete,
-			List<PolozenPredmet> polozeniPredmeti, List<PrijavaIspita> prijavaIspita,
+			List<PolozenPredmet> polozeniPredmeti, List<PrijavaIspita> prijavaIspita, int osvojeniPoeni,
 			List<OsvojeniPredispitniPoeni> osvojeniPredispitniPOeni, ObnovaGodine obnovaGodine, UpisGodine upisGodine) {
 		super();
 		this.idIndeks = idIndeks;
@@ -83,10 +84,19 @@ public class Indeks implements Serializable {
 		this.osvojeniPredispitniPOeni = osvojeniPredispitniPOeni;
 		this.obnovaGodine = obnovaGodine;
 		this.upisGodine = upisGodine;
+		this.osvojeniPoeni = osvojeniPoeni;
 	}
 
 	public int getIdIndeks() {
 		return idIndeks;
+	}
+	
+	public int getOsvojeniPoeni() {
+		return osvojeniPoeni;
+	}
+
+	public void setOsvojeniPoeni(int osvojeniPoeni) {
+		this.osvojeniPoeni = osvojeniPoeni;
 	}
 
 	public void setIdIndeks(int idIndeks) {

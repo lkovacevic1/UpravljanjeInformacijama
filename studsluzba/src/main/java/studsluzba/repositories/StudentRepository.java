@@ -33,10 +33,10 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
 	//svi prijavljeni studenti na ispit
 	@Query("select s from Student s join s.indeks i join i.prijavaIspita pi where pi.ispit.predmet.nazivPredmeta like :nazivPredmeta")
 	List<Student> findStudentByPrijavljenIspit(String nazivPredmeta);
-	  
+	/*  
 	//sortiran spisak po godini studPrograma, po godini upisa i broju indexa
-	@Query("select s from Student s join s.indeks i order by i.studProgram.nazivStudPrograma, i.upisGodine, i.idIndeks")
-	List<Student> sortByElements();
+	@Query("select i.godinaUpisa, i.smer, i.student.ime, i.student.prezime from Indeks i join order by i.studProgram.nazivStudPrograma, i.upisGodine, i.idIndeks")
+	List<Object[]> sortByElements();*/
 	
 	//sortiran spisak studenata po rezultatu ispita
 	@Query("select s from Student s join s.indeks i join i.prijavaIspita pi where pi.ispit.idIspit like :idIspit order by i.studProgram.nazivStudPrograma, i.godinaUpisa, i.idIndeks")

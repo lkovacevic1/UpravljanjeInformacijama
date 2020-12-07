@@ -66,7 +66,7 @@ public class StudentService {
 	}
 	
 	//Promeni indeks na neaktivan
-	public void promeniAktivanIndeksNaNeaktivan(Indeks i) {
+	/*public void promeniAktivanIndeksNaNeaktivan(Indeks i) {
 		i.setAktivan(false);
 		
 		Configuration config = new Configuration();
@@ -76,20 +76,13 @@ public class StudentService {
 		Session session = sessionFactory.getCurrentSession();
 		
 		session.update(i);
-	}
+	}*/
 	
-	/*public Indeks promeniAktivanIndeksNaNeaktivan(Indeks i) {
+	public Indeks promeniAktivanIndeksNaNeaktivan(Indeks i) {
 		i.setAktivan(false);
 		
-		Configuration config = new Configuration();
-		config.configure();
-		
-		SessionFactory sessionFactory = config.buildSessionFactory();
-		Session session = sessionFactory.getCurrentSession();
-		
-		return session.update(i);
-		return indeksRepo.save(i);;
-	}*/
+		return indeksRepo.save(i);
+	}
 	
 	public Indeks saveIndeks(Student s, int godinaUpisa, int brojIndeksa, StudProgram studProgram, ObnovaGodine obnova, UpisGodine upis) {
 		LocalDate today = LocalDate.now();

@@ -99,7 +99,7 @@ public class UnosIspitRokController {
 			 flag = true;
 		 }
 		 Nastavnik ns = cbNastavnik2.getValue();
-		 System.out.println(ns.getIdNastavnik());
+		 System.out.println("Nastavnik " + ns.getIdNastavnik());
 		 Ispit ispit = ispitniRokoviService.saveIspit(datumPocetkaIspita.getValue(), Integer.parseInt(vremeOdrzavanjaIspita.getText()), flag, cbPredmet2.getValue(), cbNastavnik2.getValue(), cbIspit.getValue());
 		 sviIspiti.add(ispit);
 	 }

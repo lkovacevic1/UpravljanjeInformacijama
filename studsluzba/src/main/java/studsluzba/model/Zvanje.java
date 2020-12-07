@@ -22,12 +22,12 @@ public class Zvanje {
 	@OneToMany(mappedBy = "zvanje")
 	private List<Nastavnik> nastavnici;
 
-	@OneToMany(mappedBy = "zvanje")
-	private List<IstorijaZvanja> istorijeZvanja;
+	/*@OneToMany(mappedBy = "zvanje")
+	private List<IstorijaZvanja> istorijeZvanja;*/
 
 	public Zvanje() {
 		this.nastavnici = new ArrayList<Nastavnik>();
-		this.istorijeZvanja = new ArrayList<IstorijaZvanja>();
+		//this.istorijeZvanja = new ArrayList<IstorijaZvanja>();
 	}
 
 	public Zvanje(int idZvanja, String zvanje, List<Nastavnik> nastavnici, List<IstorijaZvanja> istorijeZvanja) {
@@ -35,7 +35,7 @@ public class Zvanje {
 		this.idZvanja = idZvanja;
 		this.zvanje = zvanje;
 		this.nastavnici = nastavnici;
-		this.istorijeZvanja = istorijeZvanja;
+		//this.istorijeZvanja = istorijeZvanja;
 	}
 
 	public int getIdZvanja() {
@@ -62,13 +62,13 @@ public class Zvanje {
 		this.nastavnici = nastavnici;
 	}
 
-	public List<IstorijaZvanja> getIstorijeZvanja() {
+	/*public List<IstorijaZvanja> getIstorijeZvanja() {
 		return istorijeZvanja;
 	}
 
 	public void setIstorijeZvanja(List<IstorijaZvanja> istorijeZvanja) {
 		this.istorijeZvanja = istorijeZvanja;
-	}
+	}*/
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
