@@ -8,9 +8,10 @@ import org.springframework.data.repository.CrudRepository;
 import studsluzba.model.Ispit;
 
 public interface IspitRepository extends CrudRepository<Ispit, Integer> {
-
-	//studenti kojima je zakljucen = false
-	@Query("select i from Ispit i where i.zakljucenIspit = 0")
+	
+	
+	//studenti kojima su prijavljeni na neki ispit
+	@Query("select i from Ispit i")
 	List<Ispit> ispitiZaPrijavu();
 	
 	//rezultati za ispit

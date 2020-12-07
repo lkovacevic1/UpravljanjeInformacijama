@@ -10,6 +10,7 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import studsluzba.client.MainViewManager;
 import studsluzba.model.Nastavnik;
+import studsluzba.repositories.NastavnikRepository;
 import studsluzba.services.NastavnikService;
 
 @Component
@@ -17,6 +18,9 @@ public class NastavnikController {
 	
 	@Autowired
 	NastavnikService nastavnikService;
+	
+	@Autowired
+	NastavnikRepository nastavnikRepo;
 	
 	@Autowired  
 	MainViewManager mainViewManager;
@@ -29,7 +33,6 @@ public class NastavnikController {
 	
 	@FXML
 	protected void initialize() {
-		sviNastavnici = FXCollections.observableArrayList(nastavnikService.loadAll());
 		
 		aktivniNastavniciTable.setRowFactory( tv -> {
 		    TableRow<Nastavnik> row = new TableRow<>();
@@ -44,6 +47,31 @@ public class NastavnikController {
 		    return row ;
 		});
 		
+		refreshNastavnici();
+	}
+	
+	public void refreshNastavnici() {
+		sviNastavnici = FXCollections.observableArrayList(nastavnikRepo.selekcijaAktivnihNastavnika());
 		aktivniNastavniciTable.setItems(sviNastavnici);
+	}
+	
+	public void removeNastavnikaZaPromenu() {
+		aktivniNastavniciTable.getItems().remove(selektovanNastavnik);
+	}
+
+	public TableView<Nastavnik> getAktivniNastavniciTable() {
+		return aktivniNastavniciTable;
+	}
+
+	public void setAktivniNastavniciTable(TableView<Nastavnik> aktivniNastavniciTable) {
+		this.aktivniNastavniciTable = aktivniNastavniciTable;
+	}
+
+	public ObservableList<Nastavnik> getSviNastavnici() {
+		return sviNastavnici;
+	}
+
+	public void setSviNastavnici(ObservableList<Nastavnik> sviNastavnici) {
+		this.sviNastavnici = sviNastavnici;
 	}
 }

@@ -26,10 +26,10 @@
 <center>
 	<GridPane alignment="center" hgap="10" vgap="10">
 	<Label text="Novo zvanje" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-	<TextField fx:id="zvanjeTf" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+	<ComboBox fx:id="zvanjeCb" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 	
 	<HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
-        <Button text="Sačuvaj" />
+        <Button onAction = "#handleNovoZvanje" text="Sačuvaj" />
 	</HBox>   
 	</GridPane>
 </center>
@@ -41,8 +41,12 @@
          <children>
             <TableView fx:id="zvanjeTable">
               <columns>
-               <TableColumn prefWidth="100.0" text="Nastavnik">
-                 <cellValueFactory><PropertyValueFactory property="nastavnik" />
+               <TableColumn prefWidth="100.0" text="Ime">
+                 <cellValueFactory><PropertyValueFactory property="ime" />
+        		</cellValueFactory>
+        		</TableColumn>
+        		<TableColumn prefWidth="100.0" text="Prezime">
+                 <cellValueFactory><PropertyValueFactory property="prezime" />
         		</cellValueFactory>
         		</TableColumn>
                 <TableColumn prefWidth="100.0" text="Zvanje">

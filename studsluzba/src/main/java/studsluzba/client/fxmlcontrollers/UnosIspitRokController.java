@@ -21,6 +21,7 @@ import studsluzba.model.Predmet;
 import studsluzba.model.SkolskaGodina;
 import studsluzba.model.StudProgram;
 import studsluzba.model.VisokoskolskaUstanova;
+import studsluzba.repositories.NastavnikRepository;
 import studsluzba.repositories.SkolskaGodinaRepository;
 import studsluzba.services.IspitniRokoviService;
 import studsluzba.services.SifarniciService;
@@ -34,6 +35,8 @@ public class UnosIspitRokController {
 	@Autowired
 	SifarniciService sifarniciService;
 	
+	@Autowired
+	NastavnikRepository nastavnikRepo;
 	
 	@Autowired
 	SkolskaGodinaRepository skolskaGodinaRepo;
@@ -77,7 +80,7 @@ public class UnosIspitRokController {
 		 List<IspitniRok> ispitniRok = sifarniciService.getIspitniRok();
 		 cbIspit.setItems(FXCollections.observableArrayList(ispitniRok));
 		 
-		 List<Nastavnik> nastavnik = sifarniciService.getNastavnici();
+		 List<Nastavnik> nastavnik = nastavnikRepo.selekcijaAktivnihNastavnika();
 		 cbNastavnik2.setItems(FXCollections.observableArrayList(nastavnik));
 		 
 		 List<Predmet> predmet = sifarniciService.getPredmeti();
