@@ -37,4 +37,8 @@ public interface IndeksRepository extends CrudRepository<Indeks, Integer> {
 	//Find index by id
 	@Query("select i from Indeks i where i.idIndeks like :id")
 	Indeks selectIndekxById(int id);
+	
+	//Sortirani indeksi, sa ukupnim brojen poena
+	@Query("select i from Indeks i join i.prijavaIspita pri where pri.ispit.idIspit like :idIspita order by i.studProgram.nazivStudPrograma DESC, i.upisGodine.godinaUpisa, i.brojIndexa")
+	List<Indeks> getSortedIndeks(int idIspita);
 }

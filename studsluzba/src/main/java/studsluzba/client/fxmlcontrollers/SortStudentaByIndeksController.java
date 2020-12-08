@@ -79,6 +79,15 @@ public class SortStudentaByIndeksController {
 		 List<StudProgram> studProgram = studProgramService.loadAll();
 		 studProgramCb.setItems(FXCollections.observableArrayList(studProgram));
 	 }
+	 
+	 public void addNoviIndeks(Indeks i) {
+		 indexTable.getItems().add(i);
+	 }
+	 
+	 public void updateTabeluSaIndeksima(Indeks i) {
+		 indexTable.getItems().remove(selektovanIndeksZaZamenu);
+		 indexTable.getItems().add(i);
+	 }
 		
 	 public void pretraziStudentaPoIndeksu(ActionEvent event) {
 		 String index = indeks.getText();
@@ -90,4 +99,13 @@ public class SortStudentaByIndeksController {
 		 indexTable.getItems().clear();
 		 indexTable.getItems().add(indeks);
 	 }
+
+	public TableView<Indeks> getIndexTable() {
+		return indexTable;
+	}
+
+	public void setIndexTable(TableView<Indeks> indexTable) {
+		this.indexTable = indexTable;
+	}
+	 
 }

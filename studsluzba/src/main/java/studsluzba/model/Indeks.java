@@ -211,6 +211,10 @@ public class Indeks implements Serializable {
 		return student.getPrezime();
 	}
 	
+	public String getEmailStudenta() {
+		return student.getEmailFakultet();
+	}
+	
 	public String getStudProgramIndeks() {
 		return studProgram.getOznaka();
 	}

@@ -53,6 +53,10 @@
                  <cellValueFactory><PropertyValueFactory property="zvanje" />
         		</cellValueFactory>
         		</TableColumn>
+        		<TableColumn prefWidth="100.0" text="Aktivan">
+                 <cellValueFactory><PropertyValueFactory property="aktivan" />
+        		</cellValueFactory>
+        		</TableColumn>
               </columns>             
             </TableView>
          </children>      

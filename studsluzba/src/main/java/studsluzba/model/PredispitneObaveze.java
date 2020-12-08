@@ -119,9 +119,7 @@ public class PredispitneObaveze implements Serializable {
 
 	@Override
 	public String toString() {
-		return "PredispitneObaveze [idPredispitnihObaveza=" + idPredispitnihObaveza + ", vrstaPredispitnihObaveza="
-				+ vrstaPredispitnihObaveza + ", maxBrPredispitnihPoena=" + maxBrPredispitnihPoena + ", predmet="
-				+ predmet + ", skolskaGodina=" + skolskaGodina + ", nastavnik=" + nastavnik + "]";
+		return vrstaPredispitnihObaveza;
 	}
 
 }

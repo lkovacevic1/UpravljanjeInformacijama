@@ -38,8 +38,8 @@
                     <MenuItem text="Šifarnici" />   
                     <MenuItem text="Studijski programi" onAction="#openStudProgrami"/> 
                     <Menu text = "Ispit">
-                    	<items>             
-                    		<MenuItem text="Rezultati ispita" onAction="#openRezultatiIspita"/>               
+                    	<items>               
+                    		<MenuItem text="Pregled rezultata ispita" onAction="#openRezultatiIspita"/>               
                     		<MenuItem text="Prijava ispita" onAction="#openPrijavaIspita"/>
                     		<MenuItem text="Prijavljeni studenti" onAction="#openStudentiPoIspitu"/> 
                 		</items>

@@ -52,12 +52,16 @@
                  <cellValueFactory><PropertyValueFactory property="email" />
         		</cellValueFactory>
         		</TableColumn>
-        		<TableColumn prefWidth="200.0" text="Zavrsena visokoskolska ustanova">
+        		<TableColumn prefWidth="115.0" text="Zavrsen fakultet">
                  <cellValueFactory><PropertyValueFactory property="zavrsenaVisokoskolskaUstanova" />
         		</cellValueFactory>
         		</TableColumn>
-        		<TableColumn prefWidth="130.0" text="Zvanje">
+        		<TableColumn prefWidth="110.0" text="Zvanje">
                  <cellValueFactory><PropertyValueFactory property="zvanje" />
+        		</cellValueFactory>
+        		</TableColumn>
+        		<TableColumn prefWidth="100.0" text="Aktivan">
+                 <cellValueFactory><PropertyValueFactory property="aktivan" />
         		</cellValueFactory>
         		</TableColumn>
               </columns>             

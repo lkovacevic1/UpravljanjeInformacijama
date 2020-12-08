@@ -43,27 +43,34 @@
          <children>
             <TableView fx:id="prijavljeniStudentiIspitTable">
               <columns>
-              	<TableColumn prefWidth="100.0" text="Ime">
-                 <cellValueFactory><PropertyValueFactory property="ime" />
+              	<TableColumn prefWidth="90.0" text="Ime">
+                 <cellValueFactory><PropertyValueFactory property="imeStudenta" />
         		</cellValueFactory>
         		</TableColumn>
                 <TableColumn prefWidth="100.0" text="Prezime">
-                 <cellValueFactory><PropertyValueFactory property="prezime" />
+                 <cellValueFactory><PropertyValueFactory property="prezimeStudenta" />
         		</cellValueFactory>
         		</TableColumn>
                 <TableColumn prefWidth="150.0" text="Fakultetski email">
-                 <cellValueFactory><PropertyValueFactory property="emailFakultet" />
+                 <cellValueFactory><PropertyValueFactory property="emailStudenta" />
         		</cellValueFactory>
         		</TableColumn>
-        		<TableColumn prefWidth="150.0" text="Smer">
-                 <cellValueFactory><PropertyValueFactory property="smer" />
+        		<TableColumn prefWidth="75.0" text="Smer">
+                 <cellValueFactory><PropertyValueFactory property="studProgramIndeks" />
         		</cellValueFactory>
         		</TableColumn>
-        		<TableColumn prefWidth="150.0" text="Godina upisa">
+        		<TableColumn prefWidth="130.0" text="Godina upisa">
                  <cellValueFactory><PropertyValueFactory property="godinaUpisa" />
         		</cellValueFactory>
         		</TableColumn>
-        		
+        		<TableColumn prefWidth="100.0" text="Indeks">
+                 <cellValueFactory><PropertyValueFactory property="brojIndexa" />
+        		</cellValueFactory>
+        		</TableColumn>
+        		<TableColumn prefWidth="150.0" text="Ukupno bodovi">
+                 <cellValueFactory><PropertyValueFactory property="osvojeniPoeni" />
+        		</cellValueFactory>
+        		</TableColumn>
               </columns>             
             </TableView>
          </children>      

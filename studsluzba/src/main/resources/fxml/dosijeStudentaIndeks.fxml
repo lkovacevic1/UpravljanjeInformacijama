@@ -133,4 +133,30 @@
 	</VBox>
 	</GridPane>
 	</Tab>
+	
+	
+	<Tab text="Poeni">
+    <GridPane alignment="center" hgap="10" vgap="10">
+    
+    <VBox>
+    
+    <Label text="Predmet" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+	<ComboBox fx:id="predmetCb"   GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+	
+	<Label text="Predispitna obaveza" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+	<ComboBox fx:id="obavezaCb"   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    
+    <Label text="Predispitni poeni" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+	<TextField fx:id="predispitniPoeniTF"  GridPane.columnIndex="1" GridPane.rowIndex="2"/>	
+	
+	<Label text="Ispit poeni" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+	<TextField fx:id="ispitPoeniTF"  GridPane.columnIndex="1" GridPane.rowIndex="3"/>	
+	
+	<Button onAction = "#dodajPoena" text="Sacuvaj" GridPane.columnIndex="1" GridPane.rowIndex="4"/>	  
+	
+	</VBox>
+	
+    </GridPane>
+	</Tab>
+	
 </TabPane>

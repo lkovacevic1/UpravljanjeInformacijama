@@ -16,11 +16,15 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import studsluzba.model.Indeks;
 import studsluzba.model.ObnovaGodine;
+import studsluzba.model.OsvojeniPredispitniPoeni;
+import studsluzba.model.PolozenPredmet;
+import studsluzba.model.PredispitneObaveze;
 import studsluzba.model.Predmet;
 import studsluzba.model.StudProgram;
 import studsluzba.model.Student;
 import studsluzba.model.UpisGodine;
 import studsluzba.repositories.IndeksRepository;
+import studsluzba.repositories.PredispitneObavezeRepository;
 import studsluzba.repositories.PredmetRepository;
 import studsluzba.repositories.StudProgramRepository;
 import studsluzba.services.IndeksService;
@@ -43,6 +47,13 @@ public class StudentIndeksController {
 	StudProgramRepository studProgramRepo;
 	
 	@Autowired
+	PredispitneObavezeRepository predispitneObavezeRepo;
+	
+	
+	@Autowired
+	IndeksService indeksService;
+	
+	@Autowired
 	UpisGodineService upisGodineService;
 	
 	@Autowired 
@@ -56,6 +67,7 @@ public class StudentIndeksController {
 	
 	@Autowired 
 	StudProgramService studProgramService;
+	
 	
 	@Autowired
 	SortStudentaByIndeksController promeniIndeksStud;
@@ -82,6 +94,18 @@ public class StudentIndeksController {
 		
 	@FXML private TableView<Indeks> indeksTable;
 		
+	
+	//Dodavanje poena studentu FXML
+	
+	@FXML private ComboBox<Predmet> predmetCb;
+	
+	@FXML private ComboBox<PredispitneObaveze> obavezaCb;
+	
+	@FXML private TextField predispitniPoeniTF;
+	
+	@FXML private TextField ispitPoeniTF;
+	
+	//------------------------------
 	
 	@FXML
     public void initialize() {	
@@ -110,6 +134,12 @@ public class StudentIndeksController {
 		studProgramCb.setItems(FXCollections.observableArrayList(stProgram));
 		
 		indeksTable.setItems(sviIndexi);
+		
+		//Poeni indeksa
+		predmetCb.setItems(FXCollections.observableArrayList(predmet));
+		
+		List<PredispitneObaveze> predispitneObaveze = predispitneObavezeRepo.findVrstaObaveze(index.getIdIndeks());
+		obavezaCb.setItems(FXCollections.observableArrayList(predispitneObaveze));
 	}
 	
 	//Akcije za Aktivnosti studenta
@@ -131,12 +161,14 @@ public class StudentIndeksController {
 		selektovaniPredmeti.clear();
 	}
 	
-	//Akcija za Dodeli novog Indeksa
+	//Akcija za dodelu novog Indeksa
 	public void promeniIndeks(ActionEvent event) {
 		Indeks _indeks = promeniIndeksStud.selektovanIndeksZaZamenu;
 		Student s = _indeks.getStudent();
 		
 		studentService.promeniAktivanIndeksNaNeaktivan(_indeks);
+		
+		promeniIndeksStud.updateTabeluSaIndeksima(_indeks);
 		
 		ObnovaGodine obnova = _indeks.getObnovaGodine();
 		UpisGodine upis = _indeks.getUpisGodine();
@@ -147,5 +179,35 @@ public class StudentIndeksController {
 		
 		Indeks index = studentService.saveIndeks(s, i, sp, obnova, upis);
 		sviIndexi.add(index);
+		promeniIndeksStud.addNoviIndeks(index);
+		
+		
+		//Brisem stari indeks iz druge tabele
+		sviIndexi.clear();
+		sviIndexi.add(index);
+		indeksTable.setItems(sviIndexi);
+	}
+	
+	//Akcija za dodavanje poena studentu
+	public void dodajPoena(ActionEvent event) {
+		Indeks indeks = promeniIndeksStud.selektovanIndeksZaZamenu;
+		
+		int obaveze = Integer.parseInt(predispitniPoeniTF.getText());
+		int ispitPoeni = Integer.parseInt(ispitPoeniTF.getText());
+		
+		
+		List<OsvojeniPredispitniPoeni> opp = indeks.getOsvojeniPredispitniPOeni();
+		OsvojeniPredispitniPoeni _opp = opp.get(0);
+		
+		indeksService.dodajePredispitnePoene(_opp, obaveze);
+		
+		List<PolozenPredmet> pp = indeks.getPolozeniPredmeti();
+		PolozenPredmet _pp = pp.get(0);
+		
+		indeksService.dodajePoeneNaIspitu(_pp, ispitPoeni, obaveze);
+		
+		indeksService.dodajOsvojenePoene(indeks, obaveze, ispitPoeni);
+		
+		opp.clear();
 	}
 }
