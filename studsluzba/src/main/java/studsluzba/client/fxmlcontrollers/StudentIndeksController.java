@@ -22,8 +22,11 @@ import studsluzba.model.Student;
 import studsluzba.model.UpisGodine;
 import studsluzba.repositories.IndeksRepository;
 import studsluzba.repositories.PredmetRepository;
+import studsluzba.repositories.StudProgramRepository;
+import studsluzba.services.IndeksService;
 import studsluzba.services.ObnovaGodineService;
 import studsluzba.services.SifarniciService;
+import studsluzba.services.StudProgramService;
 import studsluzba.services.StudentService;
 import studsluzba.services.UpisGodineService;
 
@@ -34,22 +37,28 @@ public class StudentIndeksController {
 	IndeksRepository indeksRepo;
 	
 	@Autowired
-	UpisGodineService upisGodineService;
+	PredmetRepository predmetRepo;
+	
+	@Autowired 
+	StudProgramRepository studProgramRepo;
 	
 	@Autowired
-	SifarniciService sifraniciService;
+	UpisGodineService upisGodineService;
 	
 	@Autowired 
 	ObnovaGodineService obnovaGodineService;
 	
 	@Autowired
+	SifarniciService sifraniciService;
+	
+	@Autowired
 	StudentService studentService;
 	
-	@Autowired
-	PredmetRepository predmetRepo;
+	@Autowired 
+	StudProgramService studProgramService;
 	
 	@Autowired
-	SortStudentaByIndeksController pretraziStud;
+	SortStudentaByIndeksController promeniIndeksStud;
 
 	@FXML private ComboBox<String> upis_obnova;
 	
@@ -57,38 +66,86 @@ public class StudentIndeksController {
 	
 	@FXML private TextField datum;
 	
-	private ObservableList<Student> sviStidenti;
+	private ObservableList<Indeks> sviIndexi;
 	
 	@FXML private TextField napomena;
 	
-	@FXML private TableView<Student> stTable;
-	
-	@FXML private TableView<Student> studentiTable;
+	@FXML private TableView<Indeks> indeksAktivnostTable;
 	
 	private List<Predmet> selektovaniPredmeti = new ArrayList<Predmet>();
 	
 	//Promena Indeksa FXML
-	
-	@Autowired
-	SortStudentaByIndeksController promeniIndeksStud;
 		
 	@FXML private TextField indeks;
+	
+	@FXML private ComboBox<StudProgram> studProgramCb;
 		
-	private ObservableList<Student> sviIndeksi;
-		
-	@FXML private TableView<Student> indeksTable;
+	@FXML private TableView<Indeks> indeksTable;
 		
 	
 	@FXML
     public void initialize() {	
 		
-		List<Student> st = new ArrayList<Student>();
-		Student student = promeniIndeksStud.selektovanStudentZaPromenuIndeksa;
-		st.add(student);
-		sviIndeksi = FXCollections.observableList(st);
-		indeksTable.setItems(sviIndeksi);
+		//Aktivnost Studenta
+		List<String> obn_upis = List.of("Obnova Godine", "Upis Godine");
+		upis_obnova.setItems(FXCollections.observableArrayList(obn_upis));
+	
+		Indeks index = promeniIndeksStud.selektovanIndeksZaZamenu;
+		sviIndexi = FXCollections.observableArrayList(indeksRepo.selectIndekxById(index.getIdIndeks()));
+		indeksAktivnostTable.setItems(sviIndexi);
 		
 		
 		
+		StudProgram studProgram = index.getStudProgram();
+		String oznaka = studProgram.getOznaka();
+		
+		
+		
+		List<Predmet> predmet = sifraniciService.getPredmeti(studProgram);
+		predmeti.setItems(FXCollections.observableArrayList(predmet));
+		
+		//Promena indeksa
+		
+		List<StudProgram> stProgram = studProgramRepo.selectAllStudPrograma(oznaka);
+		studProgramCb.setItems(FXCollections.observableArrayList(stProgram));
+		
+		indeksTable.setItems(sviIndexi);
+	}
+	
+	//Akcije za Aktivnosti studenta
+	public void dodajUListuPredmeta(ActionEvent event) {
+		Predmet p = predmeti.getSelectionModel().getSelectedItem();
+		selektovaniPredmeti.add(p);
+	}
+	
+	public void napraviAktivnost(ActionEvent event) {
+		Indeks index = promeniIndeksStud.selektovanIndeksZaZamenu;
+		Student stud = index.getStudent();
+		Indeks ind = indeksRepo.findAktivanIndeks(stud.getIdstudent());
+		
+		if(upis_obnova.getValue().equals("Obnova Godine")) {
+			obnovaGodineService.saveObnovaGodine(selektovaniPredmeti, datum.getText(), napomena.getText(), ind);
+		}else if(upis_obnova.getValue().equals("Upis Godine")) {
+			upisGodineService.saveUpisGodine(selektovaniPredmeti, datum.getText(), napomena.getText(), ind);
+		}
+		selektovaniPredmeti.clear();
+	}
+	
+	//Akcija za Dodeli novog Indeksa
+	public void promeniIndeks(ActionEvent event) {
+		Indeks _indeks = promeniIndeksStud.selektovanIndeksZaZamenu;
+		Student s = _indeks.getStudent();
+		
+		studentService.promeniAktivanIndeksNaNeaktivan(_indeks);
+		
+		ObnovaGodine obnova = _indeks.getObnovaGodine();
+		UpisGodine upis = _indeks.getUpisGodine();
+		
+		int i = Integer.parseInt(indeks.getText());
+		
+		StudProgram sp = studProgramCb.getValue();
+		
+		Indeks index = studentService.saveIndeks(s, i, sp, obnova, upis);
+		sviIndexi.add(index);
 	}
 }

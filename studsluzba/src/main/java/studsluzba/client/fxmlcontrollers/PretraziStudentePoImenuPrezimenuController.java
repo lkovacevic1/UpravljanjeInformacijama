@@ -13,45 +13,48 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import studsluzba.client.MainViewManager;
+import studsluzba.model.Indeks;
 import studsluzba.model.Student;
+import studsluzba.repositories.IndeksRepository;
 import studsluzba.repositories.StudentRepository;
+import studsluzba.services.IndeksService;
 import studsluzba.services.StudentService;
 
 @Component
 public class PretraziStudentePoImenuPrezimenuController {
 	 @Autowired
-	 StudentService studentService;
+	 IndeksService indeksService;
 	 
 	 @Autowired
-	 StudentRepository studentRepo;
+	 IndeksRepository indeksRepo;
 	 
 	 @Autowired  
 	 MainViewManager mainViewManager;
 	 
-	 Student selektovanStudent;
+	 Indeks selektovanIndeks;
 		
 	 @FXML private TextField ime;
 	 @FXML private TextField prezime;
 	 
-	 private ObservableList<Student> sviStidenti;
+	 private ObservableList<Indeks> sviIndeksi;
 	 
-	 @FXML private TableView<Student> studentiTable;
+	 @FXML private TableView<Indeks> indeksTable;
 	 
 	 @FXML
 	 protected void initialize() {
-		 sviStidenti = FXCollections.observableList(studentService.loadAll());
+		 sviIndeksi = FXCollections.observableList(indeksService.loadAll());
 		 
 		 
-		 studentiTable.setRowFactory( tv -> {
-			    TableRow<Student> row = new TableRow<>();
+		 indeksTable.setRowFactory( tv -> {
+			    TableRow<Indeks> row = new TableRow<>();
 			    row.setOnMouseClicked(event -> {
 			        if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
-			            Student rowData = row.getItem();
+			        	Indeks rowData = row.getItem();
 			            /*System.out.println(rowData);
 			            
 			            Student st = row.getItem();
 			            System.out.println(st.getIdstudent());*/
-			            selektovanStudent = rowData;
+			        	selektovanIndeks = rowData;
 			            
 			            mainViewManager.openModal("TabAktivnostIndeksStudenta", 750, 500);
 			        }
@@ -59,12 +62,12 @@ public class PretraziStudentePoImenuPrezimenuController {
 			    return row ;
 			});
 		 
-		 studentiTable.setItems(sviStidenti);
+		 indeksTable.setItems(sviIndeksi);
 	 }
 		
 	 public void pretraziStudentePoImenuPrezimenu(ActionEvent event) {
-		 List<Student> student = studentRepo.findStudentByNameAndLastName(ime.getText(), prezime.getText());
-		 studentiTable.getItems().clear();
-		 studentiTable.getItems().addAll(student);
+		 List<Indeks> indeks = indeksRepo.findIndeksByNameAndLastName(ime.getText(), prezime.getText());
+		 indeksTable.getItems().clear();
+		 indeksTable.getItems().addAll(indeks);
 	 }
 }

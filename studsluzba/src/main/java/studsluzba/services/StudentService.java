@@ -2,6 +2,7 @@ package studsluzba.services;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -84,12 +85,12 @@ public class StudentService {
 		return indeksRepo.save(i);
 	}
 	
-	public Indeks saveIndeks(Student s, int godinaUpisa, int brojIndeksa, StudProgram studProgram, ObnovaGodine obnova, UpisGodine upis) {
+	public Indeks saveIndeks(Student s, int brojIndeksa, StudProgram studProgram, ObnovaGodine obnova, UpisGodine upis) {
 		LocalDate today = LocalDate.now();
-		
+		int year = Calendar.getInstance().get(Calendar.YEAR);
 		Indeks i = new Indeks();
 		i.setStudent(s);
-		i.setGodinaUpisa(godinaUpisa);
+		i.setGodinaUpisa(year);
 		i.setBrojIndexa(brojIndeksa);
 		i.setAktivan(true);
 		i.setDatumAktivacijeIndexa(today);

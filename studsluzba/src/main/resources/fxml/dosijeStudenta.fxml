@@ -50,19 +50,27 @@
             <TableView fx:id="stTable">
               <columns>
               	<TableColumn prefWidth="100.0" text="Ime">
-                 <cellValueFactory><PropertyValueFactory property="ime" />
+                 <cellValueFactory><PropertyValueFactory property="imeStudenta" />
         		</cellValueFactory>
         		</TableColumn>
                 <TableColumn prefWidth="100.0" text="Prezime">
-                 <cellValueFactory><PropertyValueFactory property="prezime" />
+                 <cellValueFactory><PropertyValueFactory property="prezimeStudenta" />
         		</cellValueFactory>
         		</TableColumn>
-                <TableColumn prefWidth="150.0" text="Zavrsena srednja skola">
-                 <cellValueFactory><PropertyValueFactory property="srSkola" />
+                <TableColumn prefWidth="130.0" text="Broj indeksa">
+                 <cellValueFactory><PropertyValueFactory property="brojIndexa" />
         		</cellValueFactory>
         		</TableColumn>
-        		<TableColumn prefWidth="150.0" text="Presao sa fakulteta">
-                 <cellValueFactory><PropertyValueFactory property="visokoskolskaUstanova" />
+        		<TableColumn prefWidth="130.0" text="Godina upisa">
+                 <cellValueFactory><PropertyValueFactory property="godinaUpisa" />
+        		</cellValueFactory>
+        		</TableColumn>
+        		<TableColumn prefWidth="75.0" text="Smer">
+                 <cellValueFactory><PropertyValueFactory property="studProgramIndeks" />
+        		</cellValueFactory>
+        		</TableColumn>
+        		<TableColumn prefWidth="130.0" text="Aktivan">
+                 <cellValueFactory><PropertyValueFactory property="aktivan" />
         		</cellValueFactory>
         		</TableColumn>
               </columns>             
@@ -77,10 +85,16 @@
     
     <VBox prefHeight="400.0" prefWidth="700.0" BorderPane.alignment="CENTER"> 
 
-	<Label text="Novi Indeks" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-	<TextField fx:id="indeks"  GridPane.columnIndex="1" GridPane.rowIndex="1"/>	
-	<Button onAction="#dodeliNoviIndeks" text="Promeni" GridPane.columnIndex="1" GridPane.rowIndex="3"/>	   	
+	<HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0">
+	<GridPane alignment="center" hgap="10" vgap="10">
+	<Label text="Novi Indeks" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+	<TextField fx:id="indeks"  GridPane.columnIndex="1" GridPane.rowIndex="0"/>	
+	<Label text="Studijski program" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+	<ComboBox fx:id="studProgramCb"   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+	<Button onAction = "#dodeliNoviIndeks" text="Promeni" GridPane.columnIndex="1" GridPane.rowIndex="2"/>	   	
     <Label text="" fx:id="actionTarget" GridPane.columnIndex="1" GridPane.rowIndex="4" style="-fx-text-fill: #FF0000;"/>
+    </GridPane>
+	</HBox>
 
 
 	<padding>
@@ -90,19 +104,27 @@
             <TableView fx:id="indeksTable">
               <columns>
               	<TableColumn prefWidth="100.0" text="Ime">
-                 <cellValueFactory><PropertyValueFactory property="ime" />
+                 <cellValueFactory><PropertyValueFactory property="imeStudenta" />
         		</cellValueFactory>
         		</TableColumn>
                 <TableColumn prefWidth="100.0" text="Prezime">
-                 <cellValueFactory><PropertyValueFactory property="prezime" />
+                 <cellValueFactory><PropertyValueFactory property="prezimeStudenta" />
         		</cellValueFactory>
         		</TableColumn>
-                <TableColumn prefWidth="150.0" text="Zavrsena srednja skola">
-                 <cellValueFactory><PropertyValueFactory property="srSkola" />
+                <TableColumn prefWidth="130.0" text="Broj indeksa">
+                 <cellValueFactory><PropertyValueFactory property="brojIndexa" />
         		</cellValueFactory>
         		</TableColumn>
-        		<TableColumn prefWidth="150.0" text="Presao sa fakulteta">
-                 <cellValueFactory><PropertyValueFactory property="visokoskolskaUstanova" />
+        		<TableColumn prefWidth="130.0" text="Godina upisa">
+                 <cellValueFactory><PropertyValueFactory property="godinaUpisa" />
+        		</cellValueFactory>
+        		</TableColumn>
+        		<TableColumn prefWidth="75.0" text="Smer">
+                 <cellValueFactory><PropertyValueFactory property="studProgramIndeks" />
+        		</cellValueFactory>
+        		</TableColumn>
+        		<TableColumn prefWidth="130.0" text="Aktivan">
+                 <cellValueFactory><PropertyValueFactory property="aktivan" />
         		</cellValueFactory>
         		</TableColumn>
               </columns>             

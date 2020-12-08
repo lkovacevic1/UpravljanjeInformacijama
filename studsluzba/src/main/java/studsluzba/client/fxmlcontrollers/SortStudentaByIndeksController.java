@@ -1,6 +1,8 @@
 package studsluzba.client.fxmlcontrollers;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,49 +11,62 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import studsluzba.client.MainViewManager;
+import studsluzba.model.Indeks;
+import studsluzba.model.StudProgram;
 import studsluzba.model.Student;
+import studsluzba.model.VisokoskolskaUstanova;
+import studsluzba.repositories.IndeksRepository;
 import studsluzba.repositories.StudentRepository;
+import studsluzba.services.IndeksService;
+import studsluzba.services.StudProgramService;
 import studsluzba.services.StudentService;
 
 @Component
 public class SortStudentaByIndeksController {
+	
 	 @Autowired
-	 StudentService studentService;
-	 
-	 @Autowired
-	 StudentRepository studentRepo;
+	 IndeksRepository indeksRepo;
 	 
 	 @Autowired  
 	 MainViewManager mainViewManager;
+	 
+	 @Autowired
+	 StudProgramService studProgramService;
+	 
+	 @Autowired
+	 IndeksService indeksService;
 		
-	 Student selektovanStudentZaPromenuIndeksa;
+	 Indeks selektovanIndeksZaZamenu;
 		
 	 @FXML private TextField indeks;
 	 
-	 private ObservableList<Student> sviStidenti;
+	 private ObservableList<Indeks> sviIndeksi;
 	 
-	 @FXML private TableView<Student> studentiTable;
+	 @FXML private TableView<Indeks> indexTable;
+	 
+	 @FXML private ComboBox<StudProgram> studProgramCb;
 	 
 	 @FXML
 	 protected void initialize() {
-		 sviStidenti = FXCollections.observableList(studentService.loadAll());
+		 sviIndeksi = FXCollections.observableList(indeksService.loadAll());
 		 
-		 studentiTable.setRowFactory( tv -> {
-			    TableRow<Student> row = new TableRow<>();
+		 indexTable.setRowFactory( tv -> {
+			    TableRow<Indeks> row = new TableRow<>();
 			    row.setOnMouseClicked(event -> {
 			        if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
-			            Student rowData = row.getItem();
+			        	Indeks rowData = row.getItem();
 			            /*System.out.println(rowData);
 			            //12
 			            Student st = row.getItem();
 			            System.out.println(st.getIdstudent());*/
-			            selektovanStudentZaPromenuIndeksa = rowData;
+			        	selektovanIndeksZaZamenu = rowData;
 			            
 			            mainViewManager.openModal("KopijaTaba", 750, 500);
 			        }
@@ -59,15 +74,20 @@ public class SortStudentaByIndeksController {
 			    return row ;
 			});
 		 
-		 studentiTable.setItems(sviStidenti);
+		 indexTable.setItems(sviIndeksi);
+		 
+		 List<StudProgram> studProgram = studProgramService.loadAll();
+		 studProgramCb.setItems(FXCollections.observableArrayList(studProgram));
 	 }
 		
 	 public void pretraziStudentaPoIndeksu(ActionEvent event) {
 		 String index = indeks.getText();
 		 String parts[] = index.split("/");
+		 StudProgram stProgramOznaka = studProgramCb.getValue();
+		 String oznaka = stProgramOznaka.getOznaka();
 		
-		 Student student = studentRepo.findStudentByID(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), parts[2]);
-		 studentiTable.getItems().clear();
-		 studentiTable.getItems().add(student);
+		 Indeks indeks = indeksRepo.findIndeksByID(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), oznaka);
+		 indexTable.getItems().clear();
+		 indexTable.getItems().add(indeks);
 	 }
 }

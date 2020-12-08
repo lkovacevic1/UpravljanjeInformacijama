@@ -25,7 +25,7 @@ public class NastavnikService {
 	
 	public Nastavnik setAktivanNaNeaktivan(Nastavnik nastavnik) {
 		nastavnik.setAktivan(false);
-		System.out.println("Stara aktivnost nastavnika" + nastavnik.isAktivan());
+		
 		return nastavnikRepo.save(nastavnik);
 	}
 	
@@ -38,7 +38,7 @@ public class NastavnikService {
 		ns.setZavrsenaVisokoskolskaUstanova(nastavnik.getZavrsenaVisokoskolskaUstanova());
 		ns.setZvanje(zvanje);
 		ns.setAktivan(true);
-		System.out.println("Novi nastavnik" + nastavnik.isAktivan());
+		
 		return nastavnikRepo.save(ns);
 	}
 }

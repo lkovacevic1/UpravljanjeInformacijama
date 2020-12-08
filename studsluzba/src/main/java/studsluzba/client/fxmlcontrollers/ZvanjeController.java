@@ -55,13 +55,11 @@ public class ZvanjeController {
 		Nastavnik nastavnik = pretraziNastavnika.selektovanNastavnik;
 		nastavnik = nastavnikService.setAktivanNaNeaktivan(nastavnik);
 		sveIstorijeZvanja.add(nastavnik);
-		System.out.println("-------------------------");
 		Zvanje zvanje = zvanjeCb.getValue();
 		
 		TableView<Nastavnik> tbNastavnik = pretraziNastavnika.getAktivniNastavniciTable();
 		
 		Nastavnik noviNastavnik = nastavnikService.saveNovoZvanje(nastavnik, zvanje);
-		System.out.println("-------------------------");
 		//Brisem nastavnika kojeg menjam iz prve tabele
 		pretraziNastavnika.removeNastavnikaZaPromenu();
 		

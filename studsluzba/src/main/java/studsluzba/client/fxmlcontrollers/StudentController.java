@@ -93,7 +93,6 @@ public class StudentController {
     }
 	
 	public void handleOpenModalSrednjeSkole(ActionEvent ae) {
-		// TODO kreira modal window za dodavanje nove srednje skole, mozda i brisanje i promena postojeÄ‡ih ?? strani kljuÄ�
 		mainViewManager.openModal("addSrednjaSkola");		
 	}
 	

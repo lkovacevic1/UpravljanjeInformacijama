@@ -25,4 +25,16 @@ public interface IndeksRepository extends CrudRepository<Indeks, Integer> {
 	//Selekcija aktivnog indeks studenta
 	@Query("select i from Indeks i where i.aktivan = 1 and i.student.idstudent like :idStudenta")
 	Indeks findAktivanIndeks(int idStudenta);
+	
+	//Find indeks by student name or last name
+	@Query("select i from Indeks i where i.student.ime like :ime or i.student.prezime like :prezime")
+	List<Indeks> findIndeksByNameAndLastName(String ime, String prezime);
+	
+	//Finde indeks by student indeks
+	@Query("select i from Indeks i where i.brojIndexa like :brIndeks and i.godinaUpisa like :godineUisa and i.studProgram.oznaka like :oznaka")
+	Indeks findIndeksByID(int brIndeks, int godineUisa, String oznaka);
+	
+	//Find index by id
+	@Query("select i from Indeks i where i.idIndeks like :id")
+	Indeks selectIndekxById(int id);
 }

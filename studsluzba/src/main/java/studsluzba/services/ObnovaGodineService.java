@@ -1,5 +1,6 @@
 package studsluzba.services;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,13 @@ public class ObnovaGodineService {
 	IndeksRepository indeksRepo;
 	
 	public ObnovaGodine saveObnovaGodine(List<Predmet> predmeti, String datum, String napomena, Indeks indeks) {
+		LocalDate today = LocalDate.now();
 		ObnovaGodine obnovaGodine = new ObnovaGodine();
 		obnovaGodine.setPredmeti(predmeti);
 		obnovaGodine.setNapomena(napomena);
 		int date = Integer.parseInt(datum);
 		obnovaGodine.setGodinaObnove(date);
+		obnovaGodine.setDatum(today);
 		obnovaGodine.setIndeks(indeks);
 		
 		obnovaGodineRepo.save(obnovaGodine);

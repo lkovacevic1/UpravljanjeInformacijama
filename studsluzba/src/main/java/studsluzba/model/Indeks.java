@@ -202,6 +202,18 @@ public class Indeks implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	public String getImeStudenta() {
+		return student.getIme();
+	}
+	
+	public String getPrezimeStudenta() {
+		return student.getPrezime();
+	}
+	
+	public String getStudProgramIndeks() {
+		return studProgram.getOznaka();
+	}
 
 	@Override
 	public String toString() {
