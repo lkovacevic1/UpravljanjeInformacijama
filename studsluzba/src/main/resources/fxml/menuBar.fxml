@@ -21,7 +21,11 @@
                     	</items>                           
             		</Menu>	        
                     <MenuItem text="Nastavnici" onAction="#spisakNastavnika"/>               
-                    <MenuItem text="Predmeti" />                
+                    <Menu text="Predmeti"> 
+                    	<items>
+                    		<MenuItem text="Predmeti po programu" onAction="#predmetiNaProgramu"/>
+                    	</items> 
+                    </Menu>	             
                     <MenuItem text="Ispitni rokovi" />
                 </items>                           
             </Menu>

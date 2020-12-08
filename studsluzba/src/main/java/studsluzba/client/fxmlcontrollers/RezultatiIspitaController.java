@@ -12,7 +12,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import studsluzba.model.Indeks;
 import studsluzba.model.Ispit;
-import studsluzba.model.Student;
 import studsluzba.repositories.IndeksRepository;
 import studsluzba.repositories.IspitRepository;
 import studsluzba.repositories.StudentRepository;

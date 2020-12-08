@@ -56,4 +56,8 @@ public class MenuBarController {
 	public void spisakNastavnika(ActionEvent event) {
 		mainViewManager.changeRoot("aktivniNastavnici");
 	}
+	
+	public void predmetiNaProgramu(ActionEvent event) {
+		mainViewManager.changeRoot("predmetiNaProgramu");
+	}
 }

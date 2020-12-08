@@ -7,7 +7,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import studsluzba.client.fxmlcontrollers.PretraziStudentePoImenuPrezimenuController;
 import studsluzba.model.Ispit;
 import studsluzba.model.IspitniRok;
 import studsluzba.model.Nastavnik;
@@ -21,6 +20,7 @@ import studsluzba.repositories.IspitniRokRepository;
 import studsluzba.repositories.NastavnikRepository;
 import studsluzba.repositories.PredmetRepository;
 import studsluzba.repositories.SrednjaSkolaRepository;
+import studsluzba.repositories.StudProgramRepository;
 import studsluzba.repositories.StudentRepository;
 import studsluzba.repositories.VisokoskolskaUstanovaRepository;
 
@@ -36,6 +36,8 @@ public class SifarniciService {
 	@Autowired
 	NastavnikRepository nastavnikRepo;
 	
+	@Autowired
+	StudProgramRepository stProgramRepo;
 	
 	@Autowired
 	IspitniRokRepository ispitniRokRepo;
@@ -106,6 +108,13 @@ public class SifarniciService {
 	public List<Ispit> getIspiti(){
 		Iterable<Ispit> iter = ispitRepo.findAll();
 		List<Ispit> rez = new ArrayList<Ispit>();		
+		iter.forEach(rez::add);
+		return rez;	
+	}
+	
+	public List<StudProgram> getStProgram(){
+		Iterable<StudProgram> iter = stProgramRepo.findAll();
+		List<StudProgram> rez = new ArrayList<StudProgram>();		
 		iter.forEach(rez::add);
 		return rez;	
 	}

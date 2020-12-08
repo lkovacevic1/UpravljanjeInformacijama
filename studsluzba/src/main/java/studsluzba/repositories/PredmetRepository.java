@@ -17,4 +17,6 @@ public interface PredmetRepository extends CrudRepository<Predmet, Integer>{
 	//spisak predmeta po oznaci(RN/RI/RM)
 	@Query("select p from Predmet p join fetch p.studProgram sp where sp.oznaka like :oznaka")
 	List<Predmet> findPredmetByOznaka(String oznaka);
+	
+	
 }

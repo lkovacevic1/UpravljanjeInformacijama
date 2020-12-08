@@ -179,6 +179,8 @@ public class StudentIndeksController {
 		
 		Indeks index = studentService.saveIndeks(s, i, sp, obnova, upis);
 		sviIndexi.add(index);
+		
+		//Dodam promenjeni indeks u prvu tabelu
 		promeniIndeksStud.addNoviIndeks(index);
 		
 		
