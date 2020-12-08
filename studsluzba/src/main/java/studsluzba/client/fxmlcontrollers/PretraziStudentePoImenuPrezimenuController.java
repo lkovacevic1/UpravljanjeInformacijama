@@ -64,7 +64,16 @@ public class PretraziStudentePoImenuPrezimenuController {
 		 
 		 indeksTable.setItems(sviIndeksi);
 	 }
-		
+	 
+	 public void addNoviIndeks(Indeks i) {
+		 indeksTable.getItems().add(i);
+	 }
+	
+	 public void updateTabeluSaIndeksima(Indeks i) {
+		 indeksTable.getItems().remove(selektovanIndeks);
+		 indeksTable.getItems().add(i);
+	 }
+	 
 	 public void pretraziStudentePoImenuPrezimenu(ActionEvent event) {
 		 List<Indeks> indeks = indeksRepo.findIndeksByNameAndLastName(ime.getText(), prezime.getText());
 		 indeksTable.getItems().clear();

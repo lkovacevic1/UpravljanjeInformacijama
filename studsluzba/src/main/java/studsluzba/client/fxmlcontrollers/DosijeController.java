@@ -141,6 +141,8 @@ public class DosijeController {
 		
 		studentService.promeniAktivanIndeksNaNeaktivan(_indeks);
 		
+		pretraziStud.updateTabeluSaIndeksima(_indeks);
+		
 		ObnovaGodine obnova = _indeks.getObnovaGodine();
 		UpisGodine upis = _indeks.getUpisGodine();
 		
@@ -150,5 +152,12 @@ public class DosijeController {
 		
 		Indeks index = studentService.saveIndeks(s, i, sp, obnova, upis);
 		sviIndeksi.add(index);
+		pretraziStud.addNoviIndeks(index);
+		
+		//Brisem stari indeks iz druge tabele
+		
+		sviIndeksi.clear();
+		sviIndeksi.add(index);
+		indeksTable.setItems(sviIndeksi);
 	}
 }
