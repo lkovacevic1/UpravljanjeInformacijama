@@ -158,16 +158,28 @@ public class SifarniciService {
 		return rez;	
 	}
 	
-	public List<DrziPredmet> getAllDrziPredmet(){
-		Iterable<DrziPredmet> iter = drziPredmetRepo.findAll();
-		List<DrziPredmet> rez = new ArrayList<DrziPredmet>();		
+	public List<SkolskaGodina> getAllSkolskeGodine(){
+		Iterable<SkolskaGodina> iter = skolskaGodinaRepo.findAll();
+		List<SkolskaGodina> rez = new ArrayList<SkolskaGodina>();		
 		iter.forEach(rez::add);
 		return rez;	
 	}
 	
-	public List<SkolskaGodina> getAllSkolskeGodine(){
-		Iterable<SkolskaGodina> iter = skolskaGodinaRepo.findAll();
-		List<SkolskaGodina> rez = new ArrayList<SkolskaGodina>();		
+	public SkolskaGodina saveSkolskaGodina(int godina) {
+		SkolskaGodina staraGodina = skolskaGodinaRepo.findAktivnaSkGod();
+		staraGodina.setAktivna(false);
+		
+		SkolskaGodina sk = new SkolskaGodina();
+		sk.setAktivna(true);
+		sk.setSkolskaGodina(godina);
+		
+		skolskaGodinaRepo.save(staraGodina);
+		return skolskaGodinaRepo.save(sk);
+	}
+	
+	public List<DrziPredmet> getAllDrziPredmet(){
+		Iterable<DrziPredmet> iter = drziPredmetRepo.findAll();
+		List<DrziPredmet> rez = new ArrayList<DrziPredmet>();		
 		iter.forEach(rez::add);
 		return rez;	
 	}
@@ -184,5 +196,9 @@ public class SifarniciService {
 		drziPredmet.setIndeksi(indeks);
 		
 		return drziPredmetRepo.save(drziPredmet);
+	}
+	
+	public List<DrziPredmet> findPredmetUGodini(SkolskaGodina skolskaGodina){
+		return drziPredmetRepo.getPredmetiPoSkolskojGodini(skolskaGodina);
 	}
 }

@@ -128,7 +128,7 @@ public class DosijeController {
 	//---------------------------
 	
 	@FXML
-    public void initialize() {	
+    protected void initialize() {	
 		Indeks index = pretraziStud.selektovanIndeks;
 		
 		//TableView Aktivnosti studenta

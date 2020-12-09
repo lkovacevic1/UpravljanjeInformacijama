@@ -60,4 +60,12 @@ public class MenuBarController {
 	public void predmetiNaProgramu(ActionEvent event) {
 		mainViewManager.changeRoot("predmetiNaProgramu");
 	}
+	
+	public void openNewAktivnaSkolskaGodina(ActionEvent event) {
+		mainViewManager.changeRoot("addNewAktivnaGodina");
+	}
+	
+	public void openSortBySkolskaGodina(ActionEvent event) {
+		mainViewManager.changeRoot("sortBySkolskaGodina");
+	}
 }
