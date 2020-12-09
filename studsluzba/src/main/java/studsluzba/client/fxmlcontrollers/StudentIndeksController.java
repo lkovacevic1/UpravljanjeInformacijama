@@ -68,6 +68,8 @@ public class StudentIndeksController {
 	@Autowired 
 	StudProgramService studProgramService;
 	
+	@Autowired
+	SifarniciService sifarniciService;
 	
 	@Autowired
 	SortStudentaByIndeksController promeniIndeksStud;
@@ -123,7 +125,13 @@ public class StudentIndeksController {
 		
 	private ObservableList<PolozenPredmet> sviPolozeniPredmeti;
 	
-	//------------------------------
+	//Slusa predmete
+	
+	@FXML private TableView<Predmet> slusaPredmeteTable;
+		
+	private ObservableList<Predmet> sviPredmeti;
+		
+	//---------------------------
 	
 	@FXML
     public void initialize() {	
@@ -170,6 +178,10 @@ public class StudentIndeksController {
 		//Polozeni Predmeti
 		sviPolozeniPredmeti = FXCollections.observableArrayList(sifraniciService.getPolozeniPredmeti(index));
 		polozeniPredmetiTable.setItems(sviPolozeniPredmeti);
+		
+		//Slusa predmet
+		sviPredmeti = FXCollections.observableArrayList(sifarniciService.getPredmetiForStudent(index.getIdIndeks()));
+		slusaPredmeteTable.setItems(sviPredmeti);
 	}
 	
 	//Akcije za Aktivnosti studenta
