@@ -44,23 +44,23 @@
             <TableView fx:id="studentiNaIspituTable">
               <columns>
               	<TableColumn prefWidth="100.0" text="Ime">
-                 <cellValueFactory><PropertyValueFactory property="ime" />
+                 <cellValueFactory><PropertyValueFactory property="imeStudenta" />
         		</cellValueFactory>
         		</TableColumn>
                 <TableColumn prefWidth="100.0" text="Prezime">
-                 <cellValueFactory><PropertyValueFactory property="prezime" />
+                 <cellValueFactory><PropertyValueFactory property="prezimeStudenta" />
         		</cellValueFactory>
         		</TableColumn>
         		<TableColumn prefWidth="150.0" text="Broj telefona">
-                 <cellValueFactory><PropertyValueFactory property="brTelefona" />
+                 <cellValueFactory><PropertyValueFactory property="brTelefonaStudenta" />
         		</cellValueFactory>
         		</TableColumn>
         		<TableColumn prefWidth="150.0" text="Studijski program">
-                 <cellValueFactory><PropertyValueFactory property="oznaka" />
+                 <cellValueFactory><PropertyValueFactory property="studProgramIndeks" />
         		</cellValueFactory>
         		</TableColumn>
         		<TableColumn prefWidth="150.0" text="Godina upisa">
-                 <cellValueFactory><PropertyValueFactory property="godinaUpisa" />
+                 <cellValueFactory><PropertyValueFactory property="godinaUpisaStudenta" />
         		</cellValueFactory>
         		</TableColumn>
         		<TableColumn prefWidth="150.0" text="Indeks">
@@ -72,17 +72,6 @@
          </children>      
       </VBox>
    </bottom>
-
-
-
-
-
-
-
-
-
-
-
 
 
 </BorderPane>

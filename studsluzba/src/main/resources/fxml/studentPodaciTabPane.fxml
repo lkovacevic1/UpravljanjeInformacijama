@@ -36,7 +36,7 @@
 		<ComboBox fx:id="drzavaRodjenjaCb"  GridPane.columnIndex="1" GridPane.rowIndex="6"/>
 		
 		<Label text="Pol" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
-		<TextField fx:id="pol"  GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+		<ComboBox fx:id="pol"  GridPane.columnIndex="1" GridPane.rowIndex="7"/>
 		
 		</GridPane>
 		<GridPane alignment="center" hgap="10" vgap="10">
@@ -103,5 +103,25 @@
 		  	
 		  </BorderPane>	
          </Tab>
-
+         
+         <Tab text="Indeks">
+         	<BorderPane>
+         	<center>
+			
+			<HBox alignment="center">
+         	<GridPane alignment="center" hgap="10" vgap="10">
+		   	
+		   	<Label text="Broj indeksa" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+		   	<TextField fx:id="brIndeksaTf"  GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+		   	<Label text="Smer" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+		   	<ComboBox fx:id="smerCb" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+		   	
+		   	</GridPane>
+		   	</HBox>	    
+		   	</center>
+		   		
+		  	
+		  </BorderPane>	
+         </Tab>
+         	
  </TabPane>

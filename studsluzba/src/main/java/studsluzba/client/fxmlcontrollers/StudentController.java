@@ -11,15 +11,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import studsluzba.client.MainViewManager;
+import studsluzba.model.Indeks;
 import studsluzba.model.SrednjaSkola;
+import studsluzba.model.StudProgram;
 import studsluzba.model.Student;
 import studsluzba.model.VisokoskolskaUstanova;
+import studsluzba.services.IndeksService;
 import studsluzba.services.SifarniciService;
+import studsluzba.services.StudProgramService;
 import studsluzba.services.StudentService;
 
 @Component
@@ -30,6 +32,12 @@ public class StudentController {
 	
 	@Autowired
 	SifarniciService sifarniciService;
+	
+	@Autowired
+	StudProgramService studProgramService;
+	
+	@Autowired
+	IndeksService indeksService;
 	
 	
 	@Autowired  
@@ -74,10 +82,18 @@ public class StudentController {
 
 	@FXML private TextField uspehPrijemniTf;
 	
-	@FXML private TextField pol;
+	@FXML private ComboBox<String> pol;
+	
+	@FXML private TextField brIndeksaTf;
+	
+	@FXML private ComboBox<StudProgram> smerCb;
 	
 	@FXML
-    public void initialize() {		
+    public void initialize() {
+		List<StudProgram> sviProgrami = studProgramService.loadAll();
+		smerCb.setItems(FXCollections.observableArrayList(sviProgrami));
+		List<String> polCodes = List.of("Muski", "Zenski");
+		pol.setItems(FXCollections.observableArrayList(polCodes));
 		List<String> drzavaCodes = List.of("Republika Srbija", "Crna Gora", "Hrvatska");
 		drzavaRodjenjaCb.setItems(FXCollections.observableArrayList(drzavaCodes));
 		drzavaRodjenjaCb.setValue(new String("Repoublika Srbija"));
@@ -111,12 +127,21 @@ public class StudentController {
 	}
 	
 	public void handleSaveStudent(ActionEvent event) {
+		String _pol = pol.getValue();
+		StudProgram studProgram = smerCb.getValue();
+		int brojIndeksa = Integer.parseInt(brIndeksaTf.getText());
+		
 		Student st = studentService.saveStudent(imeTf.getText(), prezimeTf.getText(), srednjeImeTf.getText(), jmbgTf.getText(),
 				datumRodjenjaDp.getValue(), emailFakultetaTf.getText(), emailPrivatniTf.getText(), brojTelefonaTf.getText(),
 				adresaPrebivalistaTf.getText(), mestoRodjenjaCb.getValue(), drzavaRodjenjaCb.getValue(), drzavljanstvoCb.getValue(),
 				nacionalnostTf.getText(), brojLicneKarteTf.getText(), licnuKartuIzdaoTf.getText(), srednjeSkolaCb.getValue(),
-				uspehSrednjaSkolaTf.getText(), uspehPrijemniTf.getText(), prelazSaVisokoskolskeUstanoveCb.getValue(), pol.getText());
+				uspehSrednjaSkolaTf.getText(), uspehPrijemniTf.getText(), prelazSaVisokoskolskeUstanoveCb.getValue(), _pol);
 		
+		Indeks ind = indeksService.saveIndeks(st, studProgram, brojIndeksa);
+		
+		studentService.deleteStudent(st);
+		if(ind == null) {
+		}
 	}
 	
 }

@@ -203,6 +203,13 @@ public class Indeks implements Serializable {
 		return serialVersionUID;
 	}
 	
+	public String getAktivanIndeks() {
+		if(student.getAktivanIndeks() != null) {
+			return student.getAktivanIndeks();
+		}
+		return null;
+	}
+	
 	public String getImeStudenta() {
 		return student.getIme();
 	}
@@ -215,13 +222,22 @@ public class Indeks implements Serializable {
 		return student.getEmailFakultet();
 	}
 	
+	public String getBrTelefonaStudenta() {
+		return student.getBrTelefona();
+	}
+	
 	public String getStudProgramIndeks() {
 		return studProgram.getOznaka();
+	}
+	
+	public int getGodinaUpisaStudenta() {
+		int year = datumAktivacijeIndexa.getYear();
+		return year;
 	}
 
 	@Override
 	public String toString() {
-		return brojIndexa + " " +godinaUpisa;
+		return brojIndexa + "/" + godinaUpisa;
 	}
 
 }

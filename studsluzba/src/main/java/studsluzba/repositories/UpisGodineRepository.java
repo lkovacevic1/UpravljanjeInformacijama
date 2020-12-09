@@ -9,6 +9,7 @@ import studsluzba.model.UpisGodine;
 
 public interface UpisGodineRepository  extends CrudRepository<UpisGodine, Integer> {
 	// selekcija svih upisanih godina za id indeksa
-	@Query("select u from UpisGodine u join fetch u.indeks i where i.idIndeks like :id") 
+	@Query("select u from UpisGodine u  where u.indeks.idIndeks like :id") 
 	List<UpisGodine> findUpisGodineByID(int id);
+	
 }

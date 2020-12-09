@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import studsluzba.model.Indeks;
 import studsluzba.model.ObnovaGodine;
 import studsluzba.model.Predmet;
+import studsluzba.model.UpisGodine;
 import studsluzba.repositories.IndeksRepository;
 import studsluzba.repositories.ObnovaGodineRepository;
 
@@ -38,5 +39,10 @@ public class ObnovaGodineService {
 		indeksRepo.save(indeks);
 		
 		return obnovaGodineRepo.save(obnovaGodine);
+	}
+	
+	public List<ObnovaGodine> findAllObnoveForIndeks(Indeks indeks){
+		int id = indeks.getIdIndeks();
+		return obnovaGodineRepo.findObnovaGodineByID(id);
 	}
 }

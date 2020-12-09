@@ -16,6 +16,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import studsluzba.model.Indeks;
 import studsluzba.model.ObnovaGodine;
+import studsluzba.model.PolozenPredmet;
 import studsluzba.model.Predmet;
 import studsluzba.model.StudProgram;
 import studsluzba.model.Student;
@@ -43,6 +44,9 @@ public class DosijeController {
 	StudProgramRepository studProgramRepo;
 	
 	@Autowired
+	SifarniciService sifarniciService;
+	
+	@Autowired
 	UpisGodineService upisGodineService;
 	
 	@Autowired 
@@ -59,6 +63,16 @@ public class DosijeController {
 	
 	@Autowired
 	PretraziStudentePoImenuPrezimenuController pretraziStud;
+	
+	//TableView Aktivnosti studenta
+	
+	@FXML private TableView<UpisGodine> upisGodineTable;
+	
+	private ObservableList<UpisGodine> sviUpisi;
+	
+	@FXML private TableView<ObnovaGodine> obnovaGodineTable;
+	
+	private ObservableList<ObnovaGodine> sveObnove;
 	
 	//Aktivnost Studenta FXML
 
@@ -84,15 +98,31 @@ public class DosijeController {
 	
 	@FXML private TableView<Indeks> indeksTable;
 	
+	//Polozeni predmeti
+	
+	@FXML private TableView<PolozenPredmet> polozeniPredmetiTable;
+	
+	private ObservableList<PolozenPredmet> sviPolozeniPredmeti;
+	
+	
 	//---------------------------
 	
 	@FXML
     public void initialize() {	
+		Indeks index = pretraziStud.selektovanIndeks;
+		
+		//TableView Aktivnosti studenta
+		sviUpisi = FXCollections.observableArrayList(upisGodineService.findAllUpisForIndeks(index));
+		upisGodineTable.setItems(sviUpisi);
+		
+		sveObnove = FXCollections.observableArrayList(obnovaGodineService.findAllObnoveForIndeks(index));
+		obnovaGodineTable.setItems(sveObnove);
+		
 		//Aktivnosti Studenta
 		List<String> obn_upis = List.of("Obnova Godine", "Upis Godine");
 		upis_obnova.setItems(FXCollections.observableArrayList(obn_upis));
 		
-		Indeks index = pretraziStud.selektovanIndeks;
+		
 		sviIndeksi = FXCollections.observableArrayList(indeksRepo.selectIndekxById(index.getIdIndeks()));
 		stTable.setItems(sviIndeksi);
 		
@@ -111,6 +141,10 @@ public class DosijeController {
 		studProgramCb.setItems(FXCollections.observableArrayList(stProgram));
 		
 		indeksTable.setItems(sviIndeksi);
+		
+		//Polozeni Predmeti
+		sviPolozeniPredmeti = FXCollections.observableArrayList(sifarniciService.getPolozeniPredmeti(index));
+		polozeniPredmetiTable.setItems(sviPolozeniPredmeti);
 	}
 	
 	//Akcije za Aktivnosti studenta

@@ -121,6 +121,11 @@ public class PolozenPredmet implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	public String getImePredmeta() {
+		return predmet.getNazivPredmeta();
+	}
+	
 
 	@Override
 	public String toString() {

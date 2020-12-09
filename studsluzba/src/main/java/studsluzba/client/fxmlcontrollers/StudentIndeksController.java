@@ -71,6 +71,18 @@ public class StudentIndeksController {
 	
 	@Autowired
 	SortStudentaByIndeksController promeniIndeksStud;
+	
+	//TableView Aktivnosti studenta
+	
+	@FXML private TableView<UpisGodine> upisGodineTable;
+		
+	private ObservableList<UpisGodine> sviUpisi;
+		
+	@FXML private TableView<ObnovaGodine> obnovaGodineTable;
+		
+	private ObservableList<ObnovaGodine> sveObnove;
+	
+	//Aktivnost Studenta FXML
 
 	@FXML private ComboBox<String> upis_obnova;
 	
@@ -105,16 +117,30 @@ public class StudentIndeksController {
 	
 	@FXML private TextField ispitPoeniTF;
 	
+	//Polozeni predmeti
+	
+	@FXML private TableView<PolozenPredmet> polozeniPredmetiTable;
+		
+	private ObservableList<PolozenPredmet> sviPolozeniPredmeti;
+	
 	//------------------------------
 	
 	@FXML
     public void initialize() {	
+		Indeks index = promeniIndeksStud.selektovanIndeksZaZamenu;
+		
+		//TableView Aktivnosti studenta
+		sviUpisi = FXCollections.observableArrayList(upisGodineService.findAllUpisForIndeks(index));
+		upisGodineTable.setItems(sviUpisi);
+		
+		sveObnove = FXCollections.observableArrayList(obnovaGodineService.findAllObnoveForIndeks(index));
+		obnovaGodineTable.setItems(sveObnove);
 		
 		//Aktivnost Studenta
 		List<String> obn_upis = List.of("Obnova Godine", "Upis Godine");
 		upis_obnova.setItems(FXCollections.observableArrayList(obn_upis));
 	
-		Indeks index = promeniIndeksStud.selektovanIndeksZaZamenu;
+		
 		sviIndexi = FXCollections.observableArrayList(indeksRepo.selectIndekxById(index.getIdIndeks()));
 		indeksAktivnostTable.setItems(sviIndexi);
 		
@@ -140,6 +166,10 @@ public class StudentIndeksController {
 		
 		List<PredispitneObaveze> predispitneObaveze = predispitneObavezeRepo.findVrstaObaveze(index.getIdIndeks());
 		obavezaCb.setItems(FXCollections.observableArrayList(predispitneObaveze));
+		
+		//Polozeni Predmeti
+		sviPolozeniPredmeti = FXCollections.observableArrayList(sifraniciService.getPolozeniPredmeti(index));
+		polozeniPredmetiTable.setItems(sviPolozeniPredmeti);
 	}
 	
 	//Akcije za Aktivnosti studenta

@@ -15,10 +15,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
 import studsluzba.client.MainViewManager;
+import studsluzba.model.Indeks;
 import studsluzba.model.Ispit;
 import studsluzba.model.Student;
+import studsluzba.repositories.IndeksRepository;
 import studsluzba.repositories.IspitRepository;
 import studsluzba.repositories.StudentRepository;
+import studsluzba.services.IndeksService;
 import studsluzba.services.SifarniciService;
 import studsluzba.services.StudentiNaIspituService;
 
@@ -27,6 +30,12 @@ public class StudentiNaIspituController {
 	
 	@Autowired
 	StudentiNaIspituService studentiNaIspituService;
+	
+	@Autowired
+	IndeksService indeksService;
+	
+	@Autowired
+	IndeksRepository indeksRepo;
 	
 	@Autowired
 	IspitRepository ispitRepo;
@@ -39,16 +48,16 @@ public class StudentiNaIspituController {
 	
 	@FXML private ComboBox<Ispit> datumOdrzavanjaIspita;
 	
-	@FXML private TableView<Student> studentiNaIspituTable;
+	@FXML private TableView<Indeks> studentiNaIspituTable;
 	
-	private ObservableList<Student> sviStudenti;
+	private ObservableList<Indeks> sviIndeksi;
 	
 	
 	@FXML
     public void initialize() {
 		
-		sviStudenti = FXCollections.observableList(studentiNaIspituService.loadAll());
-		studentiNaIspituTable.setItems(sviStudenti);
+		sviIndeksi = FXCollections.observableList(indeksService.loadAll());
+		studentiNaIspituTable.setItems(sviIndeksi);
 		
 		List<Ispit> ispiti = ispitRepo.ispitiZaPrijavu();
 		datumOdrzavanjaIspita.setItems(FXCollections.observableArrayList(ispiti));
@@ -57,9 +66,10 @@ public class StudentiNaIspituController {
 	public void pretraziStudentePoIspitu(ActionEvent event) {
 		Ispit podaci = datumOdrzavanjaIspita.getValue();
 		int id = podaci.getIdIspit();
-		List<Student> studenti = studentRepo.findAllStudentsForIspit(id);
+		List<Indeks> indeksi = indeksRepo.findAllIndeksForIspit(id);
+		//List<Student> studenti = studentRepo.findAllStudentsForIspit(id);
 		
 		studentiNaIspituTable.getItems().clear();
-		studentiNaIspituTable.getItems().addAll(studenti);
+		studentiNaIspituTable.getItems().addAll(indeksi);
 	}
 }

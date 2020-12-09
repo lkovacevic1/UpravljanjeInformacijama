@@ -59,6 +59,10 @@ public class StudentService {
 		return studentRepo.save(st);
 	}
 	
+	public void deleteStudent(Student s) {
+		studentRepo.delete(s);
+	}
+	
 	public List<Student> loadAll(){
 		Iterable<Student> iter = studentRepo.findAll();
 		List<Student> rez = new ArrayList<Student>();		
@@ -67,17 +71,6 @@ public class StudentService {
 	}
 	
 	//Promeni indeks na neaktivan
-	/*public void promeniAktivanIndeksNaNeaktivan(Indeks i) {
-		i.setAktivan(false);
-		
-		Configuration config = new Configuration();
-		config.configure();
-		
-		SessionFactory sessionFactory = config.buildSessionFactory();
-		Session session = sessionFactory.getCurrentSession();
-		
-		session.update(i);
-	}*/
 	
 	public Indeks promeniAktivanIndeksNaNeaktivan(Indeks i) {
 		i.setAktivan(false);

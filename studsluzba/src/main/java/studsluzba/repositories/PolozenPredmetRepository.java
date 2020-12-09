@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import studsluzba.model.Indeks;
 import studsluzba.model.PolozenPredmet;
 
 public interface PolozenPredmetRepository extends CrudRepository<PolozenPredmet, Integer> {
@@ -20,4 +21,8 @@ public interface PolozenPredmetRepository extends CrudRepository<PolozenPredmet,
 	// selekcija svih polozenih ispita za id indeksa
 	@Query("select p from PolozenPredmet p join fetch p.indeks i where i.idIndeks like :id") 
 	List<PolozenPredmet> findPolozenIspitByID(int id);
+	
+	// selekcija svih polozenih ispita za id indeksa
+	@Query("select p from PolozenPredmet p where p.indeks like :indeks and p.polozen = 1") 
+	List<PolozenPredmet> findPolozenIspitByIndeks(Indeks indeks);
 }

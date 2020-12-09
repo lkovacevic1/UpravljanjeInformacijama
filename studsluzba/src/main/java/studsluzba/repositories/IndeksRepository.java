@@ -8,6 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import studsluzba.model.Indeks;
 import studsluzba.model.Student;
+import studsluzba.model.UpisGodine;
 
 public interface IndeksRepository extends CrudRepository<Indeks, Integer> {
 /*
@@ -36,9 +37,21 @@ public interface IndeksRepository extends CrudRepository<Indeks, Integer> {
 	
 	//Find index by id
 	@Query("select i from Indeks i where i.idIndeks like :id")
-	Indeks selectIndekxById(int id);
+	List<Indeks> selectIndekxById(int id);
 	
 	//Sortirani indeksi, sa ukupnim brojen poena
 	@Query("select i from Indeks i join i.prijavaIspita pri where pri.ispit.idIspit like :idIspita order by i.studProgram.nazivStudPrograma DESC, i.upisGodine.godinaUpisa, i.brojIndexa")
 	List<Indeks> getSortedIndeks(int idIspita);
+	
+	//Da li vec postoji dati indeks
+	@Query("select i from Indeks i where i.godinaUpisa like :godinaUpisa and i.brojIndexa like :brIndeksa and i.studProgram.oznaka like :oznaka")
+	Indeks doesIndeksExist(int godinaUpisa, int brIndeksa, String oznaka);
+	
+	//Indeksi koji polazi na odredjenom ispitu
+	@Query("select i from Indeks i join i.prijavaIspita pi where pi.ispit.idIspit like :idIspit")
+	List<Indeks> findAllIndeksForIspit(int idIspit);
+	
+	// selekcija svih upisanih godina za id indeksa
+	@Query("select i from Indeks i  where i.upisGodine.indeks.idIndeks like :id") 
+	List<Indeks> selectIndexById(int id);
 }

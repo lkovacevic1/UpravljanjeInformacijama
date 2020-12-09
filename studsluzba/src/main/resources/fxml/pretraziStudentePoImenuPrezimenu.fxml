@@ -58,11 +58,11 @@
         		</cellValueFactory>
         		</TableColumn>
         		<TableColumn prefWidth="150.0" text="Godina upisa">
-                 <cellValueFactory><PropertyValueFactory property="godinaUpisa" />
+                 <cellValueFactory><PropertyValueFactory property="godinaUpisaStudenta" />
         		</cellValueFactory>
         		</TableColumn>
         		<TableColumn prefWidth="100.0" text="Smer">
-                 <cellValueFactory><PropertyValueFactory property="studProgramIndeks" />
+                 <cellValueFactory><PropertyValueFactory property="studProgram" />
         		</cellValueFactory>
         		</TableColumn>
         		<TableColumn prefWidth="150.0" text="Aktivan">

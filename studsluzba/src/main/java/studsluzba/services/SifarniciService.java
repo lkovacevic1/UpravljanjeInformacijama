@@ -7,9 +7,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import studsluzba.model.Indeks;
 import studsluzba.model.Ispit;
 import studsluzba.model.IspitniRok;
 import studsluzba.model.Nastavnik;
+import studsluzba.model.PolozenPredmet;
 import studsluzba.model.Predmet;
 import studsluzba.model.SrednjaSkola;
 import studsluzba.model.StudProgram;
@@ -18,6 +20,7 @@ import studsluzba.model.VisokoskolskaUstanova;
 import studsluzba.repositories.IspitRepository;
 import studsluzba.repositories.IspitniRokRepository;
 import studsluzba.repositories.NastavnikRepository;
+import studsluzba.repositories.PolozenPredmetRepository;
 import studsluzba.repositories.PredmetRepository;
 import studsluzba.repositories.SrednjaSkolaRepository;
 import studsluzba.repositories.StudProgramRepository;
@@ -47,6 +50,9 @@ public class SifarniciService {
 	
 	@Autowired
 	SrednjaSkolaRepository srednjeSkolaRepo;
+	
+	@Autowired
+	PolozenPredmetRepository polozenPredmetRepo;
 	
 	@Autowired
 	VisokoskolskaUstanovaRepository vsRepo;
@@ -117,5 +123,9 @@ public class SifarniciService {
 		List<StudProgram> rez = new ArrayList<StudProgram>();		
 		iter.forEach(rez::add);
 		return rez;	
+	}
+	
+	public List<PolozenPredmet> getPolozeniPredmeti(Indeks indeks){
+		return polozenPredmetRepo.findPolozenIspitByIndeks(indeks);
 	}
 }

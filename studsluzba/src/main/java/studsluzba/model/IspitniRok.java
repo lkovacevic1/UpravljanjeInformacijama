@@ -25,6 +25,7 @@ public class IspitniRok implements Serializable {
 
 	private LocalDate datumPocetkaIspitnogRoka;
 	private LocalDate datumZavrsetkaIspitnogRoka;
+	private String imeRoka;
 
 	@OneToMany(mappedBy = "ispitniRok")
 	private List<Ispit> ispiti;
@@ -38,13 +39,22 @@ public class IspitniRok implements Serializable {
 	}
 
 	public IspitniRok(int idIspitnogRoka, LocalDate datumPocetkaIspitnogRoka, LocalDate datumZavrsetkaIspitnogRoka,
-			List<Ispit> ispiti, SkolskaGodina skolskaGodina) {
+			List<Ispit> ispiti, SkolskaGodina skolskaGodina, String imeRoka) {
 		super();
 		this.idIspitnogRoka = idIspitnogRoka;
 		this.datumPocetkaIspitnogRoka = datumPocetkaIspitnogRoka;
 		this.datumZavrsetkaIspitnogRoka = datumZavrsetkaIspitnogRoka;
 		this.ispiti = ispiti;
 		this.skolskaGodina = skolskaGodina;
+		this.imeRoka = imeRoka;
+	}
+
+	public String getImeRoka() {
+		return imeRoka;
+	}
+
+	public void setImeRoka(String imeRoka) {
+		this.imeRoka = imeRoka;
 	}
 
 	public int getIdIspitnogRoka() {

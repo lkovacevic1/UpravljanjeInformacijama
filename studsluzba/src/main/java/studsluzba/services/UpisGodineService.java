@@ -38,4 +38,9 @@ public class UpisGodineService {
 		
 		return upisGodineRepo.save(upisGodine);
 	}
+	
+	public List<UpisGodine> findAllUpisForIndeks(Indeks indeks){
+		int id = indeks.getIdIndeks();
+		return upisGodineRepo.findUpisGodineByID(id);
+	}
 }
