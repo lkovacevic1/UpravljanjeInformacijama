@@ -201,6 +201,12 @@ public class StudentIndeksController {
 			upisGodineService.saveUpisGodine(selektovaniPredmeti, datum.getText(), napomena.getText(), ind);
 		}
 		selektovaniPredmeti.clear();
+		
+		sviUpisi = FXCollections.observableArrayList(upisGodineService.findAllUpisForIndeks(index));
+		upisGodineTable.setItems(sviUpisi);
+		
+		sveObnove = FXCollections.observableArrayList(obnovaGodineService.findAllObnoveForIndeks(index));
+		obnovaGodineTable.setItems(sveObnove);
 	}
 	
 	//Akcija za dodelu novog Indeksa
