@@ -14,6 +14,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import studsluzba.client.MainViewManager;
+import studsluzba.model.DrziPredmet;
 import studsluzba.model.Indeks;
 import studsluzba.model.ObnovaGodine;
 import studsluzba.model.OsvojeniPredispitniPoeni;
@@ -38,6 +40,9 @@ import studsluzba.services.UpisGodineService;
 public class StudentIndeksController {
 	
 	@Autowired
+	MainViewManager mainViewManager;
+	
+	@Autowired
 	IndeksRepository indeksRepo;
 	
 	@Autowired
@@ -60,7 +65,7 @@ public class StudentIndeksController {
 	ObnovaGodineService obnovaGodineService;
 	
 	@Autowired
-	SifarniciService sifraniciService;
+	SifarniciService sifaraniciService;
 	
 	@Autowired
 	StudentService studentService;
@@ -107,17 +112,6 @@ public class StudentIndeksController {
 	@FXML private ComboBox<StudProgram> studProgramCb;
 		
 	@FXML private TableView<Indeks> indeksTable;
-		
-	
-	//Dodavanje poena studentu FXML
-	
-	@FXML private ComboBox<Predmet> predmetCb;
-	
-	@FXML private ComboBox<PredispitneObaveze> obavezaCb;
-	
-	@FXML private TextField predispitniPoeniTF;
-	
-	@FXML private TextField ispitPoeniTF;
 	
 	//Polozeni predmeti
 	
@@ -131,6 +125,16 @@ public class StudentIndeksController {
 		
 	private ObservableList<Predmet> sviPredmeti;
 		
+	//Dodaj studenta na predmet
+	
+	@FXML private ComboBox<DrziPredmet> predmetCb;
+		
+	@FXML private TableView<Predmet> sviPredmeteTable;
+		
+	private ObservableList<Predmet> sviPredmetiKojeSlusaStud;
+		
+	private ObservableList<DrziPredmet> drziPredmet;
+	
 	//---------------------------
 	
 	@FXML
@@ -159,7 +163,7 @@ public class StudentIndeksController {
 		
 		
 		
-		List<Predmet> predmet = sifraniciService.getPredmeti(studProgram);
+		List<Predmet> predmet = sifaraniciService.getPredmeti(studProgram);
 		predmeti.setItems(FXCollections.observableArrayList(predmet));
 		
 		//Promena indeksa
@@ -169,19 +173,26 @@ public class StudentIndeksController {
 		
 		indeksTable.setItems(sviIndexi);
 		
-		//Poeni indeksa
-		predmetCb.setItems(FXCollections.observableArrayList(predmet));
-		
-		List<PredispitneObaveze> predispitneObaveze = predispitneObavezeRepo.findVrstaObaveze(index.getIdIndeks());
-		obavezaCb.setItems(FXCollections.observableArrayList(predispitneObaveze));
 		
 		//Polozeni Predmeti
-		sviPolozeniPredmeti = FXCollections.observableArrayList(sifraniciService.getPolozeniPredmeti(index));
+		sviPolozeniPredmeti = FXCollections.observableArrayList(sifaraniciService.getPolozeniPredmeti(index));
 		polozeniPredmetiTable.setItems(sviPolozeniPredmeti);
 		
 		//Slusa predmet
 		sviPredmeti = FXCollections.observableArrayList(sifarniciService.getPredmetiForStudent(index.getIdIndeks()));
 		slusaPredmeteTable.setItems(sviPredmeti);
+		
+		//Dodaj predmet studentu
+		drziPredmet = FXCollections.observableList(sifaraniciService.getAllDrziPredmet());
+		predmetCb.setItems(FXCollections.observableArrayList(drziPredmet));
+				
+				
+		sviPredmetiKojeSlusaStud = FXCollections.observableArrayList(sifaraniciService.getPredmetiKojeSlusaStudent(index.getIdIndeks()));
+		sviPredmeteTable.setItems(sviPredmetiKojeSlusaStud);
+	}
+	
+	public void dodajDrziPredmet(DrziPredmet drPredmet) {
+		predmetCb.getItems().add(drPredmet);
 	}
 	
 	//Akcije za Aktivnosti studenta
@@ -238,26 +249,18 @@ public class StudentIndeksController {
 		indeksTable.setItems(sviIndexi);
 	}
 	
-	//Akcija za dodavanje poena studentu
-	public void dodajPoena(ActionEvent event) {
-		Indeks indeks = promeniIndeksStud.selektovanIndeksZaZamenu;
+	//Otvaranje forme za dodavanje novogPredmeta
+	public void openFormForNewDrziPredmet(ActionEvent event) {
+		mainViewManager.openModal("addNewDrziPredmetIndeks");
+	}
 		
-		int obaveze = Integer.parseInt(predispitniPoeniTF.getText());
-		int ispitPoeni = Integer.parseInt(ispitPoeniTF.getText());
-		
-		
-		List<OsvojeniPredispitniPoeni> opp = indeks.getOsvojeniPredispitniPOeni();
-		OsvojeniPredispitniPoeni _opp = opp.get(0);
-		
-		indeksService.dodajePredispitnePoene(_opp, obaveze);
-		
-		List<PolozenPredmet> pp = indeks.getPolozeniPredmeti();
-		PolozenPredmet _pp = pp.get(0);
-		
-		indeksService.dodajePoeneNaIspitu(_pp, ispitPoeni, obaveze);
-		
-		indeksService.dodajOsvojenePoene(indeks, obaveze, ispitPoeni);
-		
-		opp.clear();
+	//Dodavanje novog predmeta studentu
+	public void dodajNoviPredmetKojiSlusaStudent(ActionEvent event) {
+		List<Indeks> indeksi = new ArrayList<Indeks>();
+		indeksi.add(promeniIndeksStud.selektovanIndeksZaZamenu);
+		DrziPredmet drPredmet = sifaraniciService.addSlusaPredmet(indeksi, predmetCb.getValue());
+		Predmet pr = drPredmet.getPredmet();
+		sviPredmetiKojeSlusaStud.add(pr);
+		indeksi.clear();
 	}
 }
