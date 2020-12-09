@@ -423,5 +423,6 @@ public class StudentRepositoryTest {
 		osvojeniPredispitniPoeni.setOsvojeniPredispitniPoeni(42);
 		
 		osvojeniPredispitniPoeniRepo.save(osvojeniPredispitniPoeni);
+		//Test
 	}
 }
