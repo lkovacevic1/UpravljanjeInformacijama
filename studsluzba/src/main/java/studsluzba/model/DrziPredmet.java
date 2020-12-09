@@ -97,7 +97,6 @@ public class DrziPredmet implements Serializable {
 
 	@Override
 	public String toString() {
-		return "DrziPredmet [idDrziPredmet=" + idDrziPredmet + ", nastavnik=" + nastavnik + ", skolskaGodina="
-				+ skolskaGodina + ", predmet=" + predmet + "]";
+		return nastavnik + ", " + predmet + ", " + skolskaGodina;
 	}
 }

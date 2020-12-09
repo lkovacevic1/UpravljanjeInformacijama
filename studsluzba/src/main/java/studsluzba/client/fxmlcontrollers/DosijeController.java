@@ -14,10 +14,14 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import studsluzba.client.MainViewManager;
+import studsluzba.model.DrziPredmet;
 import studsluzba.model.Indeks;
+import studsluzba.model.Nastavnik;
 import studsluzba.model.ObnovaGodine;
 import studsluzba.model.PolozenPredmet;
 import studsluzba.model.Predmet;
+import studsluzba.model.SkolskaGodina;
 import studsluzba.model.StudProgram;
 import studsluzba.model.Student;
 import studsluzba.model.UpisGodine;
@@ -35,6 +39,9 @@ import studsluzba.services.UpisGodineService;
 public class DosijeController {
 	
 	@Autowired
+	MainViewManager mainViewManager;
+	
+	@Autowired
 	IndeksRepository indeksRepo;
 	
 	@Autowired
@@ -43,8 +50,6 @@ public class DosijeController {
 	@Autowired 
 	StudProgramRepository studProgramRepo;
 	
-	@Autowired
-	SifarniciService sifarniciService;
 	
 	@Autowired
 	UpisGodineService upisGodineService;
@@ -53,7 +58,7 @@ public class DosijeController {
 	ObnovaGodineService obnovaGodineService;
 	
 	@Autowired
-	SifarniciService sifraniciService;
+	SifarniciService sifaraniciService;
 	
 	@Autowired
 	StudentService studentService;
@@ -110,6 +115,16 @@ public class DosijeController {
 	
 	private ObservableList<Predmet> sviPredmeti;
 	
+	//Dodaj studenta na predmet
+	
+	@FXML private ComboBox<DrziPredmet> predmetCb;
+	
+	@FXML private TableView<Predmet> sviPredmeteTable;
+	
+	private ObservableList<Predmet> sviPredmetiKojeSlusaStud;
+	
+	private ObservableList<DrziPredmet> drziPredmet;
+	
 	//---------------------------
 	
 	@FXML
@@ -137,7 +152,7 @@ public class DosijeController {
 		String oznaka = studProgram.getOznaka();
 		
 		
-		List<Predmet> predmet = sifraniciService.getPredmeti(studProgram);
+		List<Predmet> predmet = sifaraniciService.getPredmeti(studProgram);
 		predmeti.setItems(FXCollections.observableArrayList(predmet));
 		
 		//Promena Indeksa Studenta
@@ -148,12 +163,24 @@ public class DosijeController {
 		indeksTable.setItems(sviIndeksi);
 		
 		//Polozeni Predmeti
-		sviPolozeniPredmeti = FXCollections.observableArrayList(sifarniciService.getPolozeniPredmeti(index));
+		sviPolozeniPredmeti = FXCollections.observableArrayList(sifaraniciService.getPolozeniPredmeti(index));
 		polozeniPredmetiTable.setItems(sviPolozeniPredmeti);
 		
 		//Slusa predmet
-		sviPredmeti = FXCollections.observableArrayList(sifarniciService.getPredmetiForStudent(index.getIdIndeks()));
+		sviPredmeti = FXCollections.observableArrayList(sifaraniciService.getPredmetiForStudent(index.getIdIndeks()));
 		slusaPredmeteTable.setItems(sviPredmeti);
+		
+		//Dodaj predmet studentu
+		drziPredmet = FXCollections.observableList(sifaraniciService.getAllDrziPredmet());
+		predmetCb.setItems(FXCollections.observableArrayList(drziPredmet));
+		
+		
+		sviPredmetiKojeSlusaStud = FXCollections.observableArrayList(sifaraniciService.getPredmetiKojeSlusaStudent(index.getIdIndeks()));
+		sviPredmeteTable.setItems(sviPredmetiKojeSlusaStud);
+	}
+	
+	public void dodajDrziPredmet(DrziPredmet drPredmet) {
+		predmetCb.getItems().add(drPredmet);
 	}
 	
 	//Akcije za Aktivnosti studenta
@@ -208,5 +235,20 @@ public class DosijeController {
 		sviIndeksi.clear();
 		sviIndeksi.add(index);
 		indeksTable.setItems(sviIndeksi);
+	}
+	
+	//Otvaranje forme za dodavanje novogPredmeta
+	public void openFormForNewDrziPredmet(ActionEvent event) {
+		mainViewManager.openModal("addNewDrziPredmet");
+	}
+	
+	//Dodavanje novog predmeta studentu
+	public void dodajNoviPredmetStudentu(ActionEvent event) {
+		List<Indeks> indeksi = new ArrayList<Indeks>();
+		indeksi.add(pretraziStud.selektovanIndeks);
+		DrziPredmet drPredmet = sifaraniciService.addSlusaPredmet(indeksi, predmetCb.getValue());
+		Predmet pr = drPredmet.getPredmet();
+		sviPredmetiKojeSlusaStud.add(pr);
+		indeksi.clear();
 	}
 }

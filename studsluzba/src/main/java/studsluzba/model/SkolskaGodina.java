@@ -104,8 +104,7 @@ public class SkolskaGodina implements Serializable {
 
 	@Override
 	public String toString() {
-		return "SkolskaGodina [idSkolskeGodine=" + idSkolskeGodine + ", skolskaGodina=" + skolskaGodina + ", aktivna="
-				+ aktivna + "]";
+		return skolskaGodina + "";
 	}
 
 }
