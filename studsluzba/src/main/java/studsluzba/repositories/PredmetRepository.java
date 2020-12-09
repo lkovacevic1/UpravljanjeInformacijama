@@ -18,5 +18,7 @@ public interface PredmetRepository extends CrudRepository<Predmet, Integer>{
 	@Query("select p from Predmet p join fetch p.studProgram sp where sp.oznaka like :oznaka")
 	List<Predmet> findPredmetByOznaka(String oznaka);
 	
-	
+	//spisak predmeta koje slusa student
+	@Query("select p from Predmet p join fetch p.studProgram sp join sp.indeksi ind where ind.idIndeks like :idIndeksa")
+	List<Predmet> findPredmetForIndeks(int idIndeksa);
 }

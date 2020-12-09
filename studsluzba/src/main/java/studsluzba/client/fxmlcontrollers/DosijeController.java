@@ -104,6 +104,11 @@ public class DosijeController {
 	
 	private ObservableList<PolozenPredmet> sviPolozeniPredmeti;
 	
+	//Slusa predmete
+	
+	@FXML private TableView<Predmet> slusaPredmeteTable;
+	
+	private ObservableList<Predmet> sviPredmeti;
 	
 	//---------------------------
 	
@@ -145,6 +150,10 @@ public class DosijeController {
 		//Polozeni Predmeti
 		sviPolozeniPredmeti = FXCollections.observableArrayList(sifarniciService.getPolozeniPredmeti(index));
 		polozeniPredmetiTable.setItems(sviPolozeniPredmeti);
+		
+		//Slusa predmet
+		sviPredmeti = FXCollections.observableArrayList(sifarniciService.getPredmetiForStudent(index.getIdIndeks()));
+		slusaPredmeteTable.setItems(sviPredmeti);
 	}
 	
 	//Akcije za Aktivnosti studenta

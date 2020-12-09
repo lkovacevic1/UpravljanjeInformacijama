@@ -93,6 +93,10 @@ public class SifarniciService {
 		return rez;	
 	}
 	
+	public List<Predmet> getPredmetiForStudent(int indeks){
+		return predmetRepo.findPredmetForIndeks(indeks);
+	}
+	
 	public List<Predmet> getPredmeti(StudProgram stProgram){
 		return predmetRepo.findPredmetByOznaka(stProgram.getOznaka());
 	}
