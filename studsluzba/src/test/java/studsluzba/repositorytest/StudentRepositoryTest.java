@@ -2,6 +2,7 @@ package studsluzba.repositorytest;
 
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -323,7 +324,8 @@ public class StudentRepositoryTest {
 		ispitniRok.setDatumPocetkaIspitnogRoka(LocalDate.of(2021, 01, 11));
 		ispitniRok.setDatumZavrsetkaIspitnogRoka(LocalDate.of(2021, 01, 27));
 		ispitniRok.setSkolskaGodina(skolskaGodina);
-
+		ispitniRok.setImeRoka("januarski");
+		
 		ispitniRokRepo.save(ispitniRok);
 		
 		
@@ -398,11 +400,14 @@ public class StudentRepositoryTest {
 		
 		izlazakNaIspitRepo.save(izlazakNaIspit);
 		
+		List<Indeks> indeksi = new ArrayList<Indeks>();
+		indeksi.add(indeks);
 		
 		// DrziPredmet
 		drziPredmet.setNastavnik(nastavnik);
 		drziPredmet.setPredmet(predmet);
 		drziPredmet.setSkolskaGodina(skolskaGodina);
+		drziPredmet.setIndeksi(indeksi);
 		
 		drziPredmetRepo.save(drziPredmet);
 		
