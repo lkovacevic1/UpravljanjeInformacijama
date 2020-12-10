@@ -24,7 +24,8 @@
 				<padding><Insets top="20" right="0" bottom="10" left="0"/></padding>
 		        <Button onAction="#handleSaveStudent" text="Sačuvaj"     
 		        GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-		        <Text text="                                " fx:id="actionTarget" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+		        <Text text="" fx:id="actionTarget" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+		        
 		</GridPane>
 		</bottom>	
 	

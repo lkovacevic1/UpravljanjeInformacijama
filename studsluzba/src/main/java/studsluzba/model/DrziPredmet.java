@@ -94,6 +94,14 @@ public class DrziPredmet implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	public int getBrojESPBpoena() {
+		return predmet.getBrojESPBpoena();
+	}
+	
+	public int getSemestar() {
+		return predmet.getSemestar();
+	}
 
 	@Override
 	public String toString() {

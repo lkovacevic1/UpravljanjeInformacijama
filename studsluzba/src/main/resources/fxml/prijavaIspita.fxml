@@ -34,7 +34,8 @@
 		   	<Label text="Student" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
 		   	<ComboBox fx:id="studenti"  GridPane.columnIndex="1" GridPane.rowIndex="1"/>	
 		   		
-		   	<Button onAction="#prijaviStudenta" text="Prijavi studenta" GridPane.columnIndex="1" GridPane.rowIndex="3"/>	   	
+		   	<Button onAction="#prijaviStudenta" text="Prijavi studenta" GridPane.columnIndex="1" GridPane.rowIndex="3"/>	
+		   	<Label text="" fx:id="potvrdaLabel" GridPane.columnIndex="1" GridPane.rowIndex="4" style="-fx-text-fill: #0138E0;"/>
 	</GridPane>
 </center>
 

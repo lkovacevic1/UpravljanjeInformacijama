@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import studsluzba.client.fxmlcontrollers.StudentController;
 import studsluzba.model.DrziPredmet;
 import studsluzba.model.Indeks;
 import studsluzba.model.Ispit;
@@ -71,6 +72,11 @@ public class SifarniciService {
 	@Autowired
 	VisokoskolskaUstanovaRepository vsRepo;
 	
+	@Autowired 
+	StudentController studentController;
+	
+	//Srednje skole
+	
 	public List<SrednjaSkola> getSrednjeSkole(){		
 		Iterable<SrednjaSkola> iter = srednjeSkolaRepo.findAll();
 		List<SrednjaSkola> rez = new ArrayList<SrednjaSkola>();		
@@ -78,8 +84,18 @@ public class SifarniciService {
 		return rez;		
 	}
 	
+	public void updateSrednjaSk() {
+		studentController.updateSrednjeSkole();
+	}
+	
 	public SrednjaSkola saveSrednjaSkola(SrednjaSkola ss) {
 		return srednjeSkolaRepo.save(ss);
+	}
+	
+	//Visokoskolske ustanove
+	
+	public void updateVisokoskUstanova() {
+		studentController.updateVisokoskolskaUstanova();
 	}
 	
 	public List<VisokoskolskaUstanova> getVisokoskolskaUstanova(){		
@@ -93,12 +109,16 @@ public class SifarniciService {
 		return vsRepo.save(vs);
 	}
 	
+	//Student
+	
 	public List<Student> getStudent(){		
 		Iterable<Student> iter = studRepo.findAll();
 		List<Student> rez = new ArrayList<Student>();		
 		iter.forEach(rez::add);
 		return rez;		
 	}
+	
+	//Predmet
 	
 	public List<Predmet> getPredmeti(){
 		Iterable<Predmet> iter = predmetRepo.findAll();
@@ -119,12 +139,16 @@ public class SifarniciService {
 		return predmetRepo.findPredmetByOznaka(stProgram.getOznaka());
 	}
 	
+	//Ispitni rok
+	
 	public List<IspitniRok> getIspitniRok(){		
 		Iterable<IspitniRok> iter = ispitniRokRepo.findAll();
 		List<IspitniRok> rez = new ArrayList<IspitniRok>();		
 		iter.forEach(rez::add);
 		return rez;		
 	}
+	
+	//Nastavnik
 	
 	public List<Nastavnik> getNastavnici(){		
 		Iterable<Nastavnik> iter = nastavnikRepo.findAll();
@@ -133,12 +157,16 @@ public class SifarniciService {
 		return rez;		
 	}
 	
+	//Ispit
+	
 	public List<Ispit> getIspiti(){
 		Iterable<Ispit> iter = ispitRepo.findAll();
 		List<Ispit> rez = new ArrayList<Ispit>();		
 		iter.forEach(rez::add);
 		return rez;	
 	}
+	
+	//StudProgram
 	
 	public List<StudProgram> getStProgram(){
 		Iterable<StudProgram> iter = stProgramRepo.findAll();
@@ -147,9 +175,17 @@ public class SifarniciService {
 		return rez;	
 	}
 	
+	public List<StudProgram> selectAllStudProgram(String oznaka){
+		return stProgramRepo.selectAllStudPrograma(oznaka);
+	}
+	
+	//Polozen predmet
+	
 	public List<PolozenPredmet> getPolozeniPredmeti(Indeks indeks){
 		return polozenPredmetRepo.findPolozenIspitByIndeks(indeks);
 	}
+	
+	//Indeks
 	
 	public List<Indeks> getAllIndeks(){
 		Iterable<Indeks> iter = indeksRepo.findAll();
@@ -158,16 +194,40 @@ public class SifarniciService {
 		return rez;	
 	}
 	
-	public List<DrziPredmet> getAllDrziPredmet(){
-		Iterable<DrziPredmet> iter = drziPredmetRepo.findAll();
-		List<DrziPredmet> rez = new ArrayList<DrziPredmet>();		
-		iter.forEach(rez::add);
-		return rez;	
+	public List<Indeks> selectIndeksById(int indeks){
+		return indeksRepo.selectIndekxById(indeks);
 	}
+	
+	public Indeks findAktivanIndeks(int idStudenta) {
+		return indeksRepo.findAktivanIndeks(idStudenta);
+	}
+	
+	//Skolska godina
 	
 	public List<SkolskaGodina> getAllSkolskeGodine(){
 		Iterable<SkolskaGodina> iter = skolskaGodinaRepo.findAll();
 		List<SkolskaGodina> rez = new ArrayList<SkolskaGodina>();		
+		iter.forEach(rez::add);
+		return rez;	
+	}
+	
+	public SkolskaGodina saveSkolskaGodina(int godina) {
+		SkolskaGodina staraGodina = skolskaGodinaRepo.findAktivnaSkGod();
+		staraGodina.setAktivna(false);
+		
+		SkolskaGodina sk = new SkolskaGodina();
+		sk.setAktivna(true);
+		sk.setSkolskaGodina(godina);
+		
+		skolskaGodinaRepo.save(staraGodina);
+		return skolskaGodinaRepo.save(sk);
+	}
+	
+	//Drzi predmet
+	
+	public List<DrziPredmet> getAllDrziPredmet(){
+		Iterable<DrziPredmet> iter = drziPredmetRepo.findAll();
+		List<DrziPredmet> rez = new ArrayList<DrziPredmet>();		
 		iter.forEach(rez::add);
 		return rez;	
 	}
@@ -185,4 +245,10 @@ public class SifarniciService {
 		
 		return drziPredmetRepo.save(drziPredmet);
 	}
+	
+	public List<DrziPredmet> findPredmetUGodini(SkolskaGodina skolskaGodina){
+		return drziPredmetRepo.getPredmetiPoSkolskojGodini(skolskaGodina);
+	}
+	
+	
 }

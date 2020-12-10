@@ -103,6 +103,6 @@ public class IspitniRok implements Serializable {
 
 	@Override
 	public String toString() {
-		return datumPocetkaIspitnogRoka + ", " + datumZavrsetkaIspitnogRoka;
+		return imeRoka + ", " + datumPocetkaIspitnogRoka + ", " + datumZavrsetkaIspitnogRoka;
 	}
 }

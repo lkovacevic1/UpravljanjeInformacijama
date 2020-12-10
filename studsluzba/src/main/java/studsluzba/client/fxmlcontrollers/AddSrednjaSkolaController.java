@@ -21,21 +21,25 @@ public class AddSrednjaSkolaController {
 	@Autowired
 	SifarniciService sifarniciService;
 	
-	@Autowired
-	StudentController  studentController;
 
-	@FXML TextField nazivNoveSrednjeSkoleTf;
-	@FXML ComboBox<String> mestoNoveSrednjeSkoleCb;
-	@FXML ComboBox<String> tipNoveSrednjeSkoleCb;
+	@FXML private TextField nazivNoveSrednjeSkoleTf;
+	@FXML private ComboBox<String> mestoNoveSrednjeSkoleCb;
+	@FXML private ComboBox<String> tipNoveSrednjeSkoleCb;
+	
+	@FXML private Label actionTarget;
 	
 	
 	@FXML public void addSrednjaSkola(ActionEvent event) {		
+		if(nazivNoveSrednjeSkoleTf.getText().equals("") || mestoNoveSrednjeSkoleCb.getValue()==null || tipNoveSrednjeSkoleCb.getValue()==null) {
+			actionTarget.setText("Svi podaci moraju biti uneti!");
+			return;
+		}
 		SrednjaSkola ss = new SrednjaSkola();
 		if(mestoNoveSrednjeSkoleCb.getValue()!=null) ss.setMestoSrednjeSkole(mestoNoveSrednjeSkoleCb.getValue());
 		ss.setNazivSrednjeSkole(nazivNoveSrednjeSkoleTf.getText());
 		if(tipNoveSrednjeSkoleCb.getValue()!=null) ss.setVrstaSrednjeSkole(tipNoveSrednjeSkoleCb.getValue());
-		sifarniciService.saveSrednjaSkola(ss);		
-		studentController.updateSrednjeSkole();
+		sifarniciService.saveSrednjaSkola(ss);	
+		sifarniciService.updateSrednjaSk();
 		closeStage(event);
 		
 		
