@@ -153,8 +153,8 @@ public class StudentController {
 			actionTarget.setText("Ovakav indeks vec postoji!");
 			return;
 		}else {
-			actionTarget.setText("Napravljen je student!");
 			actionTarget.setStyle("-fx-background-color : #0555F5;");
+			actionTarget.setText("Napravljen je student!");
 		}
 	}
 }
