@@ -14,15 +14,12 @@ import studsluzba.model.SrednjaSkola;
 import studsluzba.services.SifarniciService;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 
 @Component
 public class AddSrednjaSkolaController {
 	@Autowired
 	SifarniciService sifarniciService;
 	
-	@Autowired
-	StudentController  studentController;
 
 	@FXML TextField nazivNoveSrednjeSkoleTf;
 	@FXML ComboBox<String> mestoNoveSrednjeSkoleCb;
@@ -34,8 +31,8 @@ public class AddSrednjaSkolaController {
 		if(mestoNoveSrednjeSkoleCb.getValue()!=null) ss.setMestoSrednjeSkole(mestoNoveSrednjeSkoleCb.getValue());
 		ss.setNazivSrednjeSkole(nazivNoveSrednjeSkoleTf.getText());
 		if(tipNoveSrednjeSkoleCb.getValue()!=null) ss.setVrstaSrednjeSkole(tipNoveSrednjeSkoleCb.getValue());
-		sifarniciService.saveSrednjaSkola(ss);		
-		studentController.updateSrednjeSkole();
+		sifarniciService.saveSrednjaSkola(ss);	
+		sifarniciService.updateSrednjaSk();
 		closeStage(event);
 		
 		
