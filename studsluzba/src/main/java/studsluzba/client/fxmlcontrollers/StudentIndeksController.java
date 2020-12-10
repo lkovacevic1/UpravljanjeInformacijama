@@ -119,11 +119,6 @@ public class StudentIndeksController {
 		
 	private ObservableList<PolozenPredmet> sviPolozeniPredmeti;
 	
-	//Slusa predmete
-	
-	@FXML private TableView<Predmet> slusaPredmeteTable;
-		
-	private ObservableList<Predmet> sviPredmeti;
 		
 	//Dodaj studenta na predmet
 	
@@ -177,10 +172,6 @@ public class StudentIndeksController {
 		//Polozeni Predmeti
 		sviPolozeniPredmeti = FXCollections.observableArrayList(sifaraniciService.getPolozeniPredmeti(index));
 		polozeniPredmetiTable.setItems(sviPolozeniPredmeti);
-		
-		//Slusa predmet
-		sviPredmeti = FXCollections.observableArrayList(sifarniciService.getPredmetiForStudent(index.getIdIndeks()));
-		slusaPredmeteTable.setItems(sviPredmeti);
 		
 		//Dodaj predmet studentu
 		drziPredmet = FXCollections.observableList(sifaraniciService.getAllDrziPredmet());
