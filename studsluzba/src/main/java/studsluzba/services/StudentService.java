@@ -59,6 +59,34 @@ public class StudentService {
 		return studentRepo.save(st);
 	}
 	
+	public Student updateStudent(Student st, String ime, String prezime, String srednjeIme, String jmbg,
+			LocalDate datumRodjenja, String emailFakultet, String emailPrivatan, String brTelefona,
+			String adresaPrebivalista, String mestoRodjenja, String drzavaRodjenja, String drzavljanstvo,
+			String nacionalnost, String brojLicneKarte, String izdavacLicneKarte, SrednjaSkola srSkola,
+			String uspehSrednjaSkola, String uspehPrijemni, VisokoskolskaUstanova visokoskolskaUstanova, String pol) {
+		st.setIme(ime);
+		st.setPrezime(prezime);
+		st.setSrednjeIme(srednjeIme);
+		st.setJmbg(jmbg);
+		st.setDatumRodjenja(datumRodjenja);
+		st.setEmailFakultet(emailFakultet);
+		st.setEmailPrivatan(emailPrivatan);
+		st.setBrTelefona(brTelefona);
+		st.setAdresaPrebivalista(adresaPrebivalista);
+		st.setMestoRodjenja(mestoRodjenja);
+		st.setDrzavaRodjenja(drzavaRodjenja);
+		st.setDrzavljanstvo(drzavljanstvo);
+		st.setNacionalnost(nacionalnost);
+		st.setBrojLicneKarte(brojLicneKarte);
+		st.setIzdavacLicneKarte(izdavacLicneKarte);
+		st.setSrSkola(srSkola);
+		st.setUspehSrednjaSkola(Float.parseFloat(uspehSrednjaSkola));
+		st.setUspehPrijemni(Float.parseFloat(uspehPrijemni));
+		st.setVisokoskolskaUstanova(visokoskolskaUstanova);
+		st.setPol(pol);
+		return studentRepo.save(st);
+	}
+	
 	public void deleteStudent(Student s) {
 		studentRepo.delete(s);
 	}

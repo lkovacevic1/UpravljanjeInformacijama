@@ -20,7 +20,9 @@ import studsluzba.model.StudProgram;
 import studsluzba.model.Student;
 import studsluzba.model.VisokoskolskaUstanova;
 import studsluzba.repositories.StudProgramRepository;
+import studsluzba.services.IndeksService;
 import studsluzba.services.SifarniciService;
+import studsluzba.services.StudentService;
 
 @Component
 public class ShowStudentPodaciController {
@@ -30,6 +32,12 @@ public class ShowStudentPodaciController {
 	
 	@Autowired
 	SifarniciService sifarniciService;
+	
+	@Autowired
+	IndeksService indeksService;
+	
+	@Autowired
+	StudentService studentService;
 	
 	@Autowired
 	StudProgramRepository studProgramRepo;
@@ -74,6 +82,8 @@ public class ShowStudentPodaciController {
 	@FXML private TextField uspehPrijemniTf;
 	
 	@FXML private ComboBox<String> pol;
+	
+	//Indeks FXML
 	
 	@FXML private TextField brIndeksaTf;
 	
@@ -152,5 +162,22 @@ public class ShowStudentPodaciController {
 		mainViewManager.openModal("addVisokoskolskaUstanovaUpdate");
 	}
 	
+	//Update studenta
+	public void onActionUpdateStudenta(ActionEvent event) {
+		Indeks indeks = selektovanStudent.getSelectedStudentToUpdate();
+		Student student = indeks.getStudent();
+		
+		int brojIndeksa = Integer.parseInt(brIndeksaTf.getText());
+		int godinaUpisa = Integer.parseInt(godinaUpisaIndeksaTf.getText());
+		StudProgram sp = smerCb.getValue();
+		
+		indeksService.updateIndeks(student, indeks, brojIndeksa, godinaUpisa, sp);
+		
+		studentService.updateStudent(student, imeTf.getText(), prezimeTf.getText(), srednjeImeTf.getText(), jmbgTf.getText(),
+				datumRodjenjaDp.getValue(), emailFakultetaTf.getText(), emailPrivatniTf.getText(), brojTelefonaTf.getText(),
+				adresaPrebivalistaTf.getText(), mestoRodjenjaCb.getValue(), drzavaRodjenjaCb.getValue(), drzavljanstvoCb.getValue(),
+				nacionalnostTf.getText(), brojLicneKarteTf.getText(), licnuKartuIzdaoTf.getText(), srednjeSkolaCb.getValue(),
+				uspehSrednjaSkolaTf.getText(), uspehPrijemniTf.getText(), prelazSaVisokoskolskeUstanoveCb.getValue(), pol.getValue());
+	}
 	
 }

@@ -201,7 +201,7 @@ public class DosijeController {
 		selektovaniPredmeti.clear();
 	}
 	
-	//Akcija za Dodeli novog Indeksa
+	//Akcija za Dodelu novog Indeksa
 	public void dodeliNoviIndeks(ActionEvent event) {
 		Indeks _indeks = pretraziStud.selektovanIndeks;
 		Student s = _indeks.getStudent();
