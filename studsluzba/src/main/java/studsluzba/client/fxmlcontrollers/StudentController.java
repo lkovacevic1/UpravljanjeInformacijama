@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import studsluzba.client.MainViewManager;
@@ -127,9 +128,16 @@ public class StudentController {
 	}
 	
 	public void handleSaveStudent(ActionEvent event) {
+		if(jmbgTf.getText().length() != 13) {
+			actionTarget.setText("JMBG mora sadrzati 13 cifara!");
+			return;
+		}
+		
 		String _pol = pol.getValue();
 		StudProgram studProgram = smerCb.getValue();
 		int brojIndeksa = Integer.parseInt(brIndeksaTf.getText());
+		
+		
 		
 		Student st = studentService.saveStudent(imeTf.getText(), prezimeTf.getText(), srednjeImeTf.getText(), jmbgTf.getText(),
 				datumRodjenjaDp.getValue(), emailFakultetaTf.getText(), emailPrivatniTf.getText(), brojTelefonaTf.getText(),
@@ -141,7 +149,8 @@ public class StudentController {
 		
 		studentService.deleteStudent(st);
 		if(ind == null) {
+			actionTarget.setText("Ovakav indeks vec postoji!");
+			return;
 		}
 	}
-	
 }

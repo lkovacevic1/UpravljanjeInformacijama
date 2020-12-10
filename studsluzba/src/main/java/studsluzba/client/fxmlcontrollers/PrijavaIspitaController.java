@@ -10,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import studsluzba.model.Indeks;
 import studsluzba.model.Ispit;
 import studsluzba.model.IspitniRok;
@@ -39,6 +40,8 @@ public class PrijavaIspitaController {
 	
 	@FXML private ComboBox<Student> studenti;
 	
+	@FXML private Label potvrdaLabel;
+	
 	private ObservableList<Student> sviStudenti;
 	
 	@FXML
@@ -67,6 +70,7 @@ public class PrijavaIspitaController {
 		}
 		
 		prijavaIspitaService.savePrijavaIspita(ispit, indeks);
+		potvrdaLabel.setText("Student je prijavljen");
 	}
 	
 }
