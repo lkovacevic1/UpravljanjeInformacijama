@@ -196,17 +196,15 @@ public class DosijeController {
 		Indeks indeks = indeksRepo.findAktivanIndeks(s.getIdstudent());
 		
 		if(upis_obnova.getValue().equals("Obnova Godine")) {
-			obnovaGodineService.saveObnovaGodine(selektovaniPredmeti, datum.getText(), napomena.getText(), indeks);
+			ObnovaGodine ob = obnovaGodineService.saveObnovaGodine(selektovaniPredmeti, datum.getText(), napomena.getText(), indeks);
+			sveObnove.add(ob);
+			obnovaGodineTable.setItems(sveObnove);
 		}else if(upis_obnova.getValue().equals("Upis Godine")) {
-			upisGodineService.saveUpisGodine(selektovaniPredmeti, datum.getText(), napomena.getText(), indeks);
+			UpisGodine up = upisGodineService.saveUpisGodine(selektovaniPredmeti, datum.getText(), napomena.getText(), indeks);
+			sviUpisi.add(up);
+			upisGodineTable.setItems(sviUpisi);
 		}
 		selektovaniPredmeti.clear();
-		
-		sviUpisi = FXCollections.observableArrayList(upisGodineService.findAllUpisForIndeks(index));
-		upisGodineTable.setItems(sviUpisi);
-		
-		sveObnove = FXCollections.observableArrayList(obnovaGodineService.findAllObnoveForIndeks(index));
-		obnovaGodineTable.setItems(sveObnove);
 	}
 	
 	//Akcija za Dodeli novog Indeksa

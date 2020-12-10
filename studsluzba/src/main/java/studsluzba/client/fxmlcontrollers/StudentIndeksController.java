@@ -207,17 +207,15 @@ public class StudentIndeksController {
 		Indeks ind = indeksRepo.findAktivanIndeks(stud.getIdstudent());
 		
 		if(upis_obnova.getValue().equals("Obnova Godine")) {
-			obnovaGodineService.saveObnovaGodine(selektovaniPredmeti, datum.getText(), napomena.getText(), ind);
+			ObnovaGodine ob = obnovaGodineService.saveObnovaGodine(selektovaniPredmeti, datum.getText(), napomena.getText(), ind);
+			sveObnove.add(ob);
+			obnovaGodineTable.setItems(sveObnove);
 		}else if(upis_obnova.getValue().equals("Upis Godine")) {
-			upisGodineService.saveUpisGodine(selektovaniPredmeti, datum.getText(), napomena.getText(), ind);
+			UpisGodine up = upisGodineService.saveUpisGodine(selektovaniPredmeti, datum.getText(), napomena.getText(), ind);
+			sviUpisi.add(up);
+			upisGodineTable.setItems(sviUpisi);
 		}
 		selektovaniPredmeti.clear();
-		
-		sviUpisi = FXCollections.observableArrayList(upisGodineService.findAllUpisForIndeks(index));
-		upisGodineTable.setItems(sviUpisi);
-		
-		sveObnove = FXCollections.observableArrayList(obnovaGodineService.findAllObnoveForIndeks(index));
-		obnovaGodineTable.setItems(sveObnove);
 	}
 	
 	//Akcija za dodelu novog Indeksa
