@@ -147,10 +147,14 @@ public class StudentController {
 		
 		Indeks ind = indeksService.saveIndeks(st, studProgram, brojIndeksa);
 		
-		studentService.deleteStudent(st);
+		//studentService.deleteStudent(st);
 		if(ind == null) {
+			studentService.deleteStudent(st);
 			actionTarget.setText("Ovakav indeks vec postoji!");
 			return;
+		}else {
+			actionTarget.setText("Napravljen je student!");
+			actionTarget.setStyle("-fx-background-color : #0555F5;");
 		}
 	}
 }
