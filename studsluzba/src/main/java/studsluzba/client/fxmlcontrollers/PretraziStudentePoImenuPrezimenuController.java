@@ -50,10 +50,7 @@ public class PretraziStudentePoImenuPrezimenuController {
 			    row.setOnMouseClicked(event -> {
 			        if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
 			        	Indeks rowData = row.getItem();
-			            /*System.out.println(rowData);
-			            
-			            Student st = row.getItem();
-			            System.out.println(st.getIdstudent());*/
+			           
 			        	selektovanIndeks = rowData;
 			            
 			            mainViewManager.openModal("TabAktivnostIndeksStudenta", 750, 500);
@@ -78,5 +75,17 @@ public class PretraziStudentePoImenuPrezimenuController {
 		 List<Indeks> indeks = indeksRepo.findIndeksByNameAndLastName(ime.getText(), prezime.getText());
 		 indeksTable.getItems().clear();
 		 indeksTable.getItems().addAll(indeks);
+	 }
+	 
+	 public Indeks getSelectedStudentToUpdate() {
+		 Indeks i = indeksTable.getSelectionModel().getSelectedItem();
+		 return i;
+	 }
+	 
+	 public void updateStudenta(ActionEvent event) {
+		 Indeks i = indeksTable.getSelectionModel().getSelectedItem();
+		 System.out.println("Selektovan idensk je: " + i);
+		 
+		 mainViewManager.changeRoot("updateStudenta");
 	 }
 }

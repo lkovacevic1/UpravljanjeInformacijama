@@ -35,6 +35,8 @@
 		   	<TextField fx:id="prezime"  GridPane.columnIndex="1" GridPane.rowIndex="1"/>		
 		   	<Button onAction="#pretraziStudentePoImenuPrezimenu" text="Pretrazi" GridPane.columnIndex="1" GridPane.rowIndex="3"/>	   	
      		<Label text="" fx:id="actionTarget" GridPane.columnIndex="1" GridPane.rowIndex="4" style="-fx-text-fill: #FF0000;"/>
+     		
+     		<Button onAction="#updateStudenta" text="Update studenta" GridPane.columnIndex="1" GridPane.rowIndex="5"/>	 
 	</GridPane>
 </center>
    <bottom>

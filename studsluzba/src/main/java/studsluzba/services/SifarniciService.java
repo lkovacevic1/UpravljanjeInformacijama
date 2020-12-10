@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import studsluzba.client.fxmlcontrollers.ShowStudentPodaciController;
 import studsluzba.client.fxmlcontrollers.StudentController;
 import studsluzba.model.DrziPredmet;
 import studsluzba.model.Indeks;
@@ -75,6 +76,9 @@ public class SifarniciService {
 	@Autowired 
 	StudentController studentController;
 	
+	@Autowired
+	ShowStudentPodaciController showStudentPodaciController;
+	
 	//Srednje skole
 	
 	public List<SrednjaSkola> getSrednjeSkole(){		
@@ -88,6 +92,10 @@ public class SifarniciService {
 		studentController.updateSrednjeSkole();
 	}
 	
+	public void updateSrednjaKadUpdateStudentaSk() {
+		showStudentPodaciController.updateSrednjeSkole();
+	}
+	
 	public SrednjaSkola saveSrednjaSkola(SrednjaSkola ss) {
 		return srednjeSkolaRepo.save(ss);
 	}
@@ -96,6 +104,10 @@ public class SifarniciService {
 	
 	public void updateVisokoskUstanova() {
 		studentController.updateVisokoskolskaUstanova();
+	}
+	
+	public void updateVisokoskUstanovaUpdate() {
+		showStudentPodaciController.updateVisokoskolskaUstanova();
 	}
 	
 	public List<VisokoskolskaUstanova> getVisokoskolskaUstanova(){		
