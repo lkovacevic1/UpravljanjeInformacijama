@@ -150,6 +150,7 @@ public class StudentController {
 		//studentService.deleteStudent(st);
 		if(ind == null) {
 			studentService.deleteStudent(st);
+			actionTarget.setStyle("-fx-background-color : #FF0000;");
 			actionTarget.setText("Ovakav indeks vec postoji!");
 			return;
 		}else {
