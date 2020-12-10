@@ -129,7 +129,7 @@ public class StudentController {
 	
 	public void handleSaveStudent(ActionEvent event) {
 		
-		if(imeTf.getText() == null || prezimeTf.getText() == null || srednjeImeTf.getText() == null || jmbgTf.getText() == null
+		/*if(imeTf.getText() == null || prezimeTf.getText() == null || srednjeImeTf.getText() == null || jmbgTf.getText() == null
 				|| datumRodjenjaDp.getValue() == null || emailFakultetaTf.getText() == null || emailPrivatniTf.getText() == null
 				|| brojTelefonaTf.getText() == null || adresaPrebivalistaTf.getText() == null || mestoRodjenjaCb.getValue() == null
 				|| drzavaRodjenjaCb.getValue() == null || drzavljanstvoCb.getValue() == null || nacionalnostTf.getText() == null
@@ -141,36 +141,52 @@ public class StudentController {
 			actionTarget.setText("Svi podaci moraju biti popunjeni !");
 			
 			return;
-			
-		}
+		}*/
 		
 		if(jmbgTf.getText().length() != 13) {
 			actionTarget.setText("JMBG mora sadrzati 13 cifara!");
 			return;
 		}
 		
-		String _pol = pol.getValue();
-		StudProgram studProgram = smerCb.getValue();
-		int brojIndeksa = Integer.parseInt(brIndeksaTf.getText());
+		float uspehSrednjeSkole = 0;
+		float uspehPrijemni = 0;
 		
+		if(!uspehSrednjaSkolaTf.getText().isEmpty()) {
+			uspehSrednjeSkole = Float.parseFloat(uspehSrednjaSkolaTf.getText());
+		}
+		if(!uspehPrijemniTf.getText().isEmpty()) {
+			uspehPrijemni = Float.parseFloat(uspehPrijemniTf.getText());
+		}
 		
-		Student st = studentService.saveStudent(imeTf.getText(), prezimeTf.getText(), srednjeImeTf.getText(), jmbgTf.getText(),
-				datumRodjenjaDp.getValue(), emailFakultetaTf.getText(), emailPrivatniTf.getText(), brojTelefonaTf.getText(),
-				adresaPrebivalistaTf.getText(), mestoRodjenjaCb.getValue(), drzavaRodjenjaCb.getValue(), drzavljanstvoCb.getValue(),
-				nacionalnostTf.getText(), brojLicneKarteTf.getText(), licnuKartuIzdaoTf.getText(), srednjeSkolaCb.getValue(),
-				uspehSrednjaSkolaTf.getText(), uspehPrijemniTf.getText(), prelazSaVisokoskolskeUstanoveCb.getValue(), _pol);
-		
-		Indeks ind = indeksService.saveIndeks(st, studProgram, brojIndeksa);
-		
-		//studentService.deleteStudent(st);
-		if(ind == null) {
-			studentService.deleteStudent(st);
-			actionTarget.setStyle("-fx-background-color : #FF0000;");
-			actionTarget.setText("Ovakav indeks vec postoji!");
-			return;
+		if(student == null) {
+				student = studentService.saveStudent(imeTf.getText(), prezimeTf.getText(), srednjeImeTf.getText(), jmbgTf.getText(),
+						datumRodjenjaDp.getValue(), emailFakultetaTf.getText(), emailPrivatniTf.getText(), brojTelefonaTf.getText(),
+						adresaPrebivalistaTf.getText(), mestoRodjenjaCb.getValue(), drzavaRodjenjaCb.getValue(), drzavljanstvoCb.getValue(),
+						nacionalnostTf.getText(), brojLicneKarteTf.getText(), licnuKartuIzdaoTf.getText(), srednjeSkolaCb.getValue(),
+						uspehSrednjeSkole, uspehPrijemni, prelazSaVisokoskolskeUstanoveCb.getValue(), pol.getValue());
 		}else {
-			actionTarget.setStyle("-fx-background-color : #0555F5;");
-			actionTarget.setText("Napravljen je student!");
+			student = studentService.updateStudent(student, imeTf.getText(), prezimeTf.getText(), srednjeImeTf.getText(), jmbgTf.getText(),
+						datumRodjenjaDp.getValue(), emailFakultetaTf.getText(), emailPrivatniTf.getText(), brojTelefonaTf.getText(),
+						adresaPrebivalistaTf.getText(), mestoRodjenjaCb.getValue(), drzavaRodjenjaCb.getValue(), drzavljanstvoCb.getValue(),
+						nacionalnostTf.getText(), brojLicneKarteTf.getText(), licnuKartuIzdaoTf.getText(), srednjeSkolaCb.getValue(),
+						uspehSrednjeSkole, uspehPrijemni, prelazSaVisokoskolskeUstanoveCb.getValue(), pol.getValue());
+		}
+		
+		if(!brIndeksaTf.getText().isEmpty()) {
+			StudProgram studProgram = smerCb.getValue();
+			int brojIndeksa = Integer.parseInt(brIndeksaTf.getText());
+		
+			Indeks ind = indeksService.saveIndeks(student, studProgram, brojIndeksa);
+		
+			if(ind == null) {
+				studentService.deleteStudent(student);
+				actionTarget.setStyle("-fx-background-color : #FF0000;");
+				actionTarget.setText("Ovakav indeks vec postoji!");
+				return;
+			}else {
+				actionTarget.setStyle("-fx-background-color : #0555F5;");
+				actionTarget.setText("Napravljen je student!");
+			}
 		}
 	}
 }

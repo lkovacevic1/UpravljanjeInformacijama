@@ -173,11 +173,18 @@ public class ShowStudentPodaciController {
 		
 		indeksService.updateIndeks(student, indeks, brojIndeksa, godinaUpisa, sp);
 		
+		float uspehSrSkole = Float.parseFloat(uspehSrednjaSkolaTf.getText());
+		float uspehPrijemni = Float.parseFloat(uspehPrijemniTf.getText());
+		
 		studentService.updateStudent(student, imeTf.getText(), prezimeTf.getText(), srednjeImeTf.getText(), jmbgTf.getText(),
 				datumRodjenjaDp.getValue(), emailFakultetaTf.getText(), emailPrivatniTf.getText(), brojTelefonaTf.getText(),
 				adresaPrebivalistaTf.getText(), mestoRodjenjaCb.getValue(), drzavaRodjenjaCb.getValue(), drzavljanstvoCb.getValue(),
 				nacionalnostTf.getText(), brojLicneKarteTf.getText(), licnuKartuIzdaoTf.getText(), srednjeSkolaCb.getValue(),
-				uspehSrednjaSkolaTf.getText(), uspehPrijemniTf.getText(), prelazSaVisokoskolskeUstanoveCb.getValue(), pol.getValue());
+				uspehSrSkole, uspehPrijemni, prelazSaVisokoskolskeUstanoveCb.getValue(), pol.getValue());
+		
+		actionTarget.setText("Student je update-ovan!");
 	}
+	
+	
 	
 }

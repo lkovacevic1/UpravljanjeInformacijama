@@ -34,7 +34,7 @@ public class StudentService {
 			LocalDate datumRodjenja, String emailFakultet, String emailPrivatan, String brTelefona,
 			String adresaPrebivalista, String mestoRodjenja, String drzavaRodjenja, String drzavljanstvo,
 			String nacionalnost, String brojLicneKarte, String izdavacLicneKarte, SrednjaSkola srSkola,
-			String uspehSrednjaSkola, String uspehPrijemni, VisokoskolskaUstanova visokoskolskaUstanova, String pol) {
+			float uspehSrednjaSkola, float uspehPrijemni, VisokoskolskaUstanova visokoskolskaUstanova, String pol) {
 		Student st = new Student();
 		st.setIme(ime);
 		st.setPrezime(prezime);
@@ -52,8 +52,8 @@ public class StudentService {
 		st.setBrojLicneKarte(brojLicneKarte);
 		st.setIzdavacLicneKarte(izdavacLicneKarte);
 		st.setSrSkola(srSkola);
-		st.setUspehSrednjaSkola(Float.parseFloat(uspehSrednjaSkola));
-		st.setUspehPrijemni(Float.parseFloat(uspehPrijemni));
+		st.setUspehSrednjaSkola(uspehSrednjaSkola);
+		st.setUspehPrijemni(uspehPrijemni);
 		st.setVisokoskolskaUstanova(visokoskolskaUstanova);
 		st.setPol(pol);
 		return studentRepo.save(st);
@@ -63,7 +63,7 @@ public class StudentService {
 			LocalDate datumRodjenja, String emailFakultet, String emailPrivatan, String brTelefona,
 			String adresaPrebivalista, String mestoRodjenja, String drzavaRodjenja, String drzavljanstvo,
 			String nacionalnost, String brojLicneKarte, String izdavacLicneKarte, SrednjaSkola srSkola,
-			String uspehSrednjaSkola, String uspehPrijemni, VisokoskolskaUstanova visokoskolskaUstanova, String pol) {
+			float uspehSrednjaSkola, float uspehPrijemni, VisokoskolskaUstanova visokoskolskaUstanova, String pol) {
 		st.setIme(ime);
 		st.setPrezime(prezime);
 		st.setSrednjeIme(srednjeIme);
@@ -80,8 +80,8 @@ public class StudentService {
 		st.setBrojLicneKarte(brojLicneKarte);
 		st.setIzdavacLicneKarte(izdavacLicneKarte);
 		st.setSrSkola(srSkola);
-		st.setUspehSrednjaSkola(Float.parseFloat(uspehSrednjaSkola));
-		st.setUspehPrijemni(Float.parseFloat(uspehPrijemni));
+		st.setUspehSrednjaSkola(uspehSrednjaSkola);
+		st.setUspehPrijemni(uspehPrijemni);
 		st.setVisokoskolskaUstanova(visokoskolskaUstanova);
 		st.setPol(pol);
 		return studentRepo.save(st);
