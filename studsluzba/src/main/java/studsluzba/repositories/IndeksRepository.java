@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import studsluzba.model.Indeks;
+import studsluzba.model.StudProgram;
 import studsluzba.model.Student;
 import studsluzba.model.UpisGodine;
 
@@ -63,4 +64,8 @@ public interface IndeksRepository extends CrudRepository<Indeks, Integer> {
 	@Query("select i from Indeks i where i.student.brojLicneKarte like :brLicne and i.aktivan = 0")
 	List<Indeks> selectIstorijaIndeksa(String brLicne);
 	
+	
+	//Da li indeks postoji
+	@Query("select i from Indeks i where i.brojIndexa like :brIndeksa and i.godinaUpisa like :godinaUpisa and i.studProgram like :sp")
+	Indeks checkForIndeks(int brIndeksa, int godinaUpisa, StudProgram sp);
 }

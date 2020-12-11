@@ -97,27 +97,7 @@ public class IndeksService {
 		return indeksRepo.save(indeks);
 	}
 	
-	public OsvojeniPredispitniPoeni dodajePredispitnePoene(OsvojeniPredispitniPoeni opp, int poeni) {
-		opp.setOsvojeniPredispitniPoeni(poeni);
-		
-		return osvojeniPredispitniPoeniRepo.save(opp);
-	}
-	
-	public PolozenPredmet dodajePoeneNaIspitu(PolozenPredmet pp, int poeni, int obaveze) {
-		pp.setOsvojeniPoeniNaIspitu(poeni);
-		if(poeni + obaveze < 50)
-			pp.setOcena(5);
-		else if(51 <= poeni + obaveze && poeni + obaveze < 61)
-			pp.setOcena(6);
-		else if(61 <= poeni + obaveze && poeni + obaveze < 71)
-			pp.setOcena(7);
-		else if(71 <= poeni + obaveze && poeni + obaveze < 81)
-			pp.setOcena(8);
-		else if(81 <= poeni + obaveze && poeni + obaveze < 91)
-			pp.setOcena(9);
-		else
-			pp.setOcena(10);
-		
-		return polozenPredmetRepo.save(pp);
+	public Indeks checkForIndeks(int brIndeksa, StudProgram studPrograma, int godina) {
+		return indeksRepo.checkForIndeks(brIndeksa, godina, studPrograma);
 	}
 }

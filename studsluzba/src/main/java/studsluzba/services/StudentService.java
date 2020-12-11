@@ -121,6 +121,21 @@ public class StudentService {
 		return indeksRepo.save(i);
 	}
 	
+	public Indeks saveIndeksNov(Student s, int brojIndeksa, StudProgram studProgram, int godinaUpisa,  ObnovaGodine obnova, UpisGodine upis) {
+		LocalDate today = LocalDate.now();
+		
+		Indeks i = new Indeks();
+		i.setStudent(s);
+		i.setGodinaUpisa(godinaUpisa);
+		i.setBrojIndexa(brojIndeksa);
+		i.setAktivan(true);
+		i.setDatumAktivacijeIndexa(today);
+		i.setStudProgram(studProgram);
+		i.setObnovaGodine(obnova);
+		i.setUpisGodine(upis);
+		return indeksRepo.save(i);
+	}
+	
 	public Indeks saveIndeksNov(Student s, int brojIndeksa, int godinaUpisa, StudProgram studProgram, ObnovaGodine obnova, UpisGodine upis, boolean aktivan) {
 		LocalDate today = LocalDate.now();
 		int year = Calendar.getInstance().get(Calendar.YEAR);

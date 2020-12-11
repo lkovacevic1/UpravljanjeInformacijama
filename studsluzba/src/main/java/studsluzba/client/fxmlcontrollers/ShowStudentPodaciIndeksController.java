@@ -185,8 +185,15 @@ public class ShowStudentPodaciIndeksController {
 		int godinaUpisa = Integer.parseInt(godinaUpisaIndeksaTf.getText());
 		StudProgram sp = smerCb.getValue();
 		
-		//Proveravam da li je doslo do provere indeksa i menja indeks, tako sto stari setujem na false (ako je bio aktivan), a trenutni setujem na true (ako je potrebno)
+		//Proveravam da li je doslo do promene indeksa i menja indeks, tako sto stari setujem na false (ako je bio aktivan), a trenutni setujem na true (ako je potrebno)
 		if(indeks.getBrojIndexa() != brojIndeksa || indeks.getGodinaUpisa() != godinaUpisa || indeks.getStudProgram() != sp) {
+			Indeks proveriDaLiPostoji = indeksService.checkForIndeks(brojIndeksa, sp, godinaUpisa);
+			if(proveriDaLiPostoji != null) {
+				System.out.println("Indeks postoji");
+				actionTarget.setText("Ovakav indeks postoji!");
+				return;
+			}
+			
 			if(indeks.isAktivan()) {
 				flag = true;
 				indeks = studentService.promeniAktivanIndeksNaNeaktivan(indeks);
@@ -199,6 +206,7 @@ public class ShowStudentPodaciIndeksController {
 			else {
 				studentService.saveIndeksNov(student, brojIndeksa, godinaUpisa, sp, indeksNovi.getObnovaGodine(), indeksNovi.getUpisGodine(), false);
 			}
+			istorijaIndeksa.add(indeks);
 		}
 		flag = false;
 		

@@ -1,6 +1,7 @@
 package studsluzba.client.fxmlcontrollers;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import studsluzba.client.MainViewManager;
@@ -112,6 +114,8 @@ public class StudentIndeksController {
 	@FXML private ComboBox<StudProgram> studProgramCb;
 		
 	@FXML private TableView<Indeks> indeksTable;
+	
+	@FXML private Label actionTarget;
 	
 	//Polozeni predmeti
 	
@@ -214,6 +218,18 @@ public class StudentIndeksController {
 		Indeks _indeks = promeniIndeksStud.selektovanIndeksZaZamenu;
 		Student s = _indeks.getStudent();
 		
+		int year = Calendar.getInstance().get(Calendar.YEAR);
+		int i = Integer.parseInt(indeks.getText());
+		StudProgram sp = studProgramCb.getValue();
+		
+		Indeks proveriDaLiPostoji = indeksService.checkForIndeks(i, sp, year);
+		
+		if(proveriDaLiPostoji != null) {
+			System.out.println("Indeks postoji");
+			actionTarget.setText("Ovakav indeks vec postoji!");
+			return;
+		}
+		
 		studentService.promeniAktivanIndeksNaNeaktivan(_indeks);
 		
 		promeniIndeksStud.updateTabeluSaIndeksima(_indeks);
@@ -221,11 +237,9 @@ public class StudentIndeksController {
 		ObnovaGodine obnova = _indeks.getObnovaGodine();
 		UpisGodine upis = _indeks.getUpisGodine();
 		
-		int i = Integer.parseInt(indeks.getText());
 		
-		StudProgram sp = studProgramCb.getValue();
 		
-		Indeks index = studentService.saveIndeks(s, i, sp, obnova, upis);
+		Indeks index = studentService.saveIndeksNov(s, i, sp, year,  obnova, upis);
 		sviIndexi.add(index);
 		
 		//Dodam promenjeni indeks u prvu tabelu
