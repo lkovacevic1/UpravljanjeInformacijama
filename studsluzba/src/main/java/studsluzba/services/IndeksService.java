@@ -79,6 +79,15 @@ public class IndeksService {
 		return indeksRepo.save(indeks);
 	}
 	
+	public Indeks updateIndeksNov(Student student, Indeks indeks, int brojIndeksa, int godinaUpisa, StudProgram sp, boolean aktivan) {
+		indeks.setStudent(student);
+		indeks.setBrojIndexa(brojIndeksa);
+		indeks.setGodinaUpisa(godinaUpisa);
+		indeks.setStudProgram(sp);
+		indeks.setAktivan(aktivan);
+		return indeksRepo.save(indeks);
+	}
+	
 	public OsvojeniPredispitniPoeni dodajePredispitnePoene(OsvojeniPredispitniPoeni opp, int poeni) {
 		opp.setOsvojeniPredispitniPoeni(poeni);
 		

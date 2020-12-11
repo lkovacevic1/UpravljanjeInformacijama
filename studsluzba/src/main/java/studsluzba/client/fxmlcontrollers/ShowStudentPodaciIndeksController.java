@@ -164,14 +164,33 @@ public class ShowStudentPodaciIndeksController {
 	
 	//Update studenta
 	public void onActionUpdateStudenta(ActionEvent event) {
+		boolean flag = false;
 		Indeks indeks = selektovanStudent.getSelectedIndeksToUpdate();
+		
+		Indeks indeksNovi = indeks;
+		
 		Student student = indeks.getStudent();
 		
 		int brojIndeksa = Integer.parseInt(brIndeksaTf.getText());
 		int godinaUpisa = Integer.parseInt(godinaUpisaIndeksaTf.getText());
 		StudProgram sp = smerCb.getValue();
 		
-		indeksService.updateIndeks(student, indeks, brojIndeksa, godinaUpisa, sp);
+		//Proveravam da li je doslo do provere indeksa i menja indeks, tako sto stari setujem na false (ako je bio aktivan), a trenutni setujem na true (ako je potrebno)
+		if(indeks.getBrojIndexa() != brojIndeksa || indeks.getGodinaUpisa() != godinaUpisa || indeks.getStudProgram() != sp) {
+			if(indeks.isAktivan()) {
+				flag = true;
+				indeks = studentService.promeniAktivanIndeksNaNeaktivan(indeks);
+			}
+			
+			if(flag == true) {
+				System.out.println("Flag je: " + flag);
+				studentService.saveIndeksNov(student, brojIndeksa, godinaUpisa, sp, indeksNovi.getObnovaGodine(), indeksNovi.getUpisGodine(), true);
+			}
+			else {
+				studentService.saveIndeksNov(student, brojIndeksa, godinaUpisa, sp, indeksNovi.getObnovaGodine(), indeksNovi.getUpisGodine(), false);
+			}
+		}
+		flag = false;
 		
 		float uspehSrSkole = Float.parseFloat(uspehSrednjaSkolaTf.getText());
 		float uspehPrijemni = Float.parseFloat(uspehPrijemniTf.getText());
