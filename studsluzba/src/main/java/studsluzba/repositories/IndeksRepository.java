@@ -54,4 +54,13 @@ public interface IndeksRepository extends CrudRepository<Indeks, Integer> {
 	// selekcija svih upisanih godina za id indeksa
 	@Query("select i from Indeks i  where i.upisGodine.indeks.idIndeks like :id") 
 	List<Indeks> selectIndexById(int id);
+	
+	//selekcija svih aktivnih indeksa
+	@Query("select i from Indeks i where i.aktivan = 1")
+	List<Indeks> selectActiveIndeks();
+	
+	//selekcija svih neaktivnih indeksa za studenta
+	@Query("select i from Indeks i where i.idIndeks like :indeks and i.aktivan = 0")
+	List<Indeks> selectIstorijaIndeksa(int indeks);
+	
 }

@@ -29,11 +29,20 @@ public class IndeksService {
 	@Autowired
 	OsvojeniPredispitniPoeniRepository osvojeniPredispitniPoeniRepo;
 	
+	public List<Indeks> selectIstorijaIndeksa(int indeks){
+		
+		return indeksRepo.selectIstorijaIndeksa(indeks);
+	}
+	
 	public List<Indeks> loadAll(){
 		Iterable<Indeks> iter = indeksRepo.findAll();
 		List<Indeks> rez = new ArrayList<Indeks>();		
 		iter.forEach(rez::add);
 		return rez;
+	}
+	
+	public List<Indeks> loadAllActiveIndeks(){
+		return indeksRepo.selectActiveIndeks();
 	}
 	
 	public Indeks saveIndeks(Student student, StudProgram studProgram, int brojIndeksa) {

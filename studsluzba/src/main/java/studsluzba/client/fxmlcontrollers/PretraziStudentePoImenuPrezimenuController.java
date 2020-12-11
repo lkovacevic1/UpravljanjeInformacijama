@@ -42,7 +42,7 @@ public class PretraziStudentePoImenuPrezimenuController {
 	 
 	 @FXML
 	 protected void initialize() {
-		 sviIndeksi = FXCollections.observableList(indeksService.loadAll());
+		 sviIndeksi = FXCollections.observableList(indeksService.loadAllActiveIndeks());
 		 
 		 
 		 indeksTable.setRowFactory( tv -> {

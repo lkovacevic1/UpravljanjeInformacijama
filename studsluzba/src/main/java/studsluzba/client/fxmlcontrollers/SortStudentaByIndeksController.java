@@ -55,7 +55,7 @@ public class SortStudentaByIndeksController {
 	 
 	 @FXML
 	 protected void initialize() {
-		 sviIndeksi = FXCollections.observableList(indeksService.loadAll());
+		 sviIndeksi = FXCollections.observableList(indeksService.loadAllActiveIndeks());
 		 
 		 indexTable.setRowFactory( tv -> {
 			    TableRow<Indeks> row = new TableRow<>();
