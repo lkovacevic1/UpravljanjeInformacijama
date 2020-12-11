@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
@@ -125,5 +137,52 @@
 		  	
 		  </BorderPane>	
          </Tab>
+         
+         <Tab text="Istorija indeksa">
+         	<BorderPane>
+         	<center>
+		   	
+			      <VBox prefHeight="50.0" prefWidth="50.0" BorderPane.alignment="CENTER">
+		      	<padding>
+		        	<Insets bottom="10.0" left="10.0" right="10.0" top="50.0"/>
+		    	</padding>
+		         <children>
+		            <TableView fx:id="indeksTable">
+		              <columns>
+		              	<TableColumn prefWidth="100.0" text="Ime">
+		                 <cellValueFactory><PropertyValueFactory property="imeStudenta" />
+		        		</cellValueFactory>
+		        		</TableColumn>
+		                <TableColumn prefWidth="100.0" text="Prezime">
+		                 <cellValueFactory><PropertyValueFactory property="prezimeStudenta" />
+		        		</cellValueFactory>
+		        		</TableColumn>
+		                <TableColumn prefWidth="150.0" text="Broj indeksa">
+		                 <cellValueFactory><PropertyValueFactory property="brojIndexa" />
+		        		</cellValueFactory>
+		        		</TableColumn>
+		        		<TableColumn prefWidth="150.0" text="Godina upisa">
+		                 <cellValueFactory><PropertyValueFactory property="godinaUpisaStudenta" />
+		        		</cellValueFactory>
+		        		</TableColumn>
+		        		<TableColumn prefWidth="100.0" text="Smer">
+		                 <cellValueFactory><PropertyValueFactory property="studProgram" />
+		        		</cellValueFactory>
+		        		</TableColumn>
+		        		<TableColumn prefWidth="200.0" text="Aktivan">
+		                 <cellValueFactory><PropertyValueFactory property="aktivan" />
+		        		</cellValueFactory>
+		        		</TableColumn>
+		              </columns>             
+		            </TableView>
+		         </children>      
+		      </VBox>
+		   	
+		   	</center>
+		   		
+		  	
+		  </BorderPane>	
+         </Tab>
+         	
          	
  </TabPane>

@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import studsluzba.client.MainViewManager;
@@ -91,6 +92,11 @@ public class ShowStudentPodaciIndeksController {
 	
 	@FXML private ComboBox<StudProgram> smerCb;
 	
+	//istorija indeksa 
+	@FXML private TableView<Indeks> indeksTable;
+		
+	private ObservableList<Indeks> istorijaIndeksa;
+		
 	@FXML
     public void initialize() {
 		
@@ -141,6 +147,10 @@ public class ShowStudentPodaciIndeksController {
 		brIndeksaTf.setText(String.valueOf(indeks.getBrojIndexa()));
 		godinaUpisaIndeksaTf.setText(String.valueOf(indeks.getGodinaUpisa()));
 		smerCb.setValue(indeks.getStudProgram());
+		
+		//popunjena istorijaIndeksa table
+		istorijaIndeksa = FXCollections.observableArrayList(indeksService.selectIstorijaIndeksa(student.getBrojLicneKarte()));
+		indeksTable.setItems(istorijaIndeksa);
 		
 	}
 	
