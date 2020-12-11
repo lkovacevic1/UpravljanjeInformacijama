@@ -62,10 +62,7 @@ public class SortStudentaByIndeksController {
 			    row.setOnMouseClicked(event -> {
 			        if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
 			        	Indeks rowData = row.getItem();
-			            /*System.out.println(rowData);
-			            //12
-			            Student st = row.getItem();
-			            System.out.println(st.getIdstudent());*/
+			           
 			        	selektovanIndeksZaZamenu = rowData;
 			            
 			            mainViewManager.openModal("KopijaTaba", 750, 500);
@@ -107,5 +104,17 @@ public class SortStudentaByIndeksController {
 	public void setIndexTable(TableView<Indeks> indexTable) {
 		this.indexTable = indexTable;
 	}
+	
+	public Indeks getSelectedIndeksToUpdate() {
+		 Indeks i = indexTable.getSelectionModel().getSelectedItem();
+		 return i;
+	 }
+	 
+	 public void updateStudenta(ActionEvent event) {
+		 Indeks i = indexTable.getSelectionModel().getSelectedItem();
+		 System.out.println("Selektovan idensk je: " + i);
+		 
+		 mainViewManager.changeRoot("updateStudentaIndeks");
+	 }
 	 
 }
