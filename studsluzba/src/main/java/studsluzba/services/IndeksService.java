@@ -29,9 +29,9 @@ public class IndeksService {
 	@Autowired
 	OsvojeniPredispitniPoeniRepository osvojeniPredispitniPoeniRepo;
 	
-	public List<Indeks> selectIstorijaIndeksa(int indeks){
+	public List<Indeks> selectIstorijaIndeksa(String brLicne){
 		
-		return indeksRepo.selectIstorijaIndeksa(indeks);
+		return indeksRepo.selectIstorijaIndeksa(brLicne);
 	}
 	
 	public List<Indeks> loadAll(){

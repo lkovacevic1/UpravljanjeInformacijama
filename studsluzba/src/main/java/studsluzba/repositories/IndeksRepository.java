@@ -60,7 +60,7 @@ public interface IndeksRepository extends CrudRepository<Indeks, Integer> {
 	List<Indeks> selectActiveIndeks();
 	
 	//selekcija svih neaktivnih indeksa za studenta
-	@Query("select i from Indeks i where i.idIndeks like :indeks and i.aktivan = 0")
-	List<Indeks> selectIstorijaIndeksa(int indeks);
+	@Query("select i from Indeks i where i.student.brojLicneKarte like :brLicne and i.aktivan = 0")
+	List<Indeks> selectIstorijaIndeksa(String brLicne);
 	
 }

@@ -150,7 +150,7 @@ public class ShowStudentPodaciController {
 		
 		
 		//popunjena istorijaIndeksa table
-		istorijaIndeksa = FXCollections.observableArrayList(indeksService.selectIstorijaIndeksa(indeks.getIdIndeks()));
+		istorijaIndeksa = FXCollections.observableArrayList(indeksService.selectIstorijaIndeksa(student.getBrojLicneKarte()));
 		indeksTable.setItems(istorijaIndeksa);
 		
 	}
