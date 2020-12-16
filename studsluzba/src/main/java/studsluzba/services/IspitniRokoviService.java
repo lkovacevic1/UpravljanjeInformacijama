@@ -33,12 +33,13 @@ public class IspitniRokoviService {
 		return rez;
 	}
 	
-	public IspitniRok saveIspitniRok(LocalDate datumPocetka, LocalDate datumZavrsetka, SkolskaGodina sk) {
+	public IspitniRok saveIspitniRok(LocalDate datumPocetka, LocalDate datumZavrsetka, SkolskaGodina sk, String imeRoka) {
 		
 		IspitniRok ispRok = new IspitniRok();
 		ispRok.setDatumPocetkaIspitnogRoka(datumPocetka);
 		ispRok.setDatumZavrsetkaIspitnogRoka(datumZavrsetka);
 		ispRok.setSkolskaGodina(sk);
+		ispRok.setImeRoka(imeRoka);
 		return ispitniRokRepo.save(ispRok);
 		
 	}

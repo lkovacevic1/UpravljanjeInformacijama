@@ -27,6 +27,7 @@ public class Ispit implements Serializable {
 	private LocalDate datumOdrzavanjaIspita;
 	private int vremeOdrzavanjaIspita;
 	private boolean zakljucenIspit;
+	private String imeRoka;
 
 	@ManyToOne
 	@JoinColumn(name = "idPredmeta")
@@ -143,7 +144,8 @@ public class Ispit implements Serializable {
 
 	@Override
 	public String toString() {
-		return datumOdrzavanjaIspita + ", " + vremeOdrzavanjaIspita;
+		imeRoka = ispitniRok.getImeRoka();
+		return imeRoka + ", " + datumOdrzavanjaIspita + ", " + vremeOdrzavanjaIspita;
 	}
 	
 }

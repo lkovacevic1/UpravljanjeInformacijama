@@ -102,6 +102,22 @@ public class DrziPredmet implements Serializable {
 	public int getSemestar() {
 		return predmet.getSemestar();
 	}
+	
+	public String getIme() {
+		return nastavnik.getIme();
+	}
+	
+	public String getPrezime() {
+		return nastavnik.getPrezime();
+	}
+	
+	public String getNazivPredmeta() {
+		return predmet.getNazivPredmeta();
+	}
+	
+	public int getGodina() {
+		return skolskaGodina.getSkolskaGodina();
+	}
 
 	@Override
 	public String toString() {

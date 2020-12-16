@@ -33,6 +33,9 @@
 	<Label text="Datum zavrsetka ispitnog roka" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 	<DatePicker fx:id="datumZavrsetkaIspitnogRoka"  GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 	
+	<Label text="Odaberite ime roka:" GridPane.halignment="RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+	<ComboBox fx:id="cbImeRoka"  GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+	
 	<HBox alignment="center" spacing="30" GridPane.columnIndex="1" GridPane.rowIndex="2">
         <Button onAction="#handleSacuvajIspitniRok" text="Sačuvaj" />
 	</HBox>
@@ -52,8 +55,8 @@
                  <cellValueFactory><PropertyValueFactory property="datumZavrsetkaIspitnogRoka" />
         		</cellValueFactory>
         		</TableColumn>
-        		<TableColumn prefWidth="200.0" text="Skolska godina">
-                 <cellValueFactory><PropertyValueFactory property="idSkolskeGodine" />
+        		<TableColumn prefWidth="200.0" text="Ime roka">
+                 <cellValueFactory><PropertyValueFactory property="imeRoka" />
         		</cellValueFactory>
         		</TableColumn>
               </columns>             

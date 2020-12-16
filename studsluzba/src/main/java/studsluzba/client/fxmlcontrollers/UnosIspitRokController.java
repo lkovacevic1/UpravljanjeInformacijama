@@ -55,6 +55,8 @@ public class UnosIspitRokController {
 	
 	@FXML private ComboBox<IspitniRok> cbIspitniRok;
 	
+	@FXML private ComboBox<String> cbImeRoka;
+	
 	//Ispit
 	
 	@FXML private DatePicker datumPocetkaIspita;
@@ -85,13 +87,16 @@ public class UnosIspitRokController {
 		 
 		 List<Predmet> predmet = sifarniciService.getPredmeti();
 		 cbPredmet2.setItems(FXCollections.observableArrayList(predmet));
+		 
+		 List<String> sviRokovi = List.of("januarski", "februarski", "avgustovski", "septembarski");
+		 cbImeRoka.setItems(FXCollections.observableArrayList(sviRokovi));
 	 }
 	
 	 
 	 public void handleSacuvajIspitniRok(ActionEvent event) {
 		 
 		 SkolskaGodina skolskaGodina = skolskaGodinaRepo.findAktivnaSkGod();
-		 IspitniRok rok = ispitniRokoviService.saveIspitniRok(datumPocetkaIspitnogRoka.getValue(),datumZavrsetkaIspitnogRoka.getValue(), skolskaGodina);
+		 IspitniRok rok = ispitniRokoviService.saveIspitniRok(datumPocetkaIspitnogRoka.getValue(),datumZavrsetkaIspitnogRoka.getValue(), skolskaGodina, cbImeRoka.getValue());
 		 sviRokovi.add(rok);
 	 }
 	 

@@ -247,6 +247,10 @@ public class SifarniciService {
 		return skolskaGodinaRepo.save(sk);
 	}
 	
+	public SkolskaGodina getAktivnaSkolskaGodina() {
+		return skolskaGodinaRepo.findAktivnaSkGod();
+	}
+	
 	//Drzi predmet
 	
 	public List<DrziPredmet> getAllDrziPredmet(){
