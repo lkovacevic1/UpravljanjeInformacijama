@@ -79,6 +79,7 @@ public class PretraziStudentePoImenuPrezimenuController {
 		 List<Indeks> indeks = new ArrayList<Indeks>();
 		 String imeStudenta = ime.getText();
 		 String prezimeStudenta = prezime.getText();
+		 actionTarget.setText("");
 		 
 		 if(!imeStudenta.equals("") && prezimeStudenta.equals("")) {
 			 indeks = indeksRepo.findStudentByName(imeStudenta);
@@ -100,8 +101,8 @@ public class PretraziStudentePoImenuPrezimenuController {
 		 
 		 indeksTable.getItems().clear();
 		 indeksTable.getItems().addAll(indeks);
-		 ime.setText(null);
-		 prezime.setText(null);
+		 ime.setText("");
+		 prezime.setText("");
 	 }
 	 
 	 public Indeks getSelectedStudentToUpdate() {

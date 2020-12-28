@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,7 +32,7 @@ public class PolozenPredmet implements Serializable {
 	@JoinColumn(name = "idPredmeta")
 	private Predmet predmet;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "idIspit")
 	private Ispit ispit;
 	
