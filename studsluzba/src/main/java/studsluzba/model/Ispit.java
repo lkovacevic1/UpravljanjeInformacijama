@@ -74,6 +74,14 @@ public class Ispit implements Serializable {
 		this.idIspit = idIspit;
 	}
 
+	public String getImeRoka() {
+		return imeRoka;
+	}
+
+	public void setImeRoka(String imeRoka) {
+		this.imeRoka = imeRoka;
+	}
+
 	public LocalDate getDatumOdrzavanjaIspita() {
 		return datumOdrzavanjaIspita;
 	}

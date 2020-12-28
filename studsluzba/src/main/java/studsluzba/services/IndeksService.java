@@ -16,12 +16,20 @@ import studsluzba.model.Student;
 import studsluzba.repositories.IndeksRepository;
 import studsluzba.repositories.OsvojeniPredispitniPoeniRepository;
 import studsluzba.repositories.PolozenPredmetRepository;
+import studsluzba.repositories.StudProgramRepository;
+import studsluzba.repositories.StudentRepository;
 
 @Service
 public class IndeksService {
 
 	@Autowired
 	IndeksRepository indeksRepo;
+	
+	@Autowired
+	StudentRepository studentRepo;
+	
+	@Autowired
+	StudProgramRepository studProgramRepo;
 	
 	@Autowired
 	PolozenPredmetRepository polozenPredmetRepo;
@@ -99,5 +107,29 @@ public class IndeksService {
 	
 	public Indeks checkForIndeks(int brIndeksa, StudProgram studPrograma, int godina) {
 		return indeksRepo.checkForIndeks(brIndeksa, godina, studPrograma);
+	}
+	
+
+	public Indeks saveStudentAndIndex(String ime, String prezime, String studProgram, int broj, int godinaUpisa) {
+			
+		Student s = new Student(ime,prezime);
+		s = studentRepo.save(s);
+		StudProgram sp = studProgramRepo.getStudProgramBySkraceniNaziv(studProgram);
+		Indeks si = new Indeks(broj, godinaUpisa,sp);
+		si.setStudent(s);
+		return indeksRepo.save(si);
+		
+		
+	}
+	
+	public Indeks dodajPoene(Indeks si, float ukupnoPredispitni) {
+		si.setOsvojeniPoeni(ukupnoPredispitni);
+		return indeksRepo.save(si);
+	}
+	
+	public Indeks getIndeks(String studProgram, int broj, int godinaUpisa) {
+		List<Indeks> indeksi = indeksRepo.getIndeksi(studProgram, broj, godinaUpisa);
+		if(indeksi.isEmpty()) return null;
+		return indeksi.get(0);
 	}
 }

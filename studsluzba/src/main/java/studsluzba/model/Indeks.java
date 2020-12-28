@@ -3,6 +3,7 @@ package studsluzba.model;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -32,7 +33,7 @@ public class Indeks implements Serializable {
 	private int brojIndexa;
 	private boolean aktivan;
 	private LocalDate datumAktivacijeIndexa;
-	private int osvojeniPoeni;
+	private float osvojeniPoeni;
 
 	@ManyToOne
 	@JoinColumn(name = "idstudProgram")
@@ -65,10 +66,17 @@ public class Indeks implements Serializable {
 		this.prijavaIspita = new ArrayList<PrijavaIspita>();
 		this.osvojeniPredispitniPOeni = new ArrayList<OsvojeniPredispitniPoeni>();
 	}
+	
+	public Indeks(int broj, int godina, StudProgram sp) {
+		this.brojIndexa = broj;
+		this.godinaUpisa = godina;
+		this.studProgram = sp;
+		this.aktivan = true;
+	}
 
 	public Indeks(int idIndeks, Student student, int godinaUpisa, int brojIndexa, boolean aktivan,
 			LocalDate datumAktivacijeIndexa, StudProgram studProgram, List<DrziPredmet> drziPredmete,
-			List<PolozenPredmet> polozeniPredmeti, List<PrijavaIspita> prijavaIspita, int osvojeniPoeni,
+			List<PolozenPredmet> polozeniPredmeti, List<PrijavaIspita> prijavaIspita, float osvojeniPoeni,
 			List<OsvojeniPredispitniPoeni> osvojeniPredispitniPOeni, ObnovaGodine obnovaGodine, UpisGodine upisGodine) {
 		super();
 		this.idIndeks = idIndeks;
@@ -91,11 +99,11 @@ public class Indeks implements Serializable {
 		return idIndeks;
 	}
 	
-	public int getOsvojeniPoeni() {
+	public float getOsvojeniPoeni() {
 		return osvojeniPoeni;
 	}
 
-	public void setOsvojeniPoeni(int osvojeniPoeni) {
+	public void setOsvojeniPoeni(float osvojeniPoeni) {
 		this.osvojeniPoeni = osvojeniPoeni;
 	}
 
@@ -231,8 +239,7 @@ public class Indeks implements Serializable {
 	}
 	
 	public int getGodinaUpisaStudenta() {
-		int year = datumAktivacijeIndexa.getYear();
-		return year;
+		return godinaUpisa;
 	}
 
 	@Override

@@ -19,7 +19,7 @@ public class OsvojeniPredispitniPoeni implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idOsvojeniPredispitniPoeni;
 	
-	private int osvojeniPredispitniPoeni;
+	private float osvojeniPredispitniPoeni;
 	
 	@ManyToOne
 	@JoinColumn(name = "idPredispitnihObaveza")
@@ -34,7 +34,7 @@ public class OsvojeniPredispitniPoeni implements Serializable {
 	}
 
 	public OsvojeniPredispitniPoeni(int idOsvojeniPredispitniPoeni, PredispitneObaveze predispitneObaveze,
-			Indeks indeks, int osvojeniPredispitniPoeni) {
+			Indeks indeks, float osvojeniPredispitniPoeni) {
 		super();
 		this.idOsvojeniPredispitniPoeni = idOsvojeniPredispitniPoeni;
 		this.predispitneObaveze = predispitneObaveze;
@@ -44,11 +44,11 @@ public class OsvojeniPredispitniPoeni implements Serializable {
 	
 	
 
-	public int getOsvojeniPredispitniPoeni() {
+	public float getOsvojeniPredispitniPoeni() {
 		return osvojeniPredispitniPoeni;
 	}
 
-	public void setOsvojeniPredispitniPoeni(int osvojeniPredispitniPoeni) {
+	public void setOsvojeniPredispitniPoeni(float osvojeniPredispitniPoeni) {
 		this.osvojeniPredispitniPoeni = osvojeniPredispitniPoeni;
 	}
 

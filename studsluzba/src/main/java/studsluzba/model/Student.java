@@ -68,6 +68,11 @@ public class Student implements Serializable {
 	public Student() {
 		this.indeks = new ArrayList<Indeks>();
 	}
+	
+	public Student(String ime, String prezime) {
+		this.ime = ime;
+		this.prezime = prezime;
+	}
 
 	public Student(int idstudent, List<Indeks> indeks, String ime, String prezime, String srednjeIme, String jmbg,
 			LocalDate datumRodjenja, String mestoRodjenja, String drzavaRodjenja, String drzavljanstvo,
