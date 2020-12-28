@@ -9,7 +9,7 @@ import java.util.Scanner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
+import ch.qos.logback.core.recovery.ResilientSyslogOutputStream;
 import studsluzba.model.DrziPredmet;
 import studsluzba.model.Indeks;
 import studsluzba.model.Ispit;
@@ -86,7 +86,9 @@ public class CSVPoeniImporter {
 			Ispit ispitAvgust = sifarniciService.saveIspit(ispitniAvgust, nastavnik, predmet, rokAvgust);
 			
 			String rokSeptembar = podaciObaveze[11];
+			System.out.println("Septembarski rok: " + rokSeptembar);
 			IspitniRok ispitniSeptembar = sifarniciService.saveIspitniRok(rokSeptembar, skGodina);
+			System.out.println("Ispit septembar je: " + ispitniSeptembar);
 			Ispit ispitSeptembar = sifarniciService.saveIspit(ispitniSeptembar, nastavnik, predmet, rokSeptembar);
 			
 			int prolazi = 0;
@@ -152,9 +154,11 @@ public class CSVPoeniImporter {
 				ispiti.add(ispitJul);
 				ispiti.add(ispitAvgust);
 				ispiti.add(ispitSeptembar);
+				System.out.println("ISPITI SU: " + ispiti.get(0) + " " + ispiti.get(1) + " " + ispiti.get(2) + " " + ispiti.get(3));
 				
 				
 				if(duzinaNiza >= 8) {
+					System.out.println("Id ispita za ispitni rok je: " + ispiti.get(duzinaNiza-8));
 					sifarniciService.savePolozenPredmet(Float.parseFloat(delovi[duzinaNiza]), si, ispiti.get(duzinaNiza-8), predmet, ukupnoPredispitni);
 					sifarniciService.savePrijavaIspita(si, ispiti.get(duzinaNiza - 8));
 					indeksService.dodajPoene(si, ukupnoPredispitni + Float.parseFloat(delovi[duzinaNiza]));
