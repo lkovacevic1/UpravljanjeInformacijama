@@ -9,16 +9,15 @@ import java.util.Scanner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import ch.qos.logback.core.recovery.ResilientSyslogOutputStream;
 import studsluzba.model.DrziPredmet;
 import studsluzba.model.Indeks;
 import studsluzba.model.Ispit;
 import studsluzba.model.IspitniRok;
 import studsluzba.model.Nastavnik;
+import studsluzba.model.PolozenPredmet;
 import studsluzba.model.PredispitneObaveze;
 import studsluzba.model.Predmet;
 import studsluzba.model.SkolskaGodina;
-import studsluzba.repositories.IndeksRepository;
 import studsluzba.services.IndeksService;
 import studsluzba.services.SifarniciService;
 import studsluzba.services.StudentService;
@@ -156,17 +155,19 @@ public class CSVPoeniImporter {
 				ispiti.add(ispitSeptembar);
 				System.out.println("ISPITI SU: " + ispiti.get(0) + " " + ispiti.get(1) + " " + ispiti.get(2) + " " + ispiti.get(3));
 				
-				
+				PolozenPredmet polozenPredmet = new PolozenPredmet();
 				if(duzinaNiza >= 8) {
 					System.out.println("Id ispita za ispitni rok je: " + ispiti.get(duzinaNiza-8));
-					sifarniciService.savePolozenPredmet(Float.parseFloat(delovi[duzinaNiza]), si, ispiti.get(duzinaNiza-8), predmet, ukupnoPredispitni);
+					polozenPredmet = sifarniciService.savePolozenPredmet(Float.parseFloat(delovi[duzinaNiza]), si, ispiti.get(duzinaNiza-8), predmet, ukupnoPredispitni);
 					sifarniciService.savePrijavaIspita(si, ispiti.get(duzinaNiza - 8));
 					indeksService.dodajPoene(si, ukupnoPredispitni + Float.parseFloat(delovi[duzinaNiza]));
+					sifarniciService.saveIzlazakNaIspit(polozenPredmet);
 					duzinaNiza--;
 					while(duzinaNiza >= 8) {
 						if(!delovi[duzinaNiza].isEmpty()) {
-							sifarniciService.saveNePolozenPredmet(Float.parseFloat(delovi[duzinaNiza]), si, ispiti.get(duzinaNiza-8), predmet, ukupnoPredispitni);
+							polozenPredmet = sifarniciService.saveNePolozenPredmet(Float.parseFloat(delovi[duzinaNiza]), si, ispiti.get(duzinaNiza-8), predmet, ukupnoPredispitni);
 							sifarniciService.savePrijavaIspita(si, ispiti.get(duzinaNiza - 8));
+							sifarniciService.saveIzlazakNaIspit(polozenPredmet, false);
 							System.out.println(si.getIdIndeks());
 						}
 						duzinaNiza--;

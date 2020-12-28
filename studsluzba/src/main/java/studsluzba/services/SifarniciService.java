@@ -15,6 +15,7 @@ import studsluzba.model.DrziPredmet;
 import studsluzba.model.Indeks;
 import studsluzba.model.Ispit;
 import studsluzba.model.IspitniRok;
+import studsluzba.model.IzlazakNaIspit;
 import studsluzba.model.Nastavnik;
 import studsluzba.model.OsvojeniPredispitniPoeni;
 import studsluzba.model.PolozenPredmet;
@@ -30,6 +31,7 @@ import studsluzba.repositories.DrziPredmetRepository;
 import studsluzba.repositories.IndeksRepository;
 import studsluzba.repositories.IspitRepository;
 import studsluzba.repositories.IspitniRokRepository;
+import studsluzba.repositories.IzlazakNaIspitRepository;
 import studsluzba.repositories.NastavnikRepository;
 import studsluzba.repositories.OsvojeniPredispitniPoeniRepository;
 import studsluzba.repositories.PolozenPredmetRepository;
@@ -68,6 +70,9 @@ public class SifarniciService {
 	
 	@Autowired
 	IspitniRokRepository ispitniRokRepo;
+	
+	@Autowired
+	IzlazakNaIspitRepository izlazakNaIspitRepo;
 	
 	@Autowired
 	DrziPredmetRepository drziPredmetRepo;
@@ -417,6 +422,21 @@ public class SifarniciService {
 		prijavaIspita.setIspit(ispit);
 		return prijavaIspitaRepo.save(prijavaIspita);
 	}
+	
+	//Izalzak na ispit
+		public IzlazakNaIspit saveIzlazakNaIspit(PolozenPredmet polozenPredmet) {
+			IzlazakNaIspit izlazak = new IzlazakNaIspit();
+			izlazak.setPonistavaIspit(false);
+			izlazak.setPolozenPredmet(polozenPredmet);
+			return izlazakNaIspitRepo.save(izlazak);
+		}
+		
+		public IzlazakNaIspit saveIzlazakNaIspit(PolozenPredmet polozenPredmet, boolean ponistava) {
+			IzlazakNaIspit izlazak = new IzlazakNaIspit();
+			izlazak.setPonistavaIspit(ponistava);
+			izlazak.setPolozenPredmet(polozenPredmet);
+			return izlazakNaIspitRepo.save(izlazak);
+		}
 }
 
 

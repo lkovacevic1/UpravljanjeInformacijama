@@ -9,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import studsluzba.model.Indeks;
+import studsluzba.model.IzlazakNaIspit;
 import studsluzba.model.OsvojeniPredispitniPoeni;
 import studsluzba.model.PolozenPredmet;
 import studsluzba.model.StudProgram;
 import studsluzba.model.Student;
 import studsluzba.repositories.IndeksRepository;
+import studsluzba.repositories.IzlazakNaIspitRepository;
 import studsluzba.repositories.OsvojeniPredispitniPoeniRepository;
 import studsluzba.repositories.PolozenPredmetRepository;
 import studsluzba.repositories.StudProgramRepository;
