@@ -193,9 +193,13 @@ public class SifarniciService {
 		isRok.setImeRoka(imeRoka);
 		isRok.setSkolskaGodina(skGodina);
 		IspitniRok postojeciIspitniRok = ispitniRokRepo.rokDoesExist(imeRoka, skGodina);
-		if(postojeciIspitniRok == null)
-			ispitniRokRepo.save(isRok);
-		return postojeciIspitniRok;
+		if(postojeciIspitniRok == null) {
+			return ispitniRokRepo.save(isRok);
+		}else {
+			return postojeciIspitniRok;
+		}
+		
+		
 	}
 	
 	//Nastavnik
@@ -225,8 +229,9 @@ public class SifarniciService {
 		ispit.setImeRoka(imeRoka);
 		Ispit ispitVecPosotji = ispitRepo.doesIspitExist(ispitniRok, nastavnik, predmet, imeRoka);
 		if(ispitVecPosotji == null)
-			ispitRepo.save(ispit);
-		return ispitVecPosotji;
+			return ispitRepo.save(ispit);
+		else
+			return ispitVecPosotji;
 	}
 	
 	//StudProgram
@@ -390,8 +395,9 @@ public class SifarniciService {
 		PredispitneObaveze postojecaPredispitnaObaveza = predispitneObavezeRepo.predispitnaObavezaDoesExist(vrsta, nastavnik, predmet, skolskaGodina);
 		System.out.println(postojecaPredispitnaObaveza + "**********************");
 		if(postojecaPredispitnaObaveza == null)
-			predispitneObavezeRepo.save(predObaveze);
-		return postojecaPredispitnaObaveza;
+			return predispitneObavezeRepo.save(predObaveze);
+		else
+			return postojecaPredispitnaObaveza;
  	}
 	
 	//Osvojeni predispitni poeni
