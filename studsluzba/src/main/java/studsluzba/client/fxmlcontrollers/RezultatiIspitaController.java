@@ -46,6 +46,9 @@ public class RezultatiIspitaController {
 	@FXML 
 	public void initialize() {
 		List<Ispit> sviIspiti = ispitRepo.rezultatiIspita();
+		for (Ispit i : sviIspiti) {
+			System.out.println("Ispiti su: "+ i);
+		}
 		prijavljeniIspiti.setItems(FXCollections.observableArrayList(sviIspiti));
 		
 		sviStudent = FXCollections.observableArrayList(indeksService.loadAll());
