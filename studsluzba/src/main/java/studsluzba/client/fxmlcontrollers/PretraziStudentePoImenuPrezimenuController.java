@@ -80,20 +80,23 @@ public class PretraziStudentePoImenuPrezimenuController {
 		 String imeStudenta = ime.getText();
 		 String prezimeStudenta = prezime.getText();
 		 
-		 if(imeStudenta == null) {
-			 indeks = indeksRepo.findStudentByLastName(prezimeStudenta);
+		 if(!imeStudenta.equals("") && prezimeStudenta.equals("")) {
+			 indeks = indeksRepo.findStudentByName(imeStudenta);
+			 System.out.println("Usao u if");
+			 System.out.println(indeks);
 			 System.out.println(indeks.size());
 			 System.out.println(prezime.getText());
-		 }else if(prezimeStudenta == null) {
-			 indeks = indeksRepo.findStudentByName(imeStudenta);
+		 }else if(imeStudenta.equals("") && !prezimeStudenta.equals("")) {
+			 indeks = indeksRepo.findStudentByLastName(prezimeStudenta);
 			 System.out.println(indeks.size());
 			 System.out.println(ime.getText());
-		 }else if(prezimeStudenta != null && imeStudenta != null) {
+		 }else if(!imeStudenta.equals("") && !prezimeStudenta.equals("")) {
 			 indeks = indeksRepo.findIndeksByNameAndLastName(imeStudenta, prezimeStudenta);
 			 System.out.println(indeks.size());
 			 System.out.println(ime.getText() + " " + prezime.getText());
+		 }else {
+			 actionTarget.setText("Ime/prezime moraju biti uneti !");
 		 }
-		 
 		 
 		 indeksTable.getItems().clear();
 		 indeksTable.getItems().addAll(indeks);
