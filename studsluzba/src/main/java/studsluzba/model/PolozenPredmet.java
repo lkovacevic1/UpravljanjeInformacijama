@@ -32,7 +32,7 @@ public class PolozenPredmet implements Serializable {
 	@JoinColumn(name = "idPredmeta")
 	private Predmet predmet;
 
-	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "idIspit")
 	private Ispit ispit;
 	
