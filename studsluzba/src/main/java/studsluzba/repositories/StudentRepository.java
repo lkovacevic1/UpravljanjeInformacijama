@@ -1,6 +1,5 @@
 package studsluzba.repositories;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
