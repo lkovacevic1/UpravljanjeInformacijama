@@ -42,7 +42,8 @@ public class Ispit implements Serializable {
 	@JoinColumn(name = "idIspitnogRoka")
 	private IspitniRok ispitniRok;
 
-	@OneToOne(mappedBy = "ispit")
+	@ManyToOne
+	@JoinColumn(name = "idPolozenPredmet")
 	private PolozenPredmet polozeniPredmet;
 
 	@OneToMany(mappedBy = "ispit")
@@ -153,7 +154,14 @@ public class Ispit implements Serializable {
 
 	@Override
 	public String toString() {
-		return imeRoka + ", " + datumOdrzavanjaIspita + ", " + vremeOdrzavanjaIspita;
+		if(datumOdrzavanjaIspita == null && vremeOdrzavanjaIspita == 0)
+			return imeRoka;
+		else if(vremeOdrzavanjaIspita == 0)
+			return imeRoka + ", " + datumOdrzavanjaIspita;
+		else if(datumOdrzavanjaIspita == null)
+			return imeRoka + ", " + vremeOdrzavanjaIspita;
+		else
+			return imeRoka + ", " + datumOdrzavanjaIspita + ", " + vremeOdrzavanjaIspita;
 	}
 	
 }

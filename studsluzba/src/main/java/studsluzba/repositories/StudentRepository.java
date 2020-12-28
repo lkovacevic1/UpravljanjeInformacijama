@@ -42,7 +42,7 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
 	List<Student> sortedStudents(int idIspit);
 	
 	//Koliko puta je student izlazio na ispit
-	@Query("select COUNT(iz) from IzlazakNaIspit iz join iz.polozenPredmet pop join pop.indeks i where i.brojIndexa like :brojIndeksa and i.godinaUpisa like :godinaUpisa and i.studProgram.oznaka like :oznaka and pop.ispit.predmet.nazivPredmeta like :predmet")                                  
+	@Query("select COUNT(iz) from IzlazakNaIspit iz join iz.polozenPredmet pop join pop.indeks i join pop.ispit isp where i.brojIndexa like :brojIndeksa and i.godinaUpisa like :godinaUpisa and i.studProgram.oznaka like :oznaka and isp.predmet.nazivPredmeta like :predmet")                                  
 	int countBrojIzlazakaNaIspit(int brojIndeksa, int godinaUpisa, String oznaka, String predmet);
 	  
 	

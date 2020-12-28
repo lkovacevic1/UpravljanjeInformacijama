@@ -278,7 +278,7 @@ public class SifarniciService {
 			polozen = true;
 		polozenPredmet.setPolozen(polozen);
 		polozenPredmet.setIndeks(indeks);
-		polozenPredmet.setIspit(ispit);
+		//polozenPredmet.setIspit(ispit);
 		polozenPredmet.setPredmet(predmet);
 		return polozenPredmetRepo.save(polozenPredmet);
 	}
@@ -301,7 +301,7 @@ public class SifarniciService {
 		
 		polozenPredmet.setPolozen(false);
 		polozenPredmet.setIndeks(indeks);
-		polozenPredmet.setIspit(ispit);
+		//polozenPredmet.setIspit(ispit);
 		polozenPredmet.setPredmet(predmet);
 		return polozenPredmetRepo.save(polozenPredmet);
 	}

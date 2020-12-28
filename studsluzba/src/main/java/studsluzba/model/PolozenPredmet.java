@@ -1,6 +1,7 @@
 package studsluzba.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -32,9 +34,8 @@ public class PolozenPredmet implements Serializable {
 	@JoinColumn(name = "idPredmeta")
 	private Predmet predmet;
 
-	@OneToOne
-	@JoinColumn(name = "idIspit")
-	private Ispit ispit;
+	@OneToMany(mappedBy = "polozeniPredmet")
+	private List<Ispit> ispit;
 	
 	@OneToOne(mappedBy = "polozenPredmet")
 	private IzlazakNaIspit izlazakNaIspit;
@@ -44,7 +45,7 @@ public class PolozenPredmet implements Serializable {
 	}
 
 	public PolozenPredmet(int idPolozenPredmet, boolean polozen, int ocena, Indeks indeks, Predmet predmet,
-			Ispit ispit, int osvojeniPoeniNaIspitu, IzlazakNaIspit izlazakNaIspit) {
+			List<Ispit> ispit, int osvojeniPoeniNaIspitu, IzlazakNaIspit izlazakNaIspit) {
 		super();
 		this.idPolozenPredmet = idPolozenPredmet;
 		this.polozen = polozen;
@@ -104,11 +105,11 @@ public class PolozenPredmet implements Serializable {
 		this.predmet = predmet;
 	}
 
-	public Ispit getIspit() {
+	public List<Ispit> getIspit() {
 		return ispit;
 	}
 
-	public void setIspit(Ispit ispit) {
+	public void setIspit(List<Ispit> ispit) {
 		this.ispit = ispit;
 	}
 	
