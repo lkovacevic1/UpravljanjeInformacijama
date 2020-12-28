@@ -49,6 +49,7 @@
                     		<MenuItem text="Prijavljeni studenti" onAction="#openStudentiPoIspitu"/> 
                 		</items>
                 	</Menu>
+                	<MenuItem text="Import podataka" onAction="#openImportPodataka"/>
                 </items>                          
             </Menu>
         </MenuBar>    

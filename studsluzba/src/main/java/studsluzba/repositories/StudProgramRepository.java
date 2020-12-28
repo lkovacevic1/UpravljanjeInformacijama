@@ -12,4 +12,8 @@ public interface StudProgramRepository extends CrudRepository<StudProgram, Integ
 	//Selekcija stud programa na kojima selektovani student nije
 	@Query("select sp from StudProgram sp where sp.oznaka not like :oznaka")
 	List<StudProgram> selectAllStudPrograma(String oznaka);
+	
+	//Selekcija studPrograma po skracenom nazivu
+	@Query("select sp from StudProgram sp where sp.oznaka like :skraceniNaziv")
+	StudProgram getStudProgramBySkraceniNaziv(String skraceniNaziv);
 }

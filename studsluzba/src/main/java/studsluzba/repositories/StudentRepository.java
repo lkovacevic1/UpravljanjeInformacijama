@@ -22,7 +22,7 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
 	List<Student> findStudentByLastName(String prezime);
 	  
 	//selekcija studenta na osnovu imena i prezimena 
-	@Query("select s from Student s where s.ime like :ime or s.prezime like :prezime") 
+	@Query("select s from Student s where s.ime like :ime and s.prezime like :prezime") 
 	List<Student> findStudentByNameAndLastName(String ime, String prezime);
 	  
 	//selekcija studenata iz odredjene srednje skole

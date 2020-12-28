@@ -12,15 +12,8 @@ import studsluzba.model.Student;
 import studsluzba.model.UpisGodine;
 
 public interface IndeksRepository extends CrudRepository<Indeks, Integer> {
-/*
-	///Sacuvaj stari indeks
-	@Query("insert into Indeks values(:student, :godinaUpisa, :brojIndexa, :aktivan, :datumAktivacijeIndexa, :studProgram)")
-	Indeks saveOldIndeks(Student student, int godinaUpisa, int brojIndexa, boolean aktivan, LocalDate datumAktivacijeIndexa, StudProgram studProgram);
 	
-	///Promena indeksa
-	@Query("update Indeks set brojIndexa = :indeks, godinaUpisa = :godina, studProgram = :studProgram where student = :studentID")
-	Indeks changeIndeks(int indeks, int godina, StudProgram studProgram, Student studentID);*/
-	
+	//Selekcija indeks po studentu
 	@Query("select i from Indeks i where i.student like :student")
 	List<Indeks> findIndeksOfStudent(Student student);
 	
@@ -29,8 +22,16 @@ public interface IndeksRepository extends CrudRepository<Indeks, Integer> {
 	Indeks findAktivanIndeks(int idStudenta);
 	
 	//Find indeks by student name or last name
-	@Query("select i from Indeks i where i.student.ime like :ime or i.student.prezime like :prezime")
+	@Query("select i from Indeks i where i.student.ime like :ime and i.student.prezime like :prezime")
 	List<Indeks> findIndeksByNameAndLastName(String ime, String prezime);
+	
+	//selekcija studenta na osnovu imena 
+	@Query("select i from Indeks i where i.student.ime like :ime") 
+	List<Indeks> findStudentByName(String ime);
+		  
+	//selekcija studenta na osnovu prezimena 
+	@Query("select i from Indeks i where i.student.prezime like :prezime") 
+	List<Indeks> findStudentByLastName(String prezime);
 	
 	//Finde indeks by student indeks
 	@Query("select i from Indeks i where i.brojIndexa like :brIndeks and i.godinaUpisa like :godineUisa and i.studProgram.oznaka like :oznaka")
@@ -68,4 +69,9 @@ public interface IndeksRepository extends CrudRepository<Indeks, Integer> {
 	//Da li indeks postoji
 	@Query("select i from Indeks i where i.brojIndexa like :brIndeksa and i.godinaUpisa like :godinaUpisa and i.studProgram like :sp")
 	Indeks checkForIndeks(int brIndeksa, int godinaUpisa, StudProgram sp);
+	
+	//Selekcija svih indeksa nekog studenta
+	@Query("select i from Indeks i where i.studProgram.oznaka like :skraceniNazivStudPrograma and "
+			+ "i.brojIndexa = :broj and i.godinaUpisa = :godinaUpisa")
+	List<Indeks> getIndeksi(String skraceniNazivStudPrograma, int broj, int godinaUpisa);
 }

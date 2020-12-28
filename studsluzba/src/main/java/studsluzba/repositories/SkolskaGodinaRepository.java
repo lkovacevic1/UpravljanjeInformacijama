@@ -10,5 +10,8 @@ public interface SkolskaGodinaRepository  extends CrudRepository<SkolskaGodina, 
 	//aktivna skolska godina
 	@Query("select sk from SkolskaGodina sk where sk.aktivna = 1")
 	SkolskaGodina findAktivnaSkGod();
-
+	
+	//Selekcija skolske godine po godini
+	@Query("select sk from SkolskaGodina sk where sk.skolskaGodina like :skolskaGodina")
+	SkolskaGodina selectIdSkGodina(int skolskaGodina);
 }

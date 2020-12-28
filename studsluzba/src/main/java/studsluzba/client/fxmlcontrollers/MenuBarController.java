@@ -68,4 +68,7 @@ public class MenuBarController {
 	public void openSortBySkolskaGodina(ActionEvent event) {
 		mainViewManager.changeRoot("sortBySkolskaGodina");
 	}
+	public void openImportPodataka(ActionEvent event) {
+		mainViewManager.changeRoot("importPodataka");
+	}
 }

@@ -19,7 +19,7 @@ public class PolozenPredmet implements Serializable {
 	private int idPolozenPredmet;
 
 	private boolean polozen;
-	private int osvojeniPoeniNaIspitu;
+	private float osvojeniPoeniNaIspitu;
 	private int ocena;
 
 	@ManyToOne
@@ -54,11 +54,11 @@ public class PolozenPredmet implements Serializable {
 		this.izlazakNaIspit = izlazakNaIspit;
 	}
 
-	public int getOsvojeniPoeniNaIspitu() {
+	public float getOsvojeniPoeniNaIspitu() {
 		return osvojeniPoeniNaIspitu;
 	}
 
-	public void setOsvojeniPoeniNaIspitu(int osvojeniPoeniNaIspitu) {
+	public void setOsvojeniPoeniNaIspitu(float osvojeniPoeniNaIspitu) {
 		this.osvojeniPoeniNaIspitu = osvojeniPoeniNaIspitu;
 	}
 

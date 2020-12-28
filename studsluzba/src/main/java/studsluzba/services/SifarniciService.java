@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 import studsluzba.client.fxmlcontrollers.ShowStudentPodaciController;
@@ -15,8 +16,11 @@ import studsluzba.model.Indeks;
 import studsluzba.model.Ispit;
 import studsluzba.model.IspitniRok;
 import studsluzba.model.Nastavnik;
+import studsluzba.model.OsvojeniPredispitniPoeni;
 import studsluzba.model.PolozenPredmet;
+import studsluzba.model.PredispitneObaveze;
 import studsluzba.model.Predmet;
+import studsluzba.model.PrijavaIspita;
 import studsluzba.model.SkolskaGodina;
 import studsluzba.model.SrednjaSkola;
 import studsluzba.model.StudProgram;
@@ -27,8 +31,11 @@ import studsluzba.repositories.IndeksRepository;
 import studsluzba.repositories.IspitRepository;
 import studsluzba.repositories.IspitniRokRepository;
 import studsluzba.repositories.NastavnikRepository;
+import studsluzba.repositories.OsvojeniPredispitniPoeniRepository;
 import studsluzba.repositories.PolozenPredmetRepository;
+import studsluzba.repositories.PredispitneObavezeRepository;
 import studsluzba.repositories.PredmetRepository;
+import studsluzba.repositories.PrijavaIspitaRepository;
 import studsluzba.repositories.SkolskaGodinaRepository;
 import studsluzba.repositories.SrednjaSkolaRepository;
 import studsluzba.repositories.StudProgramRepository;
@@ -48,10 +55,16 @@ public class SifarniciService {
 	NastavnikRepository nastavnikRepo;
 	
 	@Autowired
+	PredispitneObavezeRepository predispitneObavezeRepo;
+	
+	@Autowired
 	IndeksRepository indeksRepo;
 	
 	@Autowired
 	StudProgramRepository stProgramRepo;
+	
+	@Autowired
+	OsvojeniPredispitniPoeniRepository osvojeniPredispitniPoeniRepo;
 	
 	@Autowired
 	IspitniRokRepository ispitniRokRepo;
@@ -64,6 +77,9 @@ public class SifarniciService {
 	
 	@Autowired
 	SrednjaSkolaRepository srednjeSkolaRepo;
+	
+	@Autowired 
+	PrijavaIspitaRepository prijavaIspitaRepo;
 	
 	@Autowired
 	PolozenPredmetRepository polozenPredmetRepo;
@@ -172,6 +188,16 @@ public class SifarniciService {
 		return rez;		
 	}
 	
+	public IspitniRok saveIspitniRok(String imeRoka, SkolskaGodina skGodina) {
+		IspitniRok isRok = new IspitniRok();
+		isRok.setImeRoka(imeRoka);
+		isRok.setSkolskaGodina(skGodina);
+		IspitniRok postojeciIspitniRok = ispitniRokRepo.rokDoesExist(imeRoka, skGodina);
+		if(postojeciIspitniRok == null)
+			ispitniRokRepo.save(isRok);
+		return postojeciIspitniRok;
+	}
+	
 	//Nastavnik
 	
 	public List<Nastavnik> getNastavnici(){		
@@ -188,6 +214,19 @@ public class SifarniciService {
 		List<Ispit> rez = new ArrayList<Ispit>();		
 		iter.forEach(rez::add);
 		return rez;	
+	}
+	
+	public Ispit saveIspit(IspitniRok ispitniRok, Nastavnik nastavnik, Predmet predmet, String imeRoka) {
+		Ispit ispit = new Ispit();
+		ispit.setIspitniRok(ispitniRok);
+		ispit.setNastavnik(nastavnik);
+		ispit.setPredmet(predmet);
+		ispit.setZakljucenIspit(true);
+		ispit.setImeRoka(imeRoka);
+		Ispit ispitVecPosotji = ispitRepo.doesIspitExist(ispitniRok, nastavnik, predmet, imeRoka);
+		if(ispitVecPosotji == null)
+			ispitRepo.save(ispit);
+		return ispitVecPosotji;
 	}
 	
 	//StudProgram
@@ -209,6 +248,53 @@ public class SifarniciService {
 		return polozenPredmetRepo.findPolozenIspitByIndeks(indeks);
 	}
 	
+	public PolozenPredmet savePolozenPredmet(float poeniNaIspitu, Indeks indeks, Ispit ispit, Predmet predmet, float ukupnoPredispitni) {
+		PolozenPredmet polozenPredmet = new PolozenPredmet();
+		int ocena = 5;
+		if(poeniNaIspitu + ukupnoPredispitni >= 51 && poeniNaIspitu + ukupnoPredispitni < 61)
+			ocena = 6;
+		else if(poeniNaIspitu + ukupnoPredispitni >= 61 && poeniNaIspitu + ukupnoPredispitni < 71)
+			ocena = 7;
+		else if(poeniNaIspitu + ukupnoPredispitni >= 71 && poeniNaIspitu + ukupnoPredispitni < 81)
+			ocena = 8;
+		else if(poeniNaIspitu + ukupnoPredispitni >= 81 && poeniNaIspitu + ukupnoPredispitni < 91)
+			ocena = 9;
+		else if(poeniNaIspitu + ukupnoPredispitni >= 91)
+			ocena = 10;
+		polozenPredmet.setOcena(ocena);
+		polozenPredmet.setOsvojeniPoeniNaIspitu(poeniNaIspitu);
+		boolean polozen = false;
+		if(ocena > 5)
+			polozen = true;
+		polozenPredmet.setPolozen(polozen);
+		polozenPredmet.setIndeks(indeks);
+		polozenPredmet.setIspit(ispit);
+		polozenPredmet.setPredmet(predmet);
+		return polozenPredmetRepo.save(polozenPredmet);
+	}
+	
+	public PolozenPredmet saveNePolozenPredmet(float poeniNaIspitu, Indeks indeks, Ispit ispit, Predmet predmet, float ukupnoPredispitni) {
+		PolozenPredmet polozenPredmet = new PolozenPredmet();
+		int ocena = 5;
+		if(poeniNaIspitu + ukupnoPredispitni <= 51 && poeniNaIspitu + ukupnoPredispitni < 61)
+			ocena = 6;
+		else if(poeniNaIspitu + ukupnoPredispitni <= 61 && poeniNaIspitu + ukupnoPredispitni < 71)
+			ocena = 7;
+		else if(poeniNaIspitu + ukupnoPredispitni <= 71 && poeniNaIspitu + ukupnoPredispitni < 81)
+			ocena = 8;
+		else if(poeniNaIspitu + ukupnoPredispitni <= 81 && poeniNaIspitu + ukupnoPredispitni < 91)
+			ocena = 9;
+		else if(poeniNaIspitu + ukupnoPredispitni >= 91)
+			ocena = 10;
+		polozenPredmet.setOcena(ocena);
+		polozenPredmet.setOsvojeniPoeniNaIspitu(poeniNaIspitu);
+		
+		polozenPredmet.setPolozen(false);
+		polozenPredmet.setIndeks(indeks);
+		polozenPredmet.setIspit(ispit);
+		polozenPredmet.setPredmet(predmet);
+		return polozenPredmetRepo.save(polozenPredmet);
+	}
 	//Indeks
 	
 	public List<Indeks> getAllIndeks(){
@@ -251,6 +337,10 @@ public class SifarniciService {
 		return skolskaGodinaRepo.findAktivnaSkGod();
 	}
 	
+	public SkolskaGodina selectSkolskaGodina(int skolskaGodina) {
+		return skolskaGodinaRepo.selectIdSkGodina(skolskaGodina);
+	}
+	
 	//Drzi predmet
 	
 	public List<DrziPredmet> getAllDrziPredmet(){
@@ -278,5 +368,60 @@ public class SifarniciService {
 		return drziPredmetRepo.getPredmetiPoSkolskojGodini(skolskaGodina);
 	}
 	
+	public DrziPredmet selectDrziPredmet(Predmet predmet, SkolskaGodina skGodina) {
+		return drziPredmetRepo.selectNastavnik(predmet, skGodina);
+	}
 	
+	//Premdet
+	
+	public Predmet selectIdPredmeta(String nazivPredmeta) {
+		return predmetRepo.selectPredmetByName(nazivPredmeta);
+	}
+	
+	//Predispitne obaveze
+	
+	public PredispitneObaveze savePredispitnuObavezu(int maksNaKolokvijumu, String vrsta, Nastavnik nastavnik, Predmet predmet, SkolskaGodina skolskaGodina) {
+		PredispitneObaveze predObaveze = new PredispitneObaveze();
+		predObaveze.setMaxBrPredispitnihPoena(maksNaKolokvijumu);
+		predObaveze.setVrstaPredispitnihObaveza(vrsta);
+		predObaveze.setNastavnik(nastavnik);
+		predObaveze.setPredmet(predmet);
+		predObaveze.setSkolskaGodina(skolskaGodina);
+		PredispitneObaveze postojecaPredispitnaObaveza = predispitneObavezeRepo.predispitnaObavezaDoesExist(vrsta, nastavnik, predmet, skolskaGodina);
+		System.out.println(postojecaPredispitnaObaveza + "**********************");
+		if(postojecaPredispitnaObaveza == null)
+			predispitneObavezeRepo.save(predObaveze);
+		return postojecaPredispitnaObaveza;
+ 	}
+	
+	//Osvojeni predispitni poeni
+	
+	public OsvojeniPredispitniPoeni saveOsvojenePredispitneObaveze(float poeni, Indeks si, PredispitneObaveze obavezaKolokvijum) {
+		OsvojeniPredispitniPoeni osp = new OsvojeniPredispitniPoeni();
+		osp.setOsvojeniPredispitniPoeni(poeni);
+		osp.setIndeks(si);
+		osp.setPredispitneObaveze(obavezaKolokvijum);
+		return osvojeniPredispitniPoeniRepo.save(osp);
+	}
+	
+	//Prijava ispita
+	public PrijavaIspita savePrijavaIspita(Indeks indeks, Ispit ispit) {
+		PrijavaIspita prijavaIspita = new PrijavaIspita();
+		prijavaIspita.setIndeks(indeks);
+		prijavaIspita.setIspit(ispit);
+		return prijavaIspitaRepo.save(prijavaIspita);
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

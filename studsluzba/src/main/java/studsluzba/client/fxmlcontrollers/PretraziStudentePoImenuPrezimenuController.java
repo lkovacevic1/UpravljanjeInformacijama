@@ -1,5 +1,6 @@
 package studsluzba.client.fxmlcontrollers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -39,6 +41,8 @@ public class PretraziStudentePoImenuPrezimenuController {
 	 private ObservableList<Indeks> sviIndeksi;
 	 
 	 @FXML private TableView<Indeks> indeksTable;
+	 
+	 @FXML private Label actionTarget;
 	 
 	 @FXML
 	 protected void initialize() {
@@ -72,9 +76,29 @@ public class PretraziStudentePoImenuPrezimenuController {
 	 }
 	 
 	 public void pretraziStudentePoImenuPrezimenu(ActionEvent event) {
-		 List<Indeks> indeks = indeksRepo.findIndeksByNameAndLastName(ime.getText(), prezime.getText());
+		 List<Indeks> indeks = new ArrayList<Indeks>();
+		 String imeStudenta = ime.getText();
+		 String prezimeStudenta = prezime.getText();
+		 
+		 if(imeStudenta == null) {
+			 indeks = indeksRepo.findStudentByLastName(prezimeStudenta);
+			 System.out.println(indeks.size());
+			 System.out.println(prezime.getText());
+		 }else if(prezimeStudenta == null) {
+			 indeks = indeksRepo.findStudentByName(imeStudenta);
+			 System.out.println(indeks.size());
+			 System.out.println(ime.getText());
+		 }else if(prezimeStudenta != null && imeStudenta != null) {
+			 indeks = indeksRepo.findIndeksByNameAndLastName(imeStudenta, prezimeStudenta);
+			 System.out.println(indeks.size());
+			 System.out.println(ime.getText() + " " + prezime.getText());
+		 }
+		 
+		 
 		 indeksTable.getItems().clear();
 		 indeksTable.getItems().addAll(indeks);
+		 ime.setText(null);
+		 prezime.setText(null);
 	 }
 	 
 	 public Indeks getSelectedStudentToUpdate() {

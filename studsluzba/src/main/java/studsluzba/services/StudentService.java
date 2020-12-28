@@ -151,4 +151,9 @@ public class StudentService {
 		i.setGodinaUpisa(godinaUpisa);
 		return indeksRepo.save(i);
 	}
+	
+	public Student saveNewStudent(String ime, String prezime) {
+		Student s = new Student(ime,prezime);
+		return studentRepo.save(s);
+	}
 }

@@ -31,6 +31,8 @@ public class StudsluzbaApp extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("RAF studentska sluzba");
 		MainViewManager mainView = springContext.getBean(MainViewManager.class);
+		//setovanje stage-a za import podataka
+		mainView.setMainStage(primaryStage);
 		primaryStage.setScene(mainView.createScene());
 		primaryStage.show();
 	}
