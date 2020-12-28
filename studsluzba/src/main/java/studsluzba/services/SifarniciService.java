@@ -424,13 +424,6 @@ public class SifarniciService {
 	}
 	
 	//Izalzak na ispit
-		public IzlazakNaIspit saveIzlazakNaIspit(PolozenPredmet polozenPredmet) {
-			IzlazakNaIspit izlazak = new IzlazakNaIspit();
-			izlazak.setPonistavaIspit(true);
-			izlazak.setPolozenPredmet(polozenPredmet);
-			return izlazakNaIspitRepo.save(izlazak);
-		}
-		
 		public IzlazakNaIspit saveIzlazakNaIspit(PolozenPredmet polozenPredmet, boolean ponistava) {
 			IzlazakNaIspit izlazak = new IzlazakNaIspit();
 			izlazak.setPonistavaIspit(ponistava);

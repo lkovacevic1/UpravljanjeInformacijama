@@ -161,7 +161,7 @@ public class CSVPoeniImporter {
 					polozenPredmet = sifarniciService.savePolozenPredmet(Float.parseFloat(delovi[duzinaNiza]), si, ispiti.get(duzinaNiza-8), predmet, ukupnoPredispitni);
 					sifarniciService.savePrijavaIspita(si, ispiti.get(duzinaNiza - 8));
 					indeksService.dodajPoene(si, ukupnoPredispitni + Float.parseFloat(delovi[duzinaNiza]));
-					sifarniciService.saveIzlazakNaIspit(polozenPredmet);
+					sifarniciService.saveIzlazakNaIspit(polozenPredmet, true);
 					duzinaNiza--;
 					while(duzinaNiza >= 8) {
 						if(!delovi[duzinaNiza].isEmpty()) {
