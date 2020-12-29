@@ -32,7 +32,6 @@ public class ObnovaGodineService {
 		obnovaGodine.setGodinaObnove(date);
 		obnovaGodine.setDatum(today);
 		obnovaGodine.setIndeks(indeks);
-		
 		obnovaGodineRepo.save(obnovaGodine);
 		
 		indeks.setObnovaGodine(obnovaGodine);

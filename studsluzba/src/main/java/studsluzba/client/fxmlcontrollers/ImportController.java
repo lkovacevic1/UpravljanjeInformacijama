@@ -28,15 +28,25 @@ public class ImportController {
 	
 	public void izaberiFajl(ActionEvent ecent) {	
 		fajl = mainViewManager.openFileChooser();
-		nazivFajlaLabel.setText(fajl.getName());
+		if(fajl != null) {
+			nazivFajlaLabel.setText(fajl.getName());
+		}
+		else
+		{
+			nazivFajlaLabel.setText("Odaberite fajl za import !");
+		}
 	}
 	
 	
 	public void zapocniImport(ActionEvent ecent) {		
-		String poruka = csvPoeniImporter.importCSV(fajl);
-		izvestajImportLabel.setText(poruka);
+		if(fajl != null) {
+			String poruka = csvPoeniImporter.importCSV(fajl);
+			izvestajImportLabel.setText(poruka);
+		}
+		else
+		{
+			izvestajImportLabel.setText("Odaberite fajl za import !");
+		}
 	}
-	
-
 }
 
