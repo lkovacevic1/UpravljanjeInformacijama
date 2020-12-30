@@ -71,4 +71,8 @@ public class MenuBarController {
 	public void openImportPodataka(ActionEvent event) {
 		mainViewManager.changeRoot("importPodataka");
 	}
+	
+	public void openRezultatiIspitaIzvestaj(ActionEvent e) {
+		mainViewManager.changeRoot("spiskoviStudenataIzvestaji");
+	}
 }

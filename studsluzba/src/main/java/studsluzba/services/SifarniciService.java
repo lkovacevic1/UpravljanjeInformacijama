@@ -216,6 +216,10 @@ public class SifarniciService {
 		return rez;		
 	}
 	
+	public Nastavnik selectNastavnik(SkolskaGodina sk, Predmet predmet) {
+		return drziPredmetRepo.findNastavnikForPredmet(sk, predmet);
+	}
+	
 	//Ispit
 	
 	public List<Ispit> getIspiti(){
@@ -237,6 +241,10 @@ public class SifarniciService {
 			return ispitRepo.save(ispit);
 		else
 			return ispitVecPosotji;
+	}
+	
+	public Ispit selectIspitByRokAndPredmet(IspitniRok isRok, Predmet predmet) {
+		return ispitRepo.selectIspitByRokAndPredmet(isRok, predmet);
 	}
 	
 	//StudProgram
@@ -278,8 +286,8 @@ public class SifarniciService {
 			polozen = true;
 		polozenPredmet.setPolozen(polozen);
 		polozenPredmet.setIndeks(indeks);
-		//polozenPredmet.setIspit(ispit);
 		polozenPredmet.setPredmet(predmet);
+		polozenPredmet.setIspit(ispit);
 		return polozenPredmetRepo.save(polozenPredmet);
 	}
 	
@@ -301,8 +309,8 @@ public class SifarniciService {
 		
 		polozenPredmet.setPolozen(false);
 		polozenPredmet.setIndeks(indeks);
-		//polozenPredmet.setIspit(ispit);
 		polozenPredmet.setPredmet(predmet);
+		polozenPredmet.setIspit(ispit);
 		return polozenPredmetRepo.save(polozenPredmet);
 	}
 	//Indeks
@@ -351,6 +359,10 @@ public class SifarniciService {
 		return skolskaGodinaRepo.selectIdSkGodina(skolskaGodina);
 	}
 	
+	public SkolskaGodina selectSkolskaGodinaForIspitRok(int is) {
+		return ispitniRokRepo.selectSkolskaGodinaForIspitniRok(is);
+	}
+	
 	//Drzi predmet
 	
 	public List<DrziPredmet> getAllDrziPredmet(){
@@ -383,6 +395,13 @@ public class SifarniciService {
 	}
 	
 	//Premdet
+	
+	public List<Predmet> loadAllPredmeti(){
+		Iterable<Predmet> iter = predmetRepo.findAll();
+		List<Predmet> rez = new ArrayList<Predmet>();		
+		iter.forEach(rez::add);
+		return rez;
+	}
 	
 	public Predmet selectIdPredmeta(String nazivPredmeta) {
 		return predmetRepo.selectPredmetByName(nazivPredmeta);

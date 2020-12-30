@@ -52,6 +52,12 @@
                 	<MenuItem text="Import podataka" onAction="#openImportPodataka"/>
                 </items>                          
             </Menu>
+            <Menu text="Izvestaji">
+                <items>
+                    <MenuItem text="Spiskovi studenata" onAction="#openRezultatiIspitaIzvestaj" />   
+                    
+                </items>                          
+            </Menu>
         </MenuBar>    
     
 </VBox>

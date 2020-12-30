@@ -64,5 +64,4 @@ public class IspitniRokoviService {
         ispit.setIspitniRok(i);
         return ispitRepo.save(ispit);
     }
-
 }

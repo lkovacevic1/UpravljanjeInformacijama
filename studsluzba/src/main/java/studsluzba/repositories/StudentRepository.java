@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import studsluzba.model.StudProgram;
 import studsluzba.model.Student;
 
 public interface StudentRepository extends CrudRepository<Student, Integer> {
@@ -49,4 +50,8 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
 	//Selekcija studenta koji izlaze na odredjeni ispit
 	@Query("select s from Student s join s.indeks i join i.prijavaIspita pi where pi.ispit.idIspit like :idIspit")
 	List<Student> findAllStudentsForIspit(int idIspit);
+	
+	//Selekcija studenata po studijskom programu
+	@Query("select s from Student s join s.indeks i where i.studProgram like :sp and i.aktivan = true")
+	List<Student> selectStudentNaStudProgramu(StudProgram sp);
 }

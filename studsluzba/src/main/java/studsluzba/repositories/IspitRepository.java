@@ -24,4 +24,8 @@ public interface IspitRepository extends CrudRepository<Ispit, Integer> {
 	//Proveravamo da li ispit vec postoji
 	@Query("select i from Ispit i where i.ispitniRok like :ispitniRok and i.nastavnik like :nastavnik and i.predmet like :predmet and i.imeRoka like :imeRoka")
 	Ispit doesIspitExist(IspitniRok ispitniRok, Nastavnik nastavnik, Predmet predmet, String imeRoka);
+	
+	//Selekcija ispita na osnovu roka i predmeta
+	@Query("select i from Ispit i where i.ispitniRok like :isRok and i.predmet like :predmet")
+	Ispit selectIspitByRokAndPredmet(IspitniRok isRok, Predmet predmet);
 }

@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import studsluzba.model.Indeks;
+import studsluzba.model.Ispit;
 import studsluzba.model.IzlazakNaIspit;
 import studsluzba.model.OsvojeniPredispitniPoeni;
 import studsluzba.model.PolozenPredmet;
+import studsluzba.model.Predmet;
 import studsluzba.model.StudProgram;
 import studsluzba.model.Student;
 import studsluzba.repositories.IndeksRepository;
@@ -133,5 +135,13 @@ public class IndeksService {
 		List<Indeks> indeksi = indeksRepo.getIndeksi(studProgram, broj, godinaUpisa);
 		if(indeksi.isEmpty()) return null;
 		return indeksi.get(0);
+	}
+	
+	public List<Indeks> getStudentiNaProgramu(StudProgram sp){
+		return indeksRepo.selectStudentNaStudProgramu(sp);
+	}
+	
+	public List<Indeks> selectpolozenIndeks(Ispit ispit){
+		return indeksRepo.selectIndeksNaIspitu(ispit);
 	}
 }

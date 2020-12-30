@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import studsluzba.model.Indeks;
+import studsluzba.model.Ispit;
+import studsluzba.model.Predmet;
 import studsluzba.model.StudProgram;
 import studsluzba.model.Student;
 import studsluzba.model.UpisGodine;
@@ -74,4 +76,12 @@ public interface IndeksRepository extends CrudRepository<Indeks, Integer> {
 	@Query("select i from Indeks i where i.studProgram.oznaka like :skraceniNazivStudPrograma and "
 			+ "i.brojIndexa = :broj and i.godinaUpisa = :godinaUpisa")
 	List<Indeks> getIndeksi(String skraceniNazivStudPrograma, int broj, int godinaUpisa);
+	
+	//Spisak svih indeksa po smeru
+	@Query("select i from Indeks i where i.studProgram like :sp and i.aktivan = true")
+	List<Indeks> selectStudentNaStudProgramu(StudProgram sp);
+	
+	//Spisak svih indeksa koji su izasli na rok
+	@Query("select pp.indeks from PolozenPredmet pp where pp.ispit like :ispit order by pp.indeks.godinaUpisa desc")
+	List<Indeks> selectIndeksNaIspitu(Ispit ispit);
 }

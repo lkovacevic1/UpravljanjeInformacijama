@@ -33,9 +33,10 @@ public class PolozenPredmet implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "idPredmeta")
 	private Predmet predmet;
-
-	@OneToMany(mappedBy = "polozeniPredmet")
-	private List<Ispit> ispit;
+	
+	@ManyToOne
+	@JoinColumn(name = "idIspit")
+	private Ispit ispit;
 	
 	@OneToOne(mappedBy = "polozenPredmet")
 	private IzlazakNaIspit izlazakNaIspit;
@@ -45,7 +46,7 @@ public class PolozenPredmet implements Serializable {
 	}
 
 	public PolozenPredmet(int idPolozenPredmet, boolean polozen, int ocena, Indeks indeks, Predmet predmet,
-			List<Ispit> ispit, int osvojeniPoeniNaIspitu, IzlazakNaIspit izlazakNaIspit) {
+			Ispit ispit, int osvojeniPoeniNaIspitu, IzlazakNaIspit izlazakNaIspit) {
 		super();
 		this.idPolozenPredmet = idPolozenPredmet;
 		this.polozen = polozen;
@@ -105,11 +106,11 @@ public class PolozenPredmet implements Serializable {
 		this.predmet = predmet;
 	}
 
-	public List<Ispit> getIspit() {
+	public Ispit getIspit() {
 		return ispit;
 	}
 
-	public void setIspit(List<Ispit> ispit) {
+	public void setIspit(Ispit ispit) {
 		this.ispit = ispit;
 	}
 	
