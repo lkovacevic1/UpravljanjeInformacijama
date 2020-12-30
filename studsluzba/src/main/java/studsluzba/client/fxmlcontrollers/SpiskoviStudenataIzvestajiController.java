@@ -11,6 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import studsluzba.client.reports.IndeksNaIspituEntity;
 import studsluzba.client.reports.ReportsManager;
 import studsluzba.model.Indeks;
 import studsluzba.model.Ispit;
@@ -65,7 +66,7 @@ public class SpiskoviStudenataIzvestajiController {
 		imePrezime.append(nastavnik.getPrezime());
 		System.out.println("Ime nastavnika je: " + imePrezime);
 		
-		List<Indeks> indeksi = indeksService.selectpolozenIndeks(ispit);	//(Data source) Pravimo glavne podatke koji nam se pojavljuju u glavnoj tabeli izvestaja
+		List<IndeksNaIspituEntity> indeksi = indeksService.selectpolozenIndeks(ispit, nastavnik, predmet, sk);	//(Data source) Pravimo glavne podatke koji nam se pojavljuju u glavnoj tabeli izvestaja
 		Map<String,Object> params = new HashMap<String, Object>(); //Map<NazivParametra (isto kao parametar u jasperu), VrednostParametra>
 		params.put("predmet", predmetCb.getValue().getNazivPredmeta());//Ubacujemo parametre
 		params.put("sifraPredmeta", predmetCb.getValue().getSifra());

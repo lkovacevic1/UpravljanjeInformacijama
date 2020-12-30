@@ -19,4 +19,8 @@ public interface PredispitneObavezeRepository extends CrudRepository<Predispitne
 	//Proveravamo da li ovakva obaveza vec postoji
 	@Query("select po from PredispitneObaveze po where po.nastavnik like :nastavnik and po.predmet like :predmet and po.skolskaGodina like :skolskaGodina and po.vrstaPredispitnihObaveza like :vrsta")
 	PredispitneObaveze predispitnaObavezaDoesExist(String vrsta, Nastavnik nastavnik, Predmet predmet, SkolskaGodina skolskaGodina);
+	
+	//Selekcija svih predispitnih obaveza za datog nastavnika, skolsku godinu i predmet
+	@Query("select po from PredispitneObaveze po where po.nastavnik like :nastavnik and po.predmet like :predmet and po.skolskaGodina like :sk")
+	List<PredispitneObaveze> selectPredispitneObaveze(Nastavnik nastavnik, Predmet predmet, SkolskaGodina sk);
 }

@@ -294,13 +294,13 @@ public class SifarniciService {
 	public PolozenPredmet saveNePolozenPredmet(float poeniNaIspitu, Indeks indeks, Ispit ispit, Predmet predmet, float ukupnoPredispitni) {
 		PolozenPredmet polozenPredmet = new PolozenPredmet();
 		int ocena = 5;
-		if(poeniNaIspitu + ukupnoPredispitni <= 51 && poeniNaIspitu + ukupnoPredispitni < 61)
+		if(poeniNaIspitu + ukupnoPredispitni >= 51 && poeniNaIspitu + ukupnoPredispitni < 61)
 			ocena = 6;
-		else if(poeniNaIspitu + ukupnoPredispitni <= 61 && poeniNaIspitu + ukupnoPredispitni < 71)
+		else if(poeniNaIspitu + ukupnoPredispitni >= 61 && poeniNaIspitu + ukupnoPredispitni < 71)
 			ocena = 7;
-		else if(poeniNaIspitu + ukupnoPredispitni <= 71 && poeniNaIspitu + ukupnoPredispitni < 81)
+		else if(poeniNaIspitu + ukupnoPredispitni >= 71 && poeniNaIspitu + ukupnoPredispitni < 81)
 			ocena = 8;
-		else if(poeniNaIspitu + ukupnoPredispitni <= 81 && poeniNaIspitu + ukupnoPredispitni < 91)
+		else if(poeniNaIspitu + ukupnoPredispitni >= 81 && poeniNaIspitu + ukupnoPredispitni < 91)
 			ocena = 9;
 		else if(poeniNaIspitu + ukupnoPredispitni >= 91)
 			ocena = 10;
@@ -313,6 +313,11 @@ public class SifarniciService {
 		polozenPredmet.setIspit(ispit);
 		return polozenPredmetRepo.save(polozenPredmet);
 	}
+	
+	public boolean isPolozenPredmet(Indeks indeks, Ispit ispit) {
+		return polozenPredmetRepo.isPolozen(indeks, ispit);
+	}
+	
 	//Indeks
 	
 	public List<Indeks> getAllIndeks(){
@@ -424,6 +429,10 @@ public class SifarniciService {
 			return postojecaPredispitnaObaveza;
  	}
 	
+	public List<PredispitneObaveze> getPredispitneObaveze(Nastavnik nastavnik, Predmet predmet, SkolskaGodina sk){
+		return predispitneObavezeRepo.selectPredispitneObaveze(nastavnik, predmet, sk);
+	}
+	
 	//Osvojeni predispitni poeni
 	
 	public OsvojeniPredispitniPoeni saveOsvojenePredispitneObaveze(float poeni, Indeks si, PredispitneObaveze obavezaKolokvijum) {
@@ -432,6 +441,10 @@ public class SifarniciService {
 		osp.setIndeks(si);
 		osp.setPredispitneObaveze(obavezaKolokvijum);
 		return osvojeniPredispitniPoeniRepo.save(osp);
+	}
+	
+	public OsvojeniPredispitniPoeni getPredispitniPoeni(PredispitneObaveze po, Indeks indeks) {
+		return osvojeniPredispitniPoeniRepo.getPredispitniPoeni(po, indeks);
 	}
 	
 	//Prijava ispita

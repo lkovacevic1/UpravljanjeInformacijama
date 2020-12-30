@@ -8,12 +8,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import studsluzba.client.reports.IndeksNaIspituEntity;
 import studsluzba.model.Indeks;
 import studsluzba.model.Ispit;
 import studsluzba.model.IzlazakNaIspit;
+import studsluzba.model.Nastavnik;
 import studsluzba.model.OsvojeniPredispitniPoeni;
 import studsluzba.model.PolozenPredmet;
+import studsluzba.model.PredispitneObaveze;
 import studsluzba.model.Predmet;
+import studsluzba.model.SkolskaGodina;
 import studsluzba.model.StudProgram;
 import studsluzba.model.Student;
 import studsluzba.repositories.IndeksRepository;
@@ -34,6 +38,9 @@ public class IndeksService {
 	
 	@Autowired
 	StudProgramRepository studProgramRepo;
+	
+	@Autowired
+	SifarniciService sifarniciService;
 	
 	@Autowired
 	PolozenPredmetRepository polozenPredmetRepo;
@@ -141,7 +148,42 @@ public class IndeksService {
 		return indeksRepo.selectStudentNaStudProgramu(sp);
 	}
 	
-	public List<Indeks> selectpolozenIndeks(Ispit ispit){
-		return indeksRepo.selectIndeksNaIspitu(ispit);
+	public List<IndeksNaIspituEntity> selectpolozenIndeks(Ispit ispit, Nastavnik nastavnik, Predmet predmet, SkolskaGodina sk){
+		
+		List<Object[]> rez = indeksRepo.getIndeksForIspit(ispit);
+		List<PredispitneObaveze> predispitneObaveze = sifarniciService.getPredispitneObaveze(nastavnik, predmet, sk);
+		
+		List<IndeksNaIspituEntity> retVal = new ArrayList<IndeksNaIspituEntity>();
+		OsvojeniPredispitniPoeni osp = new OsvojeniPredispitniPoeni();
+		for(Object[] obj:rez) {
+			Indeks indeks = indeksRepo.findIdIndeks((String)obj[0], Integer.parseInt(obj[1].toString()), Integer.parseInt(obj[2].toString()));
+			float predispitniPoeni = 0;
+			
+			for (PredispitneObaveze po : predispitneObaveze) {
+				if(sifarniciService.getPredispitniPoeni(po, indeks) != null) {
+					osp = sifarniciService.getPredispitniPoeni(po, indeks);
+					predispitniPoeni += osp.getOsvojeniPredispitniPoeni();
+				}
+			}
+			
+			String indeksStudenta = (String)obj[0] + " " + obj[1].toString() + "/" + obj[2].toString();
+			String punoIme = (String)obj[3] + " " + (String)obj[4];
+			float poeni = Float.parseFloat(obj[5].toString());
+			int ocena = Integer.parseInt(obj[6].toString());
+			float ukupnoPoeni = predispitniPoeni + poeni;
+			
+			String ponistio = "";
+			if(ocena == 5) {
+				ponistio = "Pao";
+			}
+			else if(!sifarniciService.isPolozenPredmet(indeks, ispit) && ocena > 5) {
+				ponistio = "Ponisten";
+			}
+			
+ 			IndeksNaIspituEntity sp = 
+					new IndeksNaIspituEntity(indeksStudenta, punoIme, ukupnoPoeni, ocena, ponistio);
+			retVal.add(sp);
+		}
+		return retVal;
 	}
 }
