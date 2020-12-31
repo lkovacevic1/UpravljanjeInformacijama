@@ -71,6 +71,8 @@ public class UnosIspitRokController {
 	
 	@FXML private ComboBox<Predmet> cbPredmet2;
 	
+	private ObservableList<IspitniRok> ispitniRok;
+	
 	 @FXML
 	 protected void initialize() {
 		 sviRokovi = FXCollections.observableList(ispitniRokoviService.loadAll());
@@ -79,7 +81,7 @@ public class UnosIspitRokController {
 		 sviIspiti = FXCollections.observableList(ispitniRokoviService.loadAllIspiti());
 		 ispitiTable.setItems(sviIspiti);
 		 
-		 List<IspitniRok> ispitniRok = sifarniciService.getIspitniRok();
+		 ispitniRok = FXCollections.observableArrayList(sifarniciService.getIspitniRok());
 		 cbIspit.setItems(FXCollections.observableArrayList(ispitniRok));
 		 
 		 List<Nastavnik> nastavnik = nastavnikRepo.selekcijaAktivnihNastavnika();
@@ -98,7 +100,9 @@ public class UnosIspitRokController {
 		 SkolskaGodina skolskaGodina = skolskaGodinaRepo.findAktivnaSkGod();
 		 IspitniRok rok = ispitniRokoviService.saveIspitniRok(datumPocetkaIspitnogRoka.getValue(),datumZavrsetkaIspitnogRoka.getValue(), skolskaGodina, cbImeRoka.getValue());
 		 sviRokovi.add(rok);
-	 }
+		 ispitniRok.add(rok);
+		 cbIspit.setItems(FXCollections.observableArrayList(ispitniRok));
+	}
 	 
 	 public void handleSacuvajIspit(ActionEvent event) {
 		 

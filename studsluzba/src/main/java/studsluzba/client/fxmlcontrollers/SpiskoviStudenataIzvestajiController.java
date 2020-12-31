@@ -55,6 +55,7 @@ public class SpiskoviStudenataIzvestajiController {
 	public void handleGenerisiSpisakPoStudProgramu(ActionEvent ecent) {	
 		IspitniRok isRok = rokCb.getValue();
 		Predmet predmet = predmetCb.getValue();
+		
 		SkolskaGodina sk = sifarniciService.selectSkolskaGodinaForIspitRok(isRok.getIdIspitnogRoka());
 		Nastavnik nastavnik = sifarniciService.selectNastavnik(sk, predmet);
 		
