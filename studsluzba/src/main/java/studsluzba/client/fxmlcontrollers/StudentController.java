@@ -129,20 +129,6 @@ public class StudentController {
 	
 	public void handleSaveStudent(ActionEvent event) {
 		
-		/*if(imeTf.getText() == null || prezimeTf.getText() == null || srednjeImeTf.getText() == null || jmbgTf.getText() == null
-				|| datumRodjenjaDp.getValue() == null || emailFakultetaTf.getText() == null || emailPrivatniTf.getText() == null
-				|| brojTelefonaTf.getText() == null || adresaPrebivalistaTf.getText() == null || mestoRodjenjaCb.getValue() == null
-				|| drzavaRodjenjaCb.getValue() == null || drzavljanstvoCb.getValue() == null || nacionalnostTf.getText() == null
-				|| brojLicneKarteTf.getText() == null || licnuKartuIzdaoTf.getText() == null || srednjeSkolaCb.getValue() == null
-				|| uspehSrednjaSkolaTf.getText() == null || uspehPrijemniTf.getText() == null  
-				|| pol.getValue() == null || smerCb.getValue() == null
-				|| brIndeksaTf.getText() == null) {
-			
-			actionTarget.setText("Svi podaci moraju biti popunjeni !");
-			
-			return;
-		}*/
-		
 		if(jmbgTf.getText().length() != 13) {
 			actionTarget.setText("JMBG mora sadrzati 13 cifara!");
 			return;

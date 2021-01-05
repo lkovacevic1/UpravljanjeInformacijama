@@ -48,7 +48,7 @@ public class CSVPoeniImporter {
 			String nazivPredmeta = imePredmetaSaZarezima[0];
 			String duplaGodina = sc.nextLine();
 			String[] stringGodina = duplaGodina.split("/");
-			int godinaPredmeta = Integer.parseInt(stringGodina[0]); //Izvucemo godinu predvanja predmeta
+			int godinaPredmeta = Integer.parseInt(stringGodina[0]); //Izvucemo godinu predavanja predmeta
 			
 			Predmet predmet = sifarniciService.selectIdPredmeta(nazivPredmeta);
 			

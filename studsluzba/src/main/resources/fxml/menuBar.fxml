@@ -26,21 +26,18 @@
                     		<MenuItem text="Predmeti po programu" onAction="#predmetiNaProgramu"/>
                     	</items> 
                     </Menu>	             
-                    <MenuItem text="Ispitni rokovi" />
                     <MenuItem text="Predmeti po skolskoj godini" onAction="#openSortBySkolskaGodina"/>
                 </items>                           
             </Menu>
             <Menu text="Novi">
                 <items>
                     <MenuItem text="Student" onAction="#openNewStudent"/>               
-                    <MenuItem text="Nastavnik" />                
                     <MenuItem text="Aktivna godina" onAction="#openNewAktivnaSkolskaGodina"/>
                     <MenuItem text="Ispit/Rok" onAction="#unosIspitaRoka"/>
                 </items>                          
             </Menu>
             <Menu text="Administracija">
                 <items>
-                    <MenuItem text="Šifarnici" />   
                     <MenuItem text="Studijski programi" onAction="#openStudProgrami"/> 
                     <Menu text = "Ispit">
                     	<items>               
