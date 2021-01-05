@@ -11,10 +11,4 @@ import javafx.scene.layout.BorderPane;
 @Component
 public class MainWindowController {
 	
-	
-	
-	
-	
-	
-	
 }

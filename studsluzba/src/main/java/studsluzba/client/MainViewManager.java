@@ -13,7 +13,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import studsluzba.client.fxmlcontrollers.MainWindowController;
 
 @Component
 public class MainViewManager {

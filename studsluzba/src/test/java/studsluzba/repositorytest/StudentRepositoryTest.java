@@ -222,7 +222,7 @@ public class StudentRepositoryTest {
 		
 		
 		
-		/*Student s = new Student(); 
+		Student s = new Student(); 
 		SrednjaSkola sk = new SrednjaSkola();
 		VisokoskolskaUstanova vsu = new VisokoskolskaUstanova();
 		DrziPredmet drziPredmet = new DrziPredmet();
@@ -247,276 +247,274 @@ public class StudentRepositoryTest {
 		
 		
 		/// Visokoskolska ustanova
-		vsu.setNazivVisokoskolskeUstanove("Masinski fakultet");
+				vsu.setNazivVisokoskolskeUstanove("Arhitektonski fakultet");
 
-		visokoskolskaUstanovaRepo.save(vsu);
+				visokoskolskaUstanovaRepo.save(vsu);
 
-		/// Srednja Skola
-		sk.setNazivSrednjeSkole("Masinska skola Radoje Dakic");
-		sk.setMestoSrednjeSkole("Miska Kranjca 17");
-		sk.setVrstaSrednjeSkole("skola");
+				/// Srednja Skola
+				sk.setNazivSrednjeSkole("Peta gimnazija");
+				sk.setMestoSrednjeSkole("Ilije Garasanina 24");
+				sk.setVrstaSrednjeSkole("Gimnazija");
 
-		srednjaSkolaRepo.save(sk);
+				srednjaSkolaRepo.save(sk);
 
-		/// Student
-		s.setIme("Milos");
-		s.setPrezime("Golubovic");
-		s.setSrednjeIme("Golub");
-		s.setAdresaPrebivalista("Belog brega 67");
-		s.setBrTelefona("0634599344");
-		s.setBrojLicneKarte("436784870");
-		s.setIzdavacLicneKarte("PS Rakovica");
-		s.setDatumRodjenja(LocalDate.of(1997, 05, 16));
-		s.setJmbg("1348722424945");
-		s.setDrzavaRodjenja("Srbija");
-		s.setDrzavljanstvo("Srpsko");
-		s.setMestoRodjenja("Beograd");
-		s.setNacionalnost("Srbin");
-		s.setEmailFakultet("mgolubovic2816rn@raf.rs");
-		s.setEmailPrivatan("milosgolubovic@gmail.com");
-		s.setPol("Muski");
-		s.setSrSkola(sk);
-		s.setVisokoskolskaUstanova(vsu);
-		
-		studentRepo.save(s);
-		
-		
-		//Zvanje
-		zvanje.setZvanje("Pomocnik asistenta");
-		
-		zvanjeRepository.save(zvanje);
-
-		// Nastavnik
-		nastavnik.setIme("Natasa");
-		nastavnik.setPrezime("Radulovic");
-		nastavnik.setSrednjeIme("Nata");
-		nastavnik.setEmail("nradulovic@raf.rs");
-		nastavnik.setZavrsenaVisokoskolskaUstanova("RAF");
-		nastavnik.setZvanje(zvanje);
-		nastavnik.setAktivan(true);
-		
-		nastavnikRepo.save(nastavnik);
-		
-		
-		// VrstaStudija
-		vrstaStud.setPunNazivStudija("Osnovne strukovne studije");
-		vrstaStud.setSkraceniNazivStudija("OSS");
-		
-		vrsteStudijaRepository.save(vrstaStud);
-		
-		// StudProgram
-		studProgram.setNazivStudPrograma("Informacione tehnologije");
-		studProgram.setOznaka("RN");
-		studProgram.setNazivZvanjaPoZavrsetkuStudija("Strukovni inzenjer elektrotehnike i racunarstva");
-		studProgram.setGodinaAkreditacije(2009);
-		studProgram.setBrojSemestara(6);
-		studProgram.setVrstaStudija(vrstaStud);
-		
-		studProgramRepository.save(studProgram);
-		
-		// SkolskaGodina
-		skolskaGodina.setSkolskaGodina(2016);
-		skolskaGodina.setAktivna(false);
-		
-		skolskaGodinaRepository.save(skolskaGodina);
-		
-		
-		// IspitniRok
-		ispitniRok.setDatumPocetkaIspitnogRoka(LocalDate.of(2020, 01, 21));
-		ispitniRok.setDatumZavrsetkaIspitnogRoka(LocalDate.of(2020, 02, 06));
-		ispitniRok.setSkolskaGodina(skolskaGodina);
-		ispitniRok.setImeRoka("januarski");
-		
-		ispitniRokRepo.save(ispitniRok);
-		
-//		IspitniRok ispitniRok2 = new IspitniRok();
-//		
-//		ispitniRok2.setDatumPocetkaIspitnogRoka(LocalDate.of(2020, 9, 03));
-//		ispitniRok2.setDatumZavrsetkaIspitnogRoka(LocalDate.of(2020, 9, 18));
-//		ispitniRok2.setSkolskaGodina(skolskaGodina);
-//		ispitniRok2.setImeRoka("julski");
-//		
-//		ispitniRokRepo.save(ispitniRok2);
-		
-		
-		// Indeks
-		indeks.setBrojIndexa(28);
-		indeks.setGodinaUpisa(2016);
-		indeks.setStudent(s);
-		indeks.setStudProgram(studProgram);
-		indeks.setAktivan(true);
-		indeks.setDatumAktivacijeIndexa(LocalDate.of(2016, 07, 03));
-		indeks.setOsvojeniPoeni(74);
-		
-		indeksRepo.save(indeks);
-		
-		
-		// UpisGodine
-		upisGodine.setIndeks(indeks);
-		upisGodine.setGodinaUpisa(3);
-		upisGodine.setDatum(LocalDate.of(2020, 07, 25));
-		upisGodine.setNapomena("Krecemo jako !");
-		
-		upisGodineRepository.save(upisGodine);
-		
-		// Predmet
-		Predmet predmet2 = new Predmet();
-		
-		predmet.setNazivPredmeta("Mikroservisne aplikacije");
-		predmet.setOpisPredmeta("Rad sa mikroservisima");
-		predmet.setSemestar(5);
-		predmet.setBrojESPBpoena(6);
-		predmet.setSifra("UIT879");
-		predmet.setFondCasovaPredavanja(10);
-		predmet.setFondCasovaVezbi(10);
-		predmet.setStudProgram(studProgram);
-		predmet.setUpisGodine(upisGodine);
-		
-		predmetRepository.save(predmet);
-		
-		predmet2.setNazivPredmeta("Veliki podaci");
-		predmet2.setOpisPredmeta("Rad sa podacima");
-		predmet2.setSemestar(6);
-		predmet2.setBrojESPBpoena(8);
-		predmet2.setSifra("ITE574");
-		predmet2.setFondCasovaPredavanja(10);
-		predmet2.setFondCasovaVezbi(10);
-		predmet2.setStudProgram(studProgram);
-		predmet2.setUpisGodine(upisGodine);
-		
-		predmetRepository.save(predmet2);
-		
-		
-		// Ispit
-		ispit.setDatumOdrzavanjaIspita(LocalDate.of(2020, 01, 20));
-		ispit.setVremeOdrzavanjaIspita(11);
-		ispit.setZakljucenIspit(true);
-		ispit.setPredmet(predmet);
-		ispit.setPredmet(predmet2);
-		ispit.setNastavnik(nastavnik);
-		ispit.setIspitniRok(ispitniRok);
-		
-		ispitRepo.save(ispit);
-//		
-//		Ispit ispit2 = new Ispit();
-//		
-//		ispit2.setDatumOdrzavanjaIspita(LocalDate.of(2020, 9, 10));
-//		ispit2.setVremeOdrzavanjaIspita(9);
-//		ispit2.setZakljucenIspit(true);
-//		ispit2.setPredmet(predmet2);
-//		ispit2.setNastavnik(nastavnik);
-//		ispit2.setIspitniRok(ispitniRok2);
-//		
-//		ispitRepo.save(ispit2);
-		
+				/// Student
+				s.setIme("Nadja");
+				s.setPrezime("Ranitovic");
+				s.setSrednjeIme("Nadjolinka");
+				s.setAdresaPrebivalista("Jurija Gagarina 56");
+				s.setBrTelefona("0633474387");
+				s.setBrojLicneKarte("423784337");
+				s.setIzdavacLicneKarte("PS Novi Beograd");
+				s.setDatumRodjenja(LocalDate.of(1999, 02, 15));
+				s.setJmbg("4238479239932");
+				s.setDrzavaRodjenja("Srbija");
+				s.setDrzavljanstvo("Srpsko");
+				s.setMestoRodjenja("Beograd");
+				s.setNacionalnost("Srpkinja");
+				s.setEmailFakultet("nranitovic1719rn@raf.rs");
+				s.setEmailPrivatan("nadjaranitovic@gmail.com");
+				s.setPol("Zenski");
+				s.setSrSkola(sk);
+				s.setVisokoskolskaUstanova(vsu);
 				
-		// PolozenPredmet
-		polozeniPredmet.setPredmet(predmet);
-		polozeniPredmet.setPredmet(predmet2);
-		polozeniPredmet.setIndeks(indeks);
-		polozeniPredmet.setIspit(ispit);
-		polozeniPredmet.setOsvojeniPoeniNaIspitu(37);
-		polozeniPredmet.setOcena(8);
-		polozeniPredmet.setPolozen(true);
-		
-		polozeniPredmetRepo.save(polozeniPredmet);
-		
-//		PolozenPredmet polozeniPredmet2 = new PolozenPredmet();
-//		
-//		polozeniPredmet2.setPredmet(predmet2);
-//		polozeniPredmet2.setIndeks(indeks);
-//		polozeniPredmet2.setIspit(ispit2);
-//		polozeniPredmet2.setOsvojeniPoeniNaIspitu(56);
-//		polozeniPredmet2.setOcena(6);
-//		polozeniPredmet2.setPolozen(true);
-//		
-//		polozeniPredmetRepo.save(polozeniPredmet2);
+				studentRepo.save(s);
 				
-		
-		// PrijavaIspita
-		prijavaIspita.setIspit(ispit);
-		prijavaIspita.setIndeks(indeks);
-		prijavaIspita.setDatumPrijaveIspita(LocalDate.of(2020, 01, 07));
-		
-		prijavaIspitaRepository.save(prijavaIspita);
-		
-//		PrijavaIspita prijavaIspita2 = new PrijavaIspita();
-//		
-//		prijavaIspita2.setIspit(ispit2);
-//		prijavaIspita2.setIndeks(indeks);
-//		prijavaIspita2.setDatumPrijaveIspita(LocalDate.of(2021, 9, 02));
-//		
-//		prijavaIspitaRepository.save(prijavaIspita2);
-		
-		
-		// IzlazakNaIspit
-		izlazakNaIspit.setPolozenPredmet(polozeniPredmet);
-		izlazakNaIspit.setPonistavaIspit(false);
-		izlazakNaIspit.setNapomena("Uspesno polozen !");
-	
-		izlazakNaIspitRepo.save(izlazakNaIspit);
-		
-//		IzlazakNaIspit izlazakNaIspit2 = new IzlazakNaIspit();
-//		
-//		izlazakNaIspit2.setPolozenPredmet(polozeniPredmet2);
-//		izlazakNaIspit2.setPonistavaIspit(false);
-//		izlazakNaIspit2.setNapomena("Bez saputanja !");
-//		
-//		izlazakNaIspitRepo.save(izlazakNaIspit2);
-		
-		List<Indeks> indeksi = new ArrayList<Indeks>();
-		indeksi.add(indeks);
-		
-		// DrziPredmet
-		drziPredmet.setNastavnik(nastavnik);
-		drziPredmet.setPredmet(predmet);
-		drziPredmet.setSkolskaGodina(skolskaGodina);
-		drziPredmet.setIndeksi(indeksi);
-		
-		drziPredmetRepo.save(drziPredmet);
-		
-		DrziPredmet drziPredmet2 = new DrziPredmet();
-		
-		drziPredmet2.setNastavnik(nastavnik);
-		drziPredmet2.setPredmet(predmet2);
-		drziPredmet2.setSkolskaGodina(skolskaGodina);
-		drziPredmet2.setIndeksi(indeksi);
-		
-		drziPredmetRepo.save(drziPredmet2);
-		
-		// PredispitneObaveze
-		predispitneObaveze.setPredmet(predmet);
-		predispitneObaveze.setVrstaPredispitnihObaveza("Test znanja");
-		predispitneObaveze.setMaxBrPredispitnihPoena(50);
-		predispitneObaveze.setSkolskaGodina(skolskaGodina);
-		predispitneObaveze.setNastavnik(nastavnik);
-		
-		predispitneObavezeRepo.save(predispitneObaveze);
-		
-		PredispitneObaveze predispitneObaveze2 = new PredispitneObaveze();
-		
-		predispitneObaveze2.setPredmet(predmet2);
-		predispitneObaveze2.setVrstaPredispitnihObaveza("Test znanja");
-		predispitneObaveze2.setMaxBrPredispitnihPoena(50);
-		predispitneObaveze2.setSkolskaGodina(skolskaGodina);
-		predispitneObaveze2.setNastavnik(nastavnik);
-		
-		predispitneObavezeRepo.save(predispitneObaveze2);
-		
-		// OsvojeniPredispitniPoeni
-		osvojeniPredispitniPoeni.setPredispitneObaveze(predispitneObaveze);
-		osvojeniPredispitniPoeni.setIndeks(indeks);
-		osvojeniPredispitniPoeni.setOsvojeniPredispitniPoeni(37);
-		
-		osvojeniPredispitniPoeniRepo.save(osvojeniPredispitniPoeni);
-		
-		OsvojeniPredispitniPoeni osvojeniPredispitniPoeni2 = new OsvojeniPredispitniPoeni();
-		
-		osvojeniPredispitniPoeni2.setPredispitneObaveze(predispitneObaveze2);
-		osvojeniPredispitniPoeni2.setIndeks(indeks);
-		osvojeniPredispitniPoeni2.setOsvojeniPredispitniPoeni(37);
-		
-		osvojeniPredispitniPoeniRepo.save(osvojeniPredispitniPoeni2);*/
+				
+				//Zvanje
+				zvanje.setZvanje("Vanredni profesor");
+				
+				zvanjeRepository.save(zvanje);
+
+				// Nastavnik
+				nastavnik.setIme("Vesna");
+				nastavnik.setPrezime("Cavic");
+				nastavnik.setSrednjeIme("Veki");
+				nastavnik.setEmail("vsesum@raf.rs");
+				nastavnik.setZavrsenaVisokoskolskaUstanova("FON");
+				nastavnik.setZvanje(zvanje);
+				nastavnik.setAktivan(true);
+				
+				nastavnikRepo.save(nastavnik);
+				
+				
+				// VrstaStudija
+				vrstaStud.setPunNazivStudija("Osnovne akademske studije");
+				vrstaStud.setSkraceniNazivStudija("OAS");
+				
+				vrsteStudijaRepository.save(vrstaStud);
+				
+				// StudProgram
+				studProgram.setNazivStudPrograma("Racunarsko inzinjerstvo");
+				studProgram.setOznaka("RI");
+				studProgram.setNazivZvanjaPoZavrsetkuStudija("Diplomirani inzenjer elektrotehnike i racunara");
+				studProgram.setGodinaAkreditacije(2009);
+				studProgram.setBrojSemestara(8);
+				studProgram.setVrstaStudija(vrstaStud);
+				
+				studProgramRepository.save(studProgram);
+				
+				// SkolskaGodina
+				skolskaGodina.setSkolskaGodina(2019);
+				skolskaGodina.setAktivna(false);
+				
+				skolskaGodinaRepository.save(skolskaGodina);
+				
+				
+				// IspitniRok
+				ispitniRok.setDatumPocetkaIspitnogRoka(LocalDate.of(2020, 06, 16));
+				ispitniRok.setDatumZavrsetkaIspitnogRoka(LocalDate.of(2020, 07, 02));
+				ispitniRok.setSkolskaGodina(skolskaGodina);
+				ispitniRok.setImeRoka("junski");
+				
+				ispitniRokRepo.save(ispitniRok);
+				
+				IspitniRok ispitniRok2 = new IspitniRok();
+				
+				ispitniRok2.setDatumPocetkaIspitnogRoka(LocalDate.of(2020, 07, 03));
+				ispitniRok2.setDatumZavrsetkaIspitnogRoka(LocalDate.of(2020, 07, 17));
+				ispitniRok2.setSkolskaGodina(skolskaGodina);
+				ispitniRok2.setImeRoka("julski");
+				
+				ispitniRokRepo.save(ispitniRok2);
+				
+				
+				// Indeks
+				indeks.setBrojIndexa(500);
+				indeks.setGodinaUpisa(2019);
+				indeks.setStudent(s);
+				indeks.setStudProgram(studProgram);
+				indeks.setAktivan(true);
+				indeks.setDatumAktivacijeIndexa(LocalDate.of(2019, 06, 20));
+				indeks.setOsvojeniPoeni(96);
+				
+				indeksRepo.save(indeks);
+				
+				
+				// UpisGodine
+				upisGodine.setIndeks(indeks);
+				upisGodine.setGodinaUpisa(2);
+				upisGodine.setDatum(LocalDate.of(2020, 07, 15));
+				upisGodine.setNapomena("Spremite se !");
+				
+				upisGodineRepository.save(upisGodine);
+				
+				// Predmet
+				Predmet predmet2 = new Predmet();
+				
+				predmet.setNazivPredmeta("Algoritmi i strukture podataka");
+				predmet.setOpisPredmeta("Rad sa algoritmima");
+				predmet.setSemestar(3);
+				predmet.setBrojESPBpoena(8);
+				predmet.setSifra("BMU456");
+				predmet.setFondCasovaPredavanja(12);
+				predmet.setFondCasovaVezbi(12);
+				predmet.setStudProgram(studProgram);
+				predmet.setUpisGodine(upisGodine);
+				
+				predmetRepository.save(predmet);
+				
+				predmet2.setNazivPredmeta("Matematicka analiza");
+				predmet2.setOpisPredmeta("Matematika");
+				predmet2.setSemestar(4);
+				predmet2.setBrojESPBpoena(6);
+				predmet2.setSifra("FEK586");
+				predmet2.setFondCasovaPredavanja(13);
+				predmet2.setFondCasovaVezbi(13);
+				predmet2.setStudProgram(studProgram);
+				predmet2.setUpisGodine(upisGodine);
+				
+				predmetRepository.save(predmet2);
+				
+				
+				// Ispit
+				ispit.setDatumOdrzavanjaIspita(LocalDate.of(2020, 06, 20));
+				ispit.setVremeOdrzavanjaIspita(10);
+				ispit.setZakljucenIspit(true);
+				ispit.setPredmet(predmet);
+				ispit.setNastavnik(nastavnik);
+				ispit.setIspitniRok(ispitniRok);
+				
+				ispitRepo.save(ispit);
+				
+				Ispit ispit2 = new Ispit();
+				
+				ispit2.setDatumOdrzavanjaIspita(LocalDate.of(2020, 07, 15));
+				ispit2.setVremeOdrzavanjaIspita(9);
+				ispit2.setZakljucenIspit(true);
+				ispit2.setPredmet(predmet2);
+				ispit2.setNastavnik(nastavnik);
+				ispit2.setIspitniRok(ispitniRok2);
+				
+				ispitRepo.save(ispit2);
+				
+						
+				// PolozenPredmet
+				polozeniPredmet.setPredmet(predmet);
+				polozeniPredmet.setIndeks(indeks);
+				polozeniPredmet.setIspit(ispit);
+				polozeniPredmet.setOsvojeniPoeniNaIspitu(46);
+				polozeniPredmet.setOcena(10);
+				polozeniPredmet.setPolozen(true);
+				
+				polozeniPredmetRepo.save(polozeniPredmet);
+				
+				PolozenPredmet polozeniPredmet2 = new PolozenPredmet();
+				
+				polozeniPredmet2.setPredmet(predmet2);
+				polozeniPredmet2.setIndeks(indeks);
+				polozeniPredmet2.setIspit(ispit2);
+				polozeniPredmet2.setOsvojeniPoeniNaIspitu(50);
+				polozeniPredmet2.setOcena(10);
+				polozeniPredmet2.setPolozen(true);
+				
+				polozeniPredmetRepo.save(polozeniPredmet2);
+						
+				
+				// PrijavaIspita
+				prijavaIspita.setIspit(ispit);
+				prijavaIspita.setIndeks(indeks);
+				prijavaIspita.setDatumPrijaveIspita(LocalDate.of(2020, 06, 10));
+				
+				prijavaIspitaRepository.save(prijavaIspita);
+				
+				PrijavaIspita prijavaIspita2 = new PrijavaIspita();
+				
+				prijavaIspita2.setIspit(ispit2);
+				prijavaIspita2.setIndeks(indeks);
+				prijavaIspita2.setDatumPrijaveIspita(LocalDate.of(2021, 07, 01));
+				
+				prijavaIspitaRepository.save(prijavaIspita2);
+				
+				
+				// IzlazakNaIspit
+				izlazakNaIspit.setPolozenPredmet(polozeniPredmet);
+				izlazakNaIspit.setPonistavaIspit(false);
+				izlazakNaIspit.setNapomena("Spremite se dobro!");
+			
+				izlazakNaIspitRepo.save(izlazakNaIspit);
+				
+				IzlazakNaIspit izlazakNaIspit2 = new IzlazakNaIspit();
+				
+				izlazakNaIspit2.setPolozenPredmet(polozeniPredmet2);
+				izlazakNaIspit2.setPonistavaIspit(false);
+				izlazakNaIspit2.setNapomena("Bez zabusavanja !");
+				
+				izlazakNaIspitRepo.save(izlazakNaIspit2);
+				
+				List<Indeks> indeksi = new ArrayList<Indeks>();
+				indeksi.add(indeks);
+				
+				// DrziPredmet
+				drziPredmet.setNastavnik(nastavnik);
+				drziPredmet.setPredmet(predmet);
+				drziPredmet.setSkolskaGodina(skolskaGodina);
+				drziPredmet.setIndeksi(indeksi);
+				
+				drziPredmetRepo.save(drziPredmet);
+				
+				DrziPredmet drziPredmet2 = new DrziPredmet();
+				
+				drziPredmet2.setNastavnik(nastavnik);
+				drziPredmet2.setPredmet(predmet2);
+				drziPredmet2.setSkolskaGodina(skolskaGodina);
+				drziPredmet2.setIndeksi(indeksi);
+				
+				drziPredmetRepo.save(drziPredmet2);
+				
+				// PredispitneObaveze
+				predispitneObaveze.setPredmet(predmet);
+				predispitneObaveze.setVrstaPredispitnihObaveza("Kolokvijum");
+				predispitneObaveze.setMaxBrPredispitnihPoena(50);
+				predispitneObaveze.setSkolskaGodina(skolskaGodina);
+				predispitneObaveze.setNastavnik(nastavnik);
+				
+				predispitneObavezeRepo.save(predispitneObaveze);
+				
+				PredispitneObaveze predispitneObaveze2 = new PredispitneObaveze();
+				
+				predispitneObaveze2.setPredmet(predmet2);
+				predispitneObaveze2.setVrstaPredispitnihObaveza("Kolokvijum");
+				predispitneObaveze2.setMaxBrPredispitnihPoena(50);
+				predispitneObaveze2.setSkolskaGodina(skolskaGodina);
+				predispitneObaveze2.setNastavnik(nastavnik);
+				
+				predispitneObavezeRepo.save(predispitneObaveze2);
+				
+				// OsvojeniPredispitniPoeni
+				osvojeniPredispitniPoeni.setPredispitneObaveze(predispitneObaveze);
+				osvojeniPredispitniPoeni.setIndeks(indeks);
+				osvojeniPredispitniPoeni.setOsvojeniPredispitniPoeni(50);
+				
+				osvojeniPredispitniPoeniRepo.save(osvojeniPredispitniPoeni);
+				
+				OsvojeniPredispitniPoeni osvojeniPredispitniPoeni2 = new OsvojeniPredispitniPoeni();
+				
+				osvojeniPredispitniPoeni2.setPredispitneObaveze(predispitneObaveze2);
+				osvojeniPredispitniPoeni2.setIndeks(indeks);
+				osvojeniPredispitniPoeni2.setOsvojeniPredispitniPoeni(46);
+				
+				osvojeniPredispitniPoeniRepo.save(osvojeniPredispitniPoeni2);
 		
 		
 	}
